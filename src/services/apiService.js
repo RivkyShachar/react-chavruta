@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const API_URL = "http://localhost:3002";
+export const API_URL = "http://localhost:3001";
 // export const API_URL = "https://monkeys.co.il";
 export const TOKEN_NAME = "ADMIN_TOKEN";
 
@@ -78,6 +78,7 @@ export const doApiMethodSignUpLogin = async (_url, _method, _body = {}) => {
             }
         });
         console.log("return");
+        console.log(resp);
         return resp;
     } catch (err) {       
         throw err;

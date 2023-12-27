@@ -26,11 +26,11 @@ const Login = () => {
       const url = API_URL + '/auth/login';
       const data = await doApiMethodSignUpLogin(url, "POST", _data);
 
-      if (data.token) {
-        localStorage.setItem(TOKEN_NAME, data.token);
+      if (data.data.token) {
+        localStorage.setItem(TOKEN_NAME, data.data.token);
 
         // Decode the token to access its properties
-        const decodedToken =data.token;
+        const decodedToken =data.data.token;
 
         if (decodedToken.role && decodedToken.role.includes("admin")) {
           console.log(decodedToken);
