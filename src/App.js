@@ -1,9 +1,13 @@
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import AppRoutes from './appRoutes.js';
+import myStore from './redux/myStore';
 import './App.css';
 
 function App() {
   return (
-    <h1>main page</h1>
+    <Provider store={myStore}>
+      <AppRoutes />
+    </Provider>
   );
 }
 
