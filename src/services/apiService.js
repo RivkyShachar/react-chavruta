@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const API_URL = "http://localhost:3000";
+export const API_URL = "http://localhost:3002";
 // export const API_URL = "https://monkeys.co.il";
 export const TOKEN_NAME = "ADMIN_TOKEN";
 
@@ -61,3 +61,42 @@ export const doApiMethod = async (_url, _method, _body = {}) => {
     throw err;
   }
 };
+export const doApiMethodSignUpLogin = async (_url, _method, _body = {}) => {
+    try {
+        // console.log("in signup");
+        // console.log(_url);
+        // console.log(_method);
+        // console.log(_body);
+        let resp = await axios({
+            method: _method,
+            url: _url,
+            data: _body,  // Send the body directly without stringifying
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any additional headers required for authentication
+                // For example, if using a token: 'Authorization': `Bearer ${yourToken}`
+            }
+        });
+        console.log("return");
+        return resp;
+    } catch (err) {       
+        throw err;
+    }
+};
+
+
+                // "x-api-key":localStorage[TOKEN_NAME]
+
+export const doApiTukenGet = async (_url) => {
+    try {
+        let resp = await axios.get(_url, {
+            headers: {
+                // 'Content-Type': 'application/json',
+                "x-api-key": localStorage.getItem(TOKEN_NAME)
+            }
+        })
+        return resp;
+    } catch (err) {
+        throw err;
+    }
+}

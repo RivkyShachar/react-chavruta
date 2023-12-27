@@ -1,76 +1,91 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useAuth } from './hooks/authContext';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
+import { getUserInfo } from '../../redux/featchers/userSlice';
+import jwt from 'jsonwebtoken';
 
-export default function AuthForm() {
-    //   const [login, setLogin] = useState(false);
-    //   const { login: authLogin, signup } = useAuth();
-    //   const navigate = useNavigate();
+const Login = () => {
+  const dispatch = useDispatch();
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const nav = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-    //   const handleLogin = async (isLogin) => {
-    //     setLogin(isLogin);
-    //   };
+  const onSub = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    const data = {
+      email: e.target.email.value,
+      password: e.target.password.value
+    };
+    doApi(data);
+  }
 
-    //   const handleSubmit = async (e, type) => {
-    //     e.preventDefault();
-    //     const email = e.target.email.value;
-    //     const password = e.target.password.value;
+  const doApi = async (_data) => {
+    try {
+      const url = API_URL + '/auth/login';
+      const data = await doApiMethodSignUpLogin(url, "POST", _data);
 
-    //     try {
-    //       if (type === 'signup') {
-    //         // Use signup function for signup
-    //         await signup(email, password);
-    //       } else {
-    //         // Use login function for login
-    //         await authLogin(email, password);
-    //       }
+      if (data.token) {
+        localStorage.setItem(TOKEN_NAME, data.token);
 
-    //       if (type === 'signup') {
-    //         navigate('/resumeForm');
-    //       } else {
-    //         navigate('/appResume');
-    //       }
-    //     } catch (err) {
-    //       alert(err.code);
-    //       setLogin(true);
-    //     }
-    //   };
+        // Decode the token to access its properties
+        const decodedToken = jwt.decode(data.token);
 
-    //   const handleReset = () => {
-    //     navigate('/reset');
-    //   };
+        if (decodedToken.role && decodedToken.role.includes("admin")) {
+          console.log(decodedToken);
+          nav("/admin");
+        } else if (decodedToken.role && decodedToken.role.includes("user")) {
+          nav("/user");
+        } else {
+          nav("/");
+        }
 
-    return (
-        <div className='container  mt-5'>
-            <div className='d-flex align-items-center justify-content-center'>
-                <form className='w-50'>
-                    <div className='row mb-3'>
-                        <label htmlFor='email' className='col-sm-2 col-form-label'>
-                            Email:
-                        </label>
-                        <div className='col-sm-10'>
-                            <input name='email' className='form-control' type='email' id='email' />
-                        </div>
-                    </div>
-                    <div className='row mb-3'>
-                        <label htmlFor='password' className='col-sm-2 col-form-label ps-1'>
-                            Password:
-                        </label>
-                        <div className='col-sm-10'>
-                            <input name='password' className='form-control' type='password' id='password' />
-                        </div>
-                    </div>
-                    <div className='d-flex justify-content-center mt-5'>
-                        <button type='submit' className='btn btn-success col-4 mx-2'>
-                            Log in
-                        </button>
-                        <button type='submit' className='btn btn-primary col-4 mx-2'>
-                            Sign up
-                        </button>
-                    </div>
-                </form>
-            </div>
+        window.location.reload();
+      }
+
+      dispatch(getUserInfo());
+    } catch (err) {
+      setIsSubmitted(false);
+      alert(err.response.data.msg);
+    }
+  }
+
+  return (
+    <div className='container mt-5'>
+      <div className='d-flex align-items-center justify-content-center'>
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+            Log in to your account
+          </h2>
         </div>
-
-    );
+        <form onSubmit={(e) => onSub(e)} className='w-50'>
+          <div className='row mb-3'>
+            <label htmlFor='email' className='col-sm-2 col-form-label'>
+              Email:
+            </label>
+            <div className='col-sm-10'>
+              <input name='email' className='form-control' type='email' id='email' />
+            </div>
+          </div>
+          <div className='row mb-3'>
+            <label htmlFor='password' className='col-sm-2 col-form-label ps-1'>
+              Password:
+            </label>
+            <div className='col-sm-10'>
+              <input name='password' className='form-control' type='password' id='password' />
+            </div>
+          </div>
+          <div className='d-flex justify-content-center mt-5'>
+            <button type='submit' className='btn btn-success col-4 mx-2'>
+              Log in
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
+
+export default Login;

@@ -12,7 +12,7 @@ import Loader from './components/ui/loader/loader'
 // const ResetPassword = React.lazy(() => import('./components/auth/resetPassword'));
 const Home = React.lazy(() => import('./components/auth/home'));
 const Login = React.lazy(() => import('./components/auth/login'));
-// const SignUp = React.lazy(() => import('./components/auth/signUp'));
+const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
 // const MyRestaurantsList = React.lazy(() => import('./components/auth/myRestaurantsList'));
 // const NewRestaurant = React.lazy(() => import('./components/auth/newRestaurant'));
 // const NotFound = React.lazy(() => import('./components/notFound'));
@@ -28,11 +28,10 @@ const AppRoutes = () => {
                             {/* <Route path='/requestResetPass' element={<RequestResetPass />} />
                             <Route path='/resetPassword/:userId/:uniqueString' element={<ResetPassword />} /> */}
                             <Route path='/login' element={<Login />} />
-                            {/* <Route path='/signUp' element={<SignUp />} />
-                            <Route path='/fillDetales/:userId' element={<WorkerFill />} />
+                            <Route path='/signUp' element={<SignUp />} />
+                            {/* <Route path='/fillDetales/:userId' element={<WorkerFill />} />
                             <Route path='/myrestaurantlist' element={< MyRestaurantsList />} />
                             <Route path='/newrestaurant' element={< NewRestaurant />} /> */}
-
                         </Route>
                 </Routes>
             </Router>
