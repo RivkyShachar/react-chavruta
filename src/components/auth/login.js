@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
 import { getUserInfo } from '../../redux/featchers/userSlice';
-import jwt from 'jsonwebtoken';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -31,7 +30,7 @@ const Login = () => {
         localStorage.setItem(TOKEN_NAME, data.token);
 
         // Decode the token to access its properties
-        const decodedToken = jwt.decode(data.token);
+        const decodedToken =data.token;
 
         if (decodedToken.role && decodedToken.role.includes("admin")) {
           console.log(decodedToken);
