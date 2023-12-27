@@ -73,7 +73,7 @@ const AppRegister = () => {
   };
 
   return (
-    <div className='container m-5'>
+    <div className='container '>
       <div className='row'>
         <form onSubmit={handleSubmit(onSubmit)}>
           {steps.map((step, index) => (
@@ -82,7 +82,7 @@ const AppRegister = () => {
             </div>
           ))}
           <div className='container'>
-            <div className='row justify-content-space-between'>
+            <div className='row'>
               <button type='button' className='btn btn-secondary col-2 mx-2' onClick={handleBackClick}>
                 Back
               </button>

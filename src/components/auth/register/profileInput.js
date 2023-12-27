@@ -55,7 +55,7 @@ const ProfileInput = () => {
     };
 
     return (
-        <div className='container m-5'>
+        <div className='container'>
             <div className='row'>
                 {showEducation ? (<Education />) : (
                     < div className='col-8 border'>
@@ -149,7 +149,7 @@ const ProfileInput = () => {
                                     </form>
 
                                 </div>
-                                <div className='col-3 bg-warning mt-5 h-75'>
+                                <div className='col-3 border m-4  h-75'>
                                     <div className='row'>
                                         <div className='col-sm-10'>
                                             {/* Center the image vertically and horizontally */}
@@ -174,9 +174,14 @@ const ProfileInput = () => {
                     </div>
                 )}
 
-                <div className='col-4 bg-warning'>
-                    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600"></img>
+                <div className='col-4'>
+                    <img
+                        src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        style={{ maxWidth: '400px', height: '550px' }}
+                        alt="Your Alt Text"
+                    />
                 </div>
+
 
             </div>
         </div >
