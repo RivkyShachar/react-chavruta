@@ -1,120 +1,106 @@
 import React, { useState } from 'react';
-import Education from './educationInput';
-import Location from './locationInput';
-import RangeQ from './rangeQuestion';
 
 const EducationInput = () => {
-    const [showEducation, setShowEducation] = useState(false);
+    const [education, setEducation] = useState({ name: '', startDate: '', endDate: '', degree: '' });
+    const [educations, setEducations] = useState([]);
 
-
-    //age over 12
-    const [dateOfBirth, setDateOfBirth] = useState('');
-    const [validationError, setValidationError] = useState('');
-
-    const handleDateChange = (e) => {
-        const currentDate = new Date();
-        const selectedDate = new Date(e.target.value);
-        const twelveYearsAgo = new Date();
-        twelveYearsAgo.setFullYear(currentDate.getFullYear() - 12);
-
-        setDateOfBirth(e.target.value);
-
-        if (selectedDate > twelveYearsAgo) {
-            setValidationError('Birth date must be at least 12 years ago.');
-        } else {
-            setValidationError('');
-        }
+    const handleAddEducation = () => {
+        setEducations([...educations, education]);
+        setEducation({ name: '', startDate: '', endDate: '', degree: '' });
     };
 
-    //img
-
-    const [selectedFile, setSelectedFile] = useState(null);
-    const defaultImageUrl = 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600';
-
-    const handleFileChange = (e) => {
-        // Get the selected file
-        const file = e.target.files[0];
-
-        // You can perform additional checks/validation here if needed
-
-        // Set the selected file to state
-        setSelectedFile(file);
+    const handleEducationChange = (field, value) => {
+        setEducation({ ...education, [field]: value });
     };
 
-    const handleUpload = () => {
-        // Use the 'selectedFile' state for further processing
-        console.log('Selected File:', selectedFile);
+    const handleDeleteEducation = (index) => {
+        const updatedEducations = [...educations];
+        updatedEducations.splice(index, 1);
+        setEducations(updatedEducations);
     };
-    const [clickCount, setClickCount] = useState(0);
-
-    const handleContinueClick = () => {
-        setClickCount((prevCount) => prevCount + 1);
-    };
-
-    const renderComponent = () => {
-        switch (clickCount) {
-            case 1:
-                return <Education />;
-            case 2:
-                return <Location />;
-            case 3:
-                return <RangeQ />;
-            default:
-                return renderLocationInputForm();
-        }
-    };
-
-    const renderLocationInputForm = () => (
-        <div className='col-8 border'>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-7 ms-5 mt-5'>
-                        <h2 className="mb-5">
-                            Sign up
-                        </h2>
-                        <form>
-                            <form>
-                                <div className='row mb-3'>
-                                    <label htmlFor='city' className='col-3 col-form-label ps-1'>
-                                        city:
-                                    </label>
-                                    <div className='col-5'>
-                                        <input name='city' className='form-control' type='city' id='city' />
-                                    </div>
-                                </div>
-                                <div className='row mb-3'>
-                                    <label htmlFor='state' className='col-3 col-form-label ps-1'>
-                                        state:
-                                    </label>
-                                    <div className='col-5'>
-                                        <input name='state' className='form-control' type='state' id='state' />
-                                    </div>
-                                </div>
-                              
-
-                                <div className='d-flex justify-content-center mt-5'>
-                                    <button type='button' className='btn btn-info col-4 mx-2' onClick={handleContinueClick}>
-                                        Continue
-                                    </button>
-                                </div>
-                            </form>
-                           
-                        </form>
-                    </div>
-                   
-                </div>
-            </div>
-        </div>
-    );
 
     return (
         <div className='container m-5'>
             <div className='row'>
-                {renderComponent()}
-
-                <div className='col-4 bg-warning'>
-                    <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600" alt="background" />
+                <div className='col-5 '>
+                    <h2 className='mb-5'>What is your education </h2>
+                    <div className='education mt-3'>
+                        <label>
+                            <b>Education:</b>
+                        </label>
+                        <input
+                            placeholder='School'
+                            type='text'
+                            className='form-control my-2'
+                            value={education.name}
+                            onChange={(e) => handleEducationChange('name', e.target.value)}
+                        />
+                        <select
+                            className='form-control'
+                            value={education.degree}
+                            onChange={(e) => handleEducationChange('degree', e.target.value)}
+                        >
+                            <option value=''>Select Degree</option>
+                            <option value="High School Diploma">High School Diploma</option>
+                            <option value="Bachelor's Degree">Bachelor's Degree</option>
+                            <option value="Master's Degree">Master's Degree</option>
+                        </select>
+                        <div className='row my-3'>
+                            <div className='row'>
+                                <div className='col-2 mt-1'>
+                                    <label>Start Date:</label>
+                                </div>
+                                <div className='col-4'>
+                                    <input
+                                        type='date'
+                                        className='form-control'
+                                        value={education.startDate}
+                                        onChange={(e) => handleEducationChange('startDate', e.target.value)}
+                                    />
+                                </div>
+                                <div className='col-2 mt-1 '>
+                                    <label>End Date:</label>
+                                </div>
+                                <div className='col-4 '>
+                                    <input
+                                        type='date'
+                                        className='form-control'
+                                        value={education.endDate}
+                                        onChange={(e) => handleEducationChange('endDate', e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            type='button'
+                            className='my-2 btn btn-outline-primary'
+                            onClick={handleAddEducation}
+                        >
+                            Add Education
+                        </button>
+                    </div>
                 </div>
+
+                {/* Display the list of education on the right side */}
+                <div className='col-5 ms-4 border'>
+                    <h2 className='mb-4'>Education List</h2>
+                    <ul className='list-group custom-list'>
+                        {educations.map((edu, index) => (
+                            <li key={index} className='list-group-item custom-list-item'>
+                                <strong>{edu.name}</strong> - {edu.degree}<br />
+                                Start Date: {edu.startDate} - End Date: {edu.endDate}
+                                <button
+                                    type='button'
+                                    className='btn btn-outline-danger btn-sm float-end'
+                                    onClick={() => handleDeleteEducation(index)}
+                                >
+                                    Delete
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
             </div>
         </div>
     );

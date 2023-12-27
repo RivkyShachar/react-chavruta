@@ -145,12 +145,7 @@ const ProfileInput = () => {
                                         </div>
 
 
-                                        <div className='d-flex justify-content-center mt-5'>
-                                            {/* Use type='button' to prevent form submission */}
-                                            <button type='button' className='btn btn-info col-4 mx-2' onClick={handleContinueClick}>
-                                                Continue
-                                            </button>
-                                        </div>
+
                                     </form>
 
                                 </div>
