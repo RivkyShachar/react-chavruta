@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { setTopics } from '../../../redux/featchers/userSlice';
 const Topics = () => {
   const topicsList = [
     "Torah Study",
@@ -23,15 +24,17 @@ const Topics = () => {
     "Jewish Feminism",
     "Modern Jewish Thought"
   ];
+  const dispatch = useDispatch();
+
 
   const [selectedTopics, setSelectedTopics] = useState([]);
 
   const handleButtonClick = (topic) => {
     if (selectedTopics.includes(topic)) {
-      // Remove the topic if already selected
       setSelectedTopics(selectedTopics.filter((selectedTopic) => selectedTopic !== topic));
+      dispatch(setTopics({ topics: topic.target.value }));
+
     } else {
-      // Add the topic if not selected
       setSelectedTopics([...selectedTopics, topic]);
     }
   };

@@ -23,25 +23,93 @@ export const getUserInfo = createAsyncThunk(
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        firstName: "",
-        lastName:"",
-        phoneNumber:"",
-        topics:[]
-    },    
-    reducers: {
-        // logoutUser: (state, action) => {
-        //     state.user = null
-        // }
-        setFirstName:(state,actions)=>{
-
-            state.firstName=actions.payload.firstName;
+        user: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            verifyPassword: "",
+            phoneNumber: "",
+            gender: "",
+            dateOfBirth: "",
+            profilePic: "",
+            educations: [],
+            topics: [],
+            location: "",
+            genderRange: "",
+            educationRange: "",
+            locationRrange: "",
+            friendList: "",
         }
+    },
+    reducers: {
+        setFirstName: (state, actions) => {
+            state.user.firstName = actions.payload.firstName;
+        },
+        setLastName: (state, actions) => {
+            state.lastName = actions.payload.lastName;
+        },
+        setEmail: (state, actions) => {
 
+            state.email = actions.payload.email;
+        },
+        setPassword: (state, actions) => {
 
+            state.password = actions.payload.password;
+        },
+        setVerifyPassword: (state, actions) => {
+
+            state.verifyPassword = actions.payload.verifyPassword;
+        },
+        setPhoneNumber: (state, actions) => {
+
+            state.phoneNumber = actions.payload.phoneNumber;
+        },
+        setGender: (state, actions) => {
+
+            state.gender = actions.payload.gender;
+        },
+        setDateOfBirth: (state, actions) => {
+
+            state.dateOfBirth = actions.payload.dateOfBirth;
+        },
+        setProfilePic: (state, actions) => {
+
+            state.profilePic = actions.payload.profilePic;
+        },
+        setEducationsInput: (state, actions) => {
+
+            state.educations = actions.payload.educations;
+        },
+        setLocation: (state, actions) => {
+
+            state.location = actions.payload.location;
+        },
+        setTopics: (state, actions) => {
+
+            state.topics = actions.payload.topics;
+        },
+        setGenderRange: (state, actions) => {
+
+            state.gender = actions.payload.gender;
+        },
+        setEducationRange: (state, actions) => {
+
+            state.education = actions.payload.education;
+        },
+        setLocationRange: (state, actions) => {
+
+            state.location = actions.payload.location;
+        },
+        setFriendList: (state, actions) => {
+
+            state.friendList = actions.payload.friendList;
+        }
     }
 })
 
-export const { setFirstName } = userSlice.actions
+export const { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender,
+    setDateOfBirth, setProfilePic, setEducationsInput, setLocation, setTopics, setGenderRange, setEducationRange, setLocationRange, setFriendList } = userSlice.actions
 
 
 

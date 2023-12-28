@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { setGenderRange, setEducationRange, setLocationRange, setFriendList } from '../../../redux/featchers/userSlice';
 
 const SingleRangeQ = ({ title }) => {
+    const dispatch = useDispatch();
+
     const [selectedNumber, setSelectedNumber] = useState(null);
     const handleNumberSelection = (number) => {
         setSelectedNumber(number);
+        
+        dispatch(setGenderRange({ educations: number.target.value }));
+
     };
 
     return (

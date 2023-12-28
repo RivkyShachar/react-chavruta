@@ -6,23 +6,25 @@ import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/a
 import { getUserInfo } from '../../../redux/featchers/userSlice';
 import {  useSelector } from 'react-redux';
 import Profile from './profileInput';
+import Topic from './topicList';
 import Education from './educationInput';
 import Location from './locationInput';
 import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
 
 const AppRegister = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const steps = [
     { id: 'profile', component: <Profile /> },
     { id: 'location', component: <Location /> },
     { id: 'education', component: <Education /> },
+    { id: 'topic', component: <Topic /> },
     { id: 'rangeQ1', component: <RangeQ1 /> },
     { id: 'rangeQ2', component: <RangeQ2 /> },
   ];
@@ -60,11 +62,11 @@ const AppRegister = () => {
   let firstName = useSelector(myStore=>myStore.userSlice.firstName)
   
   const handleContinueClick = () => {
-    if (currentStep < 4) {
+    if (currentStep < 6) {
       setCurrentStep((prevStep) => prevStep + 1);
       console.log("firstName",firstName);
     } else {
-      handleSubmit(onSubmit)();
+      handleSubmit(onSubmit);
     }
   };
 
@@ -88,7 +90,7 @@ const AppRegister = () => {
               <button type='button' className='btn btn-secondary col-2 mx-2' onClick={handleBackClick}>
                 Back
               </button>
-              {currentStep === 4 ? (
+              {currentStep === 5 ? (
                 <button type='submit' className='btn btn-success col-2 mx-2' disabled={isSubmitted}>
                   Submit
                 </button>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { setEducationsInput } from '../../../redux/featchers/userSlice';
 const EducationInput = () => {
     const [education, setEducation] = useState({ name: '', startDate: '', endDate: '', degree: '' });
     const [educations, setEducations] = useState([]);
+    const dispatch = useDispatch();
 
     const handleAddEducation = () => {
         setEducations([...educations, education]);
@@ -17,6 +19,9 @@ const EducationInput = () => {
         const updatedEducations = [...educations];
         updatedEducations.splice(index, 1);
         setEducations(updatedEducations);
+    };
+    const handleInputChange = (e) => {
+        dispatch(setEducationsInput({ educations: e.target.value }));
     };
 
     return (
@@ -92,7 +97,10 @@ const EducationInput = () => {
                                 <button
                                     type='button'
                                     className='btn btn-outline-danger btn-sm float-end'
-                                    onClick={() => handleDeleteEducation(index)}
+                                    onClick={(e) => {
+                                        handleDeleteEducation(index);
+                                        handleInputChange(e);
+                                    }} 
                                 >
                                     Delete
                                 </button>
