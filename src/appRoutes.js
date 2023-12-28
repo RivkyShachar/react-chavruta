@@ -13,6 +13,8 @@ import Loader from './components/ui/loader/loader'
 const Home = React.lazy(() => import('./components/auth/home'));
 const Login = React.lazy(() => import('./components/auth/login'));
 const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
+const RequestList = React.lazy(() => import('./components/user/requestList'));
+const AdminHome = React.lazy(() => import('./components/admin/adminHome'));
 // const MyRestaurantsList = React.lazy(() => import('./components/auth/myRestaurantsList'));
 // const NewRestaurant = React.lazy(() => import('./components/auth/newRestaurant'));
 // const NotFound = React.lazy(() => import('./components/notFound'));
@@ -29,6 +31,8 @@ const AppRoutes = () => {
                             <Route path='/resetPassword/:userId/:uniqueString' element={<ResetPassword />} /> */}
                             <Route path='/login' element={<Login />} />
                             <Route path='/signUp' element={<SignUp />} />
+                            <Route path='/user' element={<RequestList />} />
+                            <Route path='/admin' element={<AdminHome />} />
                             {/* <Route path='/fillDetales/:userId' element={<WorkerFill />} />
                             <Route path='/myrestaurantlist' element={< MyRestaurantsList />} />
                             <Route path='/newrestaurant' element={< NewRestaurant />} /> */}
