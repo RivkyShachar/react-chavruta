@@ -11,10 +11,11 @@ const LocationInput = () => {
   const options = useMemo(() => countryList().getData(), [])
   const dispatch = useDispatch();
 
-  const changeHandler = value => {
-    setValue(value)
-    dispatch(setLocation({ location: value.target.value }));
-  }
+
+  const changeHandler = selectedOption => {
+    setValue(selectedOption);  // Use the selectedOption directly
+    dispatch(setLocation({ location: selectedOption.label }));
+  };  
 
   return (
     <div className='col-8 border'>

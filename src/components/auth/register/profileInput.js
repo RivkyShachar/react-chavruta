@@ -5,7 +5,6 @@ import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, se
 const ProfileInput = () => {
     const dispatch = useDispatch();
 
-
     //age over 12
     const [dateOfBirth, setDateOfBirth1] = useState('');
     const [validationError, setValidationError] = useState('');
@@ -90,14 +89,15 @@ const ProfileInput = () => {
                                         First name:
                                     </label>
                                     <div className='col-2'>
-                                        <input name='firstName' onChange={(e) => handleInputChange(e, 'firstName')} className='form-control' type='string' id='firstName' value={user.firstName} />
+                                        <input name='firstName' onInput={(e) => handleInputChange(e, 'firstName')} className='form-control' type='string' id='firstName' value={user.firstName} />
                                     </div>
                                     <label htmlFor='lastName' className='col-3 col-form-label'>
                                         Last name:
                                     </label>
                                     <div className='col-2'>
-                                        <input name='lastName' onChange={(e) => handleInputChange(e, 'lastName')} className='form-control' type='string' id='lastName' value={user.lastName} />
+                                        <input name='lastName' onInput={(e) => handleInputChange(e, 'lastName')} className='form-control' type='string' id='lastName'  />
                                     </div>
+                                   
                                 </div>
 
                                 <div className='row mb-3'>
@@ -105,7 +105,7 @@ const ProfileInput = () => {
                                         email:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='email' onChange={(e) => handleInputChange(e, 'email')} className='form-control' type='string' id='email' value={user.email} />
+                                        <input name='email' onInput={(e) => handleInputChange(e, 'email')} className='form-control' type='string' id='email' value={user.email} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -113,7 +113,7 @@ const ProfileInput = () => {
                                         Password:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='password' onChange={(e) => handleInputChange(e, 'password')} className='form-control' type='string' id='password' value={user.password} />
+                                        <input name='password' onInput={(e) => handleInputChange(e, 'password')} className='form-control' type='string' id='password' value={user.password} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -121,7 +121,7 @@ const ProfileInput = () => {
                                         verifyPassword:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='verifyPassword' onChange={(e) => handleInputChange(e, 'verifyPassword')} className='form-control' type='string' id='verifyPassword' value={user.verifyPassword} />
+                                        <input name='verifyPassword' onInput={(e) => handleInputChange(e, 'verifyPassword')} className='form-control' type='string' id='verifyPassword' value={user.verifyPassword} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -130,7 +130,7 @@ const ProfileInput = () => {
                                         Phone Number:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='phoneNumber' onChange={(e) => handleInputChange(e, 'phoneNumber')} className='form-control' type='string' id='phoneNumber' value={user.phoneNumber} />
+                                        <input name='phoneNumber' onInput={(e) => handleInputChange(e, 'phoneNumber')} className='form-control' type='string' id='phoneNumber' value={user.phoneNumber} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -138,9 +138,9 @@ const ProfileInput = () => {
                                         Gender:
                                     </label>
                                     <div className='col-5'>
-                                        <select name='gender' value={user.gender} className='form-control' id='gender' onChange={(e) => handleInputChange(e, 'gender')}>
-                                            <option value='male'>Male</option>
-                                            <option value='female'>Female</option>
+                                        <select name='gender' value={user.gender} className='form-control' id='gender' onInput={(e) => handleInputChange(e, 'gender')}>
+                                            <option value='true'>Male</option>
+                                            <option value='false'>Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@ const ProfileInput = () => {
                                             type='date'
                                             id='dateOfBirth'
                                             value={user.dateOfBirth}
-                                            onChange={(e) => {
+                                            onInput={(e) => {
                                                 handleDateChange(e);
                                                 handleInputChange(e, 'dateOfBirth');
                                             }} />
@@ -182,7 +182,7 @@ const ProfileInput = () => {
                                             accept='image/*'
                                             id='profileImage'
                                             value={user.profilePic}
-                                            onChange={(e) => {
+                                            onInput={(e) => {
                                                 handleFileChange(e);
                                                 handleInputChange(e, 'profilePic');
                                             }} 

@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setGenderRange, setEducationRange, setLocationRange, setFriendList } from '../../../redux/featchers/userSlice';
+import { setAgeRange, setEducationRange, setLocationRange, setFriendListRange } from '../../../redux/featchers/userSlice';
 
-const SingleRangeQ = ({ title }) => {
+const SingleRangeQ = ({ title, questionNumber }) => {
     const dispatch = useDispatch();
 
     const [selectedNumber, setSelectedNumber] = useState(null);
-    const handleNumberSelection = (number) => {
-        setSelectedNumber(number);
-        
-        dispatch(setGenderRange({ educations: number.target.value }));
+    const handleNumberSelection = (inputValue, questionNumber) => {
+        setSelectedNumber(inputValue);
+        switch (questionNumber) {
+            case '1':
+                dispatch(setAgeRange({ ageRange: inputValue }));
+                break;
+            case '2':
+                dispatch(setEducationRange({ educationRange: inputValue }));
+                break;
+            case '3':
+                dispatch(setLocationRange({ locationRange: inputValue }));
+                break;
+            case '4':
+                dispatch(setFriendListRange({ friendListRange: inputValue }));
+                break;
+            default:;
+        }
 
+        dispatch(setAgeRange({ educations: inputValue }));
     };
+
 
     return (
         <div>
@@ -21,7 +36,7 @@ const SingleRangeQ = ({ title }) => {
                     <button
                         key={number}
                         className={`btn ${selectedNumber === number ? 'btn-primary' : 'btn-outline-primary'}`}
-                        onClick={() => handleNumberSelection(number)}
+                        onClick={() => handleNumberSelection(number, questionNumber)}
                     >
                         {number}
                     </button>

@@ -36,10 +36,10 @@ const userSlice = createSlice({
             educations: [],
             topics: [],
             location: "",
-            genderRange: "",
-            educationRange: "",
-            locationRrange: "",
-            friendList: "",
+            ageRange: 0,
+            educationRange: 0,
+            locationRange: 0,
+            friendListRange: 0
         }
     },
     reducers: {
@@ -47,69 +47,69 @@ const userSlice = createSlice({
             state.user.firstName = actions.payload.firstName;
         },
         setLastName: (state, actions) => {
-            state.lastName = actions.payload.lastName;
+            state.user.lastName = actions.payload.lastName;
         },
         setEmail: (state, actions) => {
 
-            state.email = actions.payload.email;
+            state.user.email = actions.payload.email;
         },
         setPassword: (state, actions) => {
 
-            state.password = actions.payload.password;
+            state.user.password = actions.payload.password;
         },
         setVerifyPassword: (state, actions) => {
 
-            state.verifyPassword = actions.payload.verifyPassword;
+            state.user.verifyPassword = actions.payload.verifyPassword;
         },
         setPhoneNumber: (state, actions) => {
 
-            state.phoneNumber = actions.payload.phoneNumber;
+            state.user.phoneNumber = actions.payload.phoneNumber;
         },
         setGender: (state, actions) => {
-
-            state.gender = actions.payload.gender;
+            const genderValue = actions.payload.gender === "true";
+            state.user.gender = genderValue;
         },
         setDateOfBirth: (state, actions) => {
 
-            state.dateOfBirth = actions.payload.dateOfBirth;
+            state.user.dateOfBirth = actions.payload.dateOfBirth;
         },
         setProfilePic: (state, actions) => {
 
-            state.profilePic = actions.payload.profilePic;
+            state.user.profilePic = actions.payload.profilePic;
         },
         setEducationsInput: (state, actions) => {
 
-            state.educations = actions.payload.educations;
+            state.user.educations = [...state.user.educations, actions.payload.educations];
         },
         setLocation: (state, actions) => {
 
-            state.location = actions.payload.location;
+            state.user.location = actions.payload.location;
         },
         setTopics: (state, actions) => {
 
-            state.topics = actions.payload.topics;
+            state.user.topics = [actions.payload.topics];
         },
-        setGenderRange: (state, actions) => {
+        setAgeRange: (state, actions) => {
 
-            state.gender = actions.payload.gender;
+            state.user.gender = actions.payload.gender;
         },
         setEducationRange: (state, actions) => {
 
-            state.education = actions.payload.education;
+            state.user.education = actions.payload.education;
         },
         setLocationRange: (state, actions) => {
 
-            state.location = actions.payload.location;
+            state.user.location = actions.payload.location;
         },
-        setFriendList: (state, actions) => {
+        setFriendListRange: (state, actions) => {
 
-            state.friendList = actions.payload.friendList;
+            state.user.friendListRange = actions.payload.friendListRange;
         }
     }
 })
 
 export const { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender,
-    setDateOfBirth, setProfilePic, setEducationsInput, setLocation, setTopics, setGenderRange, setEducationRange, setLocationRange, setFriendList } = userSlice.actions
+    setDateOfBirth, setProfilePic, setEducationsInput, setLocation, setTopics, setAgeRange, setEducationRange, setLocationRange, setFriendListRange } = userSlice.actions
 
 
 

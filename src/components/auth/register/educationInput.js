@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+
+
+
+import React, { useEffect, useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 import { setEducationsInput } from '../../../redux/featchers/userSlice';
+
 const EducationInput = () => {
+    const dispatch = useDispatch();
+    let user = useSelector(myStore=>myStore.userSlice.user)
+
+
     const [education, setEducation] = useState({ name: '', startDate: '', endDate: '', degree: '' });
     const [educations, setEducations] = useState([]);
-    const dispatch = useDispatch();
-
+  
     const handleAddEducation = () => {
         setEducations([...educations, education]);
         setEducation({ name: '', startDate: '', endDate: '', degree: '' });
+        dispatch(setEducationsInput({ educations: education }));
+      
     };
 
     const handleEducationChange = (field, value) => {
@@ -19,9 +28,6 @@ const EducationInput = () => {
         const updatedEducations = [...educations];
         updatedEducations.splice(index, 1);
         setEducations(updatedEducations);
-    };
-    const handleInputChange = (e) => {
-        dispatch(setEducationsInput({ educations: e.target.value }));
     };
 
     return (
@@ -77,9 +83,13 @@ const EducationInput = () => {
                             </div>
                         </div>
                         <button
-                            type='button'
-                            className='my-2 btn btn-outline-primary'
-                            onClick={handleAddEducation}
+                           type='button'
+                           name='yaeli'
+                           className='my-2 btn btn-outline-primary'
+                           onClick={() => {
+                               handleAddEducation();
+                           }}
+                       
                         >
                             Add Education
                         </button>
@@ -97,10 +107,7 @@ const EducationInput = () => {
                                 <button
                                     type='button'
                                     className='btn btn-outline-danger btn-sm float-end'
-                                    onClick={(e) => {
-                                        handleDeleteEducation(index);
-                                        handleInputChange(e);
-                                    }} 
+                                    onClick={() => handleDeleteEducation(index)}
                                 >
                                     Delete
                                 </button>

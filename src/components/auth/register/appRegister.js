@@ -18,7 +18,7 @@ const AppRegister = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { handleSubmit} = useForm();
 
   const steps = [
     { id: 'profile', component: <Profile /> },
@@ -28,13 +28,17 @@ const AppRegister = () => {
     { id: 'rangeQ1', component: <RangeQ1 /> },
     { id: 'rangeQ2', component: <RangeQ2 /> },
   ];
+  let user = useSelector(myStore=>myStore.userSlice.user)
+  const userWithoutVerifyPassword = { ...user };
+  delete userWithoutVerifyPassword.verifyPassword;
 
-  const onSubmit = async (data) => {
+  console.log("userWithoutVerifyPassword", userWithoutVerifyPassword);
+  const onSubmit = async () => {
     setIsSubmitted(true);
     try {
-      const url = API_URL + '/auth/signUp';
-      console.log("data");
-      const response = await doApiMethodSignUpLogin(url, 'POST', data);
+      console.log("data",userWithoutVerifyPassword);
+      const url = API_URL + '/auth/register';
+      const response = await doApiMethodSignUpLogin(url, 'POST', userWithoutVerifyPassword);
   
       if (response && response.token) {
         localStorage.setItem(TOKEN_NAME, response.token);
@@ -59,12 +63,12 @@ const AppRegister = () => {
     }
   };
   
-  let firstName = useSelector(myStore=>myStore.userSlice.firstName)
   
   const handleContinueClick = () => {
+    console.log("currentStep",currentStep);
     if (currentStep < 6) {
       setCurrentStep((prevStep) => prevStep + 1);
-      console.log("firstName",firstName);
+      console.log("user",user);
     } else {
       handleSubmit(onSubmit);
     }
