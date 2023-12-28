@@ -1,37 +1,73 @@
-// import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-// import Nav from '../../layout/header/nav'
-import { TOKEN_NAME } from '../../services/apiService'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { TOKEN_NAME } from '../../services/apiService';
+
 const Home = () => {
+  const nav = useNavigate();
 
-    const nav = useNavigate()
-
-    return (
-        <header className='container-fluid bg-dark text-white'>
-        <div className="container">
-          <div className="row align-items-center">
-            <div className='col-auto'>
-              <h2 className='text-info'>Resumaker</h2>
-            </div>
-            <nav className="nav col-auto">
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-              
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/signUp">Sign up </Link>
-                </li>
-               
-              </ul>
-            </nav>
-          </div>
+  return (
+    <div className="container">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link className="navbar-brand" to="/">
+          Chavruta
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/signUp">
+                Sign up
+              </Link>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Dropdown link
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a className="dropdown-item" href="#">
+                  Action
+                </a>
+                <a className="dropdown-item" href="#">
+                  Another action
+                </a>
+                <a className="dropdown-item" href="#">
+                  Something else here
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
-      </header>
-    )
-}
+      </nav>
+    </div>
+  );
+};
 
-export default Home
+export default Home;

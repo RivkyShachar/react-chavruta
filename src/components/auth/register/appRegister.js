@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/apiService';
 import { getUserInfo } from '../../../redux/featchers/userSlice';
-
+import {  useSelector } from 'react-redux';
 import Profile from './profileInput';
 import Education from './educationInput';
 import Location from './locationInput';
@@ -57,10 +57,12 @@ const AppRegister = () => {
     }
   };
   
-
+  let firstName = useSelector(myStore=>myStore.userSlice.firstName)
+  
   const handleContinueClick = () => {
     if (currentStep < 4) {
       setCurrentStep((prevStep) => prevStep + 1);
+      console.log("firstName",firstName);
     } else {
       handleSubmit(onSubmit)();
     }

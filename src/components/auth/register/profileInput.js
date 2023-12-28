@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 // import { useNavigate, Link } from 'react-router-dom';
 // import { useForm } from 'react-hook-form';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
-// import { getUserInfo } from '../../redux/featchers/userSlice';
+import { setFirstName } from '../../../redux/featchers/userSlice';
 // import { date } from 'joi';
 import Education from './educationInput'
 
 const ProfileInput = () => {
+    const dispatch = useDispatch();
     const [showEducation, setShowEducation] = useState(false);
 
     const handleContinueClick = () => {
@@ -34,6 +35,8 @@ const ProfileInput = () => {
         }
     };
 
+    let firstName = useSelector(myStore=>myStore.userSlice.firstName)
+
     //img
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -49,6 +52,10 @@ const ProfileInput = () => {
         setSelectedFile(file);
     };
 
+    const handleInputChange = (e) => {
+        const inputValue = e.target.value;
+        dispatch(setFirstName({ firstName: inputValue }));
+    };
     const handleUpload = () => {
         // Use the 'selectedFile' state for further processing
         console.log('Selected File:', selectedFile);
@@ -65,88 +72,90 @@ const ProfileInput = () => {
                                     <h2 className="mb-5">
                                         Sign up
                                     </h2>
-                                    <form>
-                                        <div className='row mb-3 '>
-                                            <label htmlFor='firstName' className='col-3 col-form-label'>
-                                                First name:
-                                            </label>
-                                            <div className='col-2'>
-                                                <input name='firstName' className='form-control' type='string' id='firstName' />
-                                            </div>
-                                            <label htmlFor='lastName' className='col-3 col-form-label'>
-                                                Last name:
-                                            </label>
-                                            <div className='col-2'>
-                                                <input name='lastName' className='form-control' type='string' id='lastName' />
-                                            </div>
+                                    <div className='row mb-3 '>
+                                        <label htmlFor='firstName' className='col-3 col-form-label'>
+                                            First name:
+                                        </label>
+                                        <div className='col-2'>
+                                            <input
+                                                name='firstName'
+                                                onChange={handleInputChange}
+                                                className='form-control'
+                                                type='string'
+                                                id='firstName'
+                                                value = {firstName}
+                                            />
                                         </div>
+                                        <label htmlFor='lastName' className='col-3 col-form-label'>
+                                            Last name:
+                                        </label>
+                                        <div className='col-2'>
+                                            <input name='lastName' className='form-control' type='string' id='lastName' />
+                                        </div>
+                                    </div>
 
-                                        <div className='row mb-3'>
-                                            <label htmlFor='email' className='col-3 col-form-label ps-1'>
-                                                email:
-                                            </label>
-                                            <div className='col-5'>
-                                                <input name='email' className='form-control' type='email' id='email' />
-                                            </div>
+                                    <div className='row mb-3'>
+                                        <label htmlFor='email' className='col-3 col-form-label ps-1'>
+                                            email:
+                                        </label>
+                                        <div className='col-5'>
+                                            <input name='email' className='form-control' type='email' id='email' />
                                         </div>
-                                        <div className='row mb-3'>
-                                            <label htmlFor='password' className='col-3 col-form-label ps-1'>
-                                                Password:
-                                            </label>
-                                            <div className='col-5'>
-                                                <input name='password' className='form-control' type='password' id='password' />
-                                            </div>
+                                    </div>
+                                    <div className='row mb-3'>
+                                        <label htmlFor='password' className='col-3 col-form-label ps-1'>
+                                            Password:
+                                        </label>
+                                        <div className='col-5'>
+                                            <input name='password' className='form-control' type='password' id='password' />
                                         </div>
-                                        <div className='row mb-3'>
-                                            <label htmlFor='verifyPassword' className='col-3 col-form-label ps-1'>
-                                                verifyPassword:
-                                            </label>
-                                            <div className='col-5'>
-                                                <input name='verifyPassword' className='form-control' type='password' id='verifyPassword' />
-                                            </div>
+                                    </div>
+                                    <div className='row mb-3'>
+                                        <label htmlFor='verifyPassword' className='col-3 col-form-label ps-1'>
+                                            verifyPassword:
+                                        </label>
+                                        <div className='col-5'>
+                                            <input name='verifyPassword' className='form-control' type='password' id='verifyPassword' />
                                         </div>
-                                        <div className='row mb-3'>
-                                            <label htmlFor='phoneNumber' className='col-3 col-form-label ps-1'>
-                                                Phone Number:
-                                            </label>
-                                            <div className='col-5'>
-                                                <input name='phoneNumber' className='form-control' type='number' id='phoneNumber' />
-                                            </div>
+                                    </div>
+                                    <div className='row mb-3'>
+                                        <label htmlFor='phoneNumber' className='col-3 col-form-label ps-1'>
+                                            Phone Number:
+                                        </label>
+                                        <div className='col-5'>
+                                            <input name='phoneNumber' className='form-control' type='number' id='phoneNumber' />
                                         </div>
-                                        <div className='row mb-3'>
-                                            <label htmlFor='gender' className='col-3 col-form-label ps-1'>
-                                                Gender:
-                                            </label>
-                                            <div className='col-5'>
-                                                <select name='gender' className='form-control' id='gender'>
-                                                    <option value='male'>Male</option>
-                                                    <option value='female'>Female</option>
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div className='row mb-3'>
+                                        <label htmlFor='gender' className='col-3 col-form-label ps-1'>
+                                            Gender:
+                                        </label>
+                                        <div className='col-5'>
+                                            <select name='gender' className='form-control' id='gender'>
+                                                <option value='male'>Male</option>
+                                                <option value='female'>Female</option>
+                                            </select>
                                         </div>
+                                    </div>
 
-                                        <div className='row mb-3'>
-                                            <label htmlFor='dateOfBirth' className='col-3 col-form-label ps-1'>
-                                                Date of birth:
-                                            </label>
-                                            <div className='col-5'>
-                                                <input
-                                                    name='dateOfBirth'
-                                                    className='form-control'
-                                                    type='date'
-                                                    id='dateOfBirth'
-                                                    value={dateOfBirth}
-                                                    onChange={handleDateChange}
-                                                />
-                                                {validationError && (
-                                                    <div className='text-danger'>{validationError}</div>
-                                                )}
-                                            </div>
+                                    <div className='row mb-3'>
+                                        <label htmlFor='dateOfBirth' className='col-3 col-form-label ps-1'>
+                                            Date of birth:
+                                        </label>
+                                        <div className='col-5'>
+                                            <input
+                                                name='dateOfBirth'
+                                                className='form-control'
+                                                type='date'
+                                                id='dateOfBirth'
+                                                value={dateOfBirth}
+                                                onChange={handleDateChange}
+                                            />
+                                            {validationError && (
+                                                <div className='text-danger'>{validationError}</div>
+                                            )}
                                         </div>
-
-
-
-                                    </form>
+                                    </div>
 
                                 </div>
                                 <div className='col-3 border m-4  h-75'>

@@ -23,44 +23,25 @@ export const getUserInfo = createAsyncThunk(
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        user: null,
-        status: null
-
-    },
-    extraReducers(builder) {
-        builder.
-            addCase(getUserInfo.pending, (state, action) => {
-                state.status = "loading";
-            })
-            .addCase(getUserInfo.fulfilled, (state, action) => {
-                state.status = "success";
-                console.log(action.payload);
-                if (action.payload == null) {
-                    state.status = "failed";
-                    state.user = null
-                } else if (action.payload == null) {
-                    state.user = null;
-                    state.status = "failed";
-
-                }
-
-                else {
-                    state.user = { ...action.payload };
-
-                }
-            })
-            .addCase(getUserInfo.rejected, (state, action) => {
-                state.status = "failed";
-            })
-    },
+        firstName: "",
+        lastName:"",
+        phoneNumber:"",
+        topics:[]
+    },    
     reducers: {
-        logoutUser: (state, action) => {
-            state.user = null
+        // logoutUser: (state, action) => {
+        //     state.user = null
+        // }
+        setFirstName:(state,actions)=>{
+
+            state.firstName=actions.payload.firstName;
         }
+
+
     }
 })
 
-export const { logoutUser } = userSlice.actions
+export const { setFirstName } = userSlice.actions
 
 
 
