@@ -37,6 +37,7 @@ const AppRegister = () => {
   const onSubmit = async () => {
     setIsSubmitted(true);
     try {
+      // if there is a token and valid the 
       console.log("data",userWithoutVerifyPassword);
       const url = API_URL + '/auth/register';
       const data = await doApiMethodSignUpLogin(url, 'POST', userWithoutVerifyPassword);

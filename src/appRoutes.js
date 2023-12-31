@@ -18,6 +18,7 @@ const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAd
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestList = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
+const EditUser = React.lazy(()=>import("./components/user/editUser"));
 
 
 // const MyRestaurantsList = React.lazy(() => import('./components/auth/myRestaurantsList'));
