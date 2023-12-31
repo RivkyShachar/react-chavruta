@@ -39,7 +39,9 @@ const initialState = {
         educationRange: 0,
         locationRange: 0,
         friendListRange: 0
-    }
+    },
+    userId: null,
+    role: null,
 }
 
 const userSlice = createSlice({
@@ -107,7 +109,11 @@ const userSlice = createSlice({
         setFriendListRange: (state, actions) => {
 
             state.user.friendListRange = actions.payload.friendListRange;
-        }
+        },
+        setUserInfo: (state, action) => {
+            state.userId = action.payload.userId;
+            state.role = action.payload.role;
+          },
     },
     extraReducers: (builder) => {
         builder.addCase(getUserInfo.fulfilled, (state, action) => {
@@ -126,7 +132,7 @@ const userSlice = createSlice({
 })
 
 export const { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender,
-    setDateOfBirth, setProfilePic, setEducationsInput, setLocation, setTopics, setAgeRange, setEducationRange, setLocationRange, setFriendListRange } = userSlice.actions
+    setDateOfBirth, setProfilePic, setEducationsInput, setLocation, setTopics, setAgeRange, setEducationRange, setLocationRange, setFriendListRange,setUserInfo } = userSlice.actions
 
 
 
