@@ -15,6 +15,7 @@ const Login = React.lazy(() => import('./components/auth/login'));
 const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
 const AdminHome = React.lazy(() => import('./components/admin/adminHome'));
 const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAdmin'));
+const EditUser = React.lazy(() => import('./components/user/editUser'));
 
 // const MyRestaurantsList = React.lazy(() => import('./components/auth/myRestaurantsList'));
 // const NewRestaurant = React.lazy(() => import('./components/auth/newRestaurant'));
@@ -34,6 +35,7 @@ const AppRoutes = () => {
                             <Route path='/signUp' element={<SignUp />} />
                             <Route path='/adminHome' element={<AdminHome/>} />
                             <Route path='/singleUserAdmin/:idSingle1' element={<SingleUserAdmin/>} />
+                            <Route path='/editUser' element={<EditUser/>} />
                             {/* <Route path='/fillDetales/:userId' element={<WorkerFill />} />
                             <Route path='/myrestaurantlist' element={< MyRestaurantsList />} />
                             <Route path='/newrestaurant' element={< NewRestaurant />} /> */}
