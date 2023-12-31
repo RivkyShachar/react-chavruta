@@ -5,10 +5,10 @@ import { API_URL, doApiGet, TOKEN_NAME } from "../../services/apiService"
 
 export const getUserInfo = createAsyncThunk(
     "user,getUserInfo", async (dispatch, getState) => {
+        console.log("in thunk");
         if (localStorage.getItem(TOKEN_NAME)) {
-            let data = await doApiGet(API_URL + '/users/checkToken')
-            if (!data.err) {
-
+            let data = await doApiGet(API_URL + '/users/myInfo')
+            if (data.status == 201) {
                 return data.data;
             } else {
                 return null
@@ -21,28 +21,30 @@ export const getUserInfo = createAsyncThunk(
     }
 )
 
+const initialState = {
+    user: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        verifyPassword: "",
+        phoneNumber: "",
+        gender: "",
+        dateOfBirth: "",
+        profilePic: "",
+        educations: [],
+        topics: [],
+        location: "",
+        ageRange: 0,
+        educationRange: 0,
+        locationRange: 0,
+        friendListRange: 0
+    }
+}
+
 const userSlice = createSlice({
     name: "user",
-    initialState: {
-        user: {
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            verifyPassword: "",
-            phoneNumber: "",
-            gender: "",
-            dateOfBirth: "",
-            profilePic: "",
-            educations: [],
-            topics: [],
-            location: "",
-            ageRange: 0,
-            educationRange: 0,
-            locationRange: 0,
-            friendListRange: 0
-        }
-    },
+    initialState,
     reducers: {
         setFirstName: (state, actions) => {
             state.user.firstName = actions.payload.firstName;
@@ -106,7 +108,21 @@ const userSlice = createSlice({
 
             state.user.friendListRange = actions.payload.friendListRange;
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getUserInfo.fulfilled, (state, action) => {
+        console.log("in extra");
+        console.log(action);
+          if (action.payload) {
+            // Use the fetched data as the initial state
+            state.user = {
+              ...initialState.user,
+              ...action.payload
+            };
+          }
+          console.log(state.user);
+        });
+      }
 })
 
 export const { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender,

@@ -40,6 +40,11 @@ const Home = () => {
                 Sign up
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/editUser">
+                Update user profile
+              </Link>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"

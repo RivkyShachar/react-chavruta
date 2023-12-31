@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth ,setProfilePic} from '../../../redux/featchers/userSlice';
+import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic,getUserInfo } from '../../../redux/featchers/userSlice';
 
 const ProfileInput = () => {
     const dispatch = useDispatch();
+    const user = useSelector((myStore) => myStore.userSlice.user);
 
     //age over 12
     const [dateOfBirth, setDateOfBirth1] = useState('');
     const [validationError, setValidationError] = useState('');
+
+    useEffect(() => {
+        dispatch(getUserInfo());
+      }, [dispatch]);
 
     const handleDateChange = (e) => {
         const currentDate = new Date();
@@ -23,7 +28,7 @@ const ProfileInput = () => {
             setValidationError('');
         }
     };
-    const user = useSelector((myStore) => myStore.userSlice.user);
+
 
 
     //img
@@ -72,7 +77,7 @@ const ProfileInput = () => {
                 break;
         }
     };
-  
+
 
     return (
         <div className='container'>
@@ -82,22 +87,22 @@ const ProfileInput = () => {
                         <div className='row'>
                             <div className='col-7 ms-5 mt-5'>
                                 <h2 className="mb-5">
-                                    Sign up
+                                    {user.firstName ? 'Edit Profile' : 'Sign up'}
                                 </h2>
                                 <div className='row mb-3 '>
                                     <label htmlFor='firstName' className='col-3 col-form-label'>
                                         First name:
                                     </label>
                                     <div className='col-2'>
-                                        <input name='firstName' onInput={(e) => handleInputChange(e, 'firstName')} className='form-control' type='string' id='firstName' value={user.firstName} />
+                                        <input name='firstName' onInput={(e) => handleInputChange(e, 'firstName')} className='form-control' type='string' id='firstName' defaultValue={user.firstName} />
                                     </div>
                                     <label htmlFor='lastName' className='col-3 col-form-label'>
                                         Last name:
                                     </label>
                                     <div className='col-2'>
-                                        <input name='lastName' onInput={(e) => handleInputChange(e, 'lastName')} className='form-control' type='string' id='lastName'  />
+                                        <input name='lastName' onInput={(e) => handleInputChange(e, 'lastName')} className='form-control' type='string' id='lastName' />
                                     </div>
-                                   
+
                                 </div>
 
                                 <div className='row mb-3'>
@@ -105,7 +110,7 @@ const ProfileInput = () => {
                                         email:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='email' onInput={(e) => handleInputChange(e, 'email')} className='form-control' type='string' id='email' value={user.email} />
+                                        <input name='email' onInput={(e) => handleInputChange(e, 'email')} className='form-control' type='string' id='email' defaultValue={user.email} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -113,7 +118,7 @@ const ProfileInput = () => {
                                         Password:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='password' onInput={(e) => handleInputChange(e, 'password')} className='form-control' type='string' id='password' value={user.password} />
+                                        <input name='password' onInput={(e) => handleInputChange(e, 'password')} className='form-control' type='string' id='password' defaultValue={user.password} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -121,7 +126,7 @@ const ProfileInput = () => {
                                         verifyPassword:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='verifyPassword' onInput={(e) => handleInputChange(e, 'verifyPassword')} className='form-control' type='string' id='verifyPassword' value={user.verifyPassword} />
+                                        <input name='verifyPassword' onInput={(e) => handleInputChange(e, 'verifyPassword')} className='form-control' type='string' id='verifyPassword' defaultValue={user.verifyPassword} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -130,7 +135,7 @@ const ProfileInput = () => {
                                         Phone Number:
                                     </label>
                                     <div className='col-5'>
-                                        <input name='phoneNumber' onInput={(e) => handleInputChange(e, 'phoneNumber')} className='form-control' type='string' id='phoneNumber' value={user.phoneNumber} />
+                                        <input name='phoneNumber' onInput={(e) => handleInputChange(e, 'phoneNumber')} className='form-control' type='string' id='phoneNumber' defaultValue={user.phoneNumber} />
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
@@ -155,7 +160,7 @@ const ProfileInput = () => {
                                             className='form-control'
                                             type='date'
                                             id='dateOfBirth'
-                                            value={user.dateOfBirth}
+                                            defaultValue={user.dateOfBirth}
                                             onInput={(e) => {
                                                 handleDateChange(e);
                                                 handleInputChange(e, 'dateOfBirth');
@@ -181,11 +186,11 @@ const ProfileInput = () => {
                                             type='file'
                                             accept='image/*'
                                             id='profileImage'
-                                            value={user.profilePic}
+                                            defaultValue={user.profilePic}
                                             onInput={(e) => {
                                                 handleFileChange(e);
                                                 handleInputChange(e, 'profilePic');
-                                            }} 
+                                            }}
                                         />
                                     </div>
                                 </div>

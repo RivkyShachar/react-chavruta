@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
+import { logout } from '../../redux/featchers/authSlice';
+import { TOKEN_NAME } from '../../services/apiService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 
 export default function Header() {
   const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    // Clear the token from local storage
+    localStorage.removeItem(TOKEN_NAME);
+
+    // Dispatch the logout action to update the Redux store
+    dispatch(logout());
+  };
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
 
   const handleInputChange = (e) => {
@@ -72,6 +82,7 @@ export default function Header() {
                             </div>
                         </li>
                     </ul>
+                    <button  onClick={handleLogout}>log out</button>
 
                     <form className="form-inline my-2 d-flex align-items-center">
                         <input

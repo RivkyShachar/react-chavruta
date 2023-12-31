@@ -19,6 +19,7 @@ const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAd
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestList = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
+const EditUser = React.lazy(()=>import("./components/user/editUser"));
 const UserHome = React.lazy(() => import('./components/user/userHome'));
 
 
@@ -38,6 +39,7 @@ const AppRoutes = () => {
                             <Route path='/signUp' element={<SignUp />} />
                             <Route path='/adminHome' element={<AdminHome/>} />
                             <Route path='/singleUserAdmin/:idSingle1' element={<SingleUserAdmin/>} />
+                            <Route path='/editUser' element={<EditUser/>} />
                             <Route path='/usersListAdmin' element={<UsersListAdmin/>} />
                             <Route path='/profileListImage' element={<ProfileListImage/>} />
                             <Route path='/requestList' element={<RequestList/>} />

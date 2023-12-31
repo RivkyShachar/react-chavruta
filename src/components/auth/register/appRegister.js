@@ -37,9 +37,14 @@ const AppRegister = () => {
   const onSubmit = async () => {
     setIsSubmitted(true);
     try {
+      const token = localStorage.getItem(TOKEN_NAME);
+    const url = token ? API_URL + '/auth/update-profile' : API_URL + '/auth/register';
+
+    const method = token ? 'PUT' : 'POST';
+      // if there is a token and valid the 
       console.log("data",userWithoutVerifyPassword);
-      const url = API_URL + '/auth/register';
-      const data = await doApiMethodSignUpLogin(url, 'POST', userWithoutVerifyPassword);
+
+      const data = await doApiMethodSignUpLogin(url, method, userWithoutVerifyPassword);
   
       if (data.data.token) {
         localStorage.setItem(TOKEN_NAME, data.data.token);

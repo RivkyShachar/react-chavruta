@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
+import {logout, setLoggedIn} from '../../redux/featchers/authSlice'
 import { getUserInfo } from '../../redux/featchers/userSlice';
 import { verifyToken } from '../../services/apiService';
+import myStore from '../../redux/myStore';
 
 
 const Login = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(myStore => myStore.authSlice.isLoggedIn); //??????
   const [isSubmitted, setIsSubmitted] = useState(false);
   const nav = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -34,6 +37,10 @@ const Login = () => {
         // Decode the token to access its properties
         const decodedToken = data.data.token;
         const vToken = verifyToken(decodedToken).then(verifiedToken => {
+
+          dispatch(setLoggedIn(true));
+          console.log("set blbl");
+          console.log(isLoggedIn);
           if (verifiedToken.role === "admin") {
             console.log(verifiedToken.role);
             nav("/admin");
@@ -44,7 +51,7 @@ const Login = () => {
             nav("/");
           }
 
-          window.location.reload();
+          // window.location.reload();
 
         });
       }
@@ -55,6 +62,21 @@ const Login = () => {
       alert(err.response.data.msg);
     }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem(TOKEN_NAME);
+    
+    if (token && isLoggedIn) {
+      dispatch(getUserInfo());
+    } else {
+      dispatch(logout());
+    }
+  }, [dispatch, isLoggedIn]);
+  
+  // Add another useEffect to log the updated state
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
 
   return (
     <div className='container mt-5'>

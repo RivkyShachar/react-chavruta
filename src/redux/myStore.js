@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import requestSlice from '../redux/featchers/request'
 import userSlice from './featchers/userSlice'
 import toggleSlice from './featchers/toggleSlice'
+import authSlice from './featchers/authSlice'
 import searchSlice from './featchers/searchSlice'
 
 
@@ -10,7 +11,9 @@ const myStore = configureStore({
     requestSlice,
     userSlice,
     toggleSlice,
-    searchSlice
+    searchSlice,
+    toggleSlice,
+    authSlice
   }
 })
 
