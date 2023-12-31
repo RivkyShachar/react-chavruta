@@ -21,6 +21,7 @@ const RequestList = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
 const EditUser = React.lazy(()=>import("./components/user/editUser"));
 const UserHome = React.lazy(() => import('./components/user/userHome'));
+const CreateStudyRequest = React.lazy(() => import('./components/user/createRequest'));
 
 
 // const MyRestaurantsList = React.lazy(() => import('./components/auth/myRestaurantsList'));
@@ -44,6 +45,7 @@ const AppRoutes = () => {
                             <Route path='/profileListImage' element={<ProfileListImage/>} />
                             <Route path='/requestList' element={<RequestList/>} />
                             <Route path='/user' element={<UserHome/>} />
+                            <Route path='/createPost' element={<CreateStudyRequest/>} />
                        
                         </Route>
                 </Routes>

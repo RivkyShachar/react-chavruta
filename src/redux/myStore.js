@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import requestSlice from '../redux/featchers/request'
+import requestSlice from './featchers/requestSlice'
 import userSlice from './featchers/userSlice'
 import toggleSlice from './featchers/toggleSlice'
 import authSlice from './featchers/authSlice'
@@ -12,8 +12,7 @@ const myStore = configureStore({
     userSlice,
     toggleSlice,
     searchSlice,
-    toggleSlice,
-    authSlice
+    authSlice,
   }
 })
 
