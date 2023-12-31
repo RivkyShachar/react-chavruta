@@ -9,62 +9,54 @@ const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAd
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestList = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
-const EditUser = React.lazy(()=>import("./components/user/editUser"));
+const EditUser = React.lazy(() => import("./components/user/editUser"));
 const UserHome = React.lazy(() => import('./components/user/userHome'));
 const CreateStudyRequest = React.lazy(() => import('./components/user/createRequest'));
 const Layout = React.lazy(() => import('./layout/layout'));
 
 const AppRoutes = () => {
-  const isLoggedIn = true; // Replace with your actual authentication check
-  const userRole = 'user'; // Replace with your actual role check
+    const isLoggedIn = true; // Replace with your actual authentication check
+    const userRole = 'user'; // Replace with your actual role check
 
-  return (
-    <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
-      <Router>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <Layout>
-                <Route index element={<Home />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/signUp' element={<SignUp />} />
-              </Layout>
-            }
-          />
-          <Route
-            path='/user/*'
-            element={
-              isLoggedIn && userRole === 'user' ? (
-                <Layout>
-                  <Route index element={<UserHome />} />
-                  <Route path='editUser' element={<EditUser />} />
-                </Layout>
-              ) : (
-                <Navigate to='/' replace />
-              )
-            }
-          />
-          <Route
-            path='/admin/*'
-            element={
-              isLoggedIn && userRole === 'admin' ? (
-                <Layout>
-                  <Route index element={<AdminHome />} />
-                  <Route path='singleUserAdmin/:idSingle1' element={<SingleUserAdmin />} />
-                  <Route path='usersListAdmin' element={<UsersListAdmin />} />
-                  <Route path='profileListImage' element={<ProfileListImage />} />
-                  <Route path='requestList' element={<RequestList />} />
-                </Layout>
-              ) : (
-                <Navigate to='/' replace />
-              )
-            }
-          />
-        </Routes>
-      </Router>
-    </Suspense>
-  );
+    return (
+        <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
+            <Router>
+                <Routes>
+                    <Route index element={<Home />} />
+                    <Route path='/' element={<Layout />}>
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/signUp' element={<SignUp />} />
+                    </Route>
+
+                    <Route path='/user/*' element={<Layout />}>
+                        {isLoggedIn && userRole === 'user' ?
+                            (<>
+                                <Route index element={<UserHome />} />
+                                <Route path='editUser' element={<EditUser />} />
+                            </>)
+                            :
+                            (<Navigate to='/' replace />)
+
+                        }
+                    </Route>
+                    <Route path='/admin/*' element={
+                            isLoggedIn && userRole === 'admin' ? (
+                                <Layout>
+                                    <Route index element={<AdminHome />} />
+                                    <Route path='singleUserAdmin/:idSingle1' element={<SingleUserAdmin />} />
+                                    <Route path='usersListAdmin' element={<UsersListAdmin />} />
+                                    <Route path='profileListImage' element={<ProfileListImage />} />
+                                    <Route path='requestList' element={<RequestList />} />
+                                </Layout>
+                            ) : (
+                                <Navigate to='/' replace />
+                            )
+                        }
+                    />
+                </Routes>
+            </Router>
+        </Suspense>
+    );
 };
 
 export default AppRoutes;
