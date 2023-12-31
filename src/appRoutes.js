@@ -19,7 +19,7 @@ const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAd
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestList = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
-const EditUser = React.lazy(() => import("./components/user/editUser"));
+const EditUser = React.lazy(()=>import("./components/user/editUser"));
 const UserHome = React.lazy(() => import('./components/user/userHome'));
 const CreateStudyRequest = React.lazy(() => import('./components/user/createRequest'));
 
@@ -33,22 +33,21 @@ const AppRoutes = () => {
         <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
             <Router>
                 <Routes>
-                    <Route path='/'>
-                        <Route index element={<Home />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/signUp' element={<SignUp />} />
-                    </Route>
-                    <Route path='/user'>
-                        <Route path='/' element={<UserHome />} />
-                        <Route path='/editUser' element={<EditUser />} />
-                    </Route>
-                    <Route path='/admin'>
-                        <Route path='/' element={<AdminHome />} />
-                        <Route path='/singleUserAdmin/:idSingle1' element={<SingleUserAdmin />} />
-                        <Route path='/usersListAdmin' element={<UsersListAdmin />} />
-                        <Route path='/profileListImage' element={<ProfileListImage />} />
-                        <Route path='/requestList' element={<RequestList />} />
-                    </Route>
+                <Route index element={<Home />} />
+                <Route path='/'>
+
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/signUp' element={<SignUp />} />
+                            <Route path='/adminHome' element={<AdminHome/>} />
+                            <Route path='/singleUserAdmin/:idSingle1' element={<SingleUserAdmin/>} />
+                            <Route path='/editUser' element={<EditUser/>} />
+                            <Route path='/usersListAdmin' element={<UsersListAdmin/>} />
+                            <Route path='/profileListImage' element={<ProfileListImage/>} />
+                            <Route path='/requestList' element={<RequestList/>} />
+                            <Route path='/user' element={<UserHome/>} />
+                            <Route path='/createPost' element={<CreateStudyRequest/>} />
+                       
+                        </Route>
                 </Routes>
             </Router>
         </Suspense>
