@@ -31,46 +31,21 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">
-                                About
+                            <a className="nav-link text-info" href="#">
+                                Create post
+                            </a>
+                        </li>
+                        <li className="nav-item ">
+                            <a className="nav-link text-warning" href="#">
+                                Want to study with me
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                FAQ
+                            <a className="nav-link text-danger" href="#">
+                                Marked 
                             </a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Contact us
-                            </a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a
-                                className="nav-link dropdown-toggle"
-                                href="#"
-                                id="navbarDropdownMenuLink"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                Dropdown link
-                            </a>
-                            <div
-                                className="dropdown-menu"
-                                aria-labelledby="navbarDropdownMenuLink"
-                            >
-                                <a className="dropdown-item" href="#">
-                                    Action
-                                </a>
-                                <a className="dropdown-item" href="#">
-                                    Another action
-                                </a>
-                                <a className="dropdown-item" href="#">
-                                    Something else here
-                                </a>
-                            </div>
-                        </li>
+                        
                     </ul>
 
                     <form className="form-inline my-2 d-flex align-items-center">
