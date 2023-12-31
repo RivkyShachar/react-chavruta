@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
 import { getUserInfo } from '../../redux/featchers/userSlice';
+import { verifyToken } from '../../services/apiService';
+
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -30,18 +32,21 @@ const Login = () => {
         localStorage.setItem(TOKEN_NAME, data.data.token);
 
         // Decode the token to access its properties
-        const decodedToken =data.data.token;
+        const decodedToken = data.data.token;
+        const vToken = verifyToken(decodedToken).then(verifiedToken => {
+          if (verifiedToken.role === "admin") {
+            console.log(verifiedToken.role);
+            nav("/admin");
+          } else if (verifiedToken.role === "user") {
+            console.log(verifiedToken.role);
+            nav("/user");
+          } else {
+            nav("/");
+          }
 
-        if (decodedToken.role && decodedToken.role.includes("admin")) {
-          console.log(decodedToken);
-          nav("/admin");
-        } else if (decodedToken.role && decodedToken.role.includes("user")) {
-          nav("/user");
-        } else {
-          nav("/");
-        }
+          window.location.reload();
 
-        window.location.reload();
+        });
       }
 
       dispatch(getUserInfo());

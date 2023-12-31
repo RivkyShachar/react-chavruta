@@ -98,3 +98,27 @@ export const doApiTukenGet = async (_url) => {
         throw err;
     }
 }
+
+export const verifyToken= async(token) => {
+  try {
+    const response = await fetch(`${API_URL}/api/verifyToken`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    // Handle the data returned from the server, e.g., update state or perform other actions.
+    console.log(data);
+    return data.data;
+  } catch (error) {
+    // Handle fetch or other errors
+    console.error(error.message);
+  }
+}

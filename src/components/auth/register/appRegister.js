@@ -11,11 +11,12 @@ import Education from './educationInput';
 import Location from './locationInput';
 import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
+import { verifyToken } from '../../../services/apiService';
 
 const AppRegister = () => {
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const nav = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { handleSubmit} = useForm();
@@ -39,28 +40,32 @@ const AppRegister = () => {
     try {
       console.log("data",userWithoutVerifyPassword);
       const url = API_URL + '/auth/register';
-      const response = await doApiMethodSignUpLogin(url, 'POST', userWithoutVerifyPassword);
+      const data = await doApiMethodSignUpLogin(url, 'POST', userWithoutVerifyPassword);
   
-      if (response && response.token) {
-        localStorage.setItem(TOKEN_NAME, response.token);
+      if (data.data.token) {
+        localStorage.setItem(TOKEN_NAME, data.data.token);
   
-        const decodedToken = response.token;
-  
-        if (decodedToken.role && decodedToken.role.includes('admin')) {
-          navigate('/admin');
-        } else if (decodedToken.role && decodedToken.role.includes('user')) {
-          navigate('/user');
-        } else {
-          navigate('/');
-        }
-  
-        window.location.reload();
+        const decodedToken = data.data.token;
+        const vToken = verifyToken(decodedToken).then(verifiedToken => {
+          if (verifiedToken.role === "admin") {
+            console.log(verifiedToken.role);
+            nav("/admin");
+          } else if (verifiedToken.role === "user") {
+            console.log(verifiedToken.role);
+            nav("/user");
+          } else {
+            nav("/");
+          }
+
+          window.location.reload();
+
+        });
       }
   
       dispatch(getUserInfo());
     } catch (error) {
       setIsSubmitted(false);
-      alert(error.response ? error.response.data.msg : 'An error occurred');
+      alert(error.data ? error.data.data.msg : 'An error occurred');
     }
   };
   
