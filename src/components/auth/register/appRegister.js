@@ -34,7 +34,6 @@ const AppRegister = () => {
   const userWithoutVerifyPassword = { ...user };
   delete userWithoutVerifyPassword.verifyPassword;
 
-  console.log("userWithoutVerifyPassword", userWithoutVerifyPassword);
   const onSubmit = async () => {
     setIsSubmitted(true);
     try {
@@ -61,7 +60,6 @@ const AppRegister = () => {
 
         });
       }
-  
       dispatch(getUserInfo());
     } catch (error) {
       setIsSubmitted(false);
@@ -71,10 +69,8 @@ const AppRegister = () => {
   
   
   const handleContinueClick = () => {
-    console.log("currentStep",currentStep);
     if (currentStep < 6) {
       setCurrentStep((prevStep) => prevStep + 1);
-      console.log("user",user);
     } else {
       handleSubmit(onSubmit);
     }
