@@ -1,8 +1,18 @@
-import React from 'react'
-// import Nav from './nav'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/featchers/authSlice';
+import { TOKEN_NAME } from '../../services/apiService';
 
 export default function Header() {
+  const dispatch = useDispatch();
 
+  const handleLogout = () => {
+    // Clear the token from local storage
+    localStorage.removeItem(TOKEN_NAME);
+
+    // Dispatch the logout action to update the Redux store
+    dispatch(logout());
+  };
     return (
         <div className='container' >
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,6 +43,7 @@ export default function Header() {
                         </li>
 
                     </ul>
+                    <button  onClick={handleLogout}>log out</button>
                 </div>
             </nav>
 

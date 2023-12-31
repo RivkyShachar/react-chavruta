@@ -1,29 +1,21 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { API_URL, doApiPost } from '../../services/apiService';
-
-export const verifyToken = createAsyncThunk('auth/verifyToken', async (token) => {
-  const response = await doApiPost(`${API_URL}/api/verifyToken`, { token });
-  console.log("auth", response);
-  return response.data;
-});
+import { createSlice } from '@reduxjs/toolkit';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    isLoggedIn: false, // You might have other properties like loading, error, etc.
+    isLoggedIn: false,
   },
   reducers: {
-    // Other reducers related to authentication can be added here
-  },
-  extraReducers: (builder) => {
-    builder.addCase(verifyToken.fulfilled, (state, action) => {
-    console.log(action.payload);
-      const { data, response } = action.payload;
-      console.log("Server Response:", response);
-      console.log("Data:", data);
-      state.isLoggedIn = !!data; // Convert data to a boolean
-    });
+    setLoggedIn: (state, action) => {
+      state.isLoggedIn = action.payload;
+      console.log("is logged",state.isLoggedIn );
+    },
+    logout: (state) => {
+      state.isLoggedIn = false;
+      console.log("is logged",state.isLoggedIn );
+    },
   },
 });
 
+export const { setLoggedIn, logout } = authSlice.actions;
 export default authSlice.reducer;
