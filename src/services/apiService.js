@@ -32,6 +32,7 @@ export const doApiGet = async (_url) => {
   }
 };
 
+
 // For Post, delete, put, patch
 export const doApiMethod = async (_url, _method, _body = {}) => {
   try {
@@ -85,19 +86,22 @@ export const doApiMethodSignUpLogin = async (_url, _method, _body = {}) => {
 
                 // "x-api-key":localStorage[TOKEN_NAME]
 
-export const doApiTukenGet = async (_url) => {
-    try {
-        let resp = await axios.get(_url, {
-            headers: {
-                // 'Content-Type': 'application/json',
-                "x-api-key": localStorage.getItem(TOKEN_NAME)
-            }
-        })
-        return resp;
-    } catch (err) {
-        throw err;
-    }
-}
+// export const doApiTukenGet = async (_url) => {
+//     try {
+//         let resp = await axios.get(_url, {
+//             headers: {
+//                 // 'Content-Type': 'application/json',
+//                 "x-api-key": localStorage.getItem(TOKEN_NAME)
+//             }
+//         })
+//         return resp;
+//     } catch (err) {
+//         throw err;
+//     }
+// }
+
+
+
 
 export const verifyToken= async(token) => {
   try {
