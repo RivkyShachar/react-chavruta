@@ -11,6 +11,7 @@ import Loader from './components/ui/loader/loader'
 // const RequestResetPass = React.lazy(() => import('./components/auth/requestResetPass'));
 // const ResetPassword = React.lazy(() => import('./components/auth/resetPassword'));
 const Home = React.lazy(() => import('./components/auth/home'));
+const HeaderLogin = React.lazy(() => import('./components/user/userHome'));
 const Login = React.lazy(() => import('./components/auth/login'));
 const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
 const AdminHome = React.lazy(() => import('./components/admin/adminHome'));
@@ -18,6 +19,7 @@ const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAd
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestList = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
+const UserHome = React.lazy(() => import('./components/user/userHome'));
 
 
 // const MyRestaurantsList = React.lazy(() => import('./components/auth/myRestaurantsList'));
@@ -30,10 +32,8 @@ const AppRoutes = () => {
             <Router>
                 <Routes>
                 <Route index element={<Home />} />
-                <Route path='/' element={<Layout />}>
-                            {/* Outlet */}
-                            {/* <Route path='/requestResetPass' element={<RequestResetPass />} />
-                            <Route path='/resetPassword/:userId/:uniqueString' element={<ResetPassword />} /> */}
+                <Route path='/'>
+
                             <Route path='/login' element={<Login />} />
                             <Route path='/signUp' element={<SignUp />} />
                             <Route path='/adminHome' element={<AdminHome/>} />
@@ -41,9 +41,8 @@ const AppRoutes = () => {
                             <Route path='/usersListAdmin' element={<UsersListAdmin/>} />
                             <Route path='/profileListImage' element={<ProfileListImage/>} />
                             <Route path='/requestList' element={<RequestList/>} />
-                            {/* <Route path='/fillDetales/:userId' element={<WorkerFill />} />
-                            <Route path='/myrestaurantlist' element={< MyRestaurantsList />} />
-                            <Route path='/newrestaurant' element={< NewRestaurant />} /> */}
+                            <Route path='/user' element={<UserHome/>} />
+                       
                         </Route>
                 </Routes>
             </Router>

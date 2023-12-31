@@ -1,0 +1,44 @@
+// SmallSingleRequest.jsx
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import FullRequestDetails from './singleRequest';
+
+const SmallSingleRequest = ({ requests }) => {
+  const [selectedRequest, setSelectedRequest] = useState(null);
+
+  const handleRequestClick = (request) => {
+    setSelectedRequest(request);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedRequest(null);
+  };
+
+  return (
+    <div className="row">
+      {requests.map((request) => (
+        <div key={request._id} className="col-md-4 mb-4">
+          <div className="card">
+            <div className="card-body">
+              <Link
+                // to={`/singleRequest/${request._id}`}
+                onClick={() => handleRequestClick(request)}
+              >
+                <p className="card-text">Subject: {request.subject}</p>
+                <p className="card-text">Start Date: {request.startDate}</p>
+                <p className="card-text">Description: {request.description}</p>
+                <div className="d-flex justify-content-between mt-3">
+                  <button className="btn btn-warning">YES</button>
+                  <button className="btn btn-danger">No</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      ))}
+      <FullRequestDetails selectedRequest={selectedRequest} onClose={handleCloseDetails} />
+    </div>
+  );
+};
+
+export default SmallSingleRequest;
