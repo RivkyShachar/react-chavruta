@@ -41,7 +41,7 @@ const Home = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/editUser">
+              <Link className="nav-link" to="/user/editUser">
                 Update user profile
               </Link>
             </li>

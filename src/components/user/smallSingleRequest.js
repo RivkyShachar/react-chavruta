@@ -29,7 +29,7 @@ const SmallSingleRequest = ({ requests }) => {
           <div className="card">
             <div className="card-body">
               <Link
-                to={`/singleRequest/${request._id}`}
+                to={`/user/singleRequest/${request._id}`}
                 onClick={() => handleRequestClick(request)}
                 className="request-link" // Add a class to the Link component
               >

@@ -31,17 +31,17 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link text-info" href="/createPost">
+                            <a className="nav-link text-info" href="/user/createPost">
                                 Create post
                             </a>
                         </li>
                         <li className="nav-item ">
-                            <a className="nav-link text-warning" href="#">
+                            <a className="nav-link text-warning" href="/">
                                 Want to study with me
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-danger" href="#">
+                            <a className="nav-link text-danger" href="/">
                                 Marked 
                             </a>
                         </li>

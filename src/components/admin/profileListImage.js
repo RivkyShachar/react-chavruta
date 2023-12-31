@@ -38,7 +38,7 @@ const ProfileListImage = () => {
       <div className="row">
         {filteredProfilePicList.map(user => (
           <div key={user._id} className="col-2 m-4 border ">
-            <Link to={`/singleUserAdmin/${user._id}`} className="list-group-item list-group-item-action"
+            <Link to={`/admin/singleUserAdmin/${user._id}`} className="list-group-item list-group-item-action"
               onClick={() => dispatch(setSearchValueName({ searchValue: '' }))} >
               <img src={user.profilePic} alt={user.firstName + ' ' + user.lastName} className="img-fluid" style={{ height: '100px' }} />
             </Link>

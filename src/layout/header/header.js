@@ -41,17 +41,17 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="/">
                                 Yaeli
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="/">
                                 FAQ
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="/">
                                 Contact us
                             </a>
                         </li>
@@ -70,13 +70,13 @@ export default function Header() {
                                 className="dropdown-menu"
                                 aria-labelledby="navbarDropdownMenuLink"
                             >
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="/">
                                     Action
                                 </a>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="/">
                                     Another action
                                 </a>
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="/">
                                     Something else here
                                 </a>
                             </div>

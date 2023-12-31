@@ -40,7 +40,7 @@ const UsersListAdmin = () => {
                 {filteredUserList.map((user) => (
                     <Link
                         key={user._id}
-                        to={`/singleUserAdmin/${user._id}`} // Adjust the route as needed
+                        to={`/admin/singleUserAdmin/${user._id}`} // Adjust the route as needed
                         className="list-group-item list-group-item-action"
                         onClick={() => dispatch(setSearchValueName({ searchValue: '' }))} // Clear the search value when clicking on a user
                     >
