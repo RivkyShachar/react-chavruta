@@ -6,10 +6,8 @@ import { useDispatch,useSelector } from 'react-redux';
 import { setEducationsInput } from '../../../redux/featchers/userSlice';
 
 const EducationInput = () => {
+    
     const dispatch = useDispatch();
-    let user = useSelector(myStore=>myStore.userSlice.user)
-
-
     const [education, setEducation] = useState({ name: '', startDate: '', endDate: '', degree: '' });
     const [educations, setEducations] = useState([]);
   

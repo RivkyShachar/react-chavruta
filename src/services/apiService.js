@@ -9,7 +9,8 @@ export const doApiGet = async (_url) => {
   try {
     let resp = await axios.get(_url, {
       headers: {
-        "x-api-key": Cookies.get(TOKEN_NAME),
+        // "x-api-key": Cookies.get(TOKEN_NAME),
+        "x-api-key": localStorage.getItem(TOKEN_NAME),
       },
     });
     return resp;
@@ -63,10 +64,6 @@ export const doApiMethod = async (_url, _method, _body = {}) => {
 };
 export const doApiMethodSignUpLogin = async (_url, _method, _body = {}) => {
     try {
-        // console.log("in signup");
-        // console.log(_url);
-        // console.log(_method);
-        // console.log(_body);
         let resp = await axios({
             method: _method,
             url: _url,

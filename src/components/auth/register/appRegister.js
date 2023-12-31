@@ -28,6 +28,7 @@ const AppRegister = () => {
     { id: 'rangeQ1', component: <RangeQ1 /> },
     { id: 'rangeQ2', component: <RangeQ2 /> },
   ];
+
   let user = useSelector(myStore=>myStore.userSlice.user)
   const userWithoutVerifyPassword = { ...user };
   delete userWithoutVerifyPassword.verifyPassword;
