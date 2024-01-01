@@ -1,31 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { useSelector } from 'react-redux';
+import UserSlice from '../../redux/featchers/userSlice';
+
+import React from 'react'
+
+
+
+
+
 const initialState = {
+
     request: {
         topics: [],
         studyDuration: {
-            min: "",
-            max: ""
+            min: 5,
+            max: 40
         },
-        preferredHours: {
-            from: "",
-            to: ""
-        },
-        levelOfStudy: "",
+        startDateAndTime: Date.now(),
         description: "",
-        ageRange: "",
-        educationRange: "",
-        locationRange: "",
-        friendListRange: "",
-        state: {
-            type: "",
-            enum: ['done', 'past', 'open', 'close'],
-            default: 'open',
-        },
+        levelOfStudy: 0,
+        ageRange: 0,
+        educationRange: 0,
+        locationRange: 0,
+        friendListRange: 0,
         showMoreOptions: false,
+        privacy: "public"
     },
-    langiages:''
+    langiages: ''
 };
+
 export const commonLanguages = [
     'English',
     'Spanish',
@@ -39,28 +43,23 @@ export const commonLanguages = [
     'Portuguese',
     'Hebrew',
     'Yiddish',
-  ];
+];
 const requestSlice = createSlice({
     name: "request",
     initialState,
     reducers: {
         setShowMoreOptions: (state, action) => {
             state.showMoreOptions = action.payload.showMoreOptions;
-          },
+        },
         setTopics: (state, action) => {
-            state.request.topics = [action.payload.topics];
+            state.request.topics = action.payload.topics;
         },
         setStudyDuration: (state, action) => {
-            state.request.studyDuration = { ...action.payload.studyDuration };
+            state.request.studyDuration = action.payload.studyDuration;
         },
-        setDurationMax: (state, action) => { //לא טוב
-            state.request.studyDuration = { ...action.payload.studyDuration };
-        },
-        setDurationMin: (state, action) => {
-            state.request.studyDuration = { ...action.payload.studyDuration };
-        },
+
         setPreferredHours: (state, action) => {
-            state.request.preferredHours = { ...action.payload.preferredHours };
+            state.request.preferredHours = action.payload.preferredHours;
         },
         setLevelOfStudy: (state, action) => {
             state.request.levelOfStudy = action.payload.levelOfStudy;
@@ -80,11 +79,11 @@ const requestSlice = createSlice({
         setFriendListRange: (state, action) => {
             state.request.friendListRange = action.payload.friendListRange;
         },
-        setStateType: (state, action) => {
-            state.request.state.type = action.payload.stateType;
+        setPrivacyType: (state, action) => {
+            state.request.privacy = action.payload.privacy;
         },
     },
- 
+
 });
 
 export const {
@@ -97,8 +96,8 @@ export const {
     setEducationRange,
     setLocationRange,
     setFriendListRange,
-    setStateType,
-    setShowMoreOptions,    setDurationMin,setDurationMax
+    setPrivacyType,
+    setShowMoreOptions
 
 } = requestSlice.actions;
 export default requestSlice.reducer;

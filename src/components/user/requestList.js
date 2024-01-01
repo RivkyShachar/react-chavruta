@@ -5,16 +5,16 @@ import SmallSingleRequest from './smallSingleRequest';
 const API_URL = 'https://api.example.com';
 // Fake list of requests
 const fakeRequests = [
-  { _id: 1, userName: 'John Doe', subject: 'Meeting Request', description: 'Lorem ipsum dolor sit amet.', startDate: '2023-01-15' },
-  { _id: 2, userName: 'Jane Doe', subject: 'Collaboration Proposal', description: 'Consectetur adipiscing elit.', startDate: '2023-01-20' },
+  { userId: '658d6184cb5d2dc16080157e', _id: 1, userName: 'John Doe', subject: 'Meeting Request', description: 'Lorem ipsum dolor sit amet.', startDate: '2023-01-15' },
+  { userId: '658d6184cb5d2dc16080157e',_id: 2, userName: 'Jane Doe', subject: 'Collaboration Proposal', description: 'Consectetur adipiscing elit.', startDate: '2023-01-20' },
   { _id: 3, userName: 'Bob Smith', subject: 'Project Discussion', description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', startDate: '2023-01-25' },
 ];
+
 
 function RequestList() {
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    // Simulating fetching data from the API
     setRequests(fakeRequests);
   }, []);
 

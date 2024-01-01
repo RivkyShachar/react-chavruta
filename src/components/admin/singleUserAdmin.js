@@ -16,18 +16,15 @@ const SingleUserAdmin = () => {
         console.log(response);
         if (response.status === 200) {
           setSingleUser(response.data.data);
-          console.log("response.data", response.data.data);
-          console.log("singleuser", singleUser);
+        
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
       }
     };
 
     fetchData(); // Call the async function immediately
     // Empty dependency array means the effect runs once after the initial render
   }, []);
-  // Sample user data
 
 
   return (
@@ -43,6 +40,7 @@ const SingleUserAdmin = () => {
           <h5 className="card-title">{singleUser.firstName} {singleUser.lastName}</h5>
           <p className="card-text text-right">
             <strong>role</strong> {singleUser.role}<br />
+            <strong>id</strong> {singleUser._id}<br />
             <strong>Gender:</strong> {singleUser.gender === 0 ? 'Male' : 'Female'}<br />
             <strong>Phone Number:</strong> {singleUser.phoneNumber}<br />
             <strong>Email:</strong> {singleUser.email}<br />

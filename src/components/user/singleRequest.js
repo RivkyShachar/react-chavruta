@@ -1,5 +1,5 @@
-// FullRequestDetails.jsx
-import React from 'react';
+import React  from 'react';
+import { Link } from 'react-router-dom';
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
   if (!selectedRequest) {
@@ -11,7 +11,9 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
       <div className="modal-container">
         <div className="container mt-4">
           <h2>Full Request Details</h2>
-          <p>Name: {selectedRequest.name}</p>
+          <p>
+            Name: <Link to={`/user/singleUser/${selectedRequest.userId}`}>{selectedRequest.userName}</Link>
+          </p>
           <p>Subject: {selectedRequest.subject}</p>
           <p>Start Date: {selectedRequest.startDate}</p>
           <p>Description: {selectedRequest.description}</p>

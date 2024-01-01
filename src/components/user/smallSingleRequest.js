@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const SmallSingleRequest = ({ requests }) => {
   const [selectedRequest, setSelectedRequest] = useState(null);
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
+
   const dispatch = useDispatch();
 
   const handleRequestClick = (request) => {
@@ -29,7 +30,6 @@ const SmallSingleRequest = ({ requests }) => {
           <div className="card">
             <div className="card-body">
               <Link
-                to={`/user/singleRequest/${request._id}`}
                 onClick={() => handleRequestClick(request)}
                 className="request-link" // Add a class to the Link component
               >

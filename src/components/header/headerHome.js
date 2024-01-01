@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
+import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
 
 export default function Header() {
   const dispatch = useDispatch();
-  const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
-
+ 
   const handleInputChange = (e) => {
     const value = e.target.value;
     dispatch(setSearchValueName({ searchValue: value }));
+    
+  };
+  const handleInputChangeUser = (e) => {
+    const value = e.target.value;
+    dispatch(setSearchValueUser({ searchValueUser: value }));
     
   };
     return (
@@ -52,9 +57,18 @@ export default function Header() {
                         <input
                             className="form-control mr-sm-2"
                             type="search"
-                            placeholder="Search"
+                            placeholder="Search for request "
                             aria-label="Search"
                             onChange={handleInputChange}
+                        />
+                    </form>
+                    <form className="form-inline my-2 mx-2 d-flex align-items-center">
+                        <input
+                            className="form-control mr-sm-2"
+                            type="search"
+                            placeholder="Search for user"
+                            aria-label="Search"
+                            onChange={handleInputChangeUser}
                         />
                     </form>
                 </div>

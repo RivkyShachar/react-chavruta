@@ -10,6 +10,7 @@ const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmi
 const RequestList = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
 const EditUser = React.lazy(() => import("./components/user/editUser"));
+const SingleUser = React.lazy(() => import('./components/user/singleUser'));
 const UserHome = React.lazy(() => import('./components/user/userHome'));
 const CreateStudyRequest = React.lazy(() => import('./components/user/createRequest'));
 const Layout = React.lazy(() => import('./layout/layout'));
@@ -23,9 +24,10 @@ const AppRoutes = () => {
             <Router>
                 <Routes>
                     <Route index element={<Home />} />
+
                     <Route path='/' element={<Layout />}>
-                        <Route path='/login' element={<Login />} />
                         <Route path='/signUp' element={<SignUp />} />
+                        <Route path='/login' element={<Login />} />
                     </Route>
 
                     <Route path='/user/*' element={<Layout />}>
@@ -33,26 +35,28 @@ const AppRoutes = () => {
                             (<>
                                 <Route index element={<UserHome />} />
                                 <Route path='editUser' element={<EditUser />} />
+                                <Route path='singleUser/:idSingle1' element={<SingleUser />} />
+                                <Route path='createPost' element={<CreateStudyRequest/>} />
+
                             </>)
                             :
-                            (<Navigate to='/' replace />)
+                            <></>
 
                         }
                     </Route>
-                    <Route path='/admin/*' element={
-                            isLoggedIn && userRole === 'admin' ? (
-                                <Layout>
-                                    <Route index element={<AdminHome />} />
-                                    <Route path='singleUserAdmin/:idSingle1' element={<SingleUserAdmin />} />
-                                    <Route path='usersListAdmin' element={<UsersListAdmin />} />
-                                    <Route path='profileListImage' element={<ProfileListImage />} />
-                                    <Route path='requestList' element={<RequestList />} />
-                                </Layout>
-                            ) : (
-                                <Navigate to='/' replace />
-                            )
+                    <Route path='/admin/*' element={<Layout />}>
+                        {isLoggedIn && userRole === 'admin' ?
+                            (<>
+                                <Route index element={<AdminHome />} />
+                                <Route path='singleUserAdmin/:idSingle1' element={<SingleUserAdmin />} />
+                                <Route path='usersListAdmin' element={<UsersListAdmin />} />
+                                <Route path='profileListImage' element={<ProfileListImage />} />
+                                <Route path='requestList' element={<RequestList />} />
+                            </>)
+                            :
+                            <></>
                         }
-                    />
+                    </Route>
                 </Routes>
             </Router>
         </Suspense>
