@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import requestReducer, { commonLanguages } from '../../redux/featchers/requestSlice';
-import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/apiService';
-import { verifyToken } from '../../../services/apiService';
-import { getUserInfo } from '../../../redux/featchers/userSlice';
+import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
+import { verifyToken } from '../../services/apiService';
+import { getUserInfo } from '../../redux/featchers/userSlice';
 
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../redux/featchers/userSlice';
 import {
