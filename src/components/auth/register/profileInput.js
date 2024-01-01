@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic,getUserInfo } from '../../../redux/featchers/userSlice';
+import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic, getUserInfo } from '../../../redux/featchers/userSlice';
 
 const ProfileInput = () => {
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const ProfileInput = () => {
 
     useEffect(() => {
         dispatch(getUserInfo());
-      }, [dispatch]);
+    }, [dispatch]);
 
     const handleDateChange = (e) => {
         const currentDate = new Date();
@@ -143,7 +143,10 @@ const ProfileInput = () => {
                                         Gender:
                                     </label>
                                     <div className='col-5'>
-                                        <select name='gender' value={user.gender} className='form-control' id='gender' onInput={(e) => handleInputChange(e, 'gender')}>
+                                        <select name='gender' value={user.gender} className='form-control' id='gender' onInput={(e) => handleInputChange(e, 'gender')} required>
+                                            <option value='true' disabled hidden>
+                                                Select Gender
+                                            </option>
                                             <option value='true'>Male</option>
                                             <option value='false'>Female</option>
                                         </select>

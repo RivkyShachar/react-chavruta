@@ -35,6 +35,8 @@ const AppRegister = () => {
   delete userWithoutVerifyPassword.verifyPassword;
 
   const onSubmit = async () => {
+    console.log("in on submit");
+    console.log(currentStep);
     setIsSubmitted(true);
     try {
       const token = localStorage.getItem(TOKEN_NAME);
@@ -61,7 +63,7 @@ const AppRegister = () => {
             nav("/");
           }
 
-          window.location.reload();
+          // window.location.reload();
 
         });
       }
@@ -74,9 +76,11 @@ const AppRegister = () => {
   
   
   const handleContinueClick = () => {
+    console.log(currentStep);
     if (currentStep < 6) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
+      console.log("in sele continue");
       handleSubmit(onSubmit);
     }
   };
@@ -86,6 +90,10 @@ const AppRegister = () => {
       setCurrentStep((prevStep) => prevStep - 1);
     }
   };
+
+  const handleSubmitButtonClick = () => {
+    handleSubmit(onSubmit)();
+ };
 
   return (
     <div className='container '>
@@ -101,13 +109,13 @@ const AppRegister = () => {
               <button type='button' className='btn btn-secondary col-2 mx-2' onClick={handleBackClick}>
                 Back
               </button>
-              {currentStep === 5 ? (
-                <button type='submit' className='btn btn-success col-2 mx-2' disabled={isSubmitted}>
-                  Submit
+              {currentStep===5 ? (
+                <button type='button' className='btn btn-success col-2 mx-2' onClick={handleSubmitButtonClick}>
+                  Submit {currentStep}
                 </button>
               ) : (
                 <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
-                  Continue
+                  Continue {currentStep}
                 </button>
               )}
             </div>
