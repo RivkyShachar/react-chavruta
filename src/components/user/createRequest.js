@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import requestReducer, { commonLanguages } from '../../redux/featchers/requestSlice';
-import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiMethod, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import { getUserInfo } from '../../redux/featchers/userSlice';
-
-import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../redux/featchers/userSlice';
 import {
     setTopics,
     setStudyDuration,
@@ -100,12 +98,12 @@ const ProfileInput = () => {
 
         try {
             const token = localStorage.getItem(TOKEN_NAME);
-            const url = token ? API_URL + '/auth/update-profile' : API_URL + '/auth/register';
-
-            const method = token ? 'PUT' : 'POST';
+            const url = API_URL + '/studyRequests';
+            const method = 'POST';
+            
             console.log("data", userWithoutVerifyPassword);
 
-            const data = await doApiMethodSignUpLogin(url, method, userWithoutVerifyPassword);
+            const data = await doApiMethod(url, method, userWithoutVerifyPassword);
 
             if (data.data.token) {
                 localStorage.setItem(TOKEN_NAME, data.data.token);
