@@ -70,7 +70,9 @@ export const doApiMethod = async (_url, _method, _body = {}) => {
       method: _method,
       data: _body,
       headers: {
-        "x-api-key": Cookies.get(TOKEN_NAME),
+                         "x-api-key":localStorage[TOKEN_NAME]
+
+        // "x-api-key": Cookies.get(TOKEN_NAME),
       },
     });
     return resp;

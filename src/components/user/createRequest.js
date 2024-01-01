@@ -8,7 +8,7 @@ import { getUserInfo } from '../../redux/featchers/userSlice';
 import {
     setTopics,
     setStudyDuration,
-    setPreferredHours,
+    startDateAndTime,
     setLevelOfStudy,
     setDescription,
     setAgeRange,
@@ -16,7 +16,7 @@ import {
     setLocationRange,
     setFriendListRange,
     setPrivacyType,
-    setShowMoreOptions
+    setPreferredLanguages
 
 } from '../../redux/featchers/requestSlice';
 
@@ -36,6 +36,10 @@ const ProfileInput = () => {
 
     const [validationError, setValidationError] = useState('');
 
+    let user = useSelector(myStore => myStore.userSlice.user)
+    const requestWithoutShowMoreOptions = { ...requestStudy };
+    delete requestWithoutShowMoreOptions.showMoreOptions;
+  
     const handleInputChange = (e, inputName) => {
         const ratingValue = e.target.value;
         setRatings((prevRatings) => ({
@@ -44,67 +48,73 @@ const ProfileInput = () => {
         }));
         const inputValue = e.target.value;
         switch (inputName) {
-            case 'firstName':
-                // dispatch(setFirstName({ firstName: inputValue }));
-                break;
-            case 'lastName':
-                // dispatch(setLastName({ lastName: inputValue }));
-                break;
-            case 'email':
-                // dispatch(setEmail({ email: inputValue }));
-                break;
-            case 'password':
-                // dispatch(setPassword({ password: inputValue }));
-                break;
-            case 'verifyPassword':
-                // dispatch(setVerifyPassword({ verifyPassword: inputValue }));
-                break;
-            case 'phoneNumber':
-                // dispatch(setPhoneNumber({ phoneNumber: inputValue }));
-                break;
-            case 'gender':
-                // dispatch(setGender({ gender: inputValue }));
-                break;
-            case 'dateOfBirth':
-                // dispatch(setDateOfBirth({ dateOfBirth: inputValue }));
-                break;
-
-            case 'topic':
-                dispatch(setTopics({ topic: inputValue }));
-                break;
             case 'minDuration':
                 const newMinDuration = parseInt(inputValue, 10);
                 const currentMaxDuration = requestStudy.studyDuration.max;
-                console.log("currentMaxDuration",currentMaxDuration);
+                console.log("currentMaxDuration", currentMaxDuration);
 
                 if (!isNaN(newMinDuration) && newMinDuration <= currentMaxDuration) {
-                    dispatch(setStudyDuration({ studyDuration:{min: newMinDuration, max: currentMaxDuration }}));
+                    dispatch(setStudyDuration({ studyDuration: { min: newMinDuration, max: currentMaxDuration } }));
                 } else {
                     console.error('Invalid minDuration input');
                 }
                 break;
-
             case 'maxDuration':
                 const newMaxDuration = parseInt(inputValue, 10);
                 const currentMinDuration = requestStudy.studyDuration.min;
 
                 if (!isNaN(newMaxDuration) && newMaxDuration >= currentMinDuration) {
-                    dispatch(setStudyDuration({ studyDuration:{min: currentMinDuration, max: newMaxDuration }}));
+                    dispatch(setStudyDuration({ studyDuration: { min: currentMinDuration, max: newMaxDuration } }));
 
                 } else {
-                    // Handle invalid input, e.g., show an error message or reset the input
                     console.error('Invalid maxDuration input');
                 }
                 break;
-            // Add more cases for other input names if needed
+            case 'topic':
+                dispatch(setTopics({ topic: [inputValue] }));
+                console.log("request",requestStudy.topics);
+                break;
+            case 'startDate':
+                dispatch(startDateAndTime({ startDateAndTime: inputValue }));
+                break;
+            case 'preferredLanguages':
+                const selectedLanguages = inputValue || user.preferredLanguages;
+                dispatch(setPreferredLanguages({ preferredLanguages: [selectedLanguages] }));
+                break;
+            case 'friendListRange':
+                const selectedFriendListRange = inputValue || user.friendListRange;
+                dispatch(setFriendListRange({ friendListRange: selectedFriendListRange }));
+                break;
+            case 'locationRange':
+                const selectedLocationRange = inputValue || user.locationRange;
+                dispatch(setLocationRange({ locationRange: selectedLocationRange }));
+                break;
+            case 'educationRange':
+                const selectedEducationRange = inputValue || user.educationRange;
+                dispatch(setEducationRange({ educationRange: selectedEducationRange }));
+                break;
+            case 'ageRange':
+                const selectedAgeRange = inputValue || user.ageRange;
+                dispatch(setAgeRange({ ageRange: selectedAgeRange }));
+                break;
+            case 'levelOfStufy':
+                dispatch(setLevelOfStudy({ levelOfStufy: inputValue }));
+                break;
+            case 'visibility':
+                const selectedVisibility = inputValue || user.visibility;
+                dispatch(setPrivacyType({ privacy: selectedVisibility }));
+                break;
+            case 'notes':
+                dispatch(setDescription({ description: inputValue }));
+                break;
+
             default:
                 // Handle default case or do nothing
                 break;
         }
     };
 
-    let user = useSelector(myStore => myStore.userSlice.user)
-    const userWithoutVerifyPassword = { ...user };
+
     const nav = useNavigate();
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -113,13 +123,12 @@ const ProfileInput = () => {
         setIsSubmitted(true);
 
         try {
-            const token = localStorage.getItem(TOKEN_NAME);
             const url = API_URL + '/studyRequests';
             const method = 'POST';
 
-            console.log("data", userWithoutVerifyPassword);
+            console.log("data", requestWithoutShowMoreOptions);
 
-            const data = await doApiMethod(url, method, userWithoutVerifyPassword);
+            const data = await doApiMethod(url, method, requestWithoutShowMoreOptions);
 
             if (data.data.token) {
                 localStorage.setItem(TOKEN_NAME, data.data.token);
@@ -146,6 +155,7 @@ const ProfileInput = () => {
             alert(error.data ? error.data.data.msg : 'An error occurred');
         }
     };
+    
 
     return (
         <div className='container'>
@@ -162,7 +172,7 @@ const ProfileInput = () => {
                                     <label htmlFor='topic' className='col-3 col-form-label'>
                                         Topic:
                                     </label>
-                                    <div className='col-2'>
+                                    {/* <div className='col-2'>
                                         <select
                                             name='topic'
                                             className='form-control'
@@ -173,7 +183,7 @@ const ProfileInput = () => {
                                             <option value='Tanya'>Tanya</option>
                                             <option value='Chasidut'>Chasidut</option>
                                         </select>
-                                    </div>
+                                    </div> */}
                                 </div>
 
 
@@ -222,28 +232,26 @@ const ProfileInput = () => {
                                     </div>
                                 </div>
                                 <div className='row mb-3'>
-                                    <label htmlFor='languages' className='col-3 col-form-label ps-1'>
-                                        Languages:
+                                    <label htmlFor='preferredLanguages' className='col-3 col-form-label ps-1'>
+                                    preferredLanguages:
                                     </label>
                                     <div className='col-5'>
                                         <select
-                                            name='languages'
-                                            value={requestStudy.languages}
+                                            name='preferredLanguages'
+                                            value={requestStudy.preferredLanguages}
                                             className='form-control'
-                                            id='languages'
-                                            onChange={(e) => handleInputChange(e, 'languages')}
+                                            id='preferredLanguages'
+                                            onChange={(e) => handleInputChange(e, 'preferredLanguages')}
                                         >
                                             <option value='' disabled>Select a language</option>
-                                            {commonLanguages.map((language) => (
-                                                <option key={language} value={language}>
-                                                    {language}
+                                            {commonLanguages.map((preferredLanguages) => (
+                                                <option key={preferredLanguages} value={preferredLanguages}>
+                                                    {preferredLanguages}
                                                 </option>
                                             ))}
                                         </select>
                                     </div>
                                 </div>
-
-
                                 <div className='row mb-3'>
                                     <label htmlFor='notes' className='col-3 col-form-label ps-1'>
                                         Notes:
@@ -299,6 +307,7 @@ const ProfileInput = () => {
                                             </div>
                                         </div>
                                         <div className='row mb-3'>
+
                                             <label htmlFor='ageRange' className='col-3 col-form-label ps-1'>
                                                 Age range:
                                             </label>
@@ -320,6 +329,7 @@ const ProfileInput = () => {
                                             </div>
                                         </div>
                                         <div className='row mb-3'>
+
                                             <label htmlFor='educationRange' className='col-3 col-form-label ps-1'>
                                                 education Range:
                                             </label>

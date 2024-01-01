@@ -12,7 +12,7 @@ import React from 'react'
 const initialState = {
 
     request: {
-        topics: [],
+        topics: ["tanya"],
         studyDuration: {
             min: 5,
             max: 40
@@ -25,7 +25,8 @@ const initialState = {
         locationRange: 0,
         friendListRange: 0,
         showMoreOptions: false,
-        privacy: "public"
+        privacy: "public",
+        preferredLanguages:[]
     },
     langiages: ''
 };
@@ -59,7 +60,7 @@ const requestSlice = createSlice({
             console.log(action.payload.studyDuration);
             state.request.studyDuration = action.payload.studyDuration;
         },
-        setPreferredHours: (state, action) => {
+        startDateAndTime: (state, action) => {
             state.request.preferredHours = action.payload.preferredHours;
         },
         setLevelOfStudy: (state, action) => {
@@ -83,6 +84,9 @@ const requestSlice = createSlice({
         setPrivacyType: (state, action) => {
             state.request.privacy = action.payload.privacy;
         },
+        setPreferredLanguages: (state, action) => {
+            state.request.preferredLanguages = action.payload.preferredLanguages;
+        },
     },
 
 });
@@ -90,7 +94,7 @@ const requestSlice = createSlice({
 export const {
     setTopics,
     setStudyDuration,
-    setPreferredHours,
+    startDateAndTime,
     setLevelOfStudy,
     setDescription,
     setAgeRange,
@@ -98,7 +102,8 @@ export const {
     setLocationRange,
     setFriendListRange,
     setPrivacyType,
-    setShowMoreOptions
+    setShowMoreOptions,
+    setPreferredLanguages
 
 } = requestSlice.actions;
 export default requestSlice.reducer;
