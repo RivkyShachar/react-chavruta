@@ -17,7 +17,7 @@ const Layout = React.lazy(() => import('./layout/layout'));
 
 const AppRoutes = () => {
     const isLoggedIn = true; // Replace with your actual authentication check
-    const userRole = 'user'; // Replace with your actual role check
+    const userRole = 'admin'; // Replace with your actual role check
 
     return (
         <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
