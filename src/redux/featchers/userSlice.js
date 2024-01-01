@@ -29,7 +29,7 @@ const initialState = {
         password: "",
         verifyPassword: "",
         phoneNumber: "",
-        gender: "",
+        gender: true,
         dateOfBirth: "",
         profilePic: "",
         educations: [],
@@ -91,8 +91,10 @@ const userSlice = createSlice({
             state.user.location = actions.payload.location;
         },
         setTopics: (state, actions) => {
-
-            state.user.topics = [actions.payload.topics];
+            console.log("in user slice");
+            console.log(state.user.topics);
+            state.user.topics = [...actions.payload.topics];
+            console.log(state.user.topics);
         },
         setAgeRange: (state, actions) => {
 

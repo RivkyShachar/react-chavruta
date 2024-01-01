@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTopics } from '../../../redux/featchers/userSlice';
 const Topics = () => {
@@ -36,9 +36,12 @@ const Topics = () => {
     } else {
       setSelectedTopics([...selectedTopics, topic]);
     }
-    dispatch(setTopics({ topics: selectedTopics }));
 
   };
+
+  useEffect(()=>{
+    dispatch(setTopics({ topics: selectedTopics }));
+  },[selectedTopics,dispatch])
 
 
 

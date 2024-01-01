@@ -93,6 +93,7 @@ export const doApiMethod = async (_url, _method, _body = {}) => {
 };
 export const doApiMethodSignUpLogin = async (_url, _method, _body = {}) => {
     try {
+      console.log(_body);
         let resp = await axios({
             method: _method,
             url: _url,
