@@ -98,7 +98,8 @@ const AppRegister = () => {
   return (
     <div className='container '>
       <div className='row'>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+        <form>
           {steps.map((step, index) => (
             <div key={index} style={{ display: currentStep === index ? 'block' : 'none' }}>
               {step.component}

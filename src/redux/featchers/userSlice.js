@@ -98,15 +98,15 @@ const userSlice = createSlice({
         },
         setAgeRange: (state, actions) => {
 
-            state.user.gender = actions.payload.gender;
+            state.user.ageRange = actions.payload.ageRange;
         },
         setEducationRange: (state, actions) => {
 
-            state.user.education = actions.payload.education;
+            state.user.educationRange = actions.payload.educationRange;
         },
         setLocationRange: (state, actions) => {
 
-            state.user.location = actions.payload.location;
+            state.user.locationRange = actions.payload.locationRange;
         },
         setFriendListRange: (state, actions) => {
 
