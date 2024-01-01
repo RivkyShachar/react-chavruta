@@ -55,9 +55,10 @@ const requestSlice = createSlice({
             state.request.topics = action.payload.topics;
         },
         setStudyDuration: (state, action) => {
+            console.log("set study duraton");
+            console.log(action.payload.studyDuration);
             state.request.studyDuration = action.payload.studyDuration;
         },
-
         setPreferredHours: (state, action) => {
             state.request.preferredHours = action.payload.preferredHours;
         },
