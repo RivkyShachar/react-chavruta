@@ -41,13 +41,23 @@ const Header = () => {
                             </a>
                         </li>
                         <li className="nav-item ">
-                            <a className="nav-link text-warning" href="/">
+                            <a className="nav-link text-warning" href="/user/requestsList/relevantRequestsList">
                                 Want to study with me
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-danger" href="/">
+                            <a className="nav-link text-danger" href="user/requestsList/marked">
                                 Marked 
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link " href="/user/requestsList/myStudyRequests">
+                                Profile request 
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link text-success" href="/user/userProfile/myStudyRequests">
+                                My profile 
                             </a>
                         </li>
                     </ul>

@@ -1,9 +1,16 @@
 import React from 'react'
+import  UserProfileBar from './userProfileBar'
+import RequestList from './requestList'
+import {  useSelector } from 'react-redux';
 
 const UserProfile = () => {
+
   return (
-    
-    <div>userProfile</div>
+
+    <div>
+      <UserProfileBar/>
+      <RequestList/>
+    </div>
   )
 }
 

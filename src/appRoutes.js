@@ -16,6 +16,7 @@ const CreateStudyRequest = React.lazy(() => import('./components/user/createRequ
 const UsersList = React.lazy(() => import('./components/user/usersList'));
 const RequestList = React.lazy(() => import('./components/user/requestList'));
 const Layout = React.lazy(() => import('./layout/layout'));
+const UserProfile = React.lazy(() => import('./components/user/userProfile'));
 
 const AppRoutes = () => {
     const isLoggedIn = true; // Replace with your actual authentication check
@@ -32,15 +33,17 @@ const AppRoutes = () => {
                         <Route path='/login' element={<Login />} />
                     </Route>
 
-                    <Route path='/user/*' element={<Layout />}>
+                    <Route path='/user' element={<Layout />}>
                         {isLoggedIn && userRole === 'user' ?
                             (<>
                                 <Route index element={<UserHome />} />
                                 <Route path='editUser' element={<EditUser />} />
                                 <Route path='singleUser/:idSingle1' element={<SingleUser />} />
-                                <Route path='createPost' element={<CreateStudyRequest/>} />
-                                <Route path='usersList' element={<UsersList/>} />
-                                <Route path='requestsList' element={<RequestList/>} />
+                                <Route path='createPost' element={<CreateStudyRequest />} />
+                                <Route path='usersList' element={<UsersList />} />
+                                <Route path='requestsList/:parameter' element={<RequestList />} />                                
+                                <Route path='userProfile/:parameter' element={<UserProfile />} />                                
+                                <Route path='marked' element={<RequestList />} />
 
                             </>)
                             :
