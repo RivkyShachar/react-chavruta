@@ -23,9 +23,13 @@ const SingleRangeQ = ({ title, questionNumber }) => {
                 break;
             default:;
         }
+        console.log("update", inputValue, questionNumber);
 
-        dispatch(setAgeRange({ educations: inputValue }));
+        // dispatch(setAgeRange({ educations: inputValue }));
     };
+
+
+ 
 
 
     return (
@@ -33,7 +37,7 @@ const SingleRangeQ = ({ title, questionNumber }) => {
             <h4>{title}</h4>
             <div>
                 {[1, 2, 3, 4, 5].map((number) => (
-                    <button
+                    <button type='button'
                         key={number}
                         className={`btn ${selectedNumber === number ? 'btn-primary' : 'btn-outline-primary'}`}
                         onClick={() => handleNumberSelection(number, questionNumber)}
