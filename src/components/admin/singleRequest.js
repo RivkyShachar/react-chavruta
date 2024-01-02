@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiMethod,TOKEN_NAME } from '../../services/apiService';
+import { verifyToken } from '../../services/apiService';
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
   console.log("single");
@@ -18,6 +18,19 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
   if (!selectedRequest) {
     return null; // Don't render anything if no request is selected
   }
+
+  const clickYes = async (_data) => {
+    try {
+      alert("clicked yes");
+      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
+      const data = await doApiMethod(url, "POST");
+      if(data.status===200){
+        console.log("added to yes");
+      }
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
 
 
   return (
@@ -46,7 +59,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <p className="card-text">id request: {selectedRequest._id}</p>
 
           <div className="d-flex justify-content-between mt-3">
-            <button className="btn btn-warning">YES</button>
+            <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>YES</button>
             <button className="btn btn-danger" onClick={onClose}>
               Close
             </button>
