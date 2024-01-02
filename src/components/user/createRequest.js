@@ -129,25 +129,11 @@ const ProfileInput = () => {
             console.log("data", requestWithoutShowMoreOptions);
 
             const data = await doApiMethod(url, method, requestWithoutShowMoreOptions);
-
-            if (data.data.token) {
-                localStorage.setItem(TOKEN_NAME, data.data.token);
-
-                const decodedToken = data.data.token;
-                const vToken = verifyToken(decodedToken).then(verifiedToken => {
-                    if (verifiedToken.role === "admin") {
-                        console.log(verifiedToken.role);
-                        nav("/admin");
-                    } else if (verifiedToken.role === "user") {
-                        console.log(verifiedToken.role);
-                        nav("/user");
-                    } else {
-                        nav("/");
-                    }
-
-                    window.location.reload();
-
-                });
+            console.log("post created?");
+            console.log(data);
+            alert(data.data.msg);
+            if(data.status===201){
+                nav("/user");
             }
             dispatch(getUserInfo());
         } catch (error) {

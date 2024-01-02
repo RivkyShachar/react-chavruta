@@ -124,8 +124,7 @@ const userSlice = createSlice({
           if (action.payload) {
             // Use the fetched data as the initial state
             state.user = {
-              ...initialState.user,
-              ...action.payload
+              ...action.payload.data
             };
           }
           console.log(state.user);
