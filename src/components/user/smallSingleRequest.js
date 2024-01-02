@@ -29,8 +29,8 @@ const SmallSingleRequest = ({ requests }) => {
   return (
     <div className="row">
       {filteredRequestList.map((request) => (
-        <div key={request._id} className="col-md-4 mb-4">
-          <div className="card">
+        <div key={request._id} className="col-md-4 mb-4 ">
+          <div className="card border-success border-5">
             <div className="card-body">
               <Link
                 onClick={() => handleRequestClick(request)}

@@ -59,10 +59,6 @@ const Login = () => {
       dispatch(getUserInfo());
     } 
     catch (err) {
-      // if(err.response.status===500)
-      // {
-      //   alert(err.msg)
-      // }
       console.log("err",err);
       setIsSubmitted(false);
       alert(err.response.data.msg);

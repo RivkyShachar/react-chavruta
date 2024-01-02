@@ -16,7 +16,6 @@ const RequestList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-              console.log("d");
                 const url = API_URL + `/studyRequests/${parameter}`;
                 const response = await doApiGet(url, 'GET');
                 if (response.status === 200) {
