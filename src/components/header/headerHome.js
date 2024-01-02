@@ -46,7 +46,7 @@ const Header = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-danger" href="user/requestsList/marked">
+                            <a className="nav-link text-danger" href="/user/requestsList/marked">
                                 Marked 
                             </a>
                         </li>
