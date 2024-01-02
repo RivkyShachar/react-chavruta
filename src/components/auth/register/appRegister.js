@@ -31,6 +31,7 @@ const AppRegister = () => {
   ];
 
   let user = useSelector(myStore=>myStore.userSlice.user)
+  console.log(user);
   const userWithoutVerifyPassword = { ...user };
   delete userWithoutVerifyPassword.verifyPassword;
 
