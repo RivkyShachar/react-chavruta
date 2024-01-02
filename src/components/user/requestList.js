@@ -5,7 +5,7 @@ import { API_URL, doApiGet } from '../../services/apiService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import SmallSingleRequest from './smallSingleRequest'
-import  FilterBarHome from './filterBarHome'
+import FilterBarHome from './filterBarHome'
 import { useParams } from 'react-router-dom';
 
 const RequestList = () => {
@@ -16,12 +16,16 @@ const RequestList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-              console.log("d");
+                console.log("d");
                 const url = API_URL + `/studyRequests/${parameter}`;
                 const response = await doApiGet(url, 'GET');
+                console.log(response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
                     console.log("re", requestList);
+                }
+                else if (response.status === 404) {
+                    setRequestList([]);
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -31,14 +35,18 @@ const RequestList = () => {
         fetchData();
     }, []);
 
-  
-    
+
+
     return (
-      <div className='container'>
-          <FilterBarHome/>
+        <div className='container'>
+            <FilterBarHome />
             <h2 className='mb-4'>Request List</h2>
             <div className='row'>
-                <SmallSingleRequest requests={requestList} />
+                {requestList.length === 0 ? (
+                    <h2>No requests found</h2>
+                ) : (
+                    <SmallSingleRequest requests={requestList} />
+                )}
             </div>
         </div>
     );

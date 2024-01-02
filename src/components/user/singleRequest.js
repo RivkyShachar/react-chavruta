@@ -6,6 +6,10 @@ import { API_URL, doApiGet } from '../../services/apiService';
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
   const [singleUser, setSingleUser] = useState({});
 
+  const onYes = () => {
+    
+  }
+
   useEffect(() => {
     if (!selectedRequest) {
       return; // Don't fetch data if no request is selected
@@ -59,7 +63,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <p className="card-text">id: {selectedRequest.userId}</p>
 
           <div className="d-flex justify-content-between mt-3">
-            <button className="btn btn-warning">YES</button>
+            <button className="btn btn-warning" onClick={onYes}>YES</button>
             <button className="btn btn-danger" onClick={onClose}>
               Close
             </button>

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/apiService';
-import { getUserInfo } from '../../../redux/featchers/userSlice';
 import { useSelector } from 'react-redux';
 import Profile from './profileInput';
 import Topic from './topicList';
@@ -12,6 +11,7 @@ import Location from './locationInput';
 import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
 import { verifyToken } from '../../../services/apiService';
+import { handleUserInfo } from '../../../utill/authService';
 
 const AppRegister = () => {
 
@@ -67,7 +67,7 @@ const AppRegister = () => {
 
         });
       }
-      dispatch(getUserInfo());
+      await handleUserInfo(dispatch);
     } catch (error) {
       setIsSubmitted(false);
       alert(error.response ? error.response.data.msg : 'An error occurred');

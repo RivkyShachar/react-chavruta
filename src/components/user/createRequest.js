@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import requestReducer, { commonLanguages } from '../../redux/featchers/requestSlice';
 import { API_URL, doApiMethod, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
-import { getUserInfo } from '../../redux/featchers/userSlice';
 import {
     setTopics,
     setStudyDuration,
@@ -19,6 +18,7 @@ import {
     setPreferredLanguages
 
 } from '../../redux/featchers/requestSlice';
+import { handleUserInfo } from '../../utill/authService';
 
 
 const ProfileInput = () => {
@@ -135,7 +135,7 @@ const ProfileInput = () => {
             if(data.status===201){
                 nav("/user");
             }
-            dispatch(getUserInfo());
+            await handleUserInfo(dispatch);
         } catch (error) {
             setIsSubmitted(false);
             alert(error.data ? error.data.data.msg : 'An error occurred');

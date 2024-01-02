@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
 import {logout, setLoggedIn} from '../../redux/featchers/authSlice'
-import { getUserInfo } from '../../redux/featchers/userSlice';
 import { verifyToken } from '../../services/apiService';
 import myStore from '../../redux/myStore';
+import { handleUserInfo } from '../../utill/authService';
 
 
 const Login = () => {
@@ -38,7 +38,8 @@ const Login = () => {
         const decodedToken = data.data.token;
         const vToken = verifyToken(decodedToken).then(verifiedToken => {
 
-          dispatch(setLoggedIn(true));
+          // dispatch(setLoggedIn(true));
+          handleUserInfo(dispatch);
           console.log("set blbl");
           console.log(isLoggedIn);
           if (verifiedToken.role === "admin") {
@@ -56,7 +57,7 @@ const Login = () => {
         });
       }
 
-      dispatch(getUserInfo());
+      await handleUserInfo(dispatch);
     } 
     catch (err) {
       // if(err.response.status===500)
@@ -73,7 +74,7 @@ const Login = () => {
     const token = localStorage.getItem(TOKEN_NAME);
     
     if (token && isLoggedIn) {
-      dispatch(getUserInfo());
+      handleUserInfo(dispatch);
     } else {
       dispatch(logout());
     }

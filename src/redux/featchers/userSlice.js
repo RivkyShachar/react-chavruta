@@ -40,8 +40,6 @@ const initialState = {
         locationRange: 0,
         friendListRange: 0
     },
-    userId: null,
-    role: null,
 }
 
 const userSlice = createSlice({

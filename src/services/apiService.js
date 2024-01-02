@@ -20,6 +20,7 @@ export const doApiGet = async (_url) => {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
       console.error("Server responded with an error:", err.response.data);
+
     } else if (err.request) {
       // The request was made but no response was received
       console.error("No response received:", err.request);
@@ -28,7 +29,7 @@ export const doApiGet = async (_url) => {
       console.error("Error setting up the request:", err.message);
     }
     // Throw the error for further handling in the application
-    throw err;
+    return {status: err.response.status, data:err.response} 
   }
 };
 

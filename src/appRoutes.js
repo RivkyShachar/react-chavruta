@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import authSlice from './redux/featchers/authSlice';
 
 const Home = React.lazy(() => import('./components/auth/home'));
 const Login = React.lazy(() => import('./components/auth/login'));
@@ -19,8 +21,10 @@ const Layout = React.lazy(() => import('./layout/layout'));
 const UserProfile = React.lazy(() => import('./components/user/userProfile'));
 
 const AppRoutes = () => {
-    const isLoggedIn = true; // Replace with your actual authentication check
-    const userRole = 'user'; // Replace with your actual role check
+    const {isLoggedIn, userRole} = useSelector(store => store.authSlice);
+    console.log("app routes");
+    console.log(isLoggedIn,userRole);
+
 
     return (
         <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
