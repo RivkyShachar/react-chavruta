@@ -70,7 +70,7 @@ const AppRegister = () => {
       dispatch(getUserInfo());
     } catch (error) {
       setIsSubmitted(false);
-      alert(error.data ? error.data.data.msg : 'An error occurred');
+      alert(error.response ? error.response.data.msg : 'An error occurred');
     }
   };
   

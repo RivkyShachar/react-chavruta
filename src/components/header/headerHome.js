@@ -3,19 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
 
-export default function Header() {
-  const dispatch = useDispatch();
+const Header = () => {
+    const dispatch = useDispatch();
  
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    dispatch(setSearchValueName({ searchValue: value }));
-    
-  };
-  const handleInputChangeUser = (e) => {
-    const value = e.target.value;
-    dispatch(setSearchValueUser({ searchValueUser: value }));
-    
-  };
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        dispatch(setSearchValueName({ searchValue: value }));
+    };
+
+    const handleInputChangeUser = (e) => {
+        const value = e.target.value;
+        dispatch(setSearchValueUser({ searchValueUser: value }));
+    };
+
     return (
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,9 +50,8 @@ export default function Header() {
                                 Marked 
                             </a>
                         </li>
-                        
                     </ul>
-
+  
                     <form className="form-inline my-2 d-flex align-items-center">
                         <input
                             className="form-control mr-sm-2"
@@ -75,4 +74,6 @@ export default function Header() {
             </nav>
         </div>
     );
-}
+};
+
+export default Header;

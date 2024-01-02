@@ -106,7 +106,6 @@ export const doApiMethodSignUpLogin = async (_url, _method, _body = {}) => {
                 // For example, if using a token: 'Authorization': `Bearer ${yourToken}`
             }
         });
-        console.log("return");
         console.log(resp);
         return resp;
     } catch (err) {       

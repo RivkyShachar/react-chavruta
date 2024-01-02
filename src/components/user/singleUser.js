@@ -12,22 +12,23 @@ const SingleUser = () => {
     const { idSingle1 } = useParams();
 
     useEffect(() => {
+        console.log("in ");
         const fetchData = async () => {
             try {
                 const url = API_URL + `/users/single/${idSingle1}`;
                 const response = await doApiGet(url, 'GET');
-                console.log(response);
+                console.log(response.data.data);
                 if (response.status === 200) {
                     setSingleUser(response.data.data);
-
                 }
             } catch (error) {
+                console.log(error);
             }
         };
 
         fetchData(); // Call the async function immediately
-        // Empty dependency array means the effect runs once after the initial render
-    }, []);
+    }, [idSingle1]); // Include idSingle1 in the dependency array
+
     return (
         <div>
             <div className="container mt-4 text-center">
