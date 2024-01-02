@@ -3,10 +3,23 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { API_URL, doApiMethod, doApiGet,TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
-
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
   const [singleUser, setSingleUser] = useState({});
-
+  const clickYes = async (_data) => {
+    try {
+      alert("clicked yes");
+      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
+      const data = await doApiMethod(url, "POST", _data);
+      if (data.data.token) {
+        localStorage.setItem(TOKEN_NAME, data.data.token);
+        const decodedToken = data.data.token;
+        const vToken = verifyToken(decodedToken).then(verifiedToken => {
+        });
+      }
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
   useEffect(() => {
     if (!selectedRequest) {
       return; // Don't fetch data if no request is selected
@@ -35,21 +48,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
   }
 
 
-  const clickYes = async (_data) => {
-    try {
-      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST", _data);
-      if (data.data.token) {
-        localStorage.setItem(TOKEN_NAME, data.data.token);
-        const decodedToken = data.data.token;
-        const vToken = verifyToken(decodedToken).then(verifiedToken => {
-        });
-      }
-    } catch (error) {
-      console.error("error", error);
-    }
-  };
-
+  
 
 
 
