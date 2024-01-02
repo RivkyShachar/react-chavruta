@@ -42,7 +42,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
 
           <Link
             key={singleUser._id}
-            to={`/user/singleUser/${selectedRequest.userId}`} // Adjust the route as needed
+            to={`/admin/singleUserAdmin/${selectedRequest.userId}`} // Adjust the route as needed
             className="list-group-item list-group-item-action"
           >
             Name: {singleUser.firstName} {singleUser.lastName}

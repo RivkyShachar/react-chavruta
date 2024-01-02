@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/apiService';
 import { getUserInfo } from '../../../redux/featchers/userSlice';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Profile from './profileInput';
 import Topic from './topicList';
 import Education from './educationInput';
@@ -19,7 +19,7 @@ const AppRegister = () => {
   const nav = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { handleSubmit} = useForm();
+  const { handleSubmit } = useForm();
 
   const steps = [
     { id: 'profile', component: <Profile /> },
@@ -30,8 +30,7 @@ const AppRegister = () => {
     { id: 'rangeQ2', component: <RangeQ2 /> },
   ];
 
-  let user = useSelector(myStore=>myStore.userSlice.user)
-  console.log(user);
+  let user = useSelector(myStore => myStore.userSlice.user)
   const userWithoutVerifyPassword = { ...user };
   delete userWithoutVerifyPassword.verifyPassword;
 
@@ -41,17 +40,17 @@ const AppRegister = () => {
     setIsSubmitted(true);
     try {
       const token = localStorage.getItem(TOKEN_NAME);
-    const url = token ? API_URL + '/auth/update-profile' : API_URL + '/auth/register';
+      const url = token ? API_URL + `/users/${"1234"}` : API_URL + '/auth/register';
 
-    const method = token ? 'PUT' : 'POST';
+      const method = token ? 'PUT' : 'POST';
       // if there is a token and valid the 
-      console.log("data",userWithoutVerifyPassword);
+      console.log("data", userWithoutVerifyPassword);
 
       const data = await doApiMethodSignUpLogin(url, method, userWithoutVerifyPassword);
-  
+
       if (data.data.token) {
         localStorage.setItem(TOKEN_NAME, data.data.token);
-  
+
         const decodedToken = data.data.token;
         const vToken = verifyToken(decodedToken).then(verifiedToken => {
           if (verifiedToken.role === "admin") {
@@ -71,11 +70,11 @@ const AppRegister = () => {
       dispatch(getUserInfo());
     } catch (error) {
       setIsSubmitted(false);
-      alert(error.data ? error.data.data.msg : 'An error occurred');
+      alert(error.response ? error.response.data.msg : 'An error occurred');
     }
   };
-  
-  
+
+
   const handleContinueClick = () => {
     console.log(currentStep);
     if (currentStep < 6) {
@@ -94,7 +93,7 @@ const AppRegister = () => {
 
   const handleSubmitButtonClick = () => {
     handleSubmit(onSubmit)();
- };
+  };
 
   return (
     <div className='container '>
@@ -111,7 +110,7 @@ const AppRegister = () => {
               <button type='button' className='btn btn-secondary col-2 mx-2' onClick={handleBackClick}>
                 Back
               </button>
-              {currentStep===5 ? (
+              {currentStep === 5 ? (
                 <button type='button' className='btn btn-success col-2 mx-2' onClick={handleSubmitButtonClick}>
                   Submit {currentStep}
                 </button>

@@ -1,34 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import SmallSingleRequest from './smallSingleRequest';
-// Replace this with your actual API endpoint
-const API_URL = 'https://api.example.com';
-// Fake list of requests
-const fakeRequests = [
-  { userId: '658d6184cb5d2dc16080157e', _id: 1, userName: 'John Doe', subject: 'Meeting Request', description: 'Lorem ipsum dolor sit amet.', startDate: '2023-01-15' },
-  { userId: '658d6184cb5d2dc16080157e',_id: 2, userName: 'Jane Doe', subject: 'Collaboration Proposal', description: 'Consectetur adipiscing elit.', startDate: '2023-01-20' },
-  { _id: 3, userName: 'Bob Smith', subject: 'Project Discussion', description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', startDate: '2023-01-25' },
-];
+import { API_URL, doApiGet } from '../../services/apiService';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchValueName } from '../../redux/featchers/searchSlice';
+import SmallSingleRequest from './smallSingleRequest'
+import  FilterBarHome from './filterBarHome'
+import { useParams } from 'react-router-dom';
 
+const RequestList = () => {
+    const [requestList, setRequestList] = useState([]);
+    const dispatch = useDispatch();
+    const { parameter } = useParams();
 
-function RequestList() {
-  const [requests, setRequests] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+              console.log("d");
+                const url = API_URL + `/studyRequests/${parameter}`;
+                const response = await doApiGet(url, 'GET');
+                if (response.status === 200) {
+                    setRequestList([...response.data.data]);
+                    console.log("re", requestList);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-  useEffect(() => {
-    setRequests(fakeRequests);
-  }, []);
+        fetchData();
+    }, []);
 
-  return (
-    <div className='container'>
-      <h2 className='mb-4'>Request List</h2>
-      <div className='row'>
-        <SmallSingleRequest requests={requests} />
-      </div>
-    </div>
-  );
-}
-
-
-
+  
+    
+    return (
+      <div className='container'>
+          <FilterBarHome/>
+            <h2 className='mb-4'>Request List</h2>
+            <div className='row'>
+                <SmallSingleRequest requests={requestList} />
+            </div>
+        </div>
+    );
+};
 
 export default RequestList;
