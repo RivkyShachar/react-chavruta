@@ -15,8 +15,7 @@ const UsersListAdmin = () => {
                 const url = API_URL + '/studyRequests/requestsList';
                 const response = await doApiGet(url, 'GET');
                 if (response.status === 200) {
-                    setRequestList([...response.data.data]);
-                    console.log("re", requestList);
+                    setRequestList([...response.data.data]);   
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -25,6 +24,8 @@ const UsersListAdmin = () => {
 
         fetchData();
     }, []);
+
+    useEffect(()=>{console.log("re", requestList)},[requestList]);
 
   
     

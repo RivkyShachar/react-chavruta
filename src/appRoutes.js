@@ -1,7 +1,9 @@
-import React, { Suspense } from 'react';
+import React, { Suspense,useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authSlice from './redux/featchers/authSlice';
+import { TOKEN_NAME } from './services/apiService';
+import { handleUserInfo } from './utill/authService';
 
 const Home = React.lazy(() => import('./components/auth/home'));
 const Login = React.lazy(() => import('./components/auth/login'));
@@ -21,9 +23,16 @@ const Layout = React.lazy(() => import('./layout/layout'));
 const UserProfile = React.lazy(() => import('./components/user/userProfile'));
 
 const AppRoutes = () => {
+    const dispatch = useDispatch();
+    if(localStorage.getItem(TOKEN_NAME)){
+        handleUserInfo(dispatch)
+    }
     const {isLoggedIn, userRole} = useSelector(store => store.authSlice);
-    console.log("app routes");
-    console.log(isLoggedIn,userRole);
+
+    useEffect(() => {
+        console.log("app routes");
+        console.log(isLoggedIn, userRole);
+    }, [isLoggedIn, userRole,dispatch]);
 
 
     return (

@@ -4,29 +4,15 @@ import { useSelector } from 'react-redux';
 import { API_URL, doApiGet } from '../../services/apiService';
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
-  const [singleUser, setSingleUser] = useState({});
+  console.log("single");
+  console.log(selectedRequest);
+
 
   useEffect(() => {
     if (!selectedRequest) {
       return; // Don't fetch data if no request is selected
     }
 
-    const fetchData = async () => {
-      try {
-        const url = API_URL + `/users/single/${selectedRequest.userId}`;
-        const response = await doApiGet(url, 'GET');
-        console.log(response);
-        if (response.status === 200) {
-          setSingleUser(response.data.data);
-
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData(); // Call the async function immediately
-    // Include dependencies in the array if needed
   }, [selectedRequest]); // Make selectedRequest a dependency of useEffect
 
   if (!selectedRequest) {
@@ -41,14 +27,14 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <h2>Full Request Details</h2>
 
           <Link
-            key={singleUser._id}
-            to={`/admin/singleUserAdmin/${selectedRequest.userId}`} // Adjust the route as needed
+            key={selectedRequest.userId._id}
+            to={`/admin/singleUserAdmin/${selectedRequest.userId._id}`} // Adjust the route as needed
             className="list-group-item list-group-item-action"
           >
-            Name: {singleUser.firstName} {singleUser.lastName}
+            Name: {selectedRequest.userId.firstName} {selectedRequest.userId.lastName}
           
           </Link>
-          <img src={singleUser.profilePic} alt={singleUser.profilePic}></img>
+          <img src={selectedRequest.profilePic} alt={selectedRequest.profilePic}></img>
           <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
           <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
           <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>
@@ -56,7 +42,8 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <p className="card-text">Start Date: {selectedRequest.startDateAndTime}</p>
           <p className="card-text">Study Duration: {selectedRequest.studyDuration.max - selectedRequest.studyDuration.min} </p>
           <p className="card-text">Description: {selectedRequest.description}</p>
-          <p className="card-text">id: {selectedRequest.userId}</p>
+          <p className="card-text">id user: {selectedRequest.userId._id}</p>
+          <p className="card-text">id request: {selectedRequest._id}</p>
 
           <div className="d-flex justify-content-between mt-3">
             <button className="btn btn-warning">YES</button>
