@@ -28,7 +28,7 @@ const RequestList = () => {
                 const url = API_URL + `/studyRequests/${parameter}`;
                 const response = await doApiGet(url, 'GET');
                 setResponse(response);
-                console.log(response);
+                console.log("response",response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
                     console.log("re", requestList);
@@ -36,11 +36,7 @@ const RequestList = () => {
                 else if (response.status === 201) {
                     if (parameter === "marked") {
                         setRequestListMarkedYes([...response.data.data.markedYes]);
-                        // console.log("markedyes", requestListMarkedYes);
                         setRequestListMarkedNo([...response.data.data.markedNo]);
-                        // console.log("markedNo", requestListMarkedYes);
-                        // setRequestList([requestListMarkedYes, requestListMarkedNo])
-                        // console.log("requestListr", requestList);
                     }
                 }
                 else if (response.status === 404) {
