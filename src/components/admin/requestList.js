@@ -15,7 +15,7 @@ const UsersListAdmin = () => {
                 const url = API_URL + '/studyRequests/requestsList';
                 const response = await doApiGet(url, 'GET');
                 if (response.status === 200) {
-                    setRequestList([...response.data.data]);   
+                    setRequestList([...response.data.data]);
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -25,15 +25,19 @@ const UsersListAdmin = () => {
         fetchData();
     }, []);
 
-    useEffect(()=>{console.log("re", requestList)},[requestList]);
+    useEffect(() => { console.log("re", requestList) }, [requestList]);
 
-  
-    
+
+
     return (
         <div className='container'>
             <h2 className='mb-4'>Request List</h2>
             <div className='row'>
-                <SmallSingleRequest requests={requestList} />
+                {requestList.length === 0 ? (
+                    <h2>No requests found</h2>
+                ) : (
+                    <SmallSingleRequest requests={requestList} />
+                )}
             </div>
         </div>
     );

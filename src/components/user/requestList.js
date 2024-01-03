@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 
 const RequestList = () => {
     const [requestList, setRequestList] = useState([]);
-    const [response, setResponse] = useState([]);
+    const [response1, setResponse1] = useState([]);
     const [requestListMarkedYes, setRequestListMarkedYes] = useState([]);
     const [requestListMarkedNo, setRequestListMarkedNo] = useState([]);
     const dispatch = useDispatch();
@@ -27,11 +27,9 @@ const RequestList = () => {
 
                 const url = API_URL + `/studyRequests/${parameter}`;
                 const response = await doApiGet(url, 'GET');
-                setResponse(response);
-                console.log("response",response);
+                setResponse1(response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
-                    console.log("re", requestList);
                 }
                 else if (response.status === 201) {
                     if (parameter === "marked") {
@@ -56,7 +54,7 @@ const RequestList = () => {
         <div className='container'>
             <FilterBarHome />
             <h2 className='mb-4'>Request List</h2>
-            {response.status === 201 ? (
+            {response1.status === 201 ? (
                 <div className='row'>
                     {requestListMarkedYes.length === 0 ? (
                         <h2>No requests found</h2>
