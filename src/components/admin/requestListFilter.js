@@ -44,7 +44,6 @@ const RequestListFilter = () => {
     <div className='container'>
       <h2 className='mb-4'>Request List</h2>
       <div className='row'>
-        {/* Render SmallSingleRequest with the filtered list */}
         <SmallSingleRequest requests={requestList} />
       </div>
     </div>

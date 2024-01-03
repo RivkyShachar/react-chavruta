@@ -13,7 +13,6 @@ const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAd
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestListAdmin = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
-const EditUser = React.lazy(() => import("./components/user/editUser"));
 const SingleUser = React.lazy(() => import('./components/user/singleUser'));
 const UserHome = React.lazy(() => import('./components/user/userHome'));
 const CreateStudyRequest = React.lazy(() => import('./components/user/createRequest'));
@@ -52,7 +51,6 @@ const AppRoutes = () => {
                         {isLoggedIn && userRole === 'user' ?
                             (<>
                                 <Route index element={<UserHome />} />
-                                {/* <Route path='editUser' element={<EditUser />} /> */}
                                 <Route path='singleUser/:idSingle1' element={<UserProfile />} />
                                 <Route path='createPost' element={<CreateStudyRequest />} />
                                 <Route path='usersList' element={<UsersList />} />
@@ -60,8 +58,6 @@ const AppRoutes = () => {
                                 <Route path='userProfile/:parameter' element={<UserProfileMy />} />                                
                                 <Route path='marked' element={<RequestList />} />
                                 <Route path='editProfile' element={<SignUp />} />
-
-
                             </>)
                             :
                             <></>

@@ -1,17 +1,15 @@
-// SmallSingleRequest.jsx
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
-import { useDispatch, useSelector } from 'react-redux';
-import { API_URL, doApiMethod, TOKEN_NAME } from '../../services/apiService';
-import { verifyToken } from '../../services/apiService';
+import {  useSelector } from 'react-redux';
+import { API_URL, doApiMethod } from '../../services/apiService';
 
 const SmallSingleRequest = ({ requests }) => {
+
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
 
-  const dispatch = useDispatch();
 
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
@@ -43,7 +41,6 @@ const SmallSingleRequest = ({ requests }) => {
       const url = API_URL + `/event/markNo/${request._id}`;
       const data = await doApiMethod(url, "POST");
       if (data.status === 200) {
-        // nav("/")
         console.log("no");
       }
       setMaor(true)
@@ -52,11 +49,6 @@ const SmallSingleRequest = ({ requests }) => {
       console.error("error", error);
     }
   };
-
-  // useEffect(()=>{
-
-  // },[maor])
-
 
   return (
     <div className="row">

@@ -145,7 +145,7 @@ const ProfileInput = () => {
                                         Gender:
                                     </label>
                                     <div className='col-5'>
-                                        <select name='gender' value={user.gender} className='form-control' id='gender' onInput={(e) => handleInputChange(e, 'gender')} required>
+                                        <select name='gender' defaultValue={user.gender} className='form-control' id='gender' onInput={(e) => handleInputChange(e, 'gender')} required>
                                             <option value='true' disabled hidden>
                                                 Select Gender
                                             </option>

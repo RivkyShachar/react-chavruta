@@ -1,16 +1,15 @@
-// SmallSingleRequest.jsx
 import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
-import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import { API_URL, doApiMethod, doApiGet, TOKEN_NAME } from '../../services/apiService';
-import { verifyToken } from '../../services/apiService';
+import {  useSelector } from 'react-redux';
+import React, {  useState } from 'react';
+import { API_URL, doApiMethod } from '../../services/apiService';
 
 const SmallSingleRequest = ({ requests }) => {
+
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [maor, setMaor] = useState(true);
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
 
-  const dispatch = useDispatch();
 
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
@@ -32,28 +31,33 @@ const SmallSingleRequest = ({ requests }) => {
       alert("clicked yes");
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
       const data = await doApiMethod(url, "POST");
-      if(data.status===200){
-        // nav("/")
-        console.log("yes");
+      if (data.status === 200) {
+        console.log("added to yes");
       }
     } catch (error) {
       console.error("error", error);
     }
   };
-  const clickNo = async (_data) => {
+
+
+  const clickNo = async (request) => {
     try {
+      setMaor(false)
       alert("clicked no");
-      console.log(selectedRequest);
-      const url = API_URL + `/event/markNo/${selectedRequest._id}`;
+      setSelectedRequest(request);
+      console.log(request);
+      const url = API_URL + `/event/markNo/${request._id}`;
       const data = await doApiMethod(url, "POST");
-      if(data.status===200){
-        // nav("/")
+      if (data.status === 200) {
         console.log("no");
       }
+      setMaor(true)
+      setSelectedRequest(null);
     } catch (error) {
       console.error("error", error);
     }
   };
+
   return (
     <div className="row">
       {filteredRequestList.map((request) => (
@@ -85,7 +89,7 @@ const SmallSingleRequest = ({ requests }) => {
         </div>
       ))}
 
-      <FullRequestDetails selectedRequest={selectedRequest} onClose={handleCloseDetails} />
+      {maor && <FullRequestDetails selectedRequest={selectedRequest} onClose={handleCloseDetails} />}
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
 import { API_URL, doApiGet } from '../../services/apiService';
-import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
-import SmallSingleRequest from '../admin/smallSingleRequest'
+import SmallSingleRequest from '../user/smallSingleRequest'
+import SingleRequestStudyWithMe from '../user/singleRequestStudyWithMe'
+import SingleRequestMyProfile from '../user/singleRequestMyProfile'
 import FilterBarHome from './filterBarHome'
 import { useParams } from 'react-router-dom';
 
@@ -13,14 +13,12 @@ const RequestList = () => {
     const [response1, setResponse1] = useState([]);
     const [requestListMarkedYes, setRequestListMarkedYes] = useState([]);
     const [requestListMarkedNo, setRequestListMarkedNo] = useState([]);
-    const dispatch = useDispatch();
     let { parameter } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
 
             try {
-                console.log("Parametrt", parameter);
                 if (!parameter) {
                     parameter = "relevantRequestsList";
                 }
@@ -52,10 +50,17 @@ const RequestList = () => {
 
     return (
         <div className='container'>
-            <FilterBarHome />
-            <h2 className='mb-4'>Request List</h2>
+            <FilterBarHome />            
+            {parameter === "myStudyRequests" &&
+                <div>
+                    {requestList.length === 0 ? (
+                        <h2>No requests found</h2>
+                    ) : (<SingleRequestMyProfile requests={requestList} />)
+                    }
+                </div>
+            }
             {response1.status === 201 ? (
-                <div className='row'>
+                <div >
                     {requestListMarkedYes.length === 0 ? (
                         <h2>No requests found</h2>
                     ) : (
@@ -69,14 +74,13 @@ const RequestList = () => {
                     ) : (
                         <div>
                             <h2>Marked No</h2>
-                            <SmallSingleRequest requests={requestListMarkedNo}  />
+                            <SmallSingleRequest requests={requestListMarkedNo} />
                         </div>
                     )}
 
                 </div>) : (
                 <>
-
-                    <div className='row'>
+                    <div >
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>
                         ) : (

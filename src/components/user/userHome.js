@@ -7,9 +7,7 @@ const UserHome = () => {
   return (
 
     <div>
-          <FilterBarHome/>
           <RequestList/>
-
     </div>
   )
 }

@@ -6,7 +6,6 @@ import {  useSelector } from 'react-redux';
 const UserProfile = () => {
 
   return (
-
     <div>
       <UserProfileBar/>
       <RequestList/>

@@ -27,28 +27,31 @@ const UsersList = () => {
         fetchData();
     }, []);
 
-    // Filter the user list based on the search value using a similar approach to your server-side search
     const filteredUserList = userList.filter((user) => {
         const fullName = `${user.firstName} ${user.lastName}`;
         return fullName.toLowerCase().includes(searchV.toLowerCase());
     });
 
     return (
-        <div className="container mt-4 w-50">
-            <h2 className="mb-4">User List</h2>
-            <ul className="list-group">
-                {filteredUserList.map((user) => (
-                    <Link
-                        key={user._id}
-                        to={`/user/singleUser/${user._id}`} // Adjust the route as needed
-                        className="list-group-item list-group-item-action"
-                        onClick={() => dispatch(setSearchValueUser({ searchValueUser: '' }))} // Clear the search value when clicking on a user
-                    >
-                        {user.firstName} {user.lastName}
-                    </Link>
-                ))}
-            </ul>
-        </div>
+        <div className="modal-overlay">
+            <div className="modal-container">
+                <div className="container mt-4 w-50">
+                    <h2 className="mb-4">User List</h2>
+                    <ul className="list-group">
+                        {filteredUserList.map((user) => (
+                            <Link
+                                key={user._id}
+                                to={`/user/singleUser/${user._id}`}
+                                className="list-group-item list-group-item-action"
+                                onClick={() => dispatch(setSearchValueUser({ searchValueUser: '' }))} // Clear the search value when clicking on a user
+                            >
+                                {user.firstName} {user.lastName}
+                            </Link>
+                            
+                        ))}
+                    </ul>
+                </div>
+            </div></div>
     );
 };
 
