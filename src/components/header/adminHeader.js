@@ -31,7 +31,7 @@ const HeaderAdmin = () => {
     return (
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="/user">
+                <a className="navbar-brand" href="/admin">
                     Chavruta
                 </a>
                 <button
@@ -87,7 +87,7 @@ const HeaderAdmin = () => {
                         <input
                             className="form-control mr-sm-2"
                             type="search"
-                            placeholder="Search for admin"
+                            placeholder="Search for user"
                             aria-label="Search"
                             onChange={handleInputChangeUser}
                         />

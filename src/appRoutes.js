@@ -23,6 +23,7 @@ const Layout = React.lazy(() => import('./layout/layout'));
 const HeaderAdmin = React.lazy(() => import('./components/header/adminHeader'));
 const UserProfile = React.lazy(() => import('./components/user/userProfile'));
 const Error = React.lazy(()=> import("./components/common/error"));
+const UserProfileAdmin = React.lazy(()=>import("./pages/admin/userProfile"))
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const AppRoutes = () => {
                 <Routes>
                     <Route index element={<Home />} />
 
-                    <Route path='/' element={<Layout />}>
+                    <Route path='/' element={<Home />}>
                         <Route path='/signUp' element={<SignUp />} />
                         <Route path='/login' element={<Login />} />
                     </Route>
@@ -69,7 +70,7 @@ const AppRoutes = () => {
                         {isLoggedIn && userRole === 'admin' ?
                             (<>
                                 <Route index element={<AdminHome />} />
-                                <Route path='singleUserAdmin/:idSingle1' element={<SingleUserAdmin />} />
+                                <Route path='singleUserAdmin/:idSingleRequest' element={<UserProfileAdmin />} />
                                 <Route path='singleUser/:idSingle1' element={<SingleUser />} />
                                 <Route path='usersListAdmin' element={<UsersListAdmin />} />
                                 <Route path='profileListImage' element={<ProfileListImage />} />
