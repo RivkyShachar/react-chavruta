@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/apiService';
+import { API_URL, doApiGet, doApiMethod, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/apiService';
 import { useSelector } from 'react-redux';
 import Profile from './profileInput';
 import Topic from './topicList';
@@ -30,23 +30,41 @@ const AppRegister = () => {
     { id: 'rangeQ2', component: <RangeQ2 /> },
   ];
 
-  let user = useSelector(myStore => myStore.userSlice.user)
+  let user = useSelector(myStore => myStore.userSlice.user);
+  let id = useSelector(myStore => myStore.authSlice.userId);
   const userWithoutVerifyPassword = { ...user };
   delete userWithoutVerifyPassword.verifyPassword;
 
+  
   const onSubmit = async () => {
     console.log("in on submit");
     console.log(currentStep);
     setIsSubmitted(true);
     try {
       const token = localStorage.getItem(TOKEN_NAME);
-      const url = token ? API_URL + `/users/${"1234"}` : API_URL + '/auth/register';
+      const url = token ? API_URL + `/users/${id}` : API_URL + '/auth/register';
 
       const method = token ? 'PUT' : 'POST';
       // if there is a token and valid the 
       console.log("data", userWithoutVerifyPassword);
+      let data;
+      if (token) {
+        delete userWithoutVerifyPassword._id;
+        delete userWithoutVerifyPassword.dateCreated;
+        delete userWithoutVerifyPassword.role;
+        delete userWithoutVerifyPassword.__v;
+        data = await doApiMethod(url,method,userWithoutVerifyPassword);
+        if(data.status==201){
+          nav("/user");
 
-      const data = await doApiMethodSignUpLogin(url, method, userWithoutVerifyPassword);
+        }
+
+      }
+      else {
+        data = await doApiMethodSignUpLogin(url, method, userWithoutVerifyPassword);
+
+      }
+
 
       if (data.data.token) {
         localStorage.setItem(TOKEN_NAME, data.data.token);

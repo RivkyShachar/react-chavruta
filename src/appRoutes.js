@@ -33,7 +33,7 @@ const AppRoutes = () => {
         if (localStorage.getItem(TOKEN_NAME)) {
           handleUserInfo(dispatch);
         }
-      }, []);
+      }, [dispatch]);
 
 
 

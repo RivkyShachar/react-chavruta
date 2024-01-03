@@ -11,8 +11,9 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
     if (!selectedRequest) {
       return; // Don't fetch data if no request is selected
     }
+    console.log("User Role:", userRole);
 
-  }, [selectedRequest]); // Make selectedRequest a dependency of useEffect
+  }, []); // Make selectedRequest a dependency of useEffect
 
   if (!selectedRequest) {
     return null; // Don't render anything if no request is selected
@@ -38,7 +39,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <div>
             <Link
               key={selectedRequest.userId._id}
-              to={userRole == "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
+              to={userRole === "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
               className="list-group-item list-group-item-action"
             >
               Name: {selectedRequest.userId.firstName} {selectedRequest.userId.lastName}
