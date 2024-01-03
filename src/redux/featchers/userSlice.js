@@ -88,10 +88,7 @@ const userSlice = createSlice({
             state.user.location = actions.payload.location;
         },
         setTopics: (state, actions) => {
-            console.log("in user slice");
-            console.log(state.user.topics);
             state.user.topics = [...actions.payload.topics];
-            console.log(state.user.topics);
         },
         setAgeRange: (state, actions) => {
 
@@ -116,15 +113,12 @@ const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getUserInfo.fulfilled, (state, action) => {
-        console.log("in extra");
-        console.log(action);
           if (action.payload) {
             // Use the fetched data as the initial state
             state.user = {
               ...action.payload.data
             };
           }
-          console.log(state.user);
         });
       }
 })

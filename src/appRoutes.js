@@ -20,8 +20,11 @@ const CreateStudyRequest = React.lazy(() => import('./components/user/createRequ
 const UsersList = React.lazy(() => import('./components/user/usersList'));
 const RequestList = React.lazy(() => import('./components/user/requestList'));
 const Layout = React.lazy(() => import('./layout/layout'));
-const UserProfile = React.lazy(() => import('./components/user/userProfile'));
+const HeaderAdmin = React.lazy(() => import('./components/header/adminHeader'));
+const UserProfileMy = React.lazy(() => import('./components/user/userProfile'));
 const Error = React.lazy(()=> import("./components/common/error"));
+const UserProfileAdmin = React.lazy(()=>import("./pages/admin/userProfile"));
+const UserProfile = React.lazy(()=>import("./pages/user/userProfile"));
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -40,7 +43,7 @@ const AppRoutes = () => {
                 <Routes>
                     <Route index element={<Home />} />
 
-                    <Route path='/' element={<Layout />}>
+                    <Route path='/' element={<Home />}>
                         <Route path='/signUp' element={<SignUp />} />
                         <Route path='/login' element={<Login />} />
                     </Route>
@@ -50,11 +53,11 @@ const AppRoutes = () => {
                             (<>
                                 <Route index element={<UserHome />} />
                                 <Route path='editUser' element={<EditUser />} />
-                                <Route path='singleUser/:idSingle1' element={<SingleUser />} />
+                                <Route path='singleUser/:idSingle1' element={<UserProfile />} />
                                 <Route path='createPost' element={<CreateStudyRequest />} />
                                 <Route path='usersList' element={<UsersList />} />
                                 <Route path='requestsList/:parameter' element={<RequestList />} />                                
-                                <Route path='userProfile/:parameter' element={<UserProfile />} />                                
+                                <Route path='userProfile/:parameter' element={<UserProfileMy />} />                                
                                 <Route path='marked' element={<RequestList />} />
 
                             </>)
@@ -63,15 +66,20 @@ const AppRoutes = () => {
 
                         }
                     </Route>
-                    <Route path='/admin/*' element={<Layout />}>
+                    <Route path='/admin/*' element={<HeaderAdmin />}>
                         {isLoggedIn && userRole === 'admin' ?
                             (<>
                                 <Route index element={<AdminHome />} />
-                                <Route path='singleUserAdmin/:idSingle1' element={<SingleUserAdmin />} />
+                                <Route path='singleUserAdmin/:idSingleRequest' element={<UserProfileAdmin />} />
                                 <Route path='singleUser/:idSingle1' element={<SingleUser />} />
                                 <Route path='usersListAdmin' element={<UsersListAdmin />} />
                                 <Route path='profileListImage' element={<ProfileListImage />} />
                                 <Route path='requestList' element={<RequestListAdmin />} />
+                                <Route path='createPost' element={<CreateStudyRequest />} />
+                                <Route path='usersList' element={<UsersList />} />
+                                <Route path='requestsList/:parameter' element={<RequestList />} />                                
+                                <Route path='userProfile/:parameter' element={<UserProfile />} />                                
+                                <Route path='marked' element={<RequestList />} />
 
                             </>)
                             :

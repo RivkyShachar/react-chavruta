@@ -11,7 +11,6 @@ const authSlice = createSlice({
   reducers: {
     setLoggedIn: (state, action) => {
       state.isLoggedIn = action.payload;
-      console.log("is logged",state.isLoggedIn );
     },
     setUserRole: (state, action) => {
       state.userRole = action.payload;
@@ -24,7 +23,6 @@ const authSlice = createSlice({
       state.userRole=null;
       state.userId = null;
       localStorage.removeItem(TOKEN_NAME);
-      console.log("is logged",state.isLoggedIn );
     },
     selectAuth: (state) => state.authSlice,
   },

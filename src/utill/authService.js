@@ -3,8 +3,7 @@ import { setLoggedIn, setUserRole,setUserId } from "../redux/featchers/authSlice
 export const handleUserInfo = async (dispatch) => {
     try {
       const data = await dispatch(getUserInfo());
-    console.log("in util");
-    console.log(data);
+   
       if (data) {
         dispatch(setLoggedIn(true));
         dispatch(setUserRole(data.payload.data.role));
