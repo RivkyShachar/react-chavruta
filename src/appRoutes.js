@@ -31,7 +31,6 @@ const AppRoutes = () => {
     const {isLoggedIn, userRole} = useSelector(store => store.authSlice);
 
     useEffect(() => {
-        console.log("app routes");
         console.log(isLoggedIn, userRole);
     }, [isLoggedIn, userRole,dispatch]);
 

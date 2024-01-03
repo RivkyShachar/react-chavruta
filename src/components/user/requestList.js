@@ -11,11 +11,16 @@ import { useParams } from 'react-router-dom';
 const RequestList = () => {
     const [requestList, setRequestList] = useState([]);
     const dispatch = useDispatch();
-    const { parameter } = useParams();
+    let { parameter } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
+
             try {
+                if (!parameter){
+                    parameter="relevantRequestsList";
+                    console.log("Parametrt",parameter);
+                }
                 const url = API_URL + `/studyRequests/${parameter}`;
                 const response = await doApiGet(url, 'GET');
                 console.log(response);

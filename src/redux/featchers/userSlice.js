@@ -5,7 +5,6 @@ import { API_URL, doApiGet, TOKEN_NAME } from "../../services/apiService"
 
 export const getUserInfo = createAsyncThunk(
     "user,getUserInfo", async (dispatch, getState) => {
-        console.log("in thunk");
         if (localStorage.getItem(TOKEN_NAME)) {
             let data = await doApiGet(API_URL + '/users/myInfo')
             if (data.status == 201) {
