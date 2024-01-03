@@ -12,6 +12,8 @@ export default function Header() {
   const handleLogout = () => {
     // Dispatch the logout action to update the Redux state
     dispatch(logout());
+    nav("/",{ replace: true })
+
     // You might want to add additional logic for handling the actual logout process (e.g., clearing tokens, redirecting, etc.)
 };
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);

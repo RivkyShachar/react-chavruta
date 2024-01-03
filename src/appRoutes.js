@@ -20,6 +20,7 @@ const CreateStudyRequest = React.lazy(() => import('./components/user/createRequ
 const UsersList = React.lazy(() => import('./components/user/usersList'));
 const RequestList = React.lazy(() => import('./components/user/requestList'));
 const Layout = React.lazy(() => import('./layout/layout'));
+const HeaderAdmin = React.lazy(() => import('./components/header/adminHeader'));
 const UserProfile = React.lazy(() => import('./components/user/userProfile'));
 const Error = React.lazy(()=> import("./components/common/error"));
 
@@ -64,7 +65,7 @@ const AppRoutes = () => {
 
                         }
                     </Route>
-                    <Route path='/admin/*' element={<Layout />}>
+                    <Route path='/admin/*' element={<HeaderAdmin />}>
                         {isLoggedIn && userRole === 'admin' ?
                             (<>
                                 <Route index element={<AdminHome />} />
@@ -73,6 +74,11 @@ const AppRoutes = () => {
                                 <Route path='usersListAdmin' element={<UsersListAdmin />} />
                                 <Route path='profileListImage' element={<ProfileListImage />} />
                                 <Route path='requestList' element={<RequestListAdmin />} />
+                                <Route path='createPost' element={<CreateStudyRequest />} />
+                                <Route path='usersList' element={<UsersList />} />
+                                <Route path='requestsList/:parameter' element={<RequestList />} />                                
+                                <Route path='userProfile/:parameter' element={<UserProfile />} />                                
+                                <Route path='marked' element={<RequestList />} />
 
                             </>)
                             :
