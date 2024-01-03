@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { TOKEN_NAME } from '../../services/apiService';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -22,6 +23,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.userRole=null;
       state.userId = null;
+      localStorage.removeItem(TOKEN_NAME);
       console.log("is logged",state.isLoggedIn );
     },
     selectAuth: (state) => state.authSlice,

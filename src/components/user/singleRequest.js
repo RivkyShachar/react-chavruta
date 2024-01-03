@@ -4,57 +4,28 @@ import { useSelector } from 'react-redux';
 import { API_URL, doApiMethod, doApiGet,TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
-  const [singleUser, setSingleUser] = useState({});
-  const clickYes = async (_data) => {
-    try {
-      alert("clicked yes");
-      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST", _data);
-      if (data.data.token) {
-        localStorage.setItem(TOKEN_NAME, data.data.token);
-        const decodedToken = data.data.token;
-        const vToken = verifyToken(decodedToken).then(verifiedToken => {
-        });
-      }
-    } catch (error) {
-      console.error("error", error);
-    }
-  };
   useEffect(() => {
     if (!selectedRequest) {
       return; // Don't fetch data if no request is selected
     }
 
-    const fetchData = async () => {
-      try {
-        const url = API_URL + `/users/single/${selectedRequest.userId}`;
-        const response = await doApiGet(url, 'GET');
-        console.log(response);
-        if (response.status === 200) {
-          setSingleUser(response.data.data);
-
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData(); // Call the async function immediately
-    // Include dependencies in the array if needed
   }, [selectedRequest]); // Make selectedRequest a dependency of useEffect
 
   if (!selectedRequest) {
     return null; // Don't render anything if no request is selected
   }
-
-
-  
-
-
-
-  
-
-
+  const clickYes = async (_data) => {
+    try {
+      alert("clicked yes");
+      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
+      const data = await doApiMethod(url, "POST");
+      if(data.status===200){
+        console.log("added to yes");
+      }
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
 
   return (
     <div className="modal-overlay">
@@ -64,22 +35,22 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <div>
 
             <Link
-              key={singleUser._id}
-              to={`/user/singleUser/${selectedRequest.userId}`} // Adjust the route as needed
+              key={selectedRequest.userId._id}
+              to={`/user/singleUser/${selectedRequest.userId._id}`} // Adjust the route as needed
               className="list-group-item list-group-item-action"
             >
-              Name: {singleUser.firstName} {singleUser.lastName}
-
+            Name: {selectedRequest.userId.firstName} {selectedRequest.userId.lastName}
             </Link>
-            <img src={singleUser.profilePic} alt={singleUser.profilePic}></img>
-            <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
-            <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
-            <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>
-            <p className="card-text">state: {selectedRequest.state}</p>
-            <p className="card-text">Start Date: {selectedRequest.startDateAndTime}</p>
-            <p className="card-text">Study Duration: {selectedRequest.studyDuration.max - selectedRequest.studyDuration.min} </p>
-            <p className="card-text">Description: {selectedRequest.description}</p>
-            <p className="card-text">id: {selectedRequest.userId}</p>
+            <img src={selectedRequest.profilePic} alt={selectedRequest.profilePic}></img>
+          <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
+          <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
+          <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>
+          <p className="card-text">state: {selectedRequest.state}</p>
+          <p className="card-text">Start Date: {selectedRequest.startDateAndTime}</p>
+          <p className="card-text">Study Duration: {selectedRequest.studyDuration.max - selectedRequest.studyDuration.min} </p>
+          <p className="card-text">Description: {selectedRequest.description}</p>
+          <p className="card-text">id user: {selectedRequest.userId._id}</p>
+          <p className="card-text">id request: {selectedRequest._id}</p>
 
             <div className="d-flex justify-content-between mt-3">
               <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>

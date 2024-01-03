@@ -45,12 +45,10 @@ const SmallSingleRequest = ({ requests }) => {
       alert("clicked no");
 
       const url = API_URL + `/event/markNo/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST", _data);
-      if (data.data.token) {
-        localStorage.setItem(TOKEN_NAME, data.data.token);
-        const decodedToken = data.data.token;
-        const vToken = verifyToken(decodedToken).then(verifiedToken => {
-        });
+      const data = await doApiMethod(url, "POST");
+      if(data.status===200){
+        // nav("/")
+        console.log("no");
       }
     } catch (error) {
       console.error("error", error);

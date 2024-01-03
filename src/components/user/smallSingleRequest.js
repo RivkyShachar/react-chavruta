@@ -31,12 +31,10 @@ const SmallSingleRequest = ({ requests }) => {
     try {
       alert("clicked yes");
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST", _data);
-      if (data.data.token) {
-        localStorage.setItem(TOKEN_NAME, data.data.token);
-        const decodedToken = data.data.token;
-        const vToken = verifyToken(decodedToken).then(verifiedToken => {
-        });
+      const data = await doApiMethod(url, "POST");
+      if(data.status===200){
+        // nav("/")
+        console.log("yes");
       }
     } catch (error) {
       console.error("error", error);
@@ -47,12 +45,10 @@ const SmallSingleRequest = ({ requests }) => {
       alert("clicked no");
 
       const url = API_URL + `/event/markNo/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST", _data);
-      if (data.data.token) {
-        localStorage.setItem(TOKEN_NAME, data.data.token);
-        const decodedToken = data.data.token;
-        const vToken = verifyToken(decodedToken).then(verifiedToken => {
-        });
+      const data = await doApiMethod(url, "POST");
+      if(data.status===200){
+        // nav("/")
+        console.log("no");
       }
     } catch (error) {
       console.error("error", error);
@@ -79,10 +75,10 @@ const SmallSingleRequest = ({ requests }) => {
                 <p className="card-text">Description: {request.description}</p>
               </Link>
               <div className="d-flex justify-content-between mt-3">
-                <button className="btn btn-warning" onClick={() => clickYes(request)}>
+                <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
                   YES
                 </button>
-                <button className="btn btn-danger" onClick={() => clickNo(request)}>No</button>
+                <button className="btn btn-danger" onClick={() => clickNo(selectedRequest)}>No</button>
               </div>
             </div>
           </div>
