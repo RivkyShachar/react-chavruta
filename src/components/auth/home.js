@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { TOKEN_NAME } from '../../services/apiService';
 import { logout, selectAuth } from '../../redux/featchers/authSlice';
 
@@ -13,6 +13,7 @@ const Home = () => {
   const handleLogout = () => {
     // Dispatch the logout action to update the Redux state
     dispatch(logout());
+    nav("/",{ replace: true })
     // You might want to add additional logic for handling the actual logout process (e.g., clearing tokens, redirecting, etc.)
 };
 

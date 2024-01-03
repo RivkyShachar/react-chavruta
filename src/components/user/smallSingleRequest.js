@@ -43,7 +43,7 @@ const SmallSingleRequest = ({ requests }) => {
   const clickNo = async (_data) => {
     try {
       alert("clicked no");
-
+      console.log(selectedRequest);
       const url = API_URL + `/event/markNo/${selectedRequest._id}`;
       const data = await doApiMethod(url, "POST");
       if(data.status===200){

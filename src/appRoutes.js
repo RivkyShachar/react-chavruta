@@ -21,6 +21,7 @@ const UsersList = React.lazy(() => import('./components/user/usersList'));
 const RequestList = React.lazy(() => import('./components/user/requestList'));
 const Layout = React.lazy(() => import('./layout/layout'));
 const UserProfile = React.lazy(() => import('./components/user/userProfile'));
+const Error = React.lazy(()=> import("./components/common/error"));
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -79,6 +80,7 @@ const AppRoutes = () => {
                             <></>
                         }
                     </Route>
+                    <Route path='*' element={<Error />} />
                 </Routes>
             </Router>
         </Suspense>
