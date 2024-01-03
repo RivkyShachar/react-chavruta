@@ -25,14 +25,13 @@ const Error = React.lazy(()=> import("./components/common/error"));
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
-    if(localStorage.getItem(TOKEN_NAME)){
-        handleUserInfo(dispatch)
-    }
     const {isLoggedIn, userRole} = useSelector(store => store.authSlice);
-
     useEffect(() => {
-        console.log(isLoggedIn, userRole);
-    }, [isLoggedIn, userRole,dispatch]);
+        if (localStorage.getItem(TOKEN_NAME)) {
+          handleUserInfo(dispatch);
+        }
+      }, []);
+
 
 
     return (

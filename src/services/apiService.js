@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+
 export const API_URL = "http://localhost:3001";
 // export const API_URL = "https://monkeys.co.il";
 export const TOKEN_NAME = "ADMIN_TOKEN";
@@ -20,6 +21,7 @@ export const doApiGet = async (_url) => {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
       console.error("Server responded with an error:", err.response.data);
+      alert(err.response.data.msg, "neet to route to blblb")
 
     } else if (err.request) {
       // The request was made but no response was received
@@ -78,6 +80,9 @@ export const doApiMethod = async (_url, _method, _body = {}) => {
     });
     return resp;
   } catch (err) {
+    if(err.status===401){
+      alert("neet to nav to blblb")
+    }
     // Handle different types of errors
     if (err.response) {
       // The request was made and the server responded with a status code

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { API_URL, doApiGet } from '../../services/apiService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
-import SmallSingleRequest from './smallSingleRequest'
+import SmallSingleRequest from '../admin/smallSingleRequest'
 import FilterBarHome from './filterBarHome'
 import { useParams } from 'react-router-dom';
 

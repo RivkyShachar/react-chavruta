@@ -1,5 +1,5 @@
 // SmallSingleRequest.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { verifyToken } from '../../services/apiService';
 
 const SmallSingleRequest = ({ requests }) => {
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [maor, setMaor] = useState(true);
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
 
   const dispatch = useDispatch();
@@ -23,37 +24,38 @@ const SmallSingleRequest = ({ requests }) => {
 
   const filteredRequestList = requests.filter((request) => {
     const topicsString = request.topics.join(' '); // Convert the topics array to a string
-    console.log("topicsString", topicsString);
     return topicsString.toLowerCase().includes(searchV.toLowerCase());
   });
 
-  const clickYes = async (_data) => {
+  const clickYes = async (request) => {
     try {
-      alert("clicked yes");
-      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST");
-      if(data.status===200){
-        // nav("/")
-        console.log("yes");
-      }
+      setSelectedRequest(request);
     } catch (error) {
       console.error("error", error);
     }
   };
-  const clickNo = async (_data) => {
+  const clickNo = async (request) => {
     try {
+      setMaor(false)
       alert("clicked no");
-      console.log(selectedRequest);
-      const url = API_URL + `/event/markNo/${selectedRequest._id}`;
+      setSelectedRequest(request);
+      console.log(request);
+      const url = API_URL + `/event/markNo/${request._id}`;
       const data = await doApiMethod(url, "POST");
-      if(data.status===200){
+      if (data.status === 200) {
         // nav("/")
         console.log("no");
       }
+      setMaor(true)
+      setSelectedRequest(null);
     } catch (error) {
       console.error("error", error);
     }
   };
+
+  // useEffect(()=>{
+
+  // },[maor])
 
 
   return (
@@ -73,20 +75,21 @@ const SmallSingleRequest = ({ requests }) => {
                 <p className="card-text">Start Date: {request.startDateAndTime}</p>
                 <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min} </p>
                 <p className="card-text">Description: {request.description}</p>
-                <div className="d-flex justify-content-between mt-3">
-                  <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
-                    YES
-                  </button>
-                  <button className="btn btn-danger" onClick={() => clickNo(selectedRequest)}>No</button>
-                </div>
               </Link>
+            </div>
+            <div className="d-flex justify-content-between mt-3">
+              <button className="btn btn-warning" onClick={() => clickYes(request)}>
+                YES
+              </button>
+              <button className="btn btn-danger" onClick={() => clickNo(request)}>No</button>
             </div>
           </div>
         </div>
       ))}
-      <FullRequestDetails selectedRequest={selectedRequest} onClose={handleCloseDetails} />
+      {maor && <FullRequestDetails selectedRequest={selectedRequest} onClose={handleCloseDetails} />}
     </div>
   );
+
 };
 
 export default SmallSingleRequest;

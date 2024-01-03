@@ -20,12 +20,12 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
   }
 
   const clickYes = async (_data) => {
-    try {
-      alert("clicked yes");
+    try{
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
       const data = await doApiMethod(url, "POST");
       if(data.status===200){
         console.log("added to yes");
+        alert("added succesfully")
       }
     } catch (error) {
       console.error("error", error);
@@ -59,7 +59,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <p className="card-text">id request: {selectedRequest._id}</p>
 
           <div className="d-flex justify-content-between mt-3">
-            <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>YES</button>
+            <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>Send request</button>
             <button className="btn btn-danger" onClick={onClose}>
               Close
             </button>
