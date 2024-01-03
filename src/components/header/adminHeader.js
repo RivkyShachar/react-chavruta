@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
 import { logout, selectAuth } from '../../redux/featchers/authSlice';
-import { Outlet } from "react-router-dom"
-import { useNavigate} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+
+// Assuming you have Font Awesome set up and imported
 
 const HeaderAdmin = () => {
     const dispatch = useDispatch();
     const nav = useNavigate();
+    const [isMenuOpen, setMenuOpen] = useState(false);
 
-    const {isLoggedIn} = useSelector(store => store.authSlice);
- 
+    const { isLoggedIn } = useSelector((store) => store.authSlice);
+
     const handleInputChange = (e) => {
         const value = e.target.value;
         dispatch(setSearchValueName({ searchValue: value }));
@@ -24,8 +29,11 @@ const HeaderAdmin = () => {
 
     const handleLogout = () => {
         dispatch(logout());
-        nav("/",{ replace: true })
-        // You might want to add additional logic for handling the actual logout process (e.g., clearing tokens, redirecting, etc.)
+        nav('/', { replace: true });
+    };
+
+    const toggleMenu = () => {
+        setMenuOpen(!isMenuOpen);
     };
 
     return (
@@ -59,21 +67,20 @@ const HeaderAdmin = () => {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link text-danger" href="/admin/requestsList/marked">
-                                Marked 
+                                Marked
                             </a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link " href="/admin/requestsList/myStudyRequests">
-                                Profile request 
+                                Profile request
                             </a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link text-success" href="/admin/userProfile/myStudyRequests">
-                                My profile 
+                                My profile
                             </a>
                         </li>
                     </ul>
-  
                     <form className="form-inline my-2 d-flex align-items-center">
                         <input
                             className="form-control mr-sm-2"
@@ -92,16 +99,38 @@ const HeaderAdmin = () => {
                             onChange={handleInputChangeUser}
                         />
                     </form>
+                    <ul className="navbar-nav ml-auto align-items-center">
+                        <li className="nav-item">
+                            <button
+                                className="btn btn-link nav-link"
+                                onClick={toggleMenu}
+                                aria-label="Settings"
+                            >
+                                <FontAwesomeIcon icon={faCog} />
+                            </button>
+                        </li>
+                    </ul>
                     {isLoggedIn && (
-                    <button className="btn btn-danger" onClick={handleLogout}>
-                        Logout
-                    </button>
-                )}
+                        <button className="btn btn-danger" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    )}
                 </div>
+
+
             </nav>
-            <Outlet/>
+            {isMenuOpen && (
+                <div className="menu-container">
+                    {/* Your menu content goes here */}
+                    <ul>
+                        <li>Menu Item 1</li>
+                        <li>Menu Item 2</li>
+                        {/* Add more menu items as needed */}
+                    </ul>
+                </div>
+            )}
+            <Outlet />
         </div>
-        
     );
 };
 

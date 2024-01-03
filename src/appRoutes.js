@@ -21,9 +21,10 @@ const UsersList = React.lazy(() => import('./components/user/usersList'));
 const RequestList = React.lazy(() => import('./components/user/requestList'));
 const Layout = React.lazy(() => import('./layout/layout'));
 const HeaderAdmin = React.lazy(() => import('./components/header/adminHeader'));
-const UserProfile = React.lazy(() => import('./components/user/userProfile'));
+const UserProfileMy = React.lazy(() => import('./components/user/userProfile'));
 const Error = React.lazy(()=> import("./components/common/error"));
-const UserProfileAdmin = React.lazy(()=>import("./pages/admin/userProfile"))
+const UserProfileAdmin = React.lazy(()=>import("./pages/admin/userProfile"));
+const UserProfile = React.lazy(()=>import("./pages/user/userProfile"));
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -33,7 +34,6 @@ const AppRoutes = () => {
     const {isLoggedIn, userRole} = useSelector(store => store.authSlice);
 
     useEffect(() => {
-        console.log(isLoggedIn, userRole);
     }, [isLoggedIn, userRole,dispatch]);
 
 
@@ -53,11 +53,11 @@ const AppRoutes = () => {
                             (<>
                                 <Route index element={<UserHome />} />
                                 <Route path='editUser' element={<EditUser />} />
-                                <Route path='singleUser/:idSingle1' element={<SingleUser />} />
+                                <Route path='singleUser/:idSingle1' element={<UserProfile />} />
                                 <Route path='createPost' element={<CreateStudyRequest />} />
                                 <Route path='usersList' element={<UsersList />} />
                                 <Route path='requestsList/:parameter' element={<RequestList />} />                                
-                                <Route path='userProfile/:parameter' element={<UserProfile />} />                                
+                                <Route path='userProfile/:parameter' element={<UserProfileMy />} />                                
                                 <Route path='marked' element={<RequestList />} />
 
                             </>)
