@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import SmallSingleRequest from './smallSingleRequest';
@@ -16,7 +16,7 @@ const RequestListFilter = () => {
     const fetchData = async () => {
       try {
         const url = API_URL + '/studyRequests/requestsList';
-        const response = await doApiGet(url, 'GET');
+        const response = await doApiRequest(url, 'GET');
         if (response.status === 200) {
           setRequestList([...response.data.data]);
         }

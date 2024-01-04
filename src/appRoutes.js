@@ -1,7 +1,6 @@
 import React, { Suspense,useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import authSlice from './redux/featchers/authSlice';
+import { useDispatch } from 'react-redux';
 import { TOKEN_NAME } from './services/apiService';
 import { handleUserInfo } from './utill/authService';
 
@@ -25,15 +24,12 @@ const UserProfileAdmin = React.lazy(()=>import("./pages/admin/userProfile"));
 const UserProfile = React.lazy(()=>import("./pages/user/userProfile"));
 
 const AppRoutes = () => {
-    const dispatch = useDispatch();
-    const {isLoggedIn, userRole} = useSelector(store => store.authSlice);
-    useEffect(() => {
-        if (localStorage.getItem(TOKEN_NAME)) {
-          handleUserInfo(dispatch);
-        }
-      }, [dispatch]);
-
-
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     if (localStorage.getItem(TOKEN_NAME)) {
+    //       handleUserInfo(dispatch);
+    //     }
+    //   }, []);
 
     return (
         <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
@@ -47,7 +43,7 @@ const AppRoutes = () => {
                     </Route>
 
                     <Route path='/user' element={<Layout />}>
-                        {isLoggedIn && userRole === 'user' ?
+                        {localStorage.getItem(TOKEN_NAME) && localStorage.getItem("ROLE") === 'user' ?
                             (<>
                                 <Route index element={<UserHome />} />
                                 <Route path='singleUser/:parameter' element={<UserProfile />} />
@@ -64,7 +60,7 @@ const AppRoutes = () => {
                         }
                     </Route>
                     <Route path='/admin/*' element={<HeaderAdmin />}>
-                        {isLoggedIn && userRole === 'admin' ?
+                        {localStorage.getItem(TOKEN_NAME) && localStorage.getItem("ROLE") === 'admin' ?
                             (<>
                                 <Route index element={<AdminHome />} />
                                 <Route path='singleUserAdmin/:idSingleRequest' element={<UserProfileAdmin />} />

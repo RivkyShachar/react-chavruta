@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { API_URL, doApiMethodSignUpLogin, TOKEN_NAME } from '../../services/apiService';
-import {logout, setLoggedIn} from '../../redux/featchers/authSlice'
+import { useDispatch } from 'react-redux';
+import { API_URL, doApiMethod, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
-import myStore from '../../redux/myStore';
 import { handleUserInfo } from '../../utill/authService';
 
 
 const Login = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(myStore => myStore.authSlice.isLoggedIn); //??????
   const [isSubmitted, setIsSubmitted] = useState(false);
   const nav = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -29,35 +26,23 @@ const Login = () => {
   const doApi = async (_data) => {
     try {
       const url = API_URL + '/auth/login';
-      const data = await doApiMethodSignUpLogin(url, "POST", _data);
+      const data = await doApiMethod(url, "POST", _data);
 
+      // Decode the token to access its properties
       if (data.data.token) {
         localStorage.setItem(TOKEN_NAME, data.data.token);
-
-        // Decode the token to access its properties
         const decodedToken = data.data.token;
-        const vToken = verifyToken(decodedToken).then(verifiedToken => {
-
-          // dispatch(setLoggedIn(true));
-          handleUserInfo(dispatch);
-          console.log("set blbl");
-          console.log(isLoggedIn);
-          if (verifiedToken.role === "admin") {
-            console.log(verifiedToken.role);
-            nav("/admin");
-          } else if (verifiedToken.role === "user") {
-            console.log(verifiedToken.role);
-            nav("/user");
-          } else {
-            nav("/");
-          }
-
-          // window.location.reload();
-
-        });
+        verifyToken(decodedToken);
       }
 
       await handleUserInfo(dispatch);
+      if (localStorage.getItem("ROLE") === "admin") {
+        nav("/admin");
+      } else if (localStorage.getItem("ROLE") === "user") {
+        nav("/user");
+      } else {
+        nav("/");
+      }
     } 
     catch (err) {
       console.log("err",err);
@@ -66,20 +51,6 @@ const Login = () => {
     }
   }
 
-  useEffect(() => {
-    const token = localStorage.getItem(TOKEN_NAME);
-    
-    if (token && isLoggedIn) {
-      handleUserInfo(dispatch);
-    } else {
-      dispatch(logout());
-    }
-  }, [dispatch, isLoggedIn]);
-  
-  // Add another useEffect to log the updated state
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
 
   return (
     <div className='container mt-5'>

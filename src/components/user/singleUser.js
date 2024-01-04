@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import { useParams } from 'react-router-dom';
 import OtherUserRequestList from './otherUserRequestList' 
 const SingleUser = () => {
@@ -16,7 +16,7 @@ const SingleUser = () => {
         const fetchData = async () => {
             try {
                 const url = API_URL + `/users/single/${idSingle1}`;
-                const response = await doApiGet(url, 'GET');
+                const response = await doApiRequest(url, 'GET');
                 console.log(response.data.data);
                 if (response.status === 200) {
                     setSingleUser(response.data.data);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { API_URL, doApiMethod, doApiGet, TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiMethod, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 
 const UserList = ({ selectedRequest, onClose }) => {
     const userRole = useSelector(store => store.authSlice.userRole);
@@ -19,7 +19,7 @@ const UserList = ({ selectedRequest, onClose }) => {
             try {
                 const url = API_URL + `/studyRequests/matchUsers/${selectedRequest._id}`;
                 console.log(url);
-                const response = await doApiGet(url, 'GET');
+                const response = await doApiRequest(url, 'GET');
                 console.log("response", response);
                 if (response.status === 200) {
                     setUserList([...response.data.data]);

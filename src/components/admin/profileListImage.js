@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import { API_URL, doApiGet, TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -13,7 +13,7 @@ const ProfileListImage = () => {
     const fetchData = async () => {
       try {
         const url = API_URL + '/users/profileList';
-        const response = await doApiGet(url, 'GET');
+        const response = await doApiRequest(url, 'GET');
 
         // Handle the response as needed
         if (response.status === 200) {

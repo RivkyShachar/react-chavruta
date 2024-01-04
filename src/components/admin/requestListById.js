@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import SmallSingleRequest from './smallSingleRequest'
 import { useParams } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const RequestListById = () => {
         const fetchData = async () => {
             try {
                 const url = API_URL + `/studyRequests/single/${idSingleRequest}`;
-                const response = await doApiGet(url, 'GET');
+                const response = await doApiRequest(url, 'GET');
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);   
                 }

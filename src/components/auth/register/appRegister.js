@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { API_URL, doApiGet, doApiMethod, doApiMethodSignUpLogin, TOKEN_NAME } from '../../../services/apiService';
+import { API_URL, doApiRequest, TOKEN_NAME } from '../../../services/apiService';
 import { useSelector } from 'react-redux';
 import Profile from './profileInput';
 import Topic from './topicList';
@@ -18,7 +18,6 @@ const AppRegister = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const { handleSubmit } = useForm();
 
   const steps = [
@@ -31,38 +30,30 @@ const AppRegister = () => {
   ];
 
   let user = useSelector(myStore => myStore.userSlice.user);
-  let id = useSelector(myStore => myStore.authSlice.userId);
   const userWithoutVerifyPassword = { ...user };
   delete userWithoutVerifyPassword.verifyPassword;
 
-  
+
   const onSubmit = async () => {
-    console.log("in on submit");
-    console.log(currentStep);
-    setIsSubmitted(true);
     try {
       const token = localStorage.getItem(TOKEN_NAME);
-      const url = token ? API_URL + `/users/${id}` : API_URL + '/auth/register';
+      const url = token ? API_URL + `/users/${localStorage.getItem("USER_ID")}` : API_URL + '/auth/register';
 
       const method = token ? 'PUT' : 'POST';
       // if there is a token and valid the 
-      console.log("data", userWithoutVerifyPassword);
       let data;
       if (token) {
         delete userWithoutVerifyPassword._id;
         delete userWithoutVerifyPassword.dateCreated;
         delete userWithoutVerifyPassword.role;
         delete userWithoutVerifyPassword.__v;
-        data = await doApiMethod(url,method,userWithoutVerifyPassword);
-        if(data.status==201){
+        doApiRequest(url, method, userWithoutVerifyPassword);
+        if (data.status == 201) {
           nav("/user");
-
         }
-
       }
       else {
-        data = await doApiMethodSignUpLogin(url, method, userWithoutVerifyPassword);
-
+        doApiRequest(url, method, userWithoutVerifyPassword);
       }
 
 
@@ -70,35 +61,26 @@ const AppRegister = () => {
         localStorage.setItem(TOKEN_NAME, data.data.token);
 
         const decodedToken = data.data.token;
-        const vToken = verifyToken(decodedToken).then(verifiedToken => {
-          if (verifiedToken.role === "admin") {
-            console.log(verifiedToken.role);
-            nav("/admin");
-          } else if (verifiedToken.role === "user") {
-            console.log(verifiedToken.role);
-            nav("/user");
-          } else {
-            nav("/");
-          }
-
-          // window.location.reload();
-
-        });
+        verifyToken(decodedToken);
       }
       await handleUserInfo(dispatch);
+      if (localStorage.getItem("ROLE") === "admin") {
+        nav("/admin");
+      } else if (localStorage.getItem("ROLE") === "user") {
+        nav("/user");
+      } else {
+        nav("/");
+      }
     } catch (error) {
-      setIsSubmitted(false);
       alert(error.response ? error.response.data.msg : 'An error occurred');
     }
   };
 
 
   const handleContinueClick = () => {
-    console.log(currentStep);
     if (currentStep < 6) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
-      console.log("in sele continue");
       handleSubmit(onSubmit);
     }
   };
@@ -116,7 +98,6 @@ const AppRegister = () => {
   return (
     <div className='container '>
       <div className='row'>
-        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
         <form>
           {steps.map((step, index) => (
             <div key={index} style={{ display: currentStep === index ? 'block' : 'none' }}>
@@ -130,11 +111,11 @@ const AppRegister = () => {
               </button>
               {currentStep === 5 ? (
                 <button type='button' className='btn btn-success col-2 mx-2' onClick={handleSubmitButtonClick}>
-                  Submit {currentStep}
+                  Submit
                 </button>
               ) : (
                 <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
-                  Continue {currentStep}
+                  Continue
                 </button>
               )}
             </div>

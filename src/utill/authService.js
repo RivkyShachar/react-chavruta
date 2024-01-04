@@ -1,17 +1,13 @@
 import { getUserInfo } from "../redux/featchers/userSlice";
-import { setLoggedIn, setUserRole,setUserId } from "../redux/featchers/authSlice";
 export const handleUserInfo = async (dispatch) => {
     try {
       const data = await dispatch(getUserInfo());
    
       if (data) {
-        dispatch(setLoggedIn(true));
-        dispatch(setUserRole(data.payload.data.role));
-        dispatch(setUserId(data.payload.data._id));
+        localStorage.setItem('USER_ID', data.payload.data._id);
+        localStorage.setItem('ROLE', data.payload.data.role);
       } else {
-        dispatch(setLoggedIn(false));
-        dispatch(setUserRole(null));
-        dispatch(setUserId(null));
+        localStorage.clear();
       }
     } catch (error) {
       console.error('Error fetching user info:', error);

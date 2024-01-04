@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import SmallSingleRequest from '../user/smallSingleRequest'
 import SingleRequestStudyWithMe from '../user/singleRequestStudyWithMe'
@@ -20,7 +20,7 @@ const OtherUserRequestList = ( {userId}) => {
                 console.log('parameter',parameter);
 
                 const url = API_URL + `/studyRequests/getUserRequests/${parameter}`;
-                const response = await doApiGet(url, 'GET');
+                const response = await doApiRequest(url, 'GET');
                 setResponse1(response);
                 console.log("response",response);
                 if (response.status === 200) {

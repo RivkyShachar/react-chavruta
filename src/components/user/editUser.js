@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API_URL, doApiGet, TOKEN_NAME, verifyToken } from '../../services/apiService';
+import { API_URL, doApiRequest, TOKEN_NAME, verifyToken } from '../../services/apiService';
 
 function EditUser() {
   const [singleUser, setSingleUser] = useState({});
@@ -34,7 +34,7 @@ function EditUser() {
     const fetchData = async (id) => {
       try {
         const url = API_URL + `/users/single/${id}`;
-        const response = await doApiGet(url, 'GET');
+        const response = await doApiRequest(url, 'GET');
 
         if (response.status === 200) {
           setSingleUser(response.data.data);

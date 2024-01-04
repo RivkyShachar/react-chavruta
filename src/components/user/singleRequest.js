@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { API_URL, doApiMethod, doApiGet, TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiMethod, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
