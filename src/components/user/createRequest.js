@@ -18,7 +18,7 @@ import {
     setPreferredLanguages
 
 } from '../../redux/featchers/requestSlice';
-import { handleUserInfo } from '../../utill/authService';
+// import { handleUserInfo } from '../../utill/authService';
 
 
 const ProfileInput = () => {
@@ -135,7 +135,7 @@ const ProfileInput = () => {
             if(data.status===201){
                 nav("/user");
             }
-            await handleUserInfo(dispatch);
+            // await handleUserInfo(dispatch);
         } catch (error) {
             setIsSubmitted(false);
             alert(error.data ? error.data.data.msg : 'An error occurred');

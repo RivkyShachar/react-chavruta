@@ -47,13 +47,17 @@ const AppRegister = () => {
         delete userWithoutVerifyPassword.dateCreated;
         delete userWithoutVerifyPassword.role;
         delete userWithoutVerifyPassword.__v;
-        doApiRequest(url, method, userWithoutVerifyPassword);
-        if (data.status == 201) {
-          nav("/user");
-        }
+        data = await doApiRequest(url, method, userWithoutVerifyPassword);
       }
       else {
-        doApiRequest(url, method, userWithoutVerifyPassword);
+        data = await doApiRequest(url, method, userWithoutVerifyPassword);
+      }
+
+      if (data.status === 201) {
+        nav("/user");
+      }
+      else if(data.status === 400){
+        console.log("status 400");
       }
 
 

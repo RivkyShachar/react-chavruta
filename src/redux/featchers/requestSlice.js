@@ -61,7 +61,7 @@ const requestSlice = createSlice({
             state.request.studyDuration = action.payload.studyDuration;
         },
         startDateAndTime: (state, action) => {
-            state.request.preferredHours = action.payload.preferredHours;
+            state.request.startDateAndTime = action.payload.startDateAndTime;
         },
         setLevelOfStudy: (state, action) => {
             state.request.levelOfStudy = action.payload.levelOfStudy;

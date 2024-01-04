@@ -55,7 +55,7 @@ const Header = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-success" href="/user/userProfile/myStudyRequests">
+                            <a className="nav-link text-success" href="/user/userProfile">
                                 My profile 
                             </a>
                         </li>

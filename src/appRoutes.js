@@ -24,12 +24,12 @@ const UserProfileAdmin = React.lazy(() => import("./pages/admin/userProfile"));
 const UserProfile = React.lazy(() => import("./pages/user/userProfile"));
 
 const AppRoutes = () => {
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     if (localStorage.getItem(TOKEN_NAME)) {
-    //       handleUserInfo(dispatch);
-    //     }
-    //   }, []);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (localStorage.getItem(TOKEN_NAME)) {
+          handleUserInfo(dispatch);
+        }
+      }, [dispatch]);
 
     return (
         <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
@@ -51,7 +51,7 @@ const AppRoutes = () => {
                         <Route path='createPost' element={<CreateStudyRequest />} />
                         <Route path='usersList' element={<UsersList />} />
                         <Route path='requestsList/:parameter' element={<RequestList />} />
-                        <Route path='userProfile/:parameter' element={<UserProfileMy />} />
+                        <Route path='userProfile' element={<UserProfileMy />} />
                         <Route path='marked' element={<RequestList />} />
                         <Route path='editProfile' element={<SignUp />} />
                     </>)

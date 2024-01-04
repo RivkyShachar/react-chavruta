@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../../redux/featchers/userSlice';
-import { handleUserInfo } from '../../../utill/authService';
+// import { handleUserInfo } from '../../../utill/authService';
 
 const ProfileInput = () => {
     const dispatch = useDispatch();
@@ -11,9 +11,9 @@ const ProfileInput = () => {
     const [dateOfBirth, setDateOfBirth1] = useState('');
     const [validationError, setValidationError] = useState('');
 
-    useEffect(() => {
-        handleUserInfo(dispatch);
-    }, [dispatch]);
+    // useEffect(() => {
+    //     handleUserInfo(dispatch);
+    // }, [dispatch]);
 
     const handleDateChange = (e) => {
         const currentDate = new Date();
