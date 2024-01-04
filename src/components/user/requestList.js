@@ -22,7 +22,7 @@ const RequestList = () => {
                     parameter = "relevantRequestsList";
                 }
 
-                const url = API_URL + `/studyRequests/${parameter}/?sort=startDateAndTime`;
+                const url = API_URL + `/studyRequests/${parameter}/?reverse=yes`;
                 const response = await doApiGet(url, 'GET');
                 setResponse1(response);
                 if (response.status === 200) {

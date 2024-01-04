@@ -77,7 +77,7 @@ const UserList = ({ selectedRequest, onClose }) => {
                                     to={`/user/singleUser/${user._id}`} // Adjust the route as needed
                                     className="list-group-item list-group-item-action"
                                 >
-                                    {user.firstName} {user.lastName}
+                                     {user.firstName} {user.lastName} 
                                 </Link>
                                 <button className="btn border-success border-2 ms-5 me-2" onClick={() => clickYesUser(user)}>
                                     yes
