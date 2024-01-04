@@ -96,7 +96,7 @@ const SmallSingleRequest = ({ requests, type }) => {
         </div>
       ))}
 
-      {maor && <FullRequestDetails selectedRequest={selectedRequest} onClose={handleCloseDetails} />}
+      {maor && <FullRequestDetails selectedRequest={selectedRequest} typeList={type} onClose={handleCloseDetails} />}
     </div>
   );
 };
