@@ -9,7 +9,6 @@ const Home = React.lazy(() => import('./components/auth/home'));
 const Login = React.lazy(() => import('./components/auth/login'));
 const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
 const AdminHome = React.lazy(() => import('./components/admin/adminHome'));
-const SingleUserAdmin = React.lazy(() => import('./components/admin/singleUserAdmin'));
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestListAdmin = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));

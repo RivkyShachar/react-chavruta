@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { API_URL, doApiMethod } from '../../services/apiService';
 
-const SmallSingleRequest = ({ requests,type }) => {
+const SmallSingleRequest = ({ requests, type }) => {
 
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
@@ -63,9 +63,10 @@ const SmallSingleRequest = ({ requests,type }) => {
       {filteredRequestList.map((request) => (
         <div key={request._id} className="col-md-4 mb-4">
           <div className={`card ${request.state === 'open' ? 'border-success border-5' :
-            request.state === 'closed' ? 'bg-secondary' :
-              request.state === 'done' ? 'bg-secondary border-info border-5' : 'bg-warning'
-            }`}>            <div className="card-body">
+            request.state === 'close' ? 'bg-info' :
+              request.state === 'done' ? 'bg-secondary' : 'bg-warning'
+            }`}>
+            <div className="card-body">
               <Link
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
@@ -79,7 +80,7 @@ const SmallSingleRequest = ({ requests,type }) => {
                 <p className="card-text">Description: {request.description}</p>
               </Link>
               <div className="d-flex justify-content-between mt-3">
-                {(type === "requestListMarkedYes"  || type === "requestList")  &&(
+                {(type === "requestListMarkedYes" || type === "requestList") && (
 
                   <button className="btn btn-danger" onClick={() => clickNo(request)}>No</button>
                 )}
@@ -95,7 +96,7 @@ const SmallSingleRequest = ({ requests,type }) => {
         </div>
       ))}
 
-      {maor && <FullRequestDetails selectedRequest={selectedRequest} onClose={handleCloseDetails} />}
+      {maor && <FullRequestDetails selectedRequest={selectedRequest} typeList={type} onClose={handleCloseDetails} />}
     </div>
   );
 };
