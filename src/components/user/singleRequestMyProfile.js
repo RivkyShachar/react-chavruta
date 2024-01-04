@@ -44,22 +44,15 @@ const SingleRequestMyProfile = ({ requests }) => {
         }
     };
 
-    const clickNo = async (request) => {
-        try {
-            setMaor(false);
-            setIsCardVisible(false);
-            alert("clicked no");
-            console.log(request);
-            setSelectedRequest(request);
-            setIsCardVisible(request);
-            const url = API_URL + `/event/markNo/${request._id}`;
-            const data = await doApiMethod(url, "POST");
-            if (data.status === 200) {
-                console.log("no");
+    const clickDelete = async (request) => {
+        try {          
+            const url = API_URL + `/studyRequests/${request._id}`;
+            const data = await doApiMethod(url, "DELETE");
+            if (data.status === 204) {
+
+                window.location.reload();
+                console.log("deleted");
             }
-            setIsCardVisible(true);
-            setSelectedRequest(null);
-            setIsCardVisible(null);
         } catch (error) {
             console.error("error", error);
         }
@@ -98,7 +91,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                             <button className="btn border-info border-2 mb-2" onClick={() => clickYes(request)}>
                                 Update
                             </button>
-                            <button className="btn border-danger border-2" onClick={() => clickNo(request)}>
+                            <button className="btn border-danger border-2" onClick={() => clickDelete(request)}>
                                 Delete
                             </button>
                         </div>
