@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { API_URL, doApiMethod, doApiRequest, TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 
 const UserList = ({ selectedRequest, onClose }) => {
-    const userRole = useSelector(store => store.authSlice.userRole);
     let filteredUserList = [{ firstName: "yaeli", lastName: "globerman", _id: "1" }, { firstName: "yaeli", lastName: "globerman" }, { firstName: "yaeli", lastName: "globerman" }]
 
     const [userList, setUserList] = useState([]);
@@ -42,7 +40,7 @@ const UserList = ({ selectedRequest, onClose }) => {
             alert("clicked matched");
             const url = API_URL + `/event/finalizeRequest/${user._id}/${selectedRequest._id}/`;
 
-            const data = await doApiMethod(url, "POST");
+            const data = await doApiRequest(url, "POST");
             if (data.status === 200) {
                 console.log("matched ");
             }
@@ -55,7 +53,7 @@ const UserList = ({ selectedRequest, onClose }) => {
             alert("clicked no");
             console.log(selectedRequest);
             const url = API_URL + `/event/markNo/${selectedRequest._id}`;
-            const data = await doApiMethod(url, "POST");
+            const data = await doApiRequest(url, "POST");
             if (data.status === 200) {
                 // nav("/")
                 console.log("no");

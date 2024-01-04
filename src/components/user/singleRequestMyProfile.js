@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
 import UserList from './userList';
 import { useSelector } from 'react-redux';
-import { API_URL, doApiMethod } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import { useNavigate} from 'react-router-dom';
 
 const SingleRequestMyProfile = ({ requests }) => {
@@ -56,7 +56,7 @@ const SingleRequestMyProfile = ({ requests }) => {
     const clickDelete = async (request) => {
         try {
             const url = API_URL + `/studyRequests/${request._id}`;
-            const data = await doApiMethod(url, "DELETE");
+            const data = await doApiRequest(url, "DELETE");
             if (data.status === 204) {
 
                 window.location.reload();

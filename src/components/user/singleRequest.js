@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { API_URL, doApiMethod, doApiRequest, TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
-  const userRole = useSelector(store => store.authSlice.userRole);
-  const userId = useSelector(store => store.userSlice.user._id);
-
-  useEffect(() => {
-    if (!selectedRequest) {
-      return; // Don't fetch data if no request is selected
-    }
-    console.log("User Role:", userRole);
-
-  }, []); // Make selectedRequest a dependency of useEffect
 
   if (!selectedRequest) {
     return null; // Don't render anything if no request is selected
@@ -23,7 +12,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
     try {
       alert("clicked yes");
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST");
+      const data = await doApiRequest(url, "POST");
       if (data.status === 200) {
         console.log("added to yes");
       }
@@ -37,12 +26,12 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
       <div className="modal-container">
         <div className="container mt-4">
           <div>
-            {userId != selectedRequest.userId._id && (
+            {localStorage.getItem("USER_ID") != selectedRequest.userId._id && (
               <div className='row'>
                 <div className='col-8'>
                 <Link
                   key={selectedRequest.userId._id}
-                  to={userRole === "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
+                  to={localStorage.getItem("ROLE") === "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
                   className="list-group-item list-group-item-action"
                 >
                   <h1>{selectedRequest.userId.firstName} {selectedRequest.userId.lastName}</h1>
@@ -74,7 +63,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
             <p className="card-text">id request: {selectedRequest._id}</p>
 
             <div className="d-flex justify-content-between mt-3">
-              {userId != selectedRequest.userId._id && (
+              {localStorage.getItem("USER_ID") != selectedRequest.userId._id && (
                 <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
                   YES
                 </button>

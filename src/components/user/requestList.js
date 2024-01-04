@@ -23,7 +23,7 @@ const RequestList = () => {
                 }
 
                 const url = API_URL + `/studyRequests/${parameter}/?reverse=yes`;
-                const response = await doApiGet(url, 'GET');
+                const response = await doApiRequest(url, 'GET');
                 setResponse1(response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);

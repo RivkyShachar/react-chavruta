@@ -2,14 +2,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
-import { logout, selectAuth } from '../../redux/featchers/authSlice';
 import { useNavigate} from 'react-router-dom';
+import { TOKEN_NAME } from '../../services/apiService';
 
 const Header = () => {
     const dispatch = useDispatch();
     const nav = useNavigate();
-
-    const {isLoggedIn} = useSelector(store => store.authSlice);
  
     const handleInputChange = (e) => {
         const value = e.target.value;
@@ -23,10 +21,8 @@ const Header = () => {
     };
 
     const handleLogout = () => {
-        // Dispatch the logout action to update the Redux state
-        dispatch(logout());
+        localStorage.clear();
         nav("/",{ replace: true })
-        // You might want to add additional logic for handling the actual logout process (e.g., clearing tokens, redirecting, etc.)
     };
 
     return (
@@ -83,7 +79,7 @@ const Header = () => {
                             onChange={handleInputChangeUser}
                         />
                     </form>
-                    {isLoggedIn && (
+                    {localStorage.getItem(TOKEN_NAME) && (
                     <button className="btn btn-danger" onClick={handleLogout}>
                         Logout
                     </button>

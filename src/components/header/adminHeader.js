@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
-import { logout, selectAuth } from '../../redux/featchers/authSlice';
 import { Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { TOKEN_NAME } from '../../services/apiService';
 
 // Assuming you have Font Awesome set up and imported
 
@@ -15,7 +15,6 @@ const HeaderAdmin = () => {
     const nav = useNavigate();
     const [isMenuOpen, setMenuOpen] = useState(false);
 
-    const { isLoggedIn } = useSelector((store) => store.authSlice);
 
     const handleInputChange = (e) => {
         const value = e.target.value;
@@ -28,8 +27,8 @@ const HeaderAdmin = () => {
     };
 
     const handleLogout = () => {
-        dispatch(logout());
-        nav('/', { replace: true });
+        localStorage.clear();
+        nav("/",{ replace: true })
     };
 
     const toggleMenu = () => {
@@ -110,7 +109,7 @@ const HeaderAdmin = () => {
                             </button>
                         </li>
                     </ul>
-                    {isLoggedIn && (
+                    {localStorage.getItem(TOKEN_NAME) && (
                         <button className="btn btn-danger" onClick={handleLogout}>
                             Logout
                         </button>

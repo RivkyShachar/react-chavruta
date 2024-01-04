@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../../redux/featchers/userSlice';
-import { setLoggedIn,setUserId,setUserRole } from '../../../redux/featchers/authSlice';
 import { handleUserInfo } from '../../../utill/authService';
 
 const ProfileInput = () => {

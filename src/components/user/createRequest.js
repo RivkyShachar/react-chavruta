@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import requestReducer, { commonLanguages } from '../../redux/featchers/requestSlice';
-import { API_URL, doApiMethod, TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import {
     setTopics,
@@ -128,7 +128,7 @@ const ProfileInput = () => {
 
             console.log("data", requestWithoutShowMoreOptions);
 
-            const data = await doApiMethod(url, method, requestWithoutShowMoreOptions);
+            const data = await doApiRequest(url, method, requestWithoutShowMoreOptions);
             console.log("post created?");
             console.log(data);
             alert(data.data.msg);

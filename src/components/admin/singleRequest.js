@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_URL, doApiMethod,TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiRequest,TOKEN_NAME } from '../../services/apiService';
 
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
@@ -22,7 +22,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
   const clickYes = async (_data) => {
     try{
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST");
+      const data = await doApiRequest(url, "POST");
       if(data.status===200){
         console.log("added to yes");
         alert("added succesfully")

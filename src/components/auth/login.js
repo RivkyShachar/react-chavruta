@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { API_URL, doApiMethod, TOKEN_NAME } from '../../services/apiService';
+import { API_URL,TOKEN_NAME,doApiRequest } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import { handleUserInfo } from '../../utill/authService';
 
@@ -26,7 +26,7 @@ const Login = () => {
   const doApi = async (_data) => {
     try {
       const url = API_URL + '/auth/login';
-      const data = await doApiMethod(url, "POST", _data);
+      const data = await doApiRequest(url, "POST", _data);
 
       // Decode the token to access its properties
       if (data.data.token) {

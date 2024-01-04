@@ -2,7 +2,7 @@ import React, {  useState } from 'react';
 import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
 import {  useSelector } from 'react-redux';
-import { API_URL, doApiMethod } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 
 const SmallSingleRequest = ({ requests }) => {
 
@@ -39,7 +39,7 @@ const SmallSingleRequest = ({ requests }) => {
       setSelectedRequest(request);
       console.log(request);
       const url = API_URL + `/event/markNo/${request._id}`;
-      const data = await doApiMethod(url, "POST");
+      const data = await doApiRequest(url, "POST");
       if (data.status === 200) {
         console.log("no");
       }

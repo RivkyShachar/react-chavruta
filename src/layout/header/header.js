@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
+import { TOKEN_NAME } from '../../services/apiService';
 
 export default function Header() {
 
@@ -88,7 +89,7 @@ export default function Header() {
                             onChange={handleInputChange}
                         />
                     </form>
-                    {isLoggedIn && (
+                    {localStorage.getItem(TOKEN_NAME) && (
                     <button className="btn btn-danger" onClick={handleLogout}>
                         Logout
                     </button>
