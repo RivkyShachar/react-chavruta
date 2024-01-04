@@ -1,0 +1,104 @@
+import React, { useEffect, Suspense } from 'react'
+import Layout from './layout/layout'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { TOKEN_NAME, RESTAURNAT_ID } from './services/servise'
+import { getUserInfo } from './redux/featchers/userSlice'
+import { getRestaurantInfo } from './redux/featchers/restaurantSlice'
+import Loader from './components/ui/loader/loader'
+
+
+const RequestResetPass = React.lazy(() => import('./components/auth/requestResetPass'));
+const ResetPassword = React.lazy(() => import('./components/auth/resetPassword'));
+const Home = React.lazy(() => import('./components/auth/home'));
+const Login = React.lazy(() => import('./components/auth/login'));
+const SignUp = React.lazy(() => import('./components/auth/signUp'));
+const MyRestaurantsList = React.lazy(() => import('./components/auth/myRestaurantsList'));
+const NewRestaurant = React.lazy(() => import('./components/auth/newRestaurant'));
+const NotFound = React.lazy(() => import('./components/notFound'));
+
+const AppRoutes = () => {
+    const dispatch = useDispatch();
+
+    let { showiteminfo } = useSelector((state) => state.toggleSlice);
+    let { showadditem } = useSelector((state) => state.toggleSlice);
+    let { showorderiteminfo } = useSelector((state) => state.toggleSlice);
+    let { showEditItem } = useSelector((state) => state.toggleSlice);
+    let { showTableItem } = useSelector((state) => state.toggleSlice);
+    let { item } = useSelector((state) => state.toggleSlice);
+    let { TableItem } = useSelector((state) => state.toggleSlice);
+    useEffect(() => {
+        if (localStorage.getItem(TOKEN_NAME)) {
+            dispatch(getUserInfo())
+            if (localStorage.getItem(RESTAURNAT_ID)) {
+                dispatch(getRestaurantInfo())
+            }
+        }
+    }, [])
+
+    return (
+        <Suspense fallback={
+            <div className='w-full flex justify-center h-screen items-center'>
+                <Loader />
+            </div>
+        }
+        >
+            <Router>
+                <Routes>
+                    <Route index element={<Home />} >
+        
+                        {/*  Layout */}
+                        <Route path='/' element={<Layout />}>
+                            {/* Outlet */}
+                            <Route path='/requestResetPass' element={<RequestResetPass />} />
+                            <Route path='/resetPassword/:userId/:uniqueString' element={<ResetPassword />} />
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/signUp' element={<SignUp />} />
+                            <Route path='/fillDetales/:userId' element={<WorkerFill />} />
+                            <Route path='/myrestaurantlist' element={< MyRestaurantsList />} />
+                            <Route path='/newrestaurant' element={< NewRestaurant />} />
+
+                        </Route>
+
+                        <Route path='/admin' element={<LayoutAdmin />}>
+                            <Route path='/admin/orders' element={< Orders />} />
+                            <Route path='/admin/menu' element={< Menu />} />
+                            <Route path='/admin/tables' element={< Tables />} />
+                            <Route path='/admin/myInfo' element={< MyInfo />} />
+                            <Route path='/admin/Settings' element={< RestaurantSettings />} />
+                            <Route path='/admin/Shifts' element={< Shifts />} />
+                            <Route path='/admin/workers' element={< Workers />} />
+                            <Route path='/admin/AddWorker' element={<AddWorker />} />
+                            <Route path='/admin/AllWorkZone' element={<AllWorkZone />} />
+
+
+
+                            {/* Outlet */}
+
+                        </Route>
+
+                        <Route path='/user' element={<LayoutUser />}>
+                            <Route path='/user/orders' element={< Orders />} />
+                            <Route path='/user/menu' element={< Menu />} />
+                            <Route path='/user/tables' element={< Tables />} />
+                            <Route path='/user/myInfo' element={< MyInfo />} />
+                            <Route path='/user/Settings' element={< RestaurantSettings />} />
+                            <Route path='/user/Shifts' element={< Shifts />} />
+
+                            {/* Outlet */}
+
+                        </Route>               
+
+                  
+                    </Route>
+
+                    <Route path='*' element={<NotFound />} />
+
+                </Routes>
+           
+            </Router>
+        </Suspense>
+    )
+}
+
+export default AppRoutes;
