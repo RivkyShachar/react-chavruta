@@ -51,7 +51,7 @@ const AppRoutes = () => {
                         {isLoggedIn && userRole === 'user' ?
                             (<>
                                 <Route index element={<UserHome />} />
-                                <Route path='singleUser/:idSingle1' element={<UserProfile />} />
+                                <Route path='singleUser/:parameter' element={<UserProfile />} />
                                 <Route path='createPost' element={<CreateStudyRequest />} />
                                 <Route path='usersList' element={<UsersList />} />
                                 <Route path='requestsList/:parameter' element={<RequestList />} />                                

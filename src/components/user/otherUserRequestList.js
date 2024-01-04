@@ -11,30 +11,22 @@ import { useParams } from 'react-router-dom';
 const OtherUserRequestList = ( {userId}) => {
     const [requestList, setRequestList] = useState([]);
     const [response1, setResponse1] = useState([]);
-    const [requestListMarkedYes, setRequestListMarkedYes] = useState([]);
-    const [requestListMarkedNo, setRequestListMarkedNo] = useState([]);
     let { parameter } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
 
             try {
-                if (!parameter) {
-                    parameter = "myStudyRequest";
-                }
+                console.log('parameter',parameter);
 
-                const url = API_URL + `/studyRequests/${parameter}`;
+                const url = API_URL + `/studyRequests/getUserRequests/${parameter}`;
                 const response = await doApiGet(url, 'GET');
                 setResponse1(response);
+                console.log("response",response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
                 }
-                else if (response.status === 201) {
-                    if (parameter === "marked") {
-                        setRequestListMarkedYes([...response.data.data.markedYes]);
-                        setRequestListMarkedNo([...response.data.data.markedNo]);
-                    }
-                }
+            
                 else if (response.status === 404) {
                     setRequestList([]);
                 }

@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { API_URL, doApiGet } from '../../services/apiService';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import SmallSingleRequest from '../user/smallSingleRequest'
-import SingleRequestStudyWithMe from '../user/singleRequestStudyWithMe'
 import SingleRequestMyProfile from '../user/singleRequestMyProfile'
 import FilterBarHome from './filterBarHome'
 import { useParams } from 'react-router-dom';
@@ -19,6 +18,7 @@ const RequestList = () => {
         const fetchData = async () => {
 
             try {
+                console.log("--------------------------pa",parameter);
                 if (!parameter) {
                     parameter = "relevantRequestsList";
                 }
@@ -55,7 +55,7 @@ const RequestList = () => {
                 <div>
                     {requestList.length === 0 ? (
                         <h2>No requests found</h2>
-                    ) : (<SingleRequestMyProfile requests={requestList} />)
+                    ) : (<SingleRequestMyProfile requests={requestList} type={"requestList"} />)
                     }
                 </div>
             }
@@ -66,7 +66,7 @@ const RequestList = () => {
                     ) : (
                         <div>
                             <h2>Marked Yes</h2>
-                            <SmallSingleRequest requests={requestListMarkedYes} />
+                            <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
                         </div>
                     )}
                     {requestListMarkedNo.length === 0 ? (
@@ -74,7 +74,7 @@ const RequestList = () => {
                     ) : (
                         <div>
                             <h2>Marked No</h2>
-                            <SmallSingleRequest requests={requestListMarkedNo} />
+                            <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"}  />
                         </div>
                     )}
 
@@ -84,7 +84,7 @@ const RequestList = () => {
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>
                         ) : (
-                            <SmallSingleRequest requests={requestList} />
+                            <SmallSingleRequest requests={requestList} type={"requestList"} />
                         )}
                     </div>
                 </>

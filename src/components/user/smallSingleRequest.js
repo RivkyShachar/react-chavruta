@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
-import {  useSelector } from 'react-redux';
-import React, {  useState } from 'react';
+import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import { API_URL, doApiMethod } from '../../services/apiService';
 
-const SmallSingleRequest = ({ requests }) => {
+const SmallSingleRequest = ({ requests,type }) => {
 
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
@@ -26,13 +26,13 @@ const SmallSingleRequest = ({ requests }) => {
     return topicsString.toLowerCase().includes(searchV.toLowerCase());
   });
 
-  const clickYes = async (_data) => {
+  const clickYes = async (request) => {
     try {
-      alert("clicked yes");
-      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
+      const url = API_URL + `/event/markYes/${request._id}`;
       const data = await doApiMethod(url, "POST");
       if (data.status === 200) {
         console.log("added to yes");
+        window.location.reload()
       }
     } catch (error) {
       console.error("error", error);
@@ -43,13 +43,13 @@ const SmallSingleRequest = ({ requests }) => {
   const clickNo = async (request) => {
     try {
       setMaor(false)
-      alert("clicked no");
       setSelectedRequest(request);
       console.log(request);
       const url = API_URL + `/event/markNo/${request._id}`;
       const data = await doApiMethod(url, "POST");
       if (data.status === 200) {
         console.log("no");
+        window.location.reload()
       }
       setMaor(true)
       setSelectedRequest(null);
@@ -63,8 +63,8 @@ const SmallSingleRequest = ({ requests }) => {
       {filteredRequestList.map((request) => (
         <div key={request._id} className="col-md-4 mb-4">
           <div className={`card ${request.state === 'open' ? 'border-success border-5' :
-              request.state === 'closed' ? 'bg-secondary' :
-                request.state === 'done' ? 'bg-secondary border-info border-5' : 'bg-warning'
+            request.state === 'closed' ? 'bg-secondary' :
+              request.state === 'done' ? 'bg-secondary border-info border-5' : 'bg-warning'
             }`}>            <div className="card-body">
               <Link
                 onClick={() => handleRequestClick(request)}
@@ -79,10 +79,16 @@ const SmallSingleRequest = ({ requests }) => {
                 <p className="card-text">Description: {request.description}</p>
               </Link>
               <div className="d-flex justify-content-between mt-3">
-                <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
-                  YES
-                </button>
-                <button className="btn btn-danger" onClick={() => clickNo(selectedRequest)}>No</button>
+                {(type === "requestListMarkedYes"  || type === "requestList")  &&(
+
+                  <button className="btn btn-danger" onClick={() => clickNo(request)}>No</button>
+                )}
+                {(type === "requestListMarkedNo" || type === "requestList") && (
+                  <button className="btn btn-warning" onClick={() => clickYes(request)}>
+                    YES
+                  </button>
+                )}
+
               </div>
             </div>
           </div>
