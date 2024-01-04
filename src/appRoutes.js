@@ -46,15 +46,8 @@ const AppRoutes = () => {
                         {localStorage.getItem(TOKEN_NAME) && localStorage.getItem("ROLE") === 'user' ?
                             (<>
                                 <Route index element={<UserHome />} />
-                                <Route
-                                    path="singleUser/:parameter"
-                                    element={
-                                        <Suspense fallback={<div>Loading...</div>}>
-                                            <UserProfile />
-                                        </Suspense>
-                                    }
-                                />
-                        {/* <Route path='singleUser/:parameter' element={<UserProfile />} /> */}
+                               
+                        <Route path='singleUser/:parameter' element={<UserProfile />} />
                         <Route path='createPost' element={<CreateStudyRequest />} />
                         <Route path='usersList' element={<UsersList />} />
                         <Route path='requestsList/:parameter' element={<RequestList />} />

@@ -1,15 +1,18 @@
 import React from 'react'
-import RequestList from '../../components/user/requestList'
-import UserProfileBar from '../../components/user/userProfileBar'
+// import OtherUserProfileBar from '../../components/user/otherUserProfileBar'
+// import UserProfileBar from '../../components/user/userProfileBar'
+// import { useParams } from 'react-router-dom';
+import OtherSingleUser from '../../components/user/othersingleUser';
 
 const UserProfile = () => {
+  // const { idSingle1 } = useParams();
 
   return (
     <div>
-      <UserProfileBar/>
-      <RequestList/>
+      {/* <OtherUserProfileBar /> */}
+      <OtherSingleUser />
     </div>
   )
 }
 
-export default UserProfile
+export default UserProfile

@@ -70,7 +70,7 @@ const SingleUser = () => {
 
                 </div>
             </div>
-            <div className='bg-danger'>
+            <div >
                <OtherUserRequestList userId={idSingle1} />
             </div>
         </div>

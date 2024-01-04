@@ -44,7 +44,6 @@ const OtherUserRequestList = ( {userId}) => {
         <div className='container'>
         
                     <div >
-                        <h2>sssss</h2>
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>
                         ) : (
