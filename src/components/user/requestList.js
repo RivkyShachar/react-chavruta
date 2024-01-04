@@ -51,7 +51,7 @@ const RequestList = () => {
         <div className='container'>
             <FilterBarHome />
             <div>
-                {parameter === "myStudyRequests" ?(
+                {parameter === "userProfile" ?(
                     <div>
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>

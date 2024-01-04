@@ -3,21 +3,38 @@ import FullRequestDetails from './singleRequest';
 import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { API_URL, doApiRequest } from '../../services/apiService';
+import { useNavigate} from 'react-router-dom';
+import UserList from './userList';
+
 
 const SmallSingleRequest = ({ requests, type }) => {
-
+  const [isCardVisible, setIsCardVisible] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
-
+  const nav = useNavigate();
 
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
   };
 
+  const handleRequestClick1 = (request) => {
+    setIsCardVisible(request);
+};
+
   const handleCloseDetails = () => {
     setSelectedRequest(null);
   };
+
+  const handleRequestClickSingleUser = (request) => {
+
+    nav(`/user/singleUser/${request.finalChavruta._id}`,{ replace: true })
+
+};
+const handleCloseDetails1 = () => {
+  // setSelectedRequest(null);
+  setIsCardVisible(null);
+};
 
 
   const filteredRequestList = requests.filter((request) => {
@@ -68,7 +85,7 @@ const SmallSingleRequest = ({ requests, type }) => {
             }`}>
             <div className="card-body">
               <Link
-                onClick={() => handleRequestClick(request)}
+                onClick={() => handleRequestClick1(request)}
                 className="request-link"
               >
                 <p className="card-text">Topics: {request.topics.join(', ')}</p>
@@ -80,6 +97,12 @@ const SmallSingleRequest = ({ requests, type }) => {
                 <p className="card-text">Description: {request.description}</p>
               </Link>
               <div className="d-flex justify-content-between mt-3">
+                {(type === "myRequests" && (request.state === "open" && request.matchesList.length != 0) &&
+                  <div className='col-3'>
+                    <button className="  btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}
+                    >{request.matchesList.length}</button>
+                  </div>
+                )}
                 {(type === "requestListMarkedYes" || type === "requestList") && (
 
                   <button className="btn btn-danger" onClick={() => clickNo(request)}>No</button>
@@ -97,6 +120,7 @@ const SmallSingleRequest = ({ requests, type }) => {
       ))}
 
       {maor && <FullRequestDetails selectedRequest={selectedRequest} typeList={type} onClose={handleCloseDetails} />}
+      {isCardVisible && <UserList selectedRequest={isCardVisible} onClose={handleCloseDetails1} />}
     </div>
   );
 };
