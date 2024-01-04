@@ -36,19 +36,33 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
     <div className="modal-overlay">
       <div className="modal-container">
         <div className="container mt-4">
-          <h2>Full Request Details</h2>
           <div>
             {userId != selectedRequest.userId._id && (
-              <Link
-                key={selectedRequest.userId._id}
-                to={userRole === "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
-                className="list-group-item list-group-item-action"
-              >
-                Name: {selectedRequest.userId.firstName} {selectedRequest.userId.lastName}
-              </Link>
+              <div className='row'>
+                <div className='col-8'>
+                <Link
+                  key={selectedRequest.userId._id}
+                  to={userRole === "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
+                  className="list-group-item list-group-item-action"
+                >
+                  <h1>{selectedRequest.userId.firstName} {selectedRequest.userId.lastName}</h1>
+                </Link>
+                </div>
+                <div className='col-4'>
+                <img
+                  src={selectedRequest.userId.profilePic}
+                  alt={selectedRequest.userId.profilePic}
+                  style={{
+                    width: '80px', // adjust the width and height as needed
+                    height: '80px',
+                    borderRadius: '50%', // this makes it a rounded circle
+                  }}
+                />
+                </div>
+              </div>
             )}
 
-            <img src={selectedRequest.profilePic} alt={selectedRequest.profilePic}></img>
+
             <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
             <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
             <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>

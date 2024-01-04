@@ -1,9 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 
-const UserProfileBar = () => {
-
-    const user = useSelector((myStore)=>myStore.userSlice.user);
+const otherUserProfileBar = ({parameter}) => {
 
     return (
         <div className='container bg-info'>
@@ -11,11 +10,11 @@ const UserProfileBar = () => {
             <div className='container col-7 '>
                 <div className='row'>
                     <div className='col-4 mx-2 '>
-                        <h1>{user.firstName} {user.lastName}</h1>
+                        <h1>{parameter.firstName} {parameter.lastName}</h1>
                     </div>
                     <div className='col-6 py-2 px-5 text-end'>
                         <img
-                            src={user.profilePic}
+                            src={parameter.profilePic}
                             style={{ height: '200px' }}
                             alt="Your Alt Text"
                             className="float-end"
@@ -28,6 +27,6 @@ const UserProfileBar = () => {
     );
 }
 
-export default UserProfileBar;
+export default otherUserProfileBar;
 
 

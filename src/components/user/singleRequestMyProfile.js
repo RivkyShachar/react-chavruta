@@ -4,12 +4,15 @@ import FullRequestDetails from './singleRequest';
 import UserList from './userList';
 import { useSelector } from 'react-redux';
 import { API_URL, doApiMethod } from '../../services/apiService';
+import { useNavigate} from 'react-router-dom';
 
 const SingleRequestMyProfile = ({ requests }) => {
     const [isCardVisible, setIsCardVisible] = useState(null);
     const [selectedRequest, setSelectedRequest] = useState(null);
     const [maor, setMaor] = useState(true);
     const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
+    const nav = useNavigate();
+
 
 
     const handleRequestClick = (request) => {
@@ -19,6 +22,12 @@ const SingleRequestMyProfile = ({ requests }) => {
     const handleRequestClick1 = (request) => {
         setIsCardVisible(request);
     };
+    const handleRequestClickSingleUser = (request) => {
+
+        nav(`/user/singleUser/${request.finalChavruta._id}`,{ replace: true })
+
+    };
+
 
     const handleCloseDetails = () => {
         setSelectedRequest(null);
@@ -107,7 +116,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                                         <p className="card-text">Description: {request.description}</p>
                                     </Link>
                                 </div>
-                                {(request.state === "open" && request.matchesList.length!=0) &&
+                                {(request.state === "open" && request.matchesList.length != 0) &&
 
                                     <div className='col-3'>
                                         <button className="  btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}
@@ -117,12 +126,25 @@ const SingleRequestMyProfile = ({ requests }) => {
                                     request.state === "close" &&
 
                                     <div className='col-3'>
-                                        <button className="  btn btn-warning rounded-circle request-link" onClick={() => handleRequestClick1(request)}
-                                        >{request.finalChavruta.firstName}</button>
+                                        <button
+                                            className="btn  request-link"
+                                            onClick={() => handleRequestClickSingleUser(request)}
+                                        >
+                                            <img
+                                                src={request.finalChavruta.profilePic}
+                                                alt="Chavruta Profile"
+                                                style={{
+                                                    width: '80px', // adjust the width and height as needed
+                                                    height: '80px',
+                                                    borderRadius: '50%', // this makes it a rounded circle
+                                                }}
+                                            />
+                                        </button>
+
                                     </div>}
                             </div>
                         </div>
-                        {(request.state === "open" || request.state==="done") && 
+                        {(request.state === "open" || request.state === "done") &&
                             <div className='col-6 d-flex align-items-center justify-content-center flex-column'>
                                 <button className="btn border-info border-2 mb-2" onClick={() => clickYes(request)}>
                                     Update

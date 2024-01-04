@@ -22,8 +22,8 @@ const RequestList = () => {
                     parameter = "relevantRequestsList";
                 }
 
-                const url = API_URL + `/studyRequests/${parameter}/?sort=startDateAndTime`;
-                const response = await doApiRequest(url, 'GET');
+                const url = API_URL + `/studyRequests/${parameter}/?reverse=yes`;
+                const response = await doApiGet(url, 'GET');
                 setResponse1(response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
@@ -50,9 +50,7 @@ const RequestList = () => {
     return (
         <div className='container'>
             <FilterBarHome />
-
             <div>
-
                 {parameter === "myStudyRequests" ?(
                     <div>
                         {requestList.length === 0 ? (

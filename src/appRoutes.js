@@ -1,4 +1,4 @@
-import React, { Suspense,useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { TOKEN_NAME } from './services/apiService';
@@ -19,9 +19,9 @@ const RequestList = React.lazy(() => import('./components/user/requestList'));
 const Layout = React.lazy(() => import('./layout/layout'));
 const HeaderAdmin = React.lazy(() => import('./components/header/adminHeader'));
 const UserProfileMy = React.lazy(() => import('./components/user/userProfile'));
-const Error = React.lazy(()=> import("./components/common/error"));
-const UserProfileAdmin = React.lazy(()=>import("./pages/admin/userProfile"));
-const UserProfile = React.lazy(()=>import("./pages/user/userProfile"));
+const Error = React.lazy(() => import("./components/common/error"));
+const UserProfileAdmin = React.lazy(() => import("./pages/admin/userProfile"));
+const UserProfile = React.lazy(() => import("./pages/user/userProfile"));
 
 const AppRoutes = () => {
     // const dispatch = useDispatch();
@@ -46,16 +46,24 @@ const AppRoutes = () => {
                         {localStorage.getItem(TOKEN_NAME) && localStorage.getItem("ROLE") === 'user' ?
                             (<>
                                 <Route index element={<UserHome />} />
-                                <Route path='singleUser/:parameter' element={<UserProfile />} />
-                                <Route path='createPost' element={<CreateStudyRequest />} />
-                                <Route path='usersList' element={<UsersList />} />
-                                <Route path='requestsList/:parameter' element={<RequestList />} />                                
-                                <Route path='userProfile/:parameter' element={<UserProfileMy />} />                                
-                                <Route path='marked' element={<RequestList />} />
-                                <Route path='editProfile' element={<SignUp />} />
-                            </>)
-                            :
-                            <></>
+                                <Route
+                                    path="singleUser/:parameter"
+                                    element={
+                                        <Suspense fallback={<div>Loading...</div>}>
+                                            <UserProfile />
+                                        </Suspense>
+                                    }
+                                />
+                        {/* <Route path='singleUser/:parameter' element={<UserProfile />} /> */}
+                        <Route path='createPost' element={<CreateStudyRequest />} />
+                        <Route path='usersList' element={<UsersList />} />
+                        <Route path='requestsList/:parameter' element={<RequestList />} />
+                        <Route path='userProfile/:parameter' element={<UserProfileMy />} />
+                        <Route path='marked' element={<RequestList />} />
+                        <Route path='editProfile' element={<SignUp />} />
+                    </>)
+                    :
+                    <></>
 
                         }
                     </Route>
@@ -74,15 +82,15 @@ const AppRoutes = () => {
                                 <Route path='userProfile/:parameter' element={<UserProfile />} />                                
                                 <Route path='marked' element={<RequestList />} />
 
-                            </>)
-                            :
-                            <></>
-                        }
-                    </Route>
-                    <Route path='*' element={<Error />} />
-                </Routes>
-            </Router>
-        </Suspense>
+                        </>)
+                        :
+                        <></>
+                    }
+                </Route>
+                <Route path='*' element={<Error />} />
+            </Routes>
+        </Router>
+        </Suspense >
     );
 };
 
