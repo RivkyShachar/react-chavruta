@@ -59,37 +59,39 @@ const SingleRequestMyProfile = ({ requests }) => {
     };
     const calculateCountdown = (startDateAndTime) => {
         const currentTime = new Date();
-    
+
         console.log('startDateAndTime:', startDateAndTime);
         console.log('currentTime:', currentTime);
-    
+
         const timeDifference = startDateAndTime - currentTime;
-    
+
         if (isNaN(timeDifference)) {
             console.error('Invalid date objects or subtraction operation.');
             return 'Invalid date calculation';
         }
-    
+
         if (timeDifference <= 0) {
             return 'Meeting has started';
         }
-    
+
         // Calculate days, hours, minutes, and seconds
         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-    
+
         return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     };
-    
+
 
     return (
         <div className="row">
             {filteredRequestList.map((request) => (
                 <div key={request._id} className="col-md-4 mb-4">
-                    <div className="card">
-                        <div className="card-body">
+                    <div className={`card ${request.state === 'open' ? 'border-success border-5' :
+                        request.state === 'close' ? 'bg-info' :
+                            request.state === 'done' ? 'bg-secondary' : 'bg-warning'
+                        }`}>                        <div className="card-body">
                             <div className='row'>
                                 <div className=' col-6'>
                                     <Link
@@ -105,7 +107,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                                         <p className="card-text">Description: {request.description}</p>
                                     </Link>
                                 </div>
-                                {request.state === "open" &&
+                                {(request.state === "open" && request.matchesList.length!=0) &&
 
                                     <div className='col-3'>
                                         <button className="  btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}
@@ -120,25 +122,25 @@ const SingleRequestMyProfile = ({ requests }) => {
                                     </div>}
                             </div>
                         </div>
-                        {request.state==="open" && 
-                        <div className='col-6 d-flex align-items-center justify-content-center flex-column'>
-                            <button className="btn border-info border-2 mb-2" onClick={() => clickYes(request)}>
-                                Update
-                            </button>
-                            <button className="btn border-danger border-2" onClick={() => clickDelete(request)}>
-                                Delete
-                            </button>
-                        </div>}
-                        {request.state==="close" && 
-                        <div className='col-6 d-flex align-items-center justify-content-center flex-column'>
-                            <h2>The meeting start in </h2>
-                            <button className="btn border-info border-2 mb-2" >
-                            {calculateCountdown(request.startDateAndTime)}
-                            </button>
-                            <button className="btn border-danger border-2" onClick={() => clickDelete(request)}>
-                                Cancle meeting
-                            </button>
-                        </div>}
+                        {(request.state === "open" || request.state==="done") && 
+                            <div className='col-6 d-flex align-items-center justify-content-center flex-column'>
+                                <button className="btn border-info border-2 mb-2" onClick={() => clickYes(request)}>
+                                    Update
+                                </button>
+                                <button className="btn border-danger border-2" onClick={() => clickDelete(request)}>
+                                    Delete
+                                </button>
+                            </div>}
+                        {request.state === "close" &&
+                            <div className='col-6 d-flex align-items-center justify-content-center flex-column'>
+                                <h3>The meeting start in </h3>
+                                <button className="btn border-info border-2 mb-2" >
+                                    {calculateCountdown(request.startDateAndTime)}
+                                </button>
+                                <button className="btn border-danger border-2" onClick={() => clickDelete(request)}>
+                                    Cancle meeting
+                                </button>
+                            </div>}
 
                     </div>
                 </div>

@@ -49,45 +49,51 @@ const RequestList = () => {
 
     return (
         <div className='container'>
-            <FilterBarHome />            
-            {parameter === "myStudyRequests" &&
-                <div>
-                    {requestList.length === 0 ? (
-                        <h2>No requests found</h2>
-                    ) : (<SingleRequestMyProfile requests={requestList} type={"requestList"} />)
-                    }
-                </div>
-            }
-            {response1.status === 201 ? (
-                <div >
-                    {requestListMarkedYes.length === 0 ? (
-                        <h2>No requests found</h2>
-                    ) : (
-                        <div>
-                            <h2>Marked Yes</h2>
-                            <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
-                        </div>
-                    )}
-                    {requestListMarkedNo.length === 0 ? (
-                        <h2>No requests found</h2>
-                    ) : (
-                        <div>
-                            <h2>Marked No</h2>
-                            <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"}  />
-                        </div>
-                    )}
+            <FilterBarHome />
 
-                </div>) : (
-                <>
-                    <div >
+            <div>
+
+                {parameter === "myStudyRequests" ?(
+                    <div>
+                        {requestList.length === 0 ? (
+                            <h2>No requests found</h2>
+                        ) : (
+                            <SingleRequestMyProfile requests={requestList} type={"requestList"} />
+                        )}
+                    </div>
+                ):
+
+                response1.status === 201 ? (
+                    <div>
+                        {requestListMarkedYes.length === 0 ? (
+                            <h2>No requests found</h2>
+                        ) : (
+                            <div>
+                                <h2>Marked Yes</h2>
+                                <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
+                            </div>
+                        )}
+
+                        {requestListMarkedNo.length === 0 ? (
+                            <h2>No requests found</h2>
+                        ) : (
+                            <div>
+                                <h2>Marked No</h2>
+                                <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <div>
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>
                         ) : (
                             <SmallSingleRequest requests={requestList} type={"requestList"} />
                         )}
                     </div>
-                </>
-            )}
+                )}
+            </div>
+
         </div>
     );
 };
