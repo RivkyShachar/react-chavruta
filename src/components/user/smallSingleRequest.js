@@ -1,18 +1,10 @@
 import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
-<<<<<<< HEAD
-import {  useSelector } from 'react-redux';
-import React, {  useState } from 'react';
-import { API_URL, doApiMethod } from '../../services/apiService';
-
-const SmallSingleRequest = ({ requests }) => {
-=======
 import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { API_URL, doApiMethod } from '../../services/apiService';
 
 const SmallSingleRequest = ({ requests,type }) => {
->>>>>>> origin/otherUserProfile
 
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
@@ -34,15 +26,6 @@ const SmallSingleRequest = ({ requests,type }) => {
     return topicsString.toLowerCase().includes(searchV.toLowerCase());
   });
 
-<<<<<<< HEAD
-  const clickYes = async (_data) => {
-    try {
-      alert("clicked yes");
-      const url = API_URL + `/event/markYes/${selectedRequest._id}`;
-      const data = await doApiMethod(url, "POST");
-      if (data.status === 200) {
-        console.log("added to yes");
-=======
   const clickYes = async (request) => {
     try {
       const url = API_URL + `/event/markYes/${request._id}`;
@@ -50,7 +33,6 @@ const SmallSingleRequest = ({ requests,type }) => {
       if (data.status === 200) {
         console.log("added to yes");
         window.location.reload()
->>>>>>> origin/otherUserProfile
       }
     } catch (error) {
       console.error("error", error);
@@ -61,20 +43,13 @@ const SmallSingleRequest = ({ requests,type }) => {
   const clickNo = async (request) => {
     try {
       setMaor(false)
-<<<<<<< HEAD
-      alert("clicked no");
-=======
->>>>>>> origin/otherUserProfile
       setSelectedRequest(request);
       console.log(request);
       const url = API_URL + `/event/markNo/${request._id}`;
       const data = await doApiMethod(url, "POST");
       if (data.status === 200) {
         console.log("no");
-<<<<<<< HEAD
-=======
         window.location.reload()
->>>>>>> origin/otherUserProfile
       }
       setMaor(true)
       setSelectedRequest(null);
@@ -88,13 +63,8 @@ const SmallSingleRequest = ({ requests,type }) => {
       {filteredRequestList.map((request) => (
         <div key={request._id} className="col-md-4 mb-4">
           <div className={`card ${request.state === 'open' ? 'border-success border-5' :
-<<<<<<< HEAD
-              request.state === 'closed' ? 'bg-secondary' :
-                request.state === 'done' ? 'bg-secondary border-info border-5' : 'bg-warning'
-=======
             request.state === 'closed' ? 'bg-secondary' :
               request.state === 'done' ? 'bg-secondary border-info border-5' : 'bg-warning'
->>>>>>> origin/otherUserProfile
             }`}>            <div className="card-body">
               <Link
                 onClick={() => handleRequestClick(request)}
@@ -109,12 +79,6 @@ const SmallSingleRequest = ({ requests,type }) => {
                 <p className="card-text">Description: {request.description}</p>
               </Link>
               <div className="d-flex justify-content-between mt-3">
-<<<<<<< HEAD
-                <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
-                  YES
-                </button>
-                <button className="btn btn-danger" onClick={() => clickNo(selectedRequest)}>No</button>
-=======
                 {(type === "requestListMarkedYes"  || type === "requestList")  &&(
 
                   <button className="btn btn-danger" onClick={() => clickNo(request)}>No</button>
@@ -125,7 +89,6 @@ const SmallSingleRequest = ({ requests,type }) => {
                   </button>
                 )}
 
->>>>>>> origin/otherUserProfile
               </div>
             </div>
           </div>
