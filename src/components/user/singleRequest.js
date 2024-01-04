@@ -6,6 +6,10 @@ import { verifyToken } from '../../services/apiService';
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
   const userRole = useSelector(store => store.authSlice.userRole);
+<<<<<<< HEAD
+=======
+  const userId = useSelector(store => store.userSlice.user._id);
+>>>>>>> origin/otherUserProfile
 
   useEffect(() => {
     if (!selectedRequest) {
@@ -37,6 +41,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
         <div className="container mt-4">
           <h2>Full Request Details</h2>
           <div>
+<<<<<<< HEAD
             <Link
               key={selectedRequest.userId._id}
               to={userRole === "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
@@ -44,6 +49,18 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
             >
               Name: {selectedRequest.userId.firstName} {selectedRequest.userId.lastName}
             </Link>
+=======
+            {userId != selectedRequest.userId._id && (
+              <Link
+                key={selectedRequest.userId._id}
+                to={userRole === "admin" ? `/admin/singleUserAdmin/${selectedRequest.userId._id}` : `/user/singleUser/${selectedRequest.userId._id}`}
+                className="list-group-item list-group-item-action"
+              >
+                Name: {selectedRequest.userId.firstName} {selectedRequest.userId.lastName}
+              </Link>
+            )}
+
+>>>>>>> origin/otherUserProfile
             <img src={selectedRequest.profilePic} alt={selectedRequest.profilePic}></img>
             <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
             <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
@@ -56,13 +73,25 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
             <p className="card-text">id request: {selectedRequest._id}</p>
 
             <div className="d-flex justify-content-between mt-3">
+<<<<<<< HEAD
               <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
                 YES
               </button>
+=======
+              {userId != selectedRequest.userId._id && (
+                <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
+                  YES
+                </button>
+              )}
+>>>>>>> origin/otherUserProfile
               <button className="btn btn-danger" onClick={onClose}>
                 Close
               </button>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/otherUserProfile
           </div>
         </div>
       </div>

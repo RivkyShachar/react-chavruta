@@ -53,19 +53,9 @@ const Header = () => {
                                 Create post
                             </a>
                         </li>
-                        <li className="nav-item ">
-                            <a className="nav-link text-warning" href="/user/requestsList/myStudyRequests">
-                                Want to study with me
-                            </a>
-                        </li>
                         <li className="nav-item">
                             <a className="nav-link text-danger" href="/user/requestsList/marked">
                                 Marked 
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link " href="/user/requestsList/myStudyRequests">
-                                Profile request 
                             </a>
                         </li>
                         <li className="nav-item">

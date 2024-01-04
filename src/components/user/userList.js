@@ -35,6 +35,7 @@ const UserList = ({ selectedRequest, onClose }) => {
 
 
     if (!selectedRequest) {
+<<<<<<< HEAD
         return null; // Don't render anything if no request is selected
     }
     const clickYes = async (_data) => {
@@ -44,6 +45,18 @@ const UserList = ({ selectedRequest, onClose }) => {
             const data = await doApiMethod(url, "POST");
             if (data.status === 200) {
                 console.log("added to yes");
+=======
+        return null; // Don't rend//er anything if no request is selected
+    }
+    const clickYesUser = async (user) => {
+        try {
+            alert("clicked matched");
+            const url = API_URL + `/event/finalizeRequest/${user._id}/${selectedRequest._id}/`;
+
+            const data = await doApiMethod(url, "POST");
+            if (data.status === 200) {
+                console.log("matched ");
+>>>>>>> origin/otherUserProfile
             }
         } catch (error) {
             console.error("error", error);
@@ -78,8 +91,13 @@ const UserList = ({ selectedRequest, onClose }) => {
                                 >
                                     {user.firstName} {user.lastName}
                                 </Link>
+<<<<<<< HEAD
                                 <button className="btn border-success border-2 ms-5 me-2" onClick={() => clickYes(user)}>
                                     Yes
+=======
+                                <button className="btn border-success border-2 ms-5 me-2" onClick={() => clickYesUser(user)}>
+                                    yes
+>>>>>>> origin/otherUserProfile
                                 </button>
                                 <button className="btn btn-danger" onClick={() => clickNo(user)}>
                                     No
