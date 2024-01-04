@@ -18,7 +18,6 @@ const RequestList = () => {
         const fetchData = async () => {
 
             try {
-                console.log("--------------------------pa",parameter);
                 if (!parameter) {
                     parameter = "relevantRequestsList";
                 }

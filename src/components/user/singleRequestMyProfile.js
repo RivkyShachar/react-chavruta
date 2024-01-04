@@ -81,9 +81,13 @@ const SingleRequestMyProfile = ({ requests }) => {
                                     </Link>
                                 </div>
 
-                                <div className='col-6'>
+                                <div className='col-3'>
                                     <button className=" yaelu btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}
                                     >{request.matchesList.length}</button>
+                                </div>
+                                <div className='col-3'>
+                                    <button className=" yaelu btn btn-warning rounded-circle request-link" onClick={() => handleRequestClick1(request)}
+                                    >{request.finalChavruta}</button>
                                 </div>
                             </div>
                         </div>
