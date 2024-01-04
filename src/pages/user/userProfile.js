@@ -1,9 +1,15 @@
 import React from 'react'
+import RequestList from '../../components/user/requestList'
+import UserProfileBar from '../../components/user/userProfileBar'
 
 const UserProfile = () => {
+
   return (
-    <div>U</div>
+    <div>
+      <UserProfileBar/>
+      <RequestList/>
+    </div>
   )
 }
 
-export default UserProfile
+export default UserProfile

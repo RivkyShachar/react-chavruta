@@ -50,9 +50,7 @@ const RequestList = () => {
     return (
         <div className='container'>
             <FilterBarHome />
-
             <div>
-
                 {parameter === "myStudyRequests" ?(
                     <div>
                         {requestList.length === 0 ? (
