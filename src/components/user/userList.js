@@ -39,7 +39,7 @@ const UserList = ({ selectedRequest, onClose }) => {
     }
     const clickYesUser = async (user) => {
         try {
-            alert("clicked yes");
+            alert("clicked matched");
             const url = API_URL + `/event/finalizeRequest/${user._id}/${selectedRequest._id}/`;
 
             const data = await doApiMethod(url, "POST");
