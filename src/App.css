@@ -1,4 +1,7 @@
 /* Add this to your global or component-specific CSS */
+body {
+  background-color: #b6ffa453;
+}
 .modal-overlay {
     position: fixed;
     top: 0;

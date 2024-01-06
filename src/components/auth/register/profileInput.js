@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../../redux/featchers/userSlice';
 // import { handleUserInfo } from '../../../utill/authService';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./register.css";
+import { TOKEN_NAME } from '../../../services/apiService';
 
 const ProfileInput = () => {
     const dispatch = useDispatch();
@@ -81,140 +84,200 @@ const ProfileInput = () => {
 
 
     return (
-        <div className='container'>
-            <div className='row'>
-                < div className='col-8 border'>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='col-7 ms-5 mt-5'>
-                                <h2 className="mb-5">
-                                    {user.firstName ? 'Edit Profile' : 'Sign up'}
-                                </h2>
-                                <div className='row mb-3 '>
-                                    <label htmlFor='firstName' className='col-3 col-form-label'>
-                                        First name:
-                                    </label>
-                                    <div className='col-2'>
-                                        <input name='firstName' onInput={(e) => handleInputChange(e, 'firstName')} className='form-control' type='string' id='firstName' defaultValue={user.firstName} />
-                                    </div>
-                                    <label htmlFor='lastName' className='col-3 col-form-label'>
-                                        Last name:
-                                    </label>
-                                    <div className='col-2'>
-                                        <input name='lastName' onInput={(e) => handleInputChange(e, 'lastName')} className='form-control' type='string' id='lastName'  defaultValue={user.lastName} />
-                                    </div>
-
-                                </div>
-
-                                <div className='row mb-3'>
-                                    <label htmlFor='email' className='col-3 col-form-label ps-1'>
-                                        email:
-                                    </label>
-                                    <div className='col-5'>
-                                        <input name='email' onInput={(e) => handleInputChange(e, 'email')} className='form-control' type='string' id='email' defaultValue={user.email} />
-                                    </div>
-                                </div>
-                                <div className='row mb-3'>
-                                    <label htmlFor='password' className='col-3 col-form-label ps-1'>
-                                        Password:
-                                    </label>
-                                    <div className='col-5'>
-                                        <input name='password' onInput={(e) => handleInputChange(e, 'password')} className='form-control' type='string' id='password' defaultValue={user.password} />
-                                    </div>
-                                </div>
-                                <div className='row mb-3'>
-                                    <label htmlFor='verifyPassword' className='col-3 col-form-label ps-1'>
-                                        verifyPassword:
-                                    </label>
-                                    <div className='col-5'>
-                                        <input name='verifyPassword' onInput={(e) => handleInputChange(e, 'verifyPassword')} className='form-control' type='string' id='verifyPassword' defaultValue={user.verifyPassword} />
-                                    </div>
-                                </div>
-                                <div className='row mb-3'>
-
-                                    <label htmlFor='phoneNumber' className='col-3 col-form-label ps-1'>
-                                        Phone Number:
-                                    </label>
-                                    <div className='col-5'>
-                                        <input name='phoneNumber' onInput={(e) => handleInputChange(e, 'phoneNumber')} className='form-control' type='string' id='phoneNumber' defaultValue={user.phoneNumber} />
-                                    </div>
-                                </div>
-                                <div className='row mb-3'>
-                                    <label htmlFor='gender' className='col-3 col-form-label ps-1'>
-                                        Gender:
-                                    </label>
-                                    <div className='col-5'>
-                                        <select name='gender' defaultValue={user.gender} className='form-control' id='gender' onInput={(e) => handleInputChange(e, 'gender')} required>
-                                            <option defaultValue='true' disabled hidden>
-                                                Select Gender
-                                            </option>
-                                            <option defaultValue='true'>Male</option>
-                                            <option defaultValue='false'>Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className='row mb-3'>
-                                    <label htmlFor='dateOfBirth' className='col-3 col-form-label ps-1'>
-                                        Date of birth:
-                                    </label>
-                                    <div className='col-5'>
-                                        <input
-                                            name='dateOfBirth'
-                                            className='form-control'
-                                            type='date'
-                                            id='dateOfBirth'
-                                            defaultValue={user.dateOfBirth}
-                                            onInput={(e) => {
-                                                handleDateChange(e);
-                                                handleInputChange(e, 'dateOfBirth');
-                                            }} />
-                                        {validationError && (
-                                            <div className='text-danger'>{validationError}</div>
-                                        )}
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className='col-3 border m-4  h-75'>
-                                <div className='row'>
-                                    <div className='col-sm-10'>
-                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                            <img
-                                                src={selectedFile ? URL.createObjectURL(selectedFile) : defaultImageUrl}
-                                                alt='Profile'
-                                                style={{ width: '150px', height: '150px', marginBottom: '10px' }}
-                                            />
-                                        </div>
-                                        <input
-                                            type='file'
-                                            accept='image/*'
-                                            id='profileImage'
-                                            defaultValue={user.profilePic}
-                                            onInput={(e) => {
-                                                handleFileChange(e);
-                                                handleInputChange(e, 'profilePic');
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+        <div className="wrapper wrapper--w680">
+          <div className="card card-4">
+            <div className="card-body">
+              <form method="POST">
+                <div className="row row-space">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <h2 className="title label ">
+                        {localStorage.getItem(TOKEN_NAME)? "Edit Profile" : "Sign up"}
+                      </h2>
                     </div>
+                  </div>
+                  <div className="col-2 text-center">
+                    <div className="input-group">
+                      <label className="label" htmlFor="profilePic">
+                        Profile Picture
+                      </label>
+                      <div className="profile-pic-container m-1">
+                        {selectedFile ? (
+                          <img
+                            src={URL.createObjectURL(selectedFile)}
+                            alt="Profile"
+                            className="profile-pic"
+                          />
+                        ) : user.profilePic ? (
+                          <img
+                            src={user.profilePic}
+                            alt="Profile"
+                            className="profile-pic"
+                          />
+                        ) : (
+                          <div className="default-profile-pic">
+                            <FontAwesomeIcon icon="user-circle" size="3x" />
+                          </div>
+                        )}
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        id="profileImage"
+                        defaultValue={user.profilePic}
+                        onInput={(e) => {
+                          handleFileChange(e);
+                          handleInputChange(e, "profilePic");
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
-
-                <div className='col-4'>
-                    <img
-                        src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        style={{ maxWidth: '400px', height: '550px' }}
-                        alt="Your Alt Text"
-                    />
+                <div className="row row-space">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="firstName">
+                        First name
+                      </label>
+                      <input
+                        className="input--style-4"
+                        onInput={(e) => handleInputChange(e, "firstName")}
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        defaultValue={user.firstName}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="lastName">
+                        Last name
+                      </label>
+                      <input
+                        className="input--style-4"
+                        onInput={(e) => handleInputChange(e, "lastName")}
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                      />
+                    </div>
+                  </div>
                 </div>
-
-
+                <div className="row row-space">
+                  <div className="col-2">
+                    <label className="label" htmlFor="dateOfBirth">
+                      Birthday
+                    </label>
+                    <div className="input-group-icon">
+                      <input
+                        name="dateOfBirth"
+                        className="input--style-4 js-datepicker"
+                        type="date"
+                        id="dateOfBirth"
+                        defaultValue={user.dateOfBirth}
+                        onInput={(e) => {
+                          handleDateChange(e);
+                          handleInputChange(e, "dateOfBirth");
+                        }}
+                      />
+                      {validationError && (
+                        <div className="text-danger">{validationError}</div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="gender">
+                        Gender
+                      </label>
+                      <div className="p-t-10">
+                        <select
+                          className="input--style-4 gender-select"
+                          name="gender"
+                          defaultValue={user.gender}
+                          id="gender"
+                          onInput={(e) => handleInputChange(e, "gender")}
+                          required
+                        >
+                          <option defaultValue="true" disabled hidden>
+                            Select Gender
+                          </option>
+                          <option defaultValue="true">Male</option>
+                          <option defaultValue="false">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row row-space">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="email">
+                        Email
+                      </label>
+                      <input
+                        className="input--style-4"
+                        onInput={(e) => handleInputChange(e, "email")}
+                        type="email"
+                        name="email"
+                        id="email"
+                        defaultValue={user.email}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="phoneNumber">
+                        Phone Number
+                      </label>
+                      <input
+                        className="input--style-4"
+                        type="text"
+                        name="phoneNumber"
+                        onInput={(e) => handleInputChange(e, "phoneNumber")}
+                        id="phoneNumber"
+                        defaultValue={user.phoneNumber}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="password">
+                        Password
+                      </label>
+                      <input
+                        className="input--style-4"
+                        type="text"
+                        name="password"
+                        onInput={(e) => handleInputChange(e, "password")}
+                        id="password"
+                        defaultValue={user.password}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="verifyPassword">
+                        Verify Password
+                      </label>
+                      <input
+                        className="input--style-4"
+                        type="text"
+                        name="phoneNumber"
+                        onInput={(e) => handleInputChange(e, "verifyPassword")}
+                        id="verifyPassword"
+                        defaultValue={user.verifyPassword}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
-        </div >
-
+          </div>
+        </div>
+      </div>
     );
 }
 export default ProfileInput

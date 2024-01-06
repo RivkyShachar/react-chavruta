@@ -5,6 +5,8 @@ import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import { useDispatch } from 'react-redux';
 import { setLocation } from '../../../redux/featchers/userSlice';
+import "./register.css";
+
 const LocationInput = () => {
 
   const [value, setValue] = useState('')
@@ -18,23 +20,34 @@ const LocationInput = () => {
   };  
 
   return (
-    <div className='col-8 border'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-7 ms-5 mt-5'>
-            <h2 className="mb-5">We would like to know where do you live</h2>
-            <form>
-              <div className='row mb-3'>
-                <label htmlFor='state' className='col-3 col-form-label ps-1'>
-                  State:
-                </label>
-                <Select options={options} value={value} onChange={changeHandler} />
+    <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+      <div className="wrapper wrapper--w680">
+        <div className="card card-4">
+          <div className="card-body">
+            <div className="row row-space">
+              <div className="col">
+                <h2 className="title label ">
+                  We would like to know where do you live
+                </h2>
+                <form>
+                  <div className="row mb-3 input-group">
+                    <label htmlFor="state" className="label">
+                      Country:
+                    </label>
+                    <select
+                      className="input--style-4 location-select"
+                      options={options}
+                      value={value}
+                      onChange={changeHandler}
+                    />
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 
