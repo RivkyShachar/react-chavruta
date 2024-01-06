@@ -25,7 +25,7 @@ import {
 const ProfileInput = () => {
     const dispatch = useDispatch();
     const requestStudy = useSelector((myStore) => myStore.requestSlice.request);
-
+    const [selectedTopics, setSelectedTopics] = useState([]);
     const [showMoreInfo, setShowMoreInfo] = useState(false);
     const [ratings, setRatings] = useState({
         ageRange: '',
@@ -40,7 +40,17 @@ const ProfileInput = () => {
     let user = useSelector(myStore => myStore.userSlice.user)
     const requestWithoutShowMoreOptions = { ...requestStudy };
     delete requestWithoutShowMoreOptions.showMoreOptions;
-  
+
+
+
+    useEffect(() => {
+        dispatch(setTopics({topics:[...selectedTopics]}));
+        console.log("selectedTopics",selectedTopics);
+
+    }, [selectedTopics])
+
+
+
     const handleInputChange = (e, inputName) => {
         const ratingValue = e.target.value;
         setRatings((prevRatings) => ({
@@ -71,10 +81,7 @@ const ProfileInput = () => {
                     console.error('Invalid maxDuration input');
                 }
                 break;
-            case 'topic':
-                dispatch(setTopics({ topic: [inputValue] }));
-                console.log("request",requestStudy.topics);
-                break;
+
             case 'startDate':
                 dispatch(startDateAndTime({ startDateAndTime: inputValue }));
                 break;
@@ -133,7 +140,7 @@ const ProfileInput = () => {
             console.log("post created?");
             console.log(data);
             alert(data.data.msg);
-            if(data.status===201){
+            if (data.status === 201) {
                 nav("/user");
             }
             // await handleUserInfo(dispatch);
@@ -142,7 +149,7 @@ const ProfileInput = () => {
             alert(error.data ? error.data.data.msg : 'An error occurred');
         }
     };
-    
+
 
     return (
         <div className='container'>
@@ -155,18 +162,12 @@ const ProfileInput = () => {
                                     Create Post
                                 </h2>
                                 <div className='row mb-3 '>
-
-                                    <label htmlFor='topic' className='col-3 col-form-label'>
-                                        Topic:
-                                    </label>
-                                    <Sefaria/>
+                                    <Sefaria selectedTopics={selectedTopics} setSelectedTopics={setSelectedTopics} />
                                 </div>
-
-
                                 <div className='row mb-3'>
-                                    <label htmlFor='duration' className='col-3 col-form-label ps-1'>
+                                    <h5 htmlFor='duration' className='col-3 col-form-label ps-1'>
                                         Duration:
-                                    </label>
+                                    </h5>
                                     <div className="container mt-3">
                                         <label htmlFor="minDuration">Min Duration:</label>
                                         <input
@@ -209,7 +210,7 @@ const ProfileInput = () => {
                                 </div>
                                 <div className='row mb-3'>
                                     <label htmlFor='preferredLanguages' className='col-3 col-form-label ps-1'>
-                                    preferredLanguages:
+                                        Preferred Languages:
                                     </label>
                                     <div className='col-5'>
                                         <select

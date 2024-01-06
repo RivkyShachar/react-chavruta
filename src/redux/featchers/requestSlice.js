@@ -12,7 +12,7 @@ import React from 'react'
 const initialState = {
 
     request: {
-        topics: ["tanya"],
+        topics: [],
         studyDuration: {
             min: 5,
             max: 40
@@ -53,11 +53,9 @@ const requestSlice = createSlice({
             state.showMoreOptions = action.payload.showMoreOptions;
         },
         setTopics: (state, action) => {
-            state.request.topics = action.payload.topics;
+            state.request.topics = [...action.payload.topics];
         },
         setStudyDuration: (state, action) => {
-            console.log("set study duraton");
-            console.log(action.payload.studyDuration);
             state.request.studyDuration = action.payload.studyDuration;
         },
         startDateAndTime: (state, action) => {
