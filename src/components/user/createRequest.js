@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import requestReducer, { commonLanguages } from '../../redux/featchers/requestSlice';
 import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
+import Sefaria from '../common/sefaria';
 import {
     setTopics,
     setStudyDuration,
@@ -158,18 +159,7 @@ const ProfileInput = () => {
                                     <label htmlFor='topic' className='col-3 col-form-label'>
                                         Topic:
                                     </label>
-                                    {/* <div className='col-2'>
-                                        <select
-                                            name='topic'
-                                            className='form-control'
-                                            id='topic'
-                                            onChange={(e) => handleInputChange(e, 'topic')}
-                                            value={requestStudy.topic}
-                                        >
-                                            <option value='Tanya'>Tanya</option>
-                                            <option value='Chasidut'>Chasidut</option>
-                                        </select>
-                                    </div> */}
+                                    <Sefaria/>
                                 </div>
 
 

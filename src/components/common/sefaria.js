@@ -31,27 +31,29 @@ function Sefaria() {
   };
 
   return (
-    <div>
-      <InputGroup className="mb-3">
-        <FormControl
-          placeholder="Type to search..."
-          value={searchTerm}
-          onChange={handleInputChange}
-        />
-      </InputGroup>
-      <ListGroup>
-        {options.map((option, index) => (
-          <ListGroup.Item
-            key={index}
-            action
-            onClick={() => handleAddTopic(option)}
-            style={{ cursor: 'pointer' }}
-          >
-            {option}
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
-      <div>
+    <div className='row'>
+      <div className='col-6'>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Type to search..."
+            value={searchTerm}
+            onChange={handleInputChange}
+          />
+        </InputGroup>
+        <ListGroup>
+          {options.map((option, index) => (
+            <ListGroup.Item
+              key={index}
+              action
+              onClick={() => handleAddTopic(option)}
+              style={{ cursor: 'pointer' }}
+            >
+              {option}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </div>
+      <div className='col-6'>
         <h2>Selected Topics:</h2>
         <ListGroup>
           {selectedTopics.map((topic, index) => (
