@@ -6,7 +6,6 @@ import { API_URL, TOKEN_NAME, doApiRequest } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import { handleUserInfo } from '../../utill/authService';
 
-
 const Login = () => {
   const dispatch = useDispatch();
   const [isSubmitted, setIsSubmitted] = useState(false);
