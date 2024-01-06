@@ -101,7 +101,7 @@ const ProfileInput = () => {
                                         Last name:
                                     </label>
                                     <div className='col-2'>
-                                        <input name='lastName' onInput={(e) => handleInputChange(e, 'lastName')} className='form-control' type='string' id='lastName' />
+                                        <input name='lastName' onInput={(e) => handleInputChange(e, 'lastName')} className='form-control' type='string' id='lastName'  defaultValue={user.lastName} />
                                     </div>
 
                                 </div>

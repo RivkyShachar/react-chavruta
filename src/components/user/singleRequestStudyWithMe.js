@@ -39,6 +39,8 @@ const SingleRequestStudyWithMe = ({ requests }) => {
         try {
             setSelectedRequest(request);
             setIsCardVisible(request);
+            window.location.reload();
+
         } catch (error) {
             console.error("error", error);
         }

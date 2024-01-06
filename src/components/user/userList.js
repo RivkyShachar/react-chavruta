@@ -41,6 +41,8 @@ const UserList = ({ selectedRequest, onClose }) => {
             const data = await doApiRequest(url, "POST");
             if (data.status === 200) {
                 console.log("matched ");
+                window.location.reload();
+
             }
         } catch (error) {
             console.error("error", error);
@@ -81,6 +83,7 @@ const UserList = ({ selectedRequest, onClose }) => {
                                 <button className="btn btn-danger" onClick={() => clickNo(user)}>
                                     No
                                 </button>
+                              
                             </div>
                         ))}
                     </ul>

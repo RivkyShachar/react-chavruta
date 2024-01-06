@@ -25,6 +25,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
       const data = await doApiRequest(url, "POST");
       if(data.status===200){
         console.log("added to yes");
+        window.location.reload();
         alert("added succesfully")
       }
     } catch (error) {

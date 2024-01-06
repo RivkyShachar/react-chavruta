@@ -25,3 +25,8 @@
   }
   
   /* Add this CSS in your component's CSS file or global styles */
+
+  .customPinkColorClass {
+    background-color: #fdb5ff; /* Replace with your actual pink color code */
+  }
+  

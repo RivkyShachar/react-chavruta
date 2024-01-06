@@ -14,6 +14,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
       const data = await doApiRequest(url, "POST");
       if (data.status === 200) {
+        window.location.reload();
         console.log("added to yes");
       }
     } catch (error) {
@@ -59,16 +60,15 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
             <p className="card-text">Start Date: {selectedRequest.startDateAndTime}</p>
             <p className="card-text">Study Duration: {selectedRequest.studyDuration.max - selectedRequest.studyDuration.min} </p>
             <p className="card-text">Description: {selectedRequest.description}</p>
-            <p className="card-text">id user: {selectedRequest.userId._id}</p>
-            <p className="card-text">id request: {selectedRequest._id}</p>
+          
 
-            <div className="d-flex justify-content-between mt-3">
+            <div className="d-flex justify-content-center mt-5">
               {localStorage.getItem("USER_ID") != selectedRequest.userId._id && (
-                <button className="btn btn-warning" onClick={() => clickYes(selectedRequest)}>
+                <button className="btn btn-success mx-3" onClick={() => clickYes(selectedRequest)}>
                   YES
                 </button>
               )}
-              <button className="btn btn-danger" onClick={onClose}>
+              <button className="btn btn-danger mx-3" onClick={onClose}>
                 Close
               </button>
             </div>

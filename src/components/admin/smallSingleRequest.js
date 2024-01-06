@@ -27,6 +27,7 @@ const SmallSingleRequest = ({ requests }) => {
 
   const clickYes = async (request) => {
     try {
+      window.location.reload();
       setSelectedRequest(request);
     } catch (error) {
       console.error("error", error);

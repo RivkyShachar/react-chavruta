@@ -49,7 +49,6 @@ const OtherUserRequestList1 = ( {userId}) => {
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>
                         ) : (
-
                             <SmallSingleRequest requests={requestList} type={"myRequests"} />
                         )}
                     </div>
