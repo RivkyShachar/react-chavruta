@@ -22,6 +22,7 @@ const UserProfileMy = React.lazy(() => import('./components/user/userProfile'));
 const Error = React.lazy(() => import("./components/common/error"));
 const UserProfileAdmin = React.lazy(() => import("./pages/admin/userProfile"));
 const UserProfile = React.lazy(() => import("./pages/user/userProfile"));
+const Sefaria = React.lazy(() => import("./components/common/sefaria"));
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const AppRoutes = () => {
                     <Route path='/' element={<Home />}>
                         <Route path='/signUp' element={<SignUp />} />
                         <Route path='/login' element={<Login />} />
+                        <Route path='/sefaria' element={<Sefaria />} />
                     </Route>
 
                     <Route path='/user' element={<Layout />}>
