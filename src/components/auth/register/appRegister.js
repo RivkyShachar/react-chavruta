@@ -12,6 +12,7 @@ import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
 import { verifyToken } from '../../../services/apiService';
 import { handleUserInfo } from '../../../utill/authService';
+import "./register.css"
 
 const AppRegister = () => {
 
@@ -100,7 +101,7 @@ const AppRegister = () => {
   };
 
   return (
-    <div className='container '>
+    <div className='container-register'>
       <div className='row'>
         <form>
           {steps.map((step, index) => (

@@ -46,21 +46,40 @@ const Topics = () => {
 
 
   return (
-    <div className='col-8 border'>
-      <div className='container'>
-        <div className=' ms-5 mt-5'>
-          <h2 className="mb-5">We would like to know the topics that you are interested in</h2>
-          <div>
-            {topicsList.map((topic, index) => (
-              <button
-                type='button'
-                key={index}
-                className={`btn ${selectedTopics.includes(topic) ? 'btn-secondary' : 'btn-warning'} m-2`}
-                onClick={() => handleButtonClick(topic)}
-              >
-                {topic}
-              </button>
-            ))}
+    <div className="container-register">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card card-4">
+              <div className="card-body">
+              <div className="col-2">
+                <div className="input-group">
+                <h2 className="title label">
+                  Choose topics that you are interested
+                    </h2>
+                  </div>
+                  </div>
+                <div class="row">
+                  {topicsList.map((topic, index) => (
+                    <div className="col-md-4  ">
+                      <button
+                        type="button"
+                        key={index}
+                        className={`btn ${
+                          selectedTopics.includes(topic)
+                            ? "btn topic-list-2"
+                            : "btn topic-list "
+                        } m-1 btn btn-tl`}
+                        
+                        onClick={() => handleButtonClick(topic)}
+                      >
+                        {topic}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

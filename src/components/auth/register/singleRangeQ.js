@@ -35,11 +35,11 @@ const SingleRangeQ = ({ title, questionNumber }) => {
     return (
         <div>
             <h4>{title}</h4>
-            <div>
+            <div className="row" >
                 {[1, 2, 3, 4, 5].map((number) => (
                     <button type='button'
                         key={number}
-                        className={`btn ${selectedNumber === number ? 'btn-primary' : 'btn-outline-primary'}`}
+                        className={`btn ${selectedNumber === number ? 'btn topic-list-2' : 'btn topic-list'} m-1 col-1 btn btn-tl`}
                         onClick={() => handleNumberSelection(number, questionNumber)}
                     >
                         {number}

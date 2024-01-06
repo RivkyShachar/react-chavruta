@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { setEducationsInput } from '../../../redux/featchers/userSlice';
-
+import "./register.css";
 const EducationInput = () => {
     
     const dispatch = useDispatch();
@@ -29,23 +29,26 @@ const EducationInput = () => {
     };
 
     return (
-        <div className='container m-5'>
-            <div className='row'>
+        <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+        <div className="wrapper wrapper--w680">
+          <div className="card card-4">
+            <div className="card-body">
+              <div className="row row-space">
                 <div className='col-5 '>
-                    <h2 className='mb-5'>What is your education </h2>
-                    <div className='education mt-3'>
-                        <label>
-                            <b>Education:</b>
+                    <h2 className='title label '>What is your education</h2>
+                    <div className='education mt-3 input-group'>
+                        <label className="label">
+                            Education:
                         </label>
                         <input
                             placeholder='School'
                             type='text'
-                            className='form-control my-2'
+                            className="input--style-4 js-datepicker"
                             value={education.name}
                             onChange={(e) => handleEducationChange('name', e.target.value)}
                         />
                         <select
-                            className='form-control'
+                           className="input--style-4 education-select"
                             value={education.degree}
                             onChange={(e) => handleEducationChange('degree', e.target.value)}
                         >
@@ -55,7 +58,7 @@ const EducationInput = () => {
                             <option value="Master's Degree">Master's Degree</option>
                         </select>
                         <div className='row my-3'>
-                            <div className='row'>
+                            <div className='row row-space'>
                                 <div className='col-2 mt-1'>
                                     <label>Start Date:</label>
                                 </div>
@@ -83,7 +86,7 @@ const EducationInput = () => {
                         <button
                            type='button'
                            name='yaeli'
-                           className='my-2 btn btn-outline-primary'
+                           className=' btn-tl btn topic-list '
                            onClick={() => {
                                handleAddEducation();
                            }}
@@ -95,8 +98,8 @@ const EducationInput = () => {
                 </div>
 
                 {/* Display the list of education on the right side */}
-                <div className='col-5 ms-4 border'>
-                    <h2 className='mb-4'>Education List</h2>
+                <div className='col-5 ms-4 input--style-4'>
+                    <h2 className='list' >Education List</h2>
                     <ul className='list-group custom-list'>
                         {educations.map((edu, index) => (
                             <li key={index} className='list-group-item custom-list-item'>
@@ -115,7 +118,10 @@ const EducationInput = () => {
                 </div>
 
             </div>
-        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
     );
 };
 

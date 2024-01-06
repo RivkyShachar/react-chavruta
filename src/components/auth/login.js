@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { API_URL,TOKEN_NAME,doApiRequest } from '../../services/apiService';
+import { API_URL, TOKEN_NAME, doApiRequest } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import { handleUserInfo } from '../../utill/authService';
 
@@ -43,9 +43,9 @@ const Login = () => {
       } else {
         nav("/");
       }
-    } 
+    }
     catch (err) {
-      console.log("err",err);
+      console.log("err", err);
       setIsSubmitted(false);
       alert(err.response.data.msg);
     }
@@ -53,36 +53,58 @@ const Login = () => {
 
 
   return (
-    <div className='container mt-5'>
-      <div className='d-flex align-items-center justify-content-center'>
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-            Log in to your account
-          </h2>
+    <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+      <div className="wrapper wrapper--w680">
+        <div className="card card-4">
+          <div className="card-body">
+            <div className="row row-space">
+              <div className="col-2">
+                <div className="input-group">
+                  <h2 className="title label ">Log in</h2>
+                </div>
+              </div>
+
+              <form onSubmit={(e) => onSub(e)}>
+                <div className="row row-space">
+                  <div className="col-2">
+                    <label className="label" htmlFor="email">
+                      Email
+                    </label>
+
+                    <input
+                      name="email"
+                      className="input--style-4"
+                      type="email"
+                      id="email"
+                    />
+
+                  </div>
+                  <div className="col-2">
+                    <label className="label" htmlFor="password">
+                      Password
+                    </label>
+
+                    <input
+                      name="password"
+                      className="input--style-4"
+                      type="password"
+                      id="password"
+                    />
+                  </div>
+
+                  <div className="d-flex justify-content-center mt-5">
+                    <button
+                      type="submit"
+                      className="btn btn-success col-4 mx-2"
+                    >
+                      Log in
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <form onSubmit={(e) => onSub(e)} className='w-50'>
-          <div className='row mb-3'>
-            <label htmlFor='email' className='col-sm-2 col-form-label'>
-              Email:
-            </label>
-            <div className='col-sm-10'>
-              <input name='email' className='form-control' type='email' id='email' />
-            </div>
-          </div>
-          <div className='row mb-3'>
-            <label htmlFor='password' className='col-sm-2 col-form-label ps-1'>
-              Password:
-            </label>
-            <div className='col-sm-10'>
-              <input name='password' className='form-control' type='password' id='password' />
-            </div>
-          </div>
-          <div className='d-flex justify-content-center mt-5'>
-            <button type='submit' className='btn btn-success col-4 mx-2'>
-              Log in
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   );
