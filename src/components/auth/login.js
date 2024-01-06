@@ -38,8 +38,10 @@ const Login = () => {
       await handleUserInfo(dispatch);
       if (localStorage.getItem("ROLE") === "admin") {
         nav("/admin");
+        window.location.reload();
       } else if (localStorage.getItem("ROLE") === "user") {
         nav("/user");
+        window.location.reload();
       } else {
         nav("/");
       }
