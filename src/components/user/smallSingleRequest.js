@@ -16,7 +16,8 @@ const SmallSingleRequest = ({ requests, type }) => {
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
   const nav = useNavigate();
   const closeDone = {
-    backgroundColor: '#ffcccc'  };
+    backgroundColor: '#ffcccc'
+  };
   const open = {
     backgroundColor: '#ccffcc', // Replace with your actual pink color code
   };
@@ -36,6 +37,7 @@ const SmallSingleRequest = ({ requests, type }) => {
     setSelectedRequest(null);
   };
 
+  console.log("requests",requests);
   const handleRequestClickSingleUser = (request) => {
 
     nav(`/user/singleUser/${request.finalChavruta._id}`, { replace: true })
@@ -60,6 +62,7 @@ const SmallSingleRequest = ({ requests, type }) => {
 
 
   const filteredRequestList = requests.filter((request) => {
+    console.log("searchV",searchV);
     const topicsString = request.topics.join(' '); // Convert the topics array to a string
     console.log("topicsString", topicsString);
     return topicsString.toLowerCase().includes(searchV.toLowerCase());
@@ -101,24 +104,25 @@ const SmallSingleRequest = ({ requests, type }) => {
     <div className="row mt-4">
       {filteredRequestList.map((request) => (
         <div key={request._id} className="col-md-4 mb-4 position-relative">
+
           <div className="card d-flex flex-column h-100"
-           style={
-            request.state === 'open'
-              ? open
-              : request.state === 'close' || request.state === 'done'
-                ? closeDone
-                : past
-          }>
+          style={
+              request.state === 'open'
+                ? open
+                : request.state === 'close' || request.state === 'done'
+                  ? closeDone
+                  : past
+            }>
 
             <div className="card-body">
               <Link
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
               >
-                <p className="card-text">Topics: {request.topics.join(', ')}</p>
-                <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
-                {/* <p className="card-text">Level Of Study: {request.preferredLanguages}</p> */}
-                <p className="card-text">State: {request.state}</p>
+                 <p className="card-text">Topics: {request.topics.join(', ')}</p> 
+                 <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p> 
+                 <p className="card-text">Level Of Study: {request.preferredLanguages}</p> 
+                 <p className="card-text">State: {request.state}</p> 
                 <p className="card-text">Start Date: {request.startDateAndTime}</p>
                 <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
                 <p className="card-text">Description: {request.description}</p>

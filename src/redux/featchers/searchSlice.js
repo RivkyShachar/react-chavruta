@@ -5,6 +5,7 @@ const searchSlice = createSlice({
   initialState: {
     searchValue: ""
   },
+  
   reducers: {
     setSearchValueName: (state, action) => {
       state.searchValue = action.payload.searchValue;

@@ -68,6 +68,20 @@ const SingleRequestMyProfile = ({ requests }) => {
             console.error("error", error);
         }
     };
+    
+    const clickCancle = async (request) => {
+        try {
+            const url = API_URL + `/studyRequests/cancleMeeting/${request._id}`;
+            const data = await doApiRequest(url, "PUT");
+            if (data.status === 201) {
+
+                window.location.reload();
+                console.log("cancled");
+            }
+        } catch (error) {
+            console.error("error", error);
+        }
+    };
     const calculateCountdown = (startDateAndTime) => {
         const currentTime = new Date();
 
@@ -161,7 +175,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                                 <button className="btn border-info border-2 mb-2" >
                                     {calculateCountdown(request.startDateAndTime)}
                                 </button>
-                                <button className="btn border-danger border-2" onClick={() => clickDelete(request)}>
+                                <button className="btn border-danger border-2" onClick={() => clickCancle(request)}>
                                     Cancle meeting
                                 </button>
                             </div>}
