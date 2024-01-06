@@ -48,7 +48,7 @@ const OtherUserRequestList = ( {userId}) => {
                             <h2>No requests found</h2>
                         ) : (
 
-                            <SmallSingleRequest requests={requestList} />
+                            <SmallSingleRequest requests={requestList} type={"requestList"} />
                         )}
                     </div>
         

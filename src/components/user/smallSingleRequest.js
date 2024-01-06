@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import { useNavigate} from 'react-router-dom';
 import UserList from './userList';
+import UserHome from './userHome';
+import SingleUser from './singleUser';
 
 
 const SmallSingleRequest = ({ requests, type }) => {
@@ -16,6 +18,7 @@ const SmallSingleRequest = ({ requests, type }) => {
 
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
+    setMaor(true);
   };
 
   const handleRequestClick1 = (request) => {
@@ -32,7 +35,6 @@ const SmallSingleRequest = ({ requests, type }) => {
 
 };
 const handleCloseDetails1 = () => {
-  // setSelectedRequest(null);
   setIsCardVisible(null);
 };
 
@@ -85,7 +87,7 @@ const handleCloseDetails1 = () => {
             }`}>
             <div className="card-body">
               <Link
-                onClick={() => handleRequestClick1(request)}
+                onClick={() => handleRequestClick(request)}
                 className="request-link"
               >
                 <p className="card-text">Topics: {request.topics.join(', ')}</p>

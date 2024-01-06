@@ -50,7 +50,7 @@ const OtherSingleUser = () => {
             </div>
         </div>
         
-            <div className='bg-danger'>
+            <div className='bg-d'>
                <OtherUserRequestList userId={parameter} />
             </div>
         </div>

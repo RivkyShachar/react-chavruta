@@ -3,14 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import { API_URL, doApiRequest } from '../../services/apiService';
 
 const UserList = ({ selectedRequest, onClose }) => {
-    let filteredUserList = [{ firstName: "yaeli", lastName: "globerman", _id: "1" }, { firstName: "yaeli", lastName: "globerman" }, { firstName: "yaeli", lastName: "globerman" }]
 
     const [userList, setUserList] = useState([]);
-    const { id } = useParams();
 
     useEffect(() => {
         if (!selectedRequest) {
-            return; // Don't fetch data if no request is selected
+            return; 
         }
 
         const fetchData = async () => {
@@ -33,7 +31,7 @@ const UserList = ({ selectedRequest, onClose }) => {
 
 
     if (!selectedRequest) {
-        return null; // Don't rend//er anything if no request is selected
+        return null; 
     }
     const clickYesUser = async (user) => {
         try {
