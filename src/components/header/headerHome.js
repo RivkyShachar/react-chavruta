@@ -4,6 +4,7 @@ import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
 import { useNavigate} from 'react-router-dom';
 import { TOKEN_NAME } from '../../services/apiService';
+import { Outlet } from "react-router-dom"
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -23,9 +24,13 @@ const Header = () => {
     const handleLogout = () => {
         localStorage.clear();
         nav("/",{ replace: true })
+        window.location.reload();
+
     };
 
     return (
+        <div>
+
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/user">
@@ -87,6 +92,9 @@ const Header = () => {
                 </div>
             </nav>
         </div>
+        <Outlet/>
+        </div>
+
     );
 };
 

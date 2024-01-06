@@ -28,7 +28,9 @@ const HeaderAdmin = () => {
 
     const handleLogout = () => {
         localStorage.clear();
-        nav("/",{ replace: true })
+        nav("/")
+        window.location.reload();
+
     };
 
     const toggleMenu = () => {
