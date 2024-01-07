@@ -21,6 +21,7 @@ const UserProfileAdmin = React.lazy(() => import("./pages/admin/userProfile"));
 const UserProfile = React.lazy(() => import("./pages/user/userProfile"));
 const Sefaria = React.lazy(() => import("./components/common/sefaria"));
 const Navbar = React.lazy(() => import("./components/header/navbar"));
+const Index = React.lazy(() => import("./components/common/index"));
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const AppRoutes = () => {
             <Router>
                 <Routes>
                     <Route element={<Navbar/>}>
-                        <Route path='/'>
+                        <Route path='/' element={<Index/>}>
                             <Route path='/signUp' element={<SignUp />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/sefaria' element={<Sefaria />} />

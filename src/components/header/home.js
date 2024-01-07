@@ -32,32 +32,37 @@ const Home = () => {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
+              <Link className="nav-link" to="/about">
+                About
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/signUp">
-                Sign up
-              </Link>
-            </li>
-         
+            <li>
+            <Link className="nav-link" to="/contact">
+              Contact us
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/login">
+              Login
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/signUp">
+              Sign up
+            </Link>
+          </li>
 
-          </ul>
-          {localStorage.getItem(TOKEN_NAME) && (
-            <button className="btn btn-danger" onClick={handleLogout}>
-              Logout
-            </button>
-          )}
-        </div>
-      </nav>
-      <Outlet />
+
+        </ul>
+        {localStorage.getItem(TOKEN_NAME) && (
+          <button className="btn btn-danger" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
     </div>
+      </nav >
+  <Outlet />
+    </div >
   );
 };
 
