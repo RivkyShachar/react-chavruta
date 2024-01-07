@@ -168,7 +168,7 @@ const ProfileInput = () => {
                 <div className="row row-space">
                   <div className="col-2">
                     <label className="label" htmlFor="dateOfBirth">
-                      Birthday
+                      Birth day
                     </label>
                     <div className="input-group-icon">
                       <input

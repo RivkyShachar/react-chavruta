@@ -57,7 +57,7 @@ const AppRegister = () => {
       if (data.status === 201) {
         nav("/user");
       }
-      else if(data.status === 400){
+      else if (data.status === 400) {
         console.log("status 400");
       }
 
@@ -102,7 +102,7 @@ const AppRegister = () => {
 
   return (
     <div className='container-register'>
-      <div className='row'>
+      <div className='row '>
         <form>
           {steps.map((step, index) => (
             <div key={index} style={{ display: currentStep === index ? 'block' : 'none' }}>
@@ -110,20 +110,22 @@ const AppRegister = () => {
             </div>
           ))}
           <div className='container'>
-            <div className='row'>
-              <button type='button' className='btn btn-secondary col-2 mx-2' onClick={handleBackClick}>
+            <div className='row justify-content-center'>
+              <button type='button' className='btn btn-secondary col-4 mx-2 ' onClick={handleBackClick}>
                 Back
               </button>
+
               {currentStep === 5 ? (
-                <button type='button' className='btn btn-success col-2 mx-2' onClick={handleSubmitButtonClick}>
+                <button type='button' className='btn btn-success col-4 mx-2' onClick={handleSubmitButtonClick}>
                   Submit
                 </button>
               ) : (
-                <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
+                <button type='button' className='btn btn-info col-4 mx-2' onClick={handleContinueClick}>
                   Continue
                 </button>
               )}
             </div>
+
           </div>
         </form>
       </div>
