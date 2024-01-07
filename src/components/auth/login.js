@@ -48,9 +48,9 @@ const Login = () => {
       }
     }
     catch (err) {
-      console.log("err", err);
+      console.log("err", err.response.data.msg);
       setIsSubmitted(false);
-      alert(err.response.data.msg);
+
     }
   }
 

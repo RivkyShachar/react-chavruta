@@ -34,7 +34,6 @@ export const doApiRequest = async (_url, _method = 'GET', _body = {}) => {
     // Handle different types of errors
     if (err.response) {
       console.error("Server responded with an error:", err.response.data);
-      alert(err.response.data.msg, "Need to route to blblb");
     } else if (err.request) {
       console.error("No response received:", err.request);
     } else {

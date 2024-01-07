@@ -59,6 +59,7 @@ const AppRegister = () => {
 
       if (data.status === 201) {
         nav("/user");
+        window.location.reload();
       } else if (data.status === 400) {
         console.log("status 400");
       }
@@ -79,19 +80,11 @@ const AppRegister = () => {
         nav("/");
       }
     } catch (error) {
-      alert(error.response ? error.response.data.msg : "An error occurred");
     }
   };
 
   const handleContinueClick = () => {
-    if (currentStep === 1) { // Location step
-      if (!selectedCountry) {
-        console.log('Please choose a country before proceeding.');
-        return;
-      }
-    }
-
-    if (currentStep < steps.length - 1) {
+    if (currentStep < 6) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
       handleSubmit(onSubmit);
@@ -143,45 +136,52 @@ const AppRegister = () => {
       <div className="row">
         <div className="col-md-12">
           <div className="d-flex justify-content-evenly mt-4 position-relative">
-            
             {steps.map((step, index) => (
-              <div 
+              <div
                 key={index}
                 style={{ display: currentStep === index ? "block" : "none" }}
               >
                 {step.component}
               </div>
             ))}
-            <div  className="position-absolute top-50 start-0 translate-middle me-5 z-1" >
+            <div className="position-absolute top-50 start-0 translate-middle me-5 z-1">
               {currentStep !== 0 && (
                 <button
                   type="button"
                   className=" btn-back"
                   onClick={handleBackClick}
                 >
-                  {/* <FaArrowLeft /> Replace with your left arrow icon */}
+                  <FaArrowLeft />
                 </button>
               )}
             </div>
-            <div  className="position-absolute top-50 start-100 translate-middle me-5">
-              {currentStep !== 5 ? (
+            <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
+              {currentStep !== 5 && (
                 <button
                   type="button"
                   className="btn-continue"
                   onClick={handleContinueClick}
                 >
-                  {/* <FaArrowRight /> Replace with your right arrow icon */}
+                  <FaArrowRight />
                 </button>
-              ) : (
-                <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
-                  Continue
-                </button>
+              )}
+              {currentStep === 5 && (
+                <div className="d-flex justify-content-center">
+                  <button
+                    type="button"
+                    className="btn-continue "
+                    onClick={handleSubmitButtonClick}
+                  >
+                    <FaArrowRight />
+                  </button>
+                </div>
               )}
             </div>
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 

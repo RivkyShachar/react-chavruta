@@ -38,7 +38,6 @@ const SmallSingleRequest = ({ requests }) => {
   const clickNo = async (request) => {
     try {
       setMaor(false)
-      alert("clicked no");
       setSelectedRequest(request);
       console.log(request);
       const url = API_URL + `/event/markNo/${request._id}`;

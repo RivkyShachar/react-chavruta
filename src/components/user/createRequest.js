@@ -143,7 +143,7 @@ const ProfileInput = () => {
             // await handleUserInfo(dispatch);
         } catch (error) {
             setIsSubmitted(false);
-            alert(error.data ? error.data.data.msg : 'An error occurred');
+            console.log(error.data ? error.data.data.msg : 'An error occurred' );
         }
     };
 
