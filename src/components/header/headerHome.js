@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import { setSearchValueName1 } from '../../redux/featchers/searchSlice1';
-import { useNavigate ,useLocation} from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { TOKEN_NAME } from '../../services/apiService';
 import { Outlet } from 'react-router-dom';
 
@@ -37,11 +37,12 @@ const Header = () => {
           <a className="navbar-brand" href="/user">
             Chavruta
           </a>
+
           <button
             className="navbar-toggler"
             type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavDropdown"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown"
             aria-expanded="false"
             aria-label="Toggle navigation"
