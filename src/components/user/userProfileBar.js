@@ -1,8 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
 
 const UserProfileBar = () => {
+    const nav = useNavigate();
+
     const user = useSelector((myStore) => myStore.userSlice.user);
+  
+    const handleEditProfileClick = () => {
+        nav('/user/editProfile');
+    }
 
     return (
         <div className='container bg-secondary py-3 mb-3' >
@@ -52,6 +59,9 @@ const UserProfileBar = () => {
                                 alt="Your Alt Text"
                                 className="mx-auto d-block"
                             />
+                            <button className='btn btn-warning' onClick={handleEditProfileClick}>Edit profile</button>
+
+
                         </div>
                     </div>
                 </div>

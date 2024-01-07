@@ -46,11 +46,7 @@ const Home = () => {
                 Sign up
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/user/editUser">
-                Update user profile
-              </Link>
-            </li>
+         
 
           </ul>
           {localStorage.getItem(TOKEN_NAME) && (
