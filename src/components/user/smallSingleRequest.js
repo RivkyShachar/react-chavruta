@@ -27,7 +27,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
 
   };
   const open = {
-    backgroundColor: '#ccffcc', // Replace with your actual pink color code
+    // backgroundColor: '#ccffcc', // Replace with your actual pink color code
     // backgroundColor: '#ccffcc', // Replace with your actual pink color code
     border: '5px solid #ccffcc', // Add a 5px black border
   };
@@ -36,7 +36,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   //   backgroundColor: '#ccffcc', // Replace with your actual pink color code
   // };
   const past = {
-    backgroundColor: '#e0e0e0', // Replace with your actual pink color code
+    // backgroundColor: '#e0e0e0', // Replace with your actual pink color code
     border: '5px solid #e0e0e0', // Add a 5px black border
 
     // backgroundColor: '#e0e0e0', // Replace with your actual pink color code
