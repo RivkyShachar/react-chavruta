@@ -122,21 +122,34 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
       console.error("error", error);
     }
   };
-
+  const getRequestClass = (state) => {
+    switch (state) {
+      case 'open':
+        return 'border border-4 border-info';
+      case 'close':
+        return 'border border-4 border-success ';
+      case 'done':
+        return 'border border-4 border-secondary ';
+      case 'past':
+        return 'bg-secondary ';
+      default:
+        return '';
+    }
+  };
   return (
     <div className="row mt-4">
       {filteredRequestList.map((request) => (
-        <div key={request._id} className="col-md-4 mb-4 position-relative">
+        <div key={request._id} className={`col-md-4 mb-4 position-relative }`}>
           <div className="card d-flex flex-column h-100"
-           style={
-            request.state === 'open'
-              ? open
-              : request.state === 'close' || request.state === 'done'
-                ? closeDone
-                : past
-          }>
+          //  style={
+          //   request.state === 'open'
+          //     ? open
+          //     : request.state === 'close' || request.state === 'done'
+          //       ? closeDone
+          //       : past
+          >
 
-            <div className="card-body">
+            <div className={`card-body ${getRequestClass(request.state)}`}>
               <Link
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
@@ -157,39 +170,39 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                     </button>
                   )}
 
-                    {(type === "requestListMarkedYes" || type === "requestList") && (
-                      <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>
-                        No
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
-                  <div className='position-absolute top-0 end-0 mt-2 me-2'>
-                    <button className=" btn-lightblue" onClick={() => handleRequestClick1(request)}>
-                      {request.matchesList.length}
+                  {(type === "requestListMarkedYes" || type === "requestList") && (
+                    <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>
+                      No
                     </button>
-                  </div>
-                )}
-                <div className="mt-auto">
-                  <div className="d-flex justify-content-center my-3">
-                    {(type === "myRequests") &&
-                      (request.zoomLink ?
-                        <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
-                          Start meeting
-                        </a> :
-                        (request.state === 'close') ?
-                          <button className='btn btn-danger' onClick={() => clickDelete(request)}>Cancel meeting</button> :
-                          <button className='btn btn-danger' onClick={() => clickDelete(request)}>Delete</button>
-                      )
-                    }
-                  </div>
+                  )}
+                </div>
+              </div>
+
+              {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
+                <div className='position-absolute top-0 end-0 mt-2 me-2'>
+                  <button className=" btn-lightblue" onClick={() => handleRequestClick1(request)}>
+                    {request.matchesList.length}
+                  </button>
+                </div>
+              )}
+              <div className="mt-auto">
+                <div className="d-flex justify-content-center my-3">
+                  {(type === "myRequests") &&
+                    (request.zoomLink ?
+                      <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
+                        Start meeting
+                      </a> :
+                      (request.state === 'close') ?
+                        <button className='btn btn-danger' onClick={() => clickDelete(request)}>Cancel meeting</button> :
+                        <button className='btn btn-danger' onClick={() => clickDelete(request)}>Delete</button>
+                    )
+                  }
                 </div>
               </div>
             </div>
           </div>
-        ))
+        </div>
+      ))
         // )
       }
 
