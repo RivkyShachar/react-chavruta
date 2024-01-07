@@ -135,6 +135,11 @@ const ProfileInput = () => {
       default:
         // Handle default case or do nothing
         break;
+        const newOverallValidation =
+          validatFirstName || validatLastName || validatEmail || validatPassword || validatPhoneNumber || validatVerifyPassword || validationError ? "true" : "false";
+        dispatch(setValidate({ value: newOverallValidation }));
+        
+
     }
   };
 

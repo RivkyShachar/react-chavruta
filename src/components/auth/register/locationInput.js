@@ -1,18 +1,18 @@
-import React, { useState, useMemo } from 'react'
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
-import { useDispatch } from 'react-redux';
+import React, { useState, useMemo } from 'react';
+import Select from 'react-select';
+import countryList from 'react-select-country-list';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLocation } from '../../../redux/featchers/userSlice';
 import "./register.css";
+
 const LocationInput = () => {
-
-  const [value, setValue] = useState('')
-  const options = useMemo(() => countryList().getData(), [])
+  const [value, setValue] = useState('');
+  const options = useMemo(() => countryList().getData(), []);
   const dispatch = useDispatch();
-
+  const selectedCountry = useSelector((state) => state.userSlice.location);
 
   const changeHandler = selectedOption => {
-    setValue(selectedOption);  // Use the selectedOption directly
+    setValue(selectedOption);
     dispatch(setLocation({ location: selectedOption.label }));
   };
 
@@ -29,7 +29,7 @@ const LocationInput = () => {
                 <form>
                   <div className='row mb-3 input-group'>
                     <label htmlFor='state' className='lable'>
-                    Country:
+                      Country:
                     </label>
                     <Select options={options} value={value} onChange={changeHandler} />
                   </div>
@@ -44,4 +44,3 @@ const LocationInput = () => {
 };
 
 export default LocationInput;
-
