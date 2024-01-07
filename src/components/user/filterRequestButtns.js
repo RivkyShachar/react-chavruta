@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import OtherUserRequestList1 from './otherUserRequestList1';
 
 const FilterRequestButtns = () => {
-  const [filterState, setFilterState] = useState("close");
+  const [filterState, setFilterState] = useState("open");
 
   const handleButtonClick = (filterValue) => {
     setFilterState(filterValue);
