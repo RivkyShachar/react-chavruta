@@ -34,7 +34,7 @@ const Header = () => {
     <div>
       <div className="container ">
         <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
-          <a className="navbar-brand" href="/user">
+          <a className="navbar-brand " href="/user">
             Chavruta
           </a>
 
@@ -57,7 +57,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-danger" href="/user/requestsList/marked">
+                <a className="nav-link text-warning" href="/user/requestsList/marked">
                   Marked
                 </a>
               </li>
