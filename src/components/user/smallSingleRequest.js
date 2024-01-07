@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import UserList from './userList';
 import UserHome from './userHome';
 import SingleUser from './singleUser';
+import {formatDate} from '../../utill/dateFormat'
 
 
 const SmallSingleRequest = ({ requests, type, stateRequest }) => {
@@ -135,7 +136,9 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                     <p className="card-text">Topics: {request.topics.join(', ')}</p>
                     <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
                     <p className="card-text">Level Of Study: {request.preferredLanguages}</p>
-                    <p className="card-text">Start Date: {request.startDateAndTime}</p>
+
+                    <p className="card-text">Start Date: {
+                      formatDate(request.startDateAndTime)}</p>
                     <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
                     <p className="card-text">Description: {request.description}</p>
                   </Link>
@@ -147,7 +150,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                       to={localStorage.getItem("ROLE") === "admin" ? `/admin/singleUserAdmin/${request.finalChavruta._id}` : `/user/singleUser/${request.finalChavruta._id}`}
                     >
 
-                    <h4 className="card-text">{request.finalChavruta.firstName} {request.finalChavruta.lastName} </h4>
+                      <h4 className="card-text">{request.finalChavruta.firstName} {request.finalChavruta.lastName} </h4>
                     </Link>
                     <img
                       src={request.finalChavruta.profilePic}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
 import {  useSelector } from 'react-redux';
 import { API_URL, doApiRequest } from '../../services/apiService';
+import {formatDate} from '../../utill/dateFormat'
 
 const SmallSingleRequest = ({ requests }) => {
 
@@ -65,7 +66,7 @@ const SmallSingleRequest = ({ requests }) => {
                 <p className="card-text">Preferred Languages:: {request.preferredLanguages.join(', ')}</p>
                 <p className="card-text">level Of Study: {request.preferredLanguages}</p>
                 <p className="card-text">state: {request.state}</p>
-                <p className="card-text">Start Date: {request.startDateAndTime}</p>
+                <p className="card-text">Start Date: {formatDate(request.startDateAndTime)}</p>
                 <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min} </p>
                 <p className="card-text">Description: {request.description}</p>
               </Link>
