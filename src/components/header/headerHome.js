@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
-import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
-import { useNavigate } from 'react-router-dom';
+import { setSearchValueName1 } from '../../redux/featchers/searchSlice1';
+import { useNavigate ,useLocation} from 'react-router-dom';
 import { TOKEN_NAME } from '../../services/apiService';
 import { Outlet } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ const Header = () => {
 
   const handleInputChangeUser = (e) => {
     const value = e.target.value;
-    dispatch(setSearchValueUser({ searchValueUser: value }));
+    dispatch(setSearchValueName1({ searchValue1: value }));
   };
 
   const handleLogout = () => {
@@ -25,6 +25,10 @@ const Header = () => {
     nav('/', { replace: true });
     window.location.reload();
   };
+  const location = useLocation();
+
+  const isUserPage = location.pathname === '/user';
+
 
   return (
     <div>
@@ -69,18 +73,20 @@ const Header = () => {
                 type="search"
                 placeholder="Search for request "
                 aria-label="Search"
-                onChange={handleInputChange}
-              />
-            </form>
-            <form className="form-inline my-2 mx-2 d-flex align-items-center">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search for user"
-                aria-label="Search"
                 onChange={handleInputChangeUser}
               />
             </form>
+            {isUserPage && (
+              <form className="form-inline my-2 mx-2 d-flex align-items-center">
+                <input
+                  className="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Search for user"
+                  aria-label="Search"
+                  onChange={handleInputChange}
+                />
+              </form>
+            )}
             {localStorage.getItem(TOKEN_NAME) && (
               <button className="btn btn-danger" onClick={handleLogout}>
                 Logout

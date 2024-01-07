@@ -7,8 +7,6 @@ import { formatDate } from '../../utill/dateFormat';
 
 const UserProfileBar = () => {
 
-
-   
     const nav = useNavigate();
 
     const user = useSelector((myStore) => myStore.userSlice.user);

@@ -9,7 +9,7 @@ const SmallSingleRequest = ({ requests }) => {
 
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
-  const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
+  const searchV = useSelector((myStore) => myStore.searchSlice1.searchValue1);
 
 
   const handleRequestClick = (request) => {
@@ -25,6 +25,7 @@ const SmallSingleRequest = ({ requests }) => {
     const topicsString = request.topics.join(' '); // Convert the topics array to a string
     return topicsString.toLowerCase().includes(searchV.toLowerCase());
   });
+
 
   const clickYes = async (request) => {
     try {

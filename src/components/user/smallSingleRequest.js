@@ -8,6 +8,7 @@ import UserList from './userList';
 import UserHome from './userHome';
 import SingleUser from './singleUser';
 import {formatDate} from '../../utill/dateFormat'
+import UsersList from './usersList'
 
 
 const SmallSingleRequest = ({ requests, type, stateRequest }) => {
@@ -17,7 +18,6 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   const [isCardVisible, setIsCardVisible] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
-  const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
   const nav = useNavigate();
   const closeDone = {
     backgroundColor: '#ffcccc'
@@ -66,14 +66,12 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
 
 
   const filteredRequestList = requests.filter((request) => {
-    console.log("searchV", searchV);
     const topicsString = request.topics.join(' '); // Convert the topics array to a string
     console.log("topicsString", topicsString);
 
     console.log("stateRequest", stateRequest);
-
     return (
-      topicsString.toLowerCase().includes(searchV.toLowerCase()) &&
+      // topicsString.toLowerCase().includes(searchV.toLowerCase()) &&
       request.state === stateRequest
     );
   });
@@ -114,7 +112,8 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
 
   return (
     <div className="row mt-4">
-      {filteredRequestList.map((request) => (
+      {
+      filteredRequestList.map((request) => (
         <div key={request._id} className="col-md-4 mb-4 position-relative">
 
           <div className="card d-flex flex-column h-100"
@@ -203,7 +202,9 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
             </div>
           </div>
         </div>
-      ))}
+      ))
+      // )
+      }
 
       {maor && <FullRequestDetails selectedRequest={selectedRequest} typeList={type} onClose={handleCloseDetails} />}
       {isCardVisible && <UserList selectedRequest={isCardVisible} onClose={handleCloseDetails1} />}
