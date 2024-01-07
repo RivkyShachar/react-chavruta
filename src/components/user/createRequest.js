@@ -19,7 +19,6 @@ import {
     setPreferredLanguages
 
 } from '../../redux/featchers/requestSlice';
-// import { handleUserInfo } from '../../utill/authService';
 
 
 const ProfileInput = () => {
@@ -150,9 +149,9 @@ const ProfileInput = () => {
 
     return (
         <div className='container justify-content-center  col-5 '>
-            < div className=' text-center  border'>
+            < div className=' text-center bg-light'>
                 <div className='container '>
-                    <h2 className="mt-5">
+                    <h2 className="mt-3 pt-2">
                         Create Post
                     </h2>
                     <div className='row'>
