@@ -145,8 +145,8 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                 <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
                 {/* <p className="card-text">Level Of Study: {request.preferredLanguages}</p> */}
                 <p className="card-text">State: {request.state}</p>
-                <p className="card-text">Start Date: {request.startDateAndTime}</p>
-                <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
+                <p className="card-text">Start Date: {formatDate(request.startDateAndTime)}</p>
+                <p className="card-text">Study Duration: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
                 <p className="card-text">Description: {request.description}</p>
               </Link>
               <div className="mt-auto">

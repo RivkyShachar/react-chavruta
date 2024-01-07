@@ -55,7 +55,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>
           <p className="card-text">state: {selectedRequest.state}</p>
           <p className="card-text">Start Date: {formatDate(selectedRequest.startDateAndTime)}</p>
-          <p className="card-text">Study Duration: {selectedRequest.studyDuration.max - selectedRequest.studyDuration.min} </p>
+          <p className="card-text">Study Duration: {selectedRequest.studyDuration.min} - {selectedRequest.studyDuration.max} minutes </p>
           <p className="card-text">Description: {selectedRequest.description}</p>
           <p className="card-text">id user: {selectedRequest.userId._id}</p>
           <p className="card-text">id request: {selectedRequest._id}</p>
