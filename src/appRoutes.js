@@ -35,11 +35,12 @@ const AppRoutes = () => {
         <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
             <Router>
                 <Routes>
-                    <Route element={<Navbar/>}>
-                        <Route path='/' element={<Index/>}>
-                            <Route path='/signUp' element={<SignUp />} />
-                            <Route path='/login' element={<Login />} />
-                            <Route path='/sefaria' element={<Sefaria />} />
+                    <Route element={<Navbar />}>
+                        <Route path='/'>
+                            <Route index element={<Index />} />
+                            <Route path='signUp' element={<SignUp />} />
+                            <Route path='login' element={<Login />} />
+                            <Route path='sefaria' element={<Sefaria />} />
                         </Route>
 
                         <Route path='/user'>
