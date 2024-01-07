@@ -9,7 +9,6 @@ const UserProfile = () => {
 
   return (
     <div>
-      {/* <OtherUserProfileBar /> */}
       <OtherSingleUser />
     </div>
   )
