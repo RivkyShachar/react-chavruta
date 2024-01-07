@@ -1,43 +1,48 @@
 import React from 'react';
 
-const FilterBarHome = () => {
+const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopic, setLang }) => {
     return (
         <div className='bg-secondary'>
-            
             <div className='container col-8 '>
-                <nav class="navbar navbar-expand-lg navbar-light ">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-expand-lg navbar-light ">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item m-2 active">
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item m-2 active">
                                 <div className="form-group col-md-auto ">
-                                    <label className="mr-2" htmlFor="startDate">Search Topic</label>
-                                    <input type="text" className="form-control " id="searchTopic" placeholder="Search Topic" />
+                                    <label className="mr-2" htmlFor="searchTopic">Search Topic</label>
+                                    <input type="text" className="form-control" id="searchTopic" placeholder="Search Topic" onChange={(e) => setSearchTopic(e.target.value)} />
                                 </div>
                             </li>
-                            <li class="nav-item m-2">
+                            <li className="nav-item m-2">
                                 <div className="form-group col-md-auto ">
-                                    <label className="mr-2" htmlFor="startDate">Duration Range</label>
-                                    <input type="number" className="form-control " id="durationRange" placeholder="Duration Range" />
+                                    <label className="mr-2" htmlFor="durationRange">Min Duration</label>
+                                    <input type="number" className="form-control" id="minDuration" placeholder="Min Duration" onChange={(e) => setMin(e.target.value)} />
                                 </div>
                             </li>
-                            <li class="nav-item m-2">
-                                <label className="mr-2 " htmlFor="startDate">Start Date:</label>
-                                <input type="date" className="form-control " id="startDate" />
+                            <li className="nav-item m-2">
+                                <div className="form-group col-md-auto ">
+                                    <label className="mr-2" htmlFor="durationRange">Max Duration</label>
+                                    <input type="number" className="form-control" id="maxDuration" placeholder="Max Duration" onChange={(e) => setMax(e.target.value)} />
+                                </div>
                             </li>
-                            <li class="nav-item m-2 mx-2">
-                                <label className="mr-2 " htmlFor="endDate">End Date:</label>
-                                <input type="date" className="form-control " id="endDate" />
+                            <li className="nav-item m-2">
+                                <label className="mr-2" htmlFor="startDate">Start Date:</label>
+                                <input type="datetime-local" className="form-control" id="startDate" onChange={(e) => setStartDate(e.target.value)} />
                             </li>
-                            <li class="nav-item m-2">
-                                <label className="mr-2 " htmlFor="startHours">Start Hours:</label>
-                                <input type="time" className="form-control " id="startHours" />
+                            <li className="nav-item m-2 mx-2">
+                                <label className="mr-2" htmlFor="endDate">End Date:</label>
+                                <input type="datetime-local" className="form-control" id="endDate" onChange={(e) => setEndDate(e.target.value)} />
                             </li>
-                            <li class="nav-item m-2">
-                                <label className="mr-2 " htmlFor="endHours">End Hours:</label>
-                                <input type="time" className="form-control " id="endHours" />
+                            <li className="nav-item m-2">
+                                <label className="mr-2" htmlFor="lang">Language:</label>
+                                <select className="form-control" id="lang" onChange={(e) => setLang(e.target.value)}>
+                                    <option value="All">All</option>
+                                    <option value="Hebrew">Hebrew</option>
+                                    <option value="English">English</option>
+                                </select>
                             </li>
                         </ul>
                     </div>
@@ -48,5 +53,3 @@ const FilterBarHome = () => {
 }
 
 export default FilterBarHome;
-
-

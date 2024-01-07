@@ -7,11 +7,24 @@ import SingleRequestMyProfile from '../user/singleRequestMyProfile'
 import FilterBarHome from './filterBarHome'
 import { useParams } from 'react-router-dom';
 
+const oneYearFromToday = () => {
+    const today = new Date();
+    today.setFullYear(today.getFullYear() + 1);
+    return today;
+  };
+
 const RequestList = () => {
     const [requestList, setRequestList] = useState([]);
     const [response1, setResponse1] = useState([]);
     const [requestListMarkedYes, setRequestListMarkedYes] = useState([]);
     const [requestListMarkedNo, setRequestListMarkedNo] = useState([]);
+    const [filterMinDuration, setFilterMinDuration] = useState(5);
+    const [filterMaxDuration, setFilterMaxDuration] = useState(40);
+    const [filterStartDate, setFilterStartDate] = useState(Date.now());
+    const [filterEndDate, setFilterEndDate] = useState(oneYearFromToday);
+    const [filterTopic, setFilterTopic] = useState("");
+    const [filterLang, setFilterLang] = useState("All");
+
     let { parameter } = useParams();
 
     useEffect(() => {
@@ -22,7 +35,12 @@ const RequestList = () => {
                     parameter = "relevantRequestsList";
                 }
 
-                const url = API_URL + `/studyRequests/${parameter}/?reverse=yes`;
+                let url = API_URL + `/studyRequests/${parameter}/?reverse=yes`;
+
+                // Apply filters
+                url += `&minDuration=${filterMinDuration}&maxDuration=${filterMaxDuration}`;
+                url += `&startDate=${new Date(filterStartDate).toISOString()}&endDate=${new Date(filterEndDate).toISOString()}`;
+                url += `&searchTopic=${filterTopic}&lang=${filterLang}`;
                 const response = await doApiRequest(url, 'GET');
                 setResponse1(response);
                 if (response.status === 200) {
@@ -43,13 +61,20 @@ const RequestList = () => {
         };
 
         fetchData();
-    }, []);
+    }, [parameter, filterMinDuration, filterMaxDuration, filterStartDate, filterEndDate, filterTopic, filterLang]);
 
 
     console.log("respon", response1);
     return (
         <div className='container'>
-            <FilterBarHome />
+            <FilterBarHome
+                setMin={setFilterMinDuration}
+                setMax={setFilterMaxDuration}
+                setStartDate={setFilterStartDate}
+                setEndDate={setFilterEndDate}
+                setSearchTopic={setFilterTopic}
+                setLang={setFilterLang}
+            />
             <div>
                 {parameter === "userProfile" ? (
                     <div>
