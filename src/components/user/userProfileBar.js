@@ -14,9 +14,13 @@ const UserProfileBar = () => {
     const handleEditProfileClick = () => {
         nav('/user/editProfile');
     }
-
+   
+    const backgroundColor = {
+        backgroundColor: '#F6F6F6', // Replace with your actual pink color code
+        border: '2px solid #e0e0e0', // Add a 8px black border
+    };
     return (
-        <div className='container bg-secondary py-3 mb-3' >
+        <div className='container py-3 mb-3'  style={backgroundColor}>
             <div className='container col-10'>
 
                 <div className='container'>

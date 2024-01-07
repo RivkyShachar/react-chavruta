@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import UserList from './userList';
 import UserHome from './userHome';
 import SingleUser from './singleUser';
-import {formatDate} from '../../utill/dateFormat'
+import { formatDate } from '../../utill/dateFormat'
 import UsersList from './usersList'
+
 
 
 const SmallSingleRequest = ({ requests, type, stateRequest }) => {
@@ -21,19 +22,17 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   const nav = useNavigate();
   const closeDone = {
     // backgroundColor: '#ffcccc'
-    border: '5px solid #ffcccc', // Add a 5px black border
+    border: '8px solid #ffcccc', // Add a 8px black border
 
   };
   const open = {
     // backgroundColor: '#ccffcc', // Replace with your actual pink color code
-    border: '5px solid #ccffcc', // Add a 5px black border
+    border: '8px solid #ccffcc', // Add a 8px black border
   };
 
-  // const open = {
-  //   backgroundColor: '#ccffcc', // Replace with your actual pink color code
-  // };
+  
   const past = {
-    border: '5px solid #e0e0e0', // Add a 5px black border
+    border: '8px solid #e0e0e0', // Add a 8px black border
 
     // backgroundColor: '#e0e0e0', // Replace with your actual pink color code
   };
@@ -122,97 +121,97 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   return (
     <div className="row mt-4">
       {
-      filteredRequestList.map((request) => (
-        <div key={request._id} className="col-md-4 mb-4 position-relative">
+        filteredRequestList.map((request) => (
+          <div key={request._id} className="col-md-4 mb-4 position-relative">
 
-          <div className="card d-flex flex-column h-100"
-            style={
-              request.state === 'open'
-                ? open
-                : request.state === 'close' || request.state === 'done'
-                  ? closeDone
-                  : past
-            }>
+            <div className="card d-flex flex-column h-100"
+              style={
+                request.state === 'open'
+                  ? open
+                  : request.state === 'close' || request.state === 'done'
+                    ? closeDone
+                    : past
+              }>
 
-            <div className="card-body ">
-              <div className='row'>
-                <div className='col-8'>
-                  <Link
-                    onClick={() => handleRequestClick(request)}
-                    className="request-link"
-                  >
-                    <p className="card-text">Topics: {request.topics.join(', ')}</p>
-                    <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
-                    <p className="card-text">Level Of Study: {request.preferredLanguages}</p>
-
-                    <p className="card-text">Start Date: {
-                      formatDate(request.startDateAndTime)}</p>
-                    <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
-                    <p className="card-text">Description: {request.description}</p>
-                  </Link>
-                </div>
-                {request.finalChavruta &&
-                  <div className='col-4'>
+              <div className="card-body ">
+                <div className='row'>
+                  <div className='col-8'>
                     <Link
-                      key={request.finalChavruta._id}
-                      to={localStorage.getItem("ROLE") === "admin" ? `/admin/singleUserAdmin/${request.finalChavruta._id}` : `/user/singleUser/${request.finalChavruta._id}`}
+                      onClick={() => handleRequestClick(request)}
+                      className="request-link"
                     >
+                      <p className="card-text">Topics: {request.topics.join(', ')}</p>
+                      <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
+                      <p className="card-text">Level Of Study: {request.preferredLanguages}</p>
 
-                      <h4 className="card-text">{request.finalChavruta.firstName} {request.finalChavruta.lastName} </h4>
+                      <p className="card-text">Start Date: {
+                        formatDate(request.startDateAndTime)}</p>
+                      <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
+                      <p className="card-text">Description: {request.description}</p>
                     </Link>
-                    <img
-                      src={request.finalChavruta.profilePic}
-                      alt={request.finalChavruta.profilePic}
-                      style={{
-                        width: '80px',
-                        height: '80px',
-                        borderRadius: '50%',
-                      }}
-                    />
-                  </div>}
-              </div>
-              <div className="mt-auto">
-                <div className="d-flex justify-content-center mt-5">
-                  {(type === "requestListMarkedNo" || type === "requestList") && (
-                    <button className="btn btn-outline-success mx-3" onClick={() => clickYes(request)}>
-                      Yes
-                    </button>
-                  )}
+                  </div>
+                  {request.finalChavruta &&
+                    <div className='col-4'>
+                      <Link
+                        key={request.finalChavruta._id}
+                        to={localStorage.getItem("ROLE") === "admin" ? `/admin/singleUserAdmin/${request.finalChavruta._id}` : `/user/singleUser/${request.finalChavruta._id}`}
+                      >
 
-                  {(type === "requestListMarkedYes" || type === "requestList") && (
-                    <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>
-                      No
-                    </button>
-                  )}
+                        <h4 className="card-text">{request.finalChavruta.firstName} {request.finalChavruta.lastName} </h4>
+                      </Link>
+                      <img
+                        src={request.finalChavruta.profilePic}
+                        alt={request.finalChavruta.profilePic}
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          borderRadius: '50%',
+                        }}
+                      />
+                    </div>}
                 </div>
-              </div>
+                <div className="mt-auto">
+                  <div className="d-flex justify-content-center mt-5">
+                    {(type === "requestListMarkedNo" || type === "requestList") && (
+                      <button className="btn btn-outline-success mx-3" onClick={() => clickYes(request)}>
+                        Yes
+                      </button>
+                    )}
 
-              {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
-                <div className='position-absolute top-0 end-0 mt-2 me-2'>
-                  <button className="btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}>
-                    {request.matchesList.length}
-                  </button>
+                    {(type === "requestListMarkedYes" || type === "requestList") && (
+                      <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>
+                        No
+                      </button>
+                    )}
+                  </div>
                 </div>
-              )}
-              <div className="mt-auto">
-                <div className="d-flex justify-content-center my-3">
-                  {(type === "myRequests") &&
-                    (request.zoomLink ?
-                      <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
-                        Start meeting
-                      </a> :
-                      (request.state === 'close') ?
-                        <button className='btn btn-danger' onClick={() => clickDelete(request)}>Cancel meeting</button> :
-                        <button className='btn btn-danger' onClick={() => clickDelete(request)}>Delete</button>
-                    )
-                  }
+
+                {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
+                  <div className='position-absolute top-0 end-0 mt-2 me-2'>
+                    <button className=" btn-lightblue" onClick={() => handleRequestClick1(request)}>
+                      {request.matchesList.length}
+                    </button>
+                  </div>
+                )}
+                <div className="mt-auto">
+                  <div className="d-flex justify-content-center my-3">
+                    {(type === "myRequests") &&
+                      (request.zoomLink ?
+                        <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
+                          Start meeting
+                        </a> :
+                        (request.state === 'close') ?
+                          <button className='btn btn-danger' onClick={() => clickDelete(request)}>Cancel meeting</button> :
+                          <button className='btn btn-danger' onClick={() => clickDelete(request)}>Delete</button>
+                      )
+                    }
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      ))
-      // )
+        ))
+        // )
       }
 
       {maor && <FullRequestDetails selectedRequest={selectedRequest} typeList={type} onClose={handleCloseDetails} />}
