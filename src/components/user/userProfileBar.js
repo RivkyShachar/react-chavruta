@@ -34,7 +34,7 @@ const UserProfileBar = () => {
                         </div>
                         <div className="col-3">
                             <p className="card-text text-right">
-                                <strong>Gender:</strong> {user.gender === 0 ? 'Male' : 'Female'}<br />
+                                <strong>Gender:</strong> {user.gender === 0 ? 'Female' : 'Male'}<br />
                                 <strong>Phone Number:</strong> {user.phoneNumber}<br />
                                 <strong>Email:</strong> {user.email}<br />
                             </p>
