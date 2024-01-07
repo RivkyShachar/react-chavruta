@@ -60,8 +60,8 @@ const UserProfileBar = () => {
         <div className="card">
         
             <div className="row row-space">
-              <div className="col-2 w-40 m-5">
-                <div className="col h-80">
+              <div className="col-2 w-45 m-5">
+                <div className="col">
                   <img
                     src={user.profilePic}
                     alt="profile-image"
