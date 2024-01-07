@@ -7,11 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import UserList from './userList';
 import UserHome from './userHome';
 import SingleUser from './singleUser';
+import {formatDate} from '../../utill/dateFormat'
 
 
 const SmallSingleRequest = ({ requests, type, stateRequest }) => {
-  if(!stateRequest){
-    stateRequest="open";
+  if (!stateRequest) {
+    stateRequest = "open";
   }
   const [isCardVisible, setIsCardVisible] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -64,20 +65,19 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   };
 
 
-  // const filteredRequestList = requests.filter((request) => {
-  //   console.log("searchV", searchV);
-  //   const topicsString = request.topics.join(' '); // Convert the topics array to a string
-  //   console.log("topicsString", topicsString);
-  //   return topicsString.toLowerCase().includes(searchV.toLowerCase());
-  // });
-
-
   const filteredRequestList = requests.filter((request) => {
-    console.log("stateRequest",stateRequest);
-    // const topicsString = request.topics.join(' '); // Convert the topics array to a string
-    return request.state === stateRequest
-      // topicsString.toLowerCase().includes(searchV.toLowerCase());
+    console.log("searchV", searchV);
+    const topicsString = request.topics.join(' '); // Convert the topics array to a string
+    console.log("topicsString", topicsString);
+
+    console.log("stateRequest", stateRequest);
+
+    return (
+      topicsString.toLowerCase().includes(searchV.toLowerCase()) &&
+      request.state === stateRequest
+    );
   });
+
 
 
   const clickYes = async (request) => {
@@ -126,19 +126,43 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                   : past
             }>
 
-            <div className="card-body">
-              <Link
-                onClick={() => handleRequestClick(request)}
-                className="request-link"
-              >
-                <p className="card-text">Topics: {request.topics.join(', ')}</p>
-                <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
-                <p className="card-text">Level Of Study: {request.preferredLanguages}</p>
-                <p className="card-text">State: {request.state}</p>
-                <p className="card-text">Start Date: {request.startDateAndTime}</p>
-                <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
-                <p className="card-text">Description: {request.description}</p>
-              </Link>
+            <div className="card-body ">
+              <div className='row'>
+                <div className='col-8'>
+                  <Link
+                    onClick={() => handleRequestClick(request)}
+                    className="request-link"
+                  >
+                    <p className="card-text">Topics: {request.topics.join(', ')}</p>
+                    <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
+                    <p className="card-text">Level Of Study: {request.preferredLanguages}</p>
+
+                    <p className="card-text">Start Date: {
+                      formatDate(request.startDateAndTime)}</p>
+                    <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
+                    <p className="card-text">Description: {request.description}</p>
+                  </Link>
+                </div>
+                {request.finalChavruta &&
+                  <div className='col-4'>
+                    <Link
+                      key={request.finalChavruta._id}
+                      to={localStorage.getItem("ROLE") === "admin" ? `/admin/singleUserAdmin/${request.finalChavruta._id}` : `/user/singleUser/${request.finalChavruta._id}`}
+                    >
+
+                      <h4 className="card-text">{request.finalChavruta.firstName} {request.finalChavruta.lastName} </h4>
+                    </Link>
+                    <img
+                      src={request.finalChavruta.profilePic}
+                      alt={request.finalChavruta.profilePic}
+                      style={{
+                        width: '80px',
+                        height: '80px',
+                        borderRadius: '50%',
+                      }}
+                    />
+                  </div>}
+              </div>
               <div className="mt-auto">
                 <div className="d-flex justify-content-center mt-5">
                   {(type === "requestListMarkedNo" || type === "requestList") && (
@@ -154,6 +178,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                   )}
                 </div>
               </div>
+
               {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
                 <div className='position-absolute top-0 end-0 mt-2 me-2'>
                   <button className="btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}>

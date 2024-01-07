@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
+import {formatDate} from '../../utill/dateFormat'
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
 
@@ -10,7 +11,6 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
   }
   const clickYes = async (_data) => {
     try {
-      alert("clicked yes");
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
       const data = await doApiRequest(url, "POST");
       if (data.status === 200) {
@@ -52,12 +52,10 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
               </div>
             )}
 
-
             <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
             <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
             <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>
-            <p className="card-text">state: {selectedRequest.state}</p>
-            <p className="card-text">Start Date: {selectedRequest.startDateAndTime}</p>
+            <p className="card-text">Start Date: {formatDate(selectedRequest.startDateAndTime)}</p>
             <p className="card-text">Study Duration: {selectedRequest.studyDuration.max - selectedRequest.studyDuration.min} </p>
             <p className="card-text">Description: {selectedRequest.description}</p>
           

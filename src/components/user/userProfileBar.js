@@ -1,12 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
+import { formatDate } from '../../utill/dateFormat';
+
+// Use the functions
 
 const UserProfileBar = () => {
+
+
+   
     const nav = useNavigate();
 
     const user = useSelector((myStore) => myStore.userSlice.user);
-  
+
     const handleEditProfileClick = () => {
         nav('/user/editProfile');
     }
@@ -23,7 +29,6 @@ const UserProfileBar = () => {
                                 <strong>Gender:</strong> {user.gender === 0 ? 'Male' : 'Female'}<br />
                                 <strong>Phone Number:</strong> {user.phoneNumber}<br />
                                 <strong>Email:</strong> {user.email}<br />
-                                <strong>Location:</strong> {user.location}<br />
                             </p>
                         </div>
                         <div className='col-2 mx-2 my-2 card'>
@@ -38,8 +43,8 @@ const UserProfileBar = () => {
                                 <div key={index}>
                                     <p>Degree: {education.degree}</p>
                                     <p>Name: {education.name}</p>
-                                    <p>Start Date: {education.startDate}</p>
-                                    {education.endDate && <p>End Date: {education.endDate}</p>}
+                                    <p>Start Date: {formatDate(education.startDate)}</p>
+                                    {education.endDate && <p>End Date: {formatDate(education.endDate)}</p>}
                                     <hr className="my-3" />
                                 </div>
                             ))}

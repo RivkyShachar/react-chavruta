@@ -35,14 +35,10 @@ const UserList = ({ selectedRequest, onClose }) => {
     }
     const clickYesUser = async (user) => {
         try {
-            alert("clicked matched");
             const url = API_URL + `/event/finalizeRequest/${user._id}/${selectedRequest._id}/`;
-
             const data = await doApiRequest(url, "POST");
             if (data.status === 200) {
-                console.log("matched ");
-                window.location.reload();
-
+                onClose();
             }
         } catch (error) {
             console.error("error", error);
