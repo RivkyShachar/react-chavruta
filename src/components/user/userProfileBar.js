@@ -19,18 +19,18 @@ const UserProfileBar = () => {
     };
 
     return (
-        <div className='container py-3 mb-3' style={backgroundColor}>
-            <div className='container col-10'>
+        <div className='container py-3 mb-3  '  style={backgroundColor}>
+            <div className='container col-10  ' >
                 <div className='container'>
                     <div className='row'>
                         <div className="col-3">
-                            <h5 className="card-title mb-3">{user.firstName} {user.lastName}</h5>
                             <img
                                 src={user.profilePic}
                                 style={{ width: '200px', height: '200px' }}
                                 alt={user.firstName}
-                                className="mx-auto d-block"
+                                className=" d-block "
                             />
+                            <h2 className="card-title mt-3">{user.firstName} {user.lastName}</h2>
                         </div>
                         <div className="col-3">
                             <p className="card-text text-right">

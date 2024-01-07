@@ -32,8 +32,8 @@ const Header = () => {
 
   return (
     <div>
-      <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container ">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
           <a className="navbar-brand" href="/user">
             Chavruta
           </a>
