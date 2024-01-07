@@ -4,24 +4,24 @@ const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopi
     const backgroundColor = {
         backgroundColor: '#F6F6F6', // Replace with your actual pink color code
     };
-   
+
     return (
         <div style={backgroundColor}>
-            <div className='container col-10 '>
+            <div className='container col-12 '>
                 <nav className="navbar navbar-expand-lg navbar-light ">
                     <button
-                        className="navbar-toggler"
+                        className="navbar-toggler ms-auto"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown"
+                        data-bs-target="#navbarFilter"
+                        aria-controls="navbarFilter"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <i className="bi bi-chevron-double-down"></i>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
+                    <div className="collapse navbar-collapse" id="navbarFilter">
+                    <ul className="navbar-nav">
                             <li className="nav-item m-2 active">
                                 <div className="form-group col-md-auto ">
                                     <label htmlFor="searchTopic">Search Topic</label>
@@ -65,3 +65,5 @@ const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopi
 }
 
 export default FilterBarHome;
+
+
