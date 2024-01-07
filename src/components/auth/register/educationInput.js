@@ -1,21 +1,18 @@
-
-
-
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEducationsInput } from '../../../redux/featchers/userSlice';
 import "./register.css";
-const EducationInput = () => {
 
+const EducationInput = () => {
     const dispatch = useDispatch();
-    const [education, setEducation] = useState({ name: '', startDate: '', endDate: '', degree: '' });
+    const [education, setEducation] = useState({ name: '', degree: '' });
     const [educations, setEducations] = useState([]);
 
     const handleAddEducation = () => {
         setEducations([...educations, education]);
-        setEducation({ name: '', startDate: '', endDate: '', degree: '' });
-        dispatch(setEducationsInput({ educations: education }));
-
+        setEducation({ name: '', degree: '' });
+        console.log("educations",educations);
+        dispatch(setEducationsInput({ educations: [...educations, education] }));
     };
 
     const handleEducationChange = (field, value) => {
@@ -57,48 +54,11 @@ const EducationInput = () => {
                                         <option value="Bachelor's Degree">Bachelor's Degree</option>
                                         <option value="Master's Degree">Master's Degree</option>
                                     </select>
-                                    <div className='row my-3'>
-                                        <div className='row row-space'>
-                                            <div className=' mt-1'>
-                                                <label>Start Date:</label>
-                                            </div>
-                                            <div >
-                                                <input
-                                                    name="startDate"
-                                                    type='date'
-                                                    id="startDate"
-                                                    className='form-control'
-                                                    defaultValue={education.startDate}
-                                                    onInput={(e) => {
-                                                        handleEducationChange(e, "startSate");
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className=' my-2'>
-                                                <label>End Date:</label>
-                                            </div>
-                                            <div >
-                                                <input
-                                                    name="endDate"
-                                                    type='date'
-                                                    id="endDate"
-                                                    className='form-control'
-                                                    defaultValue={education.endDate}
-                                                    onInput={(e) => {
-                                                        handleEducationChange(e, "endDate");
-                                                    }}
-                                                />
-                                            </div>
-                                    
-                                        </div>
-                                    </div>
+                    
                                     <button 
                                         type='button'
                                         className=' btn-tl btn topic-list  '
-                                        onClick={() => {
-                                            handleAddEducation();
-                                        }}
-
+                                        onClick={handleAddEducation}
                                     >
                                         Add Education
                                     </button>
@@ -112,7 +72,6 @@ const EducationInput = () => {
                                     {educations.map((edu, index) => (
                                         <li key={index} className='list-group-item custom-list-item'>
                                             <strong>{edu.name}</strong> - {edu.degree}<br />
-                                            Start Date: {edu.startDate} - End Date: {edu.endDate}
                                             <button
                                                 type='button'
                                                 className='btn btn-outline-danger btn-sm float-end'

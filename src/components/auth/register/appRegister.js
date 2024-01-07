@@ -97,6 +97,7 @@ const AppRegister = () => {
   };
 
   const handleSubmitButtonClick = () => {
+  
     handleSubmit(onSubmit)();
   };
 

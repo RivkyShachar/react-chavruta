@@ -137,9 +137,6 @@ const ProfileInput = () => {
             console.log("data", requestWithoutShowMoreOptions);
 
             const data = await doApiRequest(url, method, requestWithoutShowMoreOptions);
-            console.log("post created?");
-            console.log(data);
-            alert(data.data.msg);
             if (data.status === 201) {
                 nav("/user");
             }
