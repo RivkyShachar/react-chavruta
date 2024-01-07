@@ -79,7 +79,6 @@ const AppRegister = () => {
         nav("/");
       }
     } catch (error) {
-      alert(error.response ? error.response.data.msg : "An error occurred");
     }
   };
 

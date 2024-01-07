@@ -27,6 +27,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
         console.log("added to yes");
         window.location.reload();
         alert("added succesfully")
+
       }
     } catch (error) {
       console.error("error", error);

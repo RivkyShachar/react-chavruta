@@ -51,7 +51,6 @@ const SingleRequestStudyWithMe = ({ requests }) => {
         try {
             setMaor(false);
             setIsCardVisible(false);
-            alert("clicked no");
             console.log(request);
             setSelectedRequest(request);
             setIsCardVisible(request);
