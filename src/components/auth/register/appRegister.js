@@ -12,7 +12,9 @@ import Education from './educationInput';
 import Topic from './topicList';
 import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
-import "./register.css";
+import "../../../css/main.css";
+import { FaArrowLeft, FaArrowRight, } from 'react-icons/fa';
+
 
 const AppRegister = () => {
   const dispatch = useDispatch();
@@ -21,12 +23,12 @@ const AppRegister = () => {
   const { handleSubmit } = useForm();
 
   const steps = [
-    { id: 'profile', component: <Profile /> },
-    { id: 'location', component: <Location /> },
-    { id: 'education', component: <Education /> },
-    { id: 'topic', component: <Topic /> },
-    { id: 'rangeQ1', component: <RangeQ1 /> },
-    { id: 'rangeQ2', component: <RangeQ2 /> },
+    { id: "profile", component: <Profile /> },
+    { id: "location", component: <Location /> },
+    { id: "education", component: <Education /> },
+    { id: "topic", component: <Topic /> },
+    { id: "rangeQ1", component: <RangeQ1 /> },
+    { id: "rangeQ2", component: <RangeQ2 /> },
   ];
 
   const selectedCountry = useSelector((state) => state.userSlice.location);
@@ -38,7 +40,9 @@ const AppRegister = () => {
   const onSubmit = async () => {
     try {
       const token = localStorage.getItem(TOKEN_NAME);
-      const url = token ? API_URL + `/users/${localStorage.getItem("USER_ID")}` : API_URL + '/auth/register';
+      const url = token
+        ? API_URL + `/users/${localStorage.getItem("USER_ID")}`
+        : API_URL + "/auth/register";
 
       const method = token ? 'PUT' : 'POST';
       let data;
@@ -75,7 +79,7 @@ const AppRegister = () => {
         nav("/");
       }
     } catch (error) {
-      alert(error.response ? error.response.data.msg : 'An error occurred');
+      alert(error.response ? error.response.data.msg : "An error occurred");
     }
   };
 
@@ -105,32 +109,77 @@ const AppRegister = () => {
   };
 
   return (
-    <div className='container-register'>
-      <div className='row '>
-        <form>
-          {steps.map((step, index) => (
-            <div key={index} style={{ display: currentStep === index ? 'block' : 'none' }}>
-              {step.component}
-            </div>
-          ))}
-          <div className='container'>
-            <div className='row justify-content-center'>
-              <button type='button' className='btn btn-secondary col-4 mx-2' onClick={handleBackClick}>
-                Back
-              </button>
+    //     <div className='container-register'>
+    //       <div className='row'>
 
-              {currentStep === 5 ? (
-                <button type='button' className='btn btn-success col-4 mx-2' onClick={handleSubmitButtonClick}>
-                  Submit
+    //         <form>
+    //         <button type='button' className='btn btn-secondary col- mx-2' onClick={handleBackClick}>
+    //                 Back
+    //               </button>
+    //           {steps.map((step, index) => (
+    //             <div key={index} style={{ display: currentStep === index ? 'block' : 'none' }}>
+    //               {step.component}
+    //             </div>
+    //           ))}
+
+    //               {currentStep === 5 ? (
+    //                 <button type='button' className='btn btn-success col-2 mx-2' onClick={handleSubmitButtonClick}>
+    //                   Submit
+    //                 </button>
+    //               ) : (
+    //                 <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
+    //                   Continue
+    //                 </button>
+    //               )}
+    //         </form>
+    //         </div>
+
+    //      </div >
+
+    //   );
+    // };
+
+    <div className="container-register">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="d-flex justify-content-evenly mt-4 position-relative">
+            
+            {steps.map((step, index) => (
+              <div 
+                key={index}
+                style={{ display: currentStep === index ? "block" : "none" }}
+              >
+                {step.component}
+              </div>
+            ))}
+            <div  className="position-absolute top-50 start-0 translate-middle me-5 z-1" >
+              {currentStep !== 0 && (
+                <button
+                  type="button"
+                  className=" btn-back"
+                  onClick={handleBackClick}
+                >
+                  <FaArrowLeft /> {/* Replace with your left arrow icon */}
+                </button>
+              )}
+            </div>
+            <div  className="position-absolute top-50 start-100 translate-middle me-5">
+              {currentStep !== 5 ? (
+                <button
+                  type="button"
+                  className="btn-continue"
+                  onClick={handleContinueClick}
+                >
+                  <FaArrowRight /> {/* Replace with your right arrow icon */}
                 </button>
               ) : (
-                <button type='button' className='btn btn-info col-4 mx-2' onClick={handleContinueClick}>
+                <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
                   Continue
                 </button>
               )}
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

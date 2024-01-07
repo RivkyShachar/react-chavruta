@@ -21,20 +21,14 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   const [maor, setMaor] = useState(true);
   const nav = useNavigate();
   const closeDone = {
-    // backgroundColor: '#ffcccc'
-    border: '8px solid #ffcccc', // Add a 8px black border
-
-  };
+    backgroundColor: '#b6ffa453'  };
   const open = {
-    // backgroundColor: '#ccffcc', // Replace with your actual pink color code
-    border: '8px solid #ccffcc', // Add a 8px black border
+    backgroundColor: '#ccffcc', // Replace with your actual pink color code
   };
 
   
   const past = {
-    border: '8px solid #e0e0e0', // Add a 8px black border
-
-    // backgroundColor: '#e0e0e0', // Replace with your actual pink color code
+    backgroundColor: '#e0e0e0', // Replace with your actual pink color code
   };
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
@@ -120,63 +114,37 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
 
   return (
     <div className="row mt-4">
-      {
-        filteredRequestList.map((request) => (
-          <div key={request._id} className="col-md-4 mb-4 position-relative">
+      {filteredRequestList.map((request) => (
+        <div key={request._id} className="col-md-4 mb-4 position-relative">
+          <div className="card d-flex flex-column h-100"
+           style={
+            request.state === 'open'
+              ? open
+              : request.state === 'close' || request.state === 'done'
+                ? closeDone
+                : past
+          }>
 
-            <div className="card d-flex flex-column h-100"
-              style={
-                request.state === 'open'
-                  ? open
-                  : request.state === 'close' || request.state === 'done'
-                    ? closeDone
-                    : past
-              }>
-
-              <div className="card-body ">
-                <div className='row'>
-                  <div className='col-8'>
-                    <Link
-                      onClick={() => handleRequestClick(request)}
-                      className="request-link"
-                    >
-                      <p className="card-text">Topics: {request.topics.join(', ')}</p>
-                      <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
-                      <p className="card-text">Level Of Study: {request.preferredLanguages}</p>
-
-                      <p className="card-text">Start Date: {
-                        formatDate(request.startDateAndTime)}</p>
-                      <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
-                      <p className="card-text">Description: {request.description}</p>
-                    </Link>
-                  </div>
-                  {request.finalChavruta &&
-                    <div className='col-4'>
-                      <Link
-                        key={request.finalChavruta._id}
-                        to={localStorage.getItem("ROLE") === "admin" ? `/admin/singleUserAdmin/${request.finalChavruta._id}` : `/user/singleUser/${request.finalChavruta._id}`}
-                      >
-
-                        <h4 className="card-text">{request.finalChavruta.firstName} {request.finalChavruta.lastName} </h4>
-                      </Link>
-                      <img
-                        src={request.finalChavruta.profilePic}
-                        alt={request.finalChavruta.profilePic}
-                        style={{
-                          width: '80px',
-                          height: '80px',
-                          borderRadius: '50%',
-                        }}
-                      />
-                    </div>}
-                </div>
-                <div className="mt-auto">
-                  <div className="d-flex justify-content-center mt-5">
-                    {(type === "requestListMarkedNo" || type === "requestList") && (
-                      <button className="btn btn-outline-success mx-3" onClick={() => clickYes(request)}>
-                        Yes
-                      </button>
-                    )}
+            <div className="card-body">
+              <Link
+                onClick={() => handleRequestClick(request)}
+                className="request-link"
+              >
+                <p className="card-text">Topics: {request.topics.join(', ')}</p>
+                <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
+                {/* <p className="card-text">Level Of Study: {request.preferredLanguages}</p> */}
+                <p className="card-text">State: {request.state}</p>
+                <p className="card-text">Start Date: {request.startDateAndTime}</p>
+                <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
+                <p className="card-text">Description: {request.description}</p>
+              </Link>
+              <div className="mt-auto">
+                <div className="d-flex justify-content-center mt-5">
+                  {(type === "requestListMarkedNo" || type === "requestList") && (
+                    <button className="btn btn-outline-success mx-3" onClick={() => clickYes(request)}>
+                      Yes
+                    </button>
+                  )}
 
                     {(type === "requestListMarkedYes" || type === "requestList") && (
                       <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>

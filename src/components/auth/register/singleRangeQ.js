@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAgeRange, setEducationRange, setLocationRange, setFriendListRange } from '../../../redux/featchers/userSlice';
+import "../../../css/main.css";
 
 const SingleRangeQ = ({ title, questionNumber }) => {
     const dispatch = useDispatch();
