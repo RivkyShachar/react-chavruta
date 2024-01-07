@@ -177,7 +177,7 @@ const ProfileInput = () => {
                                                     id="minDuration"
                                                     min="5"
                                                     max={requestStudy.studyDuration.max}
-                                                    value={requestStudy.studyDuration.min}
+                                                    defaultValue={requestStudy.studyDuration.min}
                                                     onChange={(e) => handleInputChange(e, 'minDuration')}
                                                 />
                                             </div>
@@ -214,7 +214,7 @@ const ProfileInput = () => {
                                         className='form-control'
                                         type='datetime-local'
                                         id='startDate'
-                                        value={requestStudy.startDate}
+                                        defaultValue={requestStudy.startDate}
                                     />
                                 </div>
                             </div>
@@ -225,7 +225,7 @@ const ProfileInput = () => {
                                 <div className='col-4'>
                                     <select
                                         name='preferredLanguages'
-                                        value={requestStudy.preferredLanguages}
+                                        defaultValue={requestStudy.preferredLanguages}
                                         className='form-control'
                                         id='preferredLanguages'
                                         onChange={(e) => handleInputChange(e, 'preferredLanguages')}

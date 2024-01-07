@@ -46,7 +46,7 @@ const EducationInput = () => {
                   />
                   <select
                     className="input--style-4 education-select"
-                    value={education.degree}
+                    defaultValue={education.degree}
                     onChange={(e) =>
                       handleEducationChange("degree", e.target.value)
                     }

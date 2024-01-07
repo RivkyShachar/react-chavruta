@@ -51,7 +51,7 @@ function Sefaria({selectedTopics, setSelectedTopics}) {
         <InputGroup className="mb-3">
           <FormControl
             placeholder="Type to search..."
-            value={searchTerm}
+            defaultValue={searchTerm}
             onChange={handleInputChange}
           />
         </InputGroup>
