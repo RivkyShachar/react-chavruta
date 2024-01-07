@@ -1,23 +1,19 @@
-
-
-import React, { useState, useMemo } from 'react'
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
-import { useDispatch } from 'react-redux';
-import { setLocation } from '../../../redux/featchers/userSlice';
-import "./register.css";
+import React, { useState, useMemo } from "react";
+import Select from "react-select";
+import countryList from "react-select-country-list";
+import { useDispatch } from "react-redux";
+import { setLocation } from "../../../redux/featchers/userSlice";
+import "../../../css/main.css";
 
 const LocationInput = () => {
-
-  const [value, setValue] = useState('')
-  const options = useMemo(() => countryList().getData(), [])
+  const [value, setValue] = useState("");
+  const options = useMemo(() => countryList().getData(), []);
   const dispatch = useDispatch();
 
-
-  const changeHandler = selectedOption => {
-    setValue(selectedOption);  // Use the selectedOption directly
+  const changeHandler = (selectedOption) => {
+    setValue(selectedOption); // Use the selectedOption directly
     dispatch(setLocation({ location: selectedOption.label }));
-  };  
+  };
 
   return (
     <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
@@ -34,7 +30,7 @@ const LocationInput = () => {
                     <label htmlFor="state" className="label">
                       Country:
                     </label>
-                    <select
+                    <Select
                       className="input--style-4 location-select"
                       options={options}
                       value={value}
@@ -52,4 +48,3 @@ const LocationInput = () => {
 };
 
 export default LocationInput;
-

@@ -16,12 +16,12 @@ const SmallSingleRequest = ({ requests, type }) => {
   const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
   const nav = useNavigate();
   const closeDone = {
-    backgroundColor: '#ffcccc'  };
+    backgroundColor: '#b6ffa453'  };
   const open = {
-    backgroundColor: '#ccffcc', // Replace with your actual pink color code
+    backgroundColor: '#ffffff',
   };
   const past = {
-    backgroundColor: '#e0e0e0', // Replace with your actual pink color code
+    backgroundColor: '#b6ffa453', // Replace with your actual pink color code
   };
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
@@ -100,17 +100,17 @@ const SmallSingleRequest = ({ requests, type }) => {
   return (
     <div className="row mt-4">
       {filteredRequestList.map((request) => (
-        <div key={request._id} className="col-md-4 mb-4 position-relative">
-          <div className="card d-flex flex-column h-100"
+        <div key={request._id} className="col-md-4 mb-4 m-2 position-relative text-center p-0 btn-tl btn topic-list ">
+          <div className="card d-flex flex-column h-100 "
            style={
-            request.state === 'open'
+            request.state === 'open' 
               ? open
               : request.state === 'close' || request.state === 'done'
                 ? closeDone
                 : past
           }>
 
-            <div className="card-body">
+            <div className="card-body p-5 ">
               <Link
                 onClick={() => handleRequestClick(request)}
                 className="request-link"

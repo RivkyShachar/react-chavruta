@@ -1,6 +1,10 @@
 /* Add this to your global or component-specific CSS */
+
+
 body {
   background-color: #b6ffa453;
+  width: 100vw;
+  height: 100vh;
 }
 .modal-overlay {
     position: fixed;
@@ -15,7 +19,7 @@ body {
   }
   
   .modal-container {
-    background: #fff;
+    background: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -30,6 +34,7 @@ body {
   /* Add this CSS in your component's CSS file or global styles */
 
   .customPinkColorClass {
+   
     background-color: #fdb5ff; /* Replace with your actual pink color code */
   }
   

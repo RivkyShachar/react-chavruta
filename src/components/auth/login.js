@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { API_URL, TOKEN_NAME, doApiRequest } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import { handleUserInfo } from '../../utill/authService';
+import "../../css/main.css";
+
 
 const Login = () => {
   const dispatch = useDispatch();
