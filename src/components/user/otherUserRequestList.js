@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { API_URL, doApiRequest } from '../../services/apiService';
-import { setSearchValueName } from '../../redux/featchers/searchSlice';
 import SmallSingleRequest from '../user/smallSingleRequest'
-import SingleRequestStudyWithMe from '../user/singleRequestStudyWithMe'
-import SingleRequestMyProfile from '../user/singleRequestMyProfile'
-import FilterBarHome from './filterBarHome'
+
 import { useParams } from 'react-router-dom';
 
 const OtherUserRequestList = ( {userId}) => {
@@ -43,7 +40,8 @@ const OtherUserRequestList = ( {userId}) => {
     return (
         <div className='container'>
         
-                    <div >
+            <div >
+                
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>
                         ) : (

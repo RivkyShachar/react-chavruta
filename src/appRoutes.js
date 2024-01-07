@@ -21,6 +21,7 @@ const UserProfileAdmin = React.lazy(() => import("./pages/admin/userProfile"));
 const UserProfile = React.lazy(() => import("./pages/user/userProfile"));
 const Sefaria = React.lazy(() => import("./components/common/sefaria"));
 const Navbar = React.lazy(() => import("./components/header/navbar"));
+const Index = React.lazy(() => import("./components/common/index"));
 
 const AppRoutes = () => {
     const dispatch = useDispatch();
@@ -34,11 +35,12 @@ const AppRoutes = () => {
         <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
             <Router>
                 <Routes>
-                    <Route element={<Navbar/>}>
+                    <Route element={<Navbar />}>
                         <Route path='/'>
-                            <Route path='/signUp' element={<SignUp />} />
-                            <Route path='/login' element={<Login />} />
-                            <Route path='/sefaria' element={<Sefaria />} />
+                            <Route index element={<Index />} />
+                            <Route path='signUp' element={<SignUp />} />
+                            <Route path='login' element={<Login />} />
+                            <Route path='sefaria' element={<Sefaria />} />
                         </Route>
 
                         <Route path='/user'>

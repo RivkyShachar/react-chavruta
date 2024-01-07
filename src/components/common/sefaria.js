@@ -46,7 +46,7 @@ function Sefaria({selectedTopics, setSelectedTopics}) {
 
   return (
     <div className='row'>
-      <div className='col-6'>
+      <div className='col-6 text-start'>
       <h5>Choose Topics</h5>
         <InputGroup className="mb-3">
           <FormControl

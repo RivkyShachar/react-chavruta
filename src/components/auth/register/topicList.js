@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTopics } from '../../../redux/featchers/userSlice';
+import "../../../css/main.css";
+
 const Topics = () => {
   const topicsList = [
     "Tanakh",

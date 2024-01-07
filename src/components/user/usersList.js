@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValueUser } from '../../redux/featchers/searchUserSlice';
+import { setSearchValueName } from '../../redux/featchers/searchSlice';
 
 const UsersList = () => {
     const [userList, setUserList] = useState([]);
@@ -33,25 +33,26 @@ const UsersList = () => {
     });
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-container">
-                <div className="container mt-4 w-50">
-                    <h2 className="mb-4">User List</h2>
-                    <ul className="list-group">
-                        {filteredUserList.map((user) => (
-                            <Link
-                                key={user._id}
-                                to={`/user/singleUser/${user._id}`}
-                                className="list-group-item list-group-item-action"
-                                onClick={() => dispatch(setSearchValueUser({ searchValueUser: '' }))} // Clear the search value when clicking on a user
-                            >
-                                {user.firstName} {user.lastName}
-                            </Link>
-                            
-                        ))}
-                    </ul>
-                </div>
-            </div></div>
+
+
+        <div className="container mt-4 w-50">
+            <ul className="list-group">
+                {filteredUserList.map((user) => (
+                    <Link
+                        key={user._id}
+                        to={`/user/singleUser/${user._id}`}
+                        className="list-group-item list-group-item-action"
+                        onClick={() => dispatch(setSearchValueName({ searchValue: '' }))} // Clear the search value when clicking on a user
+                    >
+                        {user.firstName} {user.lastName}
+                    </Link>
+                ))}
+            </ul>
+        </div>
+
+
+
+
     );
 };
 

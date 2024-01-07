@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import RequestList from './requestList'
+import { useDispatch, useSelector } from 'react-redux';
+import UsersList from './usersList';
 
 const UserHome = () => {
 
-  return (
 
+  const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
+
+
+  useEffect(() => {
+    console.log("searchV", searchV);
+    // console.log("searchV",searchV1);
+  }, [])
+
+  return (
     <div>
-          <RequestList/>
+      {searchV ? <UsersList /> :
+        <RequestList />}
     </div>
   )
 }

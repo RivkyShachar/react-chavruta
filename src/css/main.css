@@ -90,6 +90,11 @@
   /**
    * A very simple reset that sits on top of Normalize.css.
    */
+
+  body {
+    background-color:  #b6ffa453;
+  }
+
   body,
   h1, h2, h3, h4, h5, h6,
   blockquote, p, pre,
@@ -208,9 +213,9 @@
     padding-top: 100px;
   }
   
-  .p-t-130 {
+   .p-t-130 {
     padding-top: 130px;
-  }
+  } 
   
   .p-t-180 {
     padding-top: 180px;
@@ -238,7 +243,7 @@
   
   .m-r-45 {
     margin-right: 45px;
-  }
+  } 
   
   /* ==========================================================================
      #WRAPPER
@@ -302,57 +307,35 @@
     background: #8eff71;
   }
   
-  
-  
-  /* ==========================================================================
-     #DATE PICKER
-     ========================================================================== */
-  td.active {
-    background-color: #2c6ed5;
-  }
-  
-  input[type="date" i] {
-    padding: 4px 20px;
-  }
-  
-  .table-condensed td, .table-condensed th {
-    font-size: 14px;
-    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: 400;
-  }
-  
-  .daterangepicker td {
-    width: 40px;
-    height: 35px;
-  }
-  
-  .daterangepicker {
-    border: none;
-    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    display: none;
-    border: 1px solid #e0e0e0;
-    margin-top: 5px;
-  }
-  
-  .daterangepicker::after, .daterangepicker::before {
-    display: none;
-  }
-  
-  .daterangepicker thead tr th {
-    padding: 10px 0;
-  }
-  
-  .daterangepicker .table-condensed th select {
-    border: 1px solid #ccc;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    font-size: 14px;
-    padding: 5px;
-    outline: none;
-  }
+
+  .btn-back,
+.btn-continue,
+.btn-submit {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  font-size: 1.5em;
+  transition: all 0.3s;
+}
+
+.btn-back {
+  background-color: #8dff717c; /* Change the color as desired */
+ 
+}
+
+.btn-continue {
+  background-color: #8dff717c; /* Change the color as desired */
+
+}
+
+.btn-submit {
+  background-color: rgb(141, 255, 113); /* Change the color as desired */
+ 
+}
   
   /* ==========================================================================
      #FORM
@@ -449,8 +432,13 @@
 
   .btn-register {
     color: #000000;
-    background-color:  #8eff71;
+    background-color:  #b6ffa453;
     border-color: #8eff71;
+  }
+
+  .btn-profile {
+    background-color:  #b6ffa453;
+    border-color: solid 3px #8eff71;
   }
 
   
@@ -703,3 +691,119 @@
     border-radius: 50%; /* Optional: Rounded edges for circular images */
   }
   
+
+  body{
+    background-color:#ecf2f5;
+    margin-top:20px;
+}
+
+.card {
+    box-shadow: 0 0 2px 0 rgb(0 0 0 / 10%);
+    margin-bottom: 24px;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #ecf2f5;
+    border-radius: .25rem;
+}
+.avatar-lg {
+    height: 4.5rem;
+    width: 4.5rem;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #ecf2f5;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+.avatar-sm {
+    height: 2.25rem;
+    width: 2.25rem;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+.me-2 {
+    margin-right: .75rem!important;
+}
+.avatar-md {
+    height: 3.5rem;
+    width: 3.5rem;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+.bg-transparent {
+    --bs-bg-opacity: 1;
+    background-color: transparent!important;
+}
+.post-user-comment-box {
+    background-color: #f2f8fb;
+    margin: 0 -.75rem;
+    padding: 1rem;
+    margin-top: 20px;
+}
+.simplebar-wrapper {
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+}
+.simplebar-height-auto-observer-wrapper {
+    box-sizing: inherit!important;
+    height: 100%;
+    width: 100%;
+    max-width: 1px;
+    position: relative;
+    float: left;
+    max-height: 1px;
+    overflow: hidden;
+    z-index: -1;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+    flex-grow: inherit;
+    flex-shrink: 0;
+    flex-basis: 0;
+}
+.font-13 {
+    font-size: 13px!important;
+}
+.btn-soft-info {
+    color: #45bbe0;
+    background-color: rgba(69,187,224,.18);
+    border-color: rgba(69,187,224,.12);
+}
+.social-list-item {
+    height: 2rem;
+    width: 2rem;
+    line-height: calc(2rem - 2px);
+    display: block;
+    border: 2px solid #adb5bd;
+    border-radius: 50%;
+    color: #adb5bd;
+}
+.comment-area-box .comment-area-btn {
+    background-color: #f2f8fb;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 .2rem .2rem;
+}
+
+.border{
+  border: solid 3px #b6ffa453;
+} 
+

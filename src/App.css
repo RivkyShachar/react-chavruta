@@ -1,7 +1,12 @@
 /* Add this to your global or component-specific CSS */
+
+
 body {
   background-color: #b6ffa453;
+  width: 100vw;
+  height: 100vh;
 }
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -15,7 +20,7 @@ body {
   }
   
   .modal-container {
-    background: #fff;
+    background: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -23,13 +28,50 @@ body {
   
   /* Add this to your global or component-specific CSS */
 .request-link {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Use the default text color */
-  }
-  
-  /* Add this CSS in your component's CSS file or global styles */
+  text-decoration: none;
+  /* Remove underline */
+  color: inherit;
+  /* Use the default text color */
+}
+
+/* Add this CSS in your component's CSS file or global styles */
 
   .customPinkColorClass {
+   
     background-color: #fdb5ff; /* Replace with your actual pink color code */
   }
   
+.customPinkColorClass {
+  background-color: #fdb5ff;
+  /* Replace with your actual pink color code */
+}
+.btn-lightblue {
+  background-color: #7dc9e8;
+  /* Replace with your desired blue color */
+  border-radius: 50%;
+  /* Make it a circle */
+  width: 40px;
+  /* Set a fixed width */
+  height: 40px;
+  /* Set a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  /* Set the text color to white or a contrasting color */
+  font-weight: bold;
+  /* Optionally set font weight for a bolder text */
+  cursor: pointer;
+  /* Show pointer cursor on hover */
+  transition: background-color 0.3s ease;
+  /* Add a smooth transition effect */
+}
+
+.btn-lightblue:hover {
+  background-color: rgb(184, 210, 255);
+  /* Change color on hover */
+}
+.backgroundColor{
+  background-color: '#F6F6F6';
+  border: '2px solid #e0e0e0'
+};

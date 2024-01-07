@@ -1,5 +1,7 @@
 import React from 'react';
 import SingleRangeQ from './singleRangeQ';
+import "../../../css/main.css";
+
 const RangeQuestion = () => {
 
   return (
