@@ -104,7 +104,6 @@ const UserProfileBar = () => {
                             <div key={index} className="btn">
                               <strong>{education.name}</strong>
                               <p>{education.degree}</p>
-
                               {/* <p>
                                 {education.startDate}-
                                 {education.endDate && (
