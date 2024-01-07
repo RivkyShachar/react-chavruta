@@ -27,9 +27,8 @@ const UserProfileBar = () => {
                         <div className="col-3">
                             <img
                                 src={user.profilePic}
-                                style={{ width: '200px', height: '200px' }}
                                 alt={user.firstName}
-                                className=" d-block "
+                                className="d-block float-start rounded-3 profile-image"
                             />
                             <h2 className="card-title mt-3">{user.firstName} {user.lastName}</h2>
                         </div>

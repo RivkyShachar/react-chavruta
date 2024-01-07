@@ -807,3 +807,8 @@
   border: solid 3px #b6ffa453;
 } 
 
+.profile-image {
+  width: 200px; /* Adjust this size to your desired width */
+  height: 200px; /* Adjust this size to your desired height */
+  object-fit: cover;
+}

@@ -31,8 +31,8 @@ const Index = () => {
                             cursor: 'pointer',
                         }}
                         onMouseOver={(e) => {
-                            e.target.style.transform = 'scale(1.1)';
-                            e.target.style.textShadow = '3px 3px 5px rgba(0, 128, 0, 0.7)';
+                            e.target.style.transform = 'scale(1.2)';
+                            e.target.style.textShadow = '8px 3px 5px rgba(255, 255, 153, 0.7)';
                         }}
                         onMouseOut={(e) => {
                             e.target.style.transform = 'scale(1)';

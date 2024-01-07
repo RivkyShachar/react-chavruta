@@ -148,9 +148,10 @@ const ProfileInput = () => {
 
 
     return (
-        <div className='container justify-content-center  col-5 '>
+
+        <div className='container justify-content-center  col-5  mt-3 ' >
             < div className=' text-center bg-light'>
-                <div className='container '>
+                <div className='container border border-4 border-info'>
                     <h2 className="mt-3 pt-2">
                         Create Post
                     </h2>
@@ -271,8 +272,8 @@ const ProfileInput = () => {
 
 
 
+            </div>
 
-        </div>
 
     );
 }

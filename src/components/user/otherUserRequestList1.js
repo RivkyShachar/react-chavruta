@@ -11,9 +11,9 @@ import { useSelector } from "react-redux";
 import "../../css/main.css";
 
 
-const OtherUserRequestList1 = ( {userId,state}) => {
-    const [requestList, setRequestList] = useState([]);
-    const [response1, setResponse1] = useState([]);
+const OtherUserRequestList1 = ({ userId, state }) => {
+  const [requestList, setRequestList] = useState([]);
+  const [response1, setResponse1] = useState([]);
 
 
   useEffect(() => {
@@ -38,17 +38,21 @@ const OtherUserRequestList1 = ( {userId,state}) => {
 
   return (
     <div className="container">
-              {requestList.length === 0 ? (
-                <h2>No requests found</h2>
-              ) : (
-                <SmallSingleRequest
-                  requests={requestList}
-                      type={"myRequests"}
-                      stateRequest={state}
-                      className= {"border-success p-2"}
-                />
-              )}
-            </div>
+      {requestList.length === 0 ? (
+        <div className='container  align-items-center mt-5'>
+          <div className='text-center'>
+            <h4 className='display-4'>No requests</h4>
+          </div>
+        </div>
+      ) : (
+        <SmallSingleRequest
+          requests={requestList}
+          type={"myRequests"}
+          stateRequest={state}
+          className={"border-success p-2"}
+        />
+      )}
+    </div>
   );
 };
 

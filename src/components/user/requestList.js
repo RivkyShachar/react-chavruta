@@ -11,7 +11,7 @@ const oneYearFromToday = () => {
     const today = new Date();
     today.setFullYear(today.getFullYear() + 1);
     return today;
-  };
+};
 
 const RequestList = () => {
     const [requestList, setRequestList] = useState([]);
@@ -41,7 +41,7 @@ const RequestList = () => {
                 url += `&minDuration=${filterMinDuration}&maxDuration=${filterMaxDuration}`;
                 url += `&startDate=${new Date(filterStartDate).toISOString()}&endDate=${new Date(filterEndDate).toISOString()}`;
                 filterTopic === "" ? url += `&lang=${filterLang}` :
-                url += `&searchTopic=${filterTopic}&lang=${filterLang}`;
+                    url += `&searchTopic=${filterTopic}&lang=${filterLang}`;
                 const response = await doApiRequest(url, 'GET');
                 setResponse1(response);
                 if (response.status === 200) {
@@ -80,8 +80,11 @@ const RequestList = () => {
                 {parameter === "userProfile" ? (
                     <div>
                         {requestList.length === 0 ? (
-                            <h2>No requests found</h2>
-                        ) : (
+                            <div className='container  align-items-center mt-5'>
+                                <div className='text-center'>
+                                    <h4 className='display-4'>No requests</h4>
+                                </div>
+                            </div>) : (
                             <SingleRequestMyProfile requests={requestList} type={"requestList"} />
                         )}
                     </div>
@@ -116,8 +119,11 @@ const RequestList = () => {
                     ) : (
                         <div>
                             {requestList.length === 0 ? (
-                                <h2>No requests found</h2>
-                            ) : (
+                                <div className='container  align-items-center mt-5'>
+                                    <div className='text-center'>
+                                        <h4 className='display-4'>No requests</h4>
+                                    </div>
+                                </div>) : (
                                 <SmallSingleRequest requests={requestList} type={"requestList"} />
                             )}
                         </div>

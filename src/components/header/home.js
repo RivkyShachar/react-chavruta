@@ -46,23 +46,23 @@ const Home = () => {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <span className="nav-link" onClick={scrollToAbout}>
+              <span className="nav-link text-warning" onClick={scrollToAbout}>
                 About
               </span>
             </li>
             <li>
-            <span className="nav-link" onClick={scrollToContactUs}>
+            <span className="nav-link text-info" onClick={scrollToContactUs}>
                 Contact Us
               </span>
             
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
+              <Link className="nav-link text-success" to="/login">
                 Login
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/signUp">
+              <Link className="nav-link text-primary" to="/signUp">
                 Sign up
               </Link>
             </li>
