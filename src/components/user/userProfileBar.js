@@ -2,13 +2,28 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "../../css/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate, Link } from 'react-router-dom';
+import { formatDate } from '../../utill/dateFormat';
+
+// Use the functions
 
 const UserProfileBar = () => {
-  const user = useSelector((myStore) => myStore.userSlice.user);
 
-  return (
-    <div>
-      {/* <div className='container col-10'>
+    const nav = useNavigate();
+
+    const user = useSelector((myStore) => myStore.userSlice.user);
+
+    const handleEditProfileClick = () => {
+        nav('/user/editProfile');
+    }
+   
+    const backgroundColor = {
+        backgroundColor: '#F6F6F6', // Replace with your actual pink color code
+        border: '2px solid #e0e0e0', // Add a 8px black border
+    };
+    return (
+        <div className='container py-3 mb-3'  style={backgroundColor}>
+            <div className='container col-10'>
 
                 <div className='container'>
                     <div className='row'>
@@ -18,7 +33,6 @@ const UserProfileBar = () => {
                                 <strong>Gender:</strong> {user.gender === 0 ? 'Male' : 'Female'}<br />
                                 <strong>Phone Number:</strong> {user.phoneNumber}<br />
                                 <strong>Email:</strong> {user.email}<br />
-                                <strong>Location:</strong> {user.location}<br />
                             </p>
                         
                   
@@ -32,8 +46,8 @@ const UserProfileBar = () => {
                                 <div key={index}>
                                     <p>Degree: {education.degree}</p>
                                     <p>Name: {education.name}</p>
-                                    <p>Start Date: {education.startDate}</p>
-                                    {education.endDate && <p>End Date: {education.endDate}</p>}
+                                    <p>Start Date: {formatDate(education.startDate)}</p>
+                                    {education.endDate && <p>End Date: {formatDate(education.endDate)}</p>}
                                     <hr className="my-3" />
                                 </div>
                             ))}

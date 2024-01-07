@@ -6,12 +6,13 @@ import { setLocation } from "../../../redux/featchers/userSlice";
 import "../../../css/main.css";
 
 const LocationInput = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const options = useMemo(() => countryList().getData(), []);
   const dispatch = useDispatch();
+  const selectedCountry = useSelector((state) => state.userSlice.location);
 
-  const changeHandler = (selectedOption) => {
-    setValue(selectedOption); // Use the selectedOption directly
+  const changeHandler = selectedOption => {
+    setValue(selectedOption);
     dispatch(setLocation({ location: selectedOption.label }));
   };
 
@@ -26,8 +27,8 @@ const LocationInput = () => {
                   We would like to know where do you live
                 </h2>
                 <form>
-                  <div className="row mb-3 input-group">
-                    <label htmlFor="state" className="label">
+                  <div className='row mb-3 input-group'>
+                    <label htmlFor='state' className='lable'>
                       Country:
                     </label>
                     <Select

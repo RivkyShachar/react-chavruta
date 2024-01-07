@@ -5,6 +5,7 @@ import UserList from './userList';
 import { useSelector } from 'react-redux';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import { useNavigate} from 'react-router-dom';
+import {formatDate} from '../../utill/dateFormat'
 
 const SingleRequestMyProfile = ({ requests }) => {
     const [isCardVisible, setIsCardVisible] = useState(null);
@@ -68,6 +69,20 @@ const SingleRequestMyProfile = ({ requests }) => {
             console.error("error", error);
         }
     };
+    
+    const clickCancle = async (request) => {
+        try {
+            const url = API_URL + `/studyRequests/cancleMeeting/${request._id}`;
+            const data = await doApiRequest(url, "PUT");
+            if (data.status === 201) {
+
+                window.location.reload();
+                console.log("cancled");
+            }
+        } catch (error) {
+            console.error("error", error);
+        }
+    };
     const calculateCountdown = (startDateAndTime) => {
         const currentTime = new Date();
 
@@ -113,7 +128,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                                         <p className="card-text">Preferred Languages:: {request.preferredLanguages.join(', ')}</p>
                                         <p className="card-text">level Of Study: {request.preferredLanguages}</p>
                                         <p className="card-text">state: {request.state}</p>
-                                        <p className="card-text">Start Date: {request.startDateAndTime}</p>
+                                        <p className="card-text">Start Date: {formatDate(request.startDateAndTime)}</p>
                                         <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min} </p>
                                         <p className="card-text">Description: {request.description}</p>
                                     </Link>
@@ -161,7 +176,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                                 <button className="btn border-info border-2 mb-2" >
                                     {calculateCountdown(request.startDateAndTime)}
                                 </button>
-                                <button className="btn border-danger border-2" onClick={() => clickDelete(request)}>
+                                <button className="btn border-danger border-2" onClick={() => clickCancle(request)}>
                                     Cancle meeting
                                 </button>
                             </div>}

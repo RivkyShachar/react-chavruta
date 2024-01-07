@@ -80,8 +80,8 @@ const userSlice = createSlice({
             state.user.profilePic = actions.payload.profilePic;
         },
         setEducationsInput: (state, actions) => {
-
-            state.user.educations = [...state.user.educations, actions.payload.educations];
+            state.user.educations = actions.payload.educations;
+            console.log(' state.user.educations', state.user.educations);
         },
         setLocation: (state, actions) => {
 

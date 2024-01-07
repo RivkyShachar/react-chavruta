@@ -12,9 +12,10 @@ import "../../css/main.css";
 
 //copy of OtherUserRequestList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-const OtherUserRequestList1 = ({ userId }) => {
-  const [requestList, setRequestList] = useState([]);
-  const [response1, setResponse1] = useState([]);
+const OtherUserRequestList1 = ( {userId,state}) => {
+    const [requestList, setRequestList] = useState([]);
+    const [response1, setResponse1] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {

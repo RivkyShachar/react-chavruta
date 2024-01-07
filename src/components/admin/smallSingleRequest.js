@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
 import {  useSelector } from 'react-redux';
 import { API_URL, doApiRequest } from '../../services/apiService';
+import {formatDate} from '../../utill/dateFormat'
 
 const SmallSingleRequest = ({ requests }) => {
 
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
-  const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
+  const searchV = useSelector((myStore) => myStore.searchSlice1.searchValue1);
 
 
   const handleRequestClick = (request) => {
@@ -24,6 +25,7 @@ const SmallSingleRequest = ({ requests }) => {
     const topicsString = request.topics.join(' '); // Convert the topics array to a string
     return topicsString.toLowerCase().includes(searchV.toLowerCase());
   });
+
 
   const clickYes = async (request) => {
     try {
@@ -65,7 +67,7 @@ const SmallSingleRequest = ({ requests }) => {
                 <p className="card-text">Preferred Languages:: {request.preferredLanguages.join(', ')}</p>
                 <p className="card-text">level Of Study: {request.preferredLanguages}</p>
                 <p className="card-text">state: {request.state}</p>
-                <p className="card-text">Start Date: {request.startDateAndTime}</p>
+                <p className="card-text">Start Date: {formatDate(request.startDateAndTime)}</p>
                 <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min} </p>
                 <p className="card-text">Description: {request.description}</p>
               </Link>

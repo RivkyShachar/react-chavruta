@@ -7,21 +7,28 @@ import { useNavigate } from 'react-router-dom';
 import UserList from './userList';
 import UserHome from './userHome';
 import SingleUser from './singleUser';
+import { formatDate } from '../../utill/dateFormat'
+import UsersList from './usersList'
 
 
-const SmallSingleRequest = ({ requests, type }) => {
+
+const SmallSingleRequest = ({ requests, type, stateRequest }) => {
+  if (!stateRequest) {
+    stateRequest = "open";
+  }
   const [isCardVisible, setIsCardVisible] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
-  const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
   const nav = useNavigate();
   const closeDone = {
     backgroundColor: '#b6ffa453'  };
   const open = {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ccffcc', // Replace with your actual pink color code
   };
+
+  
   const past = {
-    backgroundColor: '#b6ffa453', // Replace with your actual pink color code
+    backgroundColor: '#e0e0e0', // Replace with your actual pink color code
   };
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
@@ -36,6 +43,7 @@ const SmallSingleRequest = ({ requests, type }) => {
     setSelectedRequest(null);
   };
 
+  console.log("requests", requests);
   const handleRequestClickSingleUser = (request) => {
 
     nav(`/user/singleUser/${request.finalChavruta._id}`, { replace: true })
@@ -62,8 +70,15 @@ const SmallSingleRequest = ({ requests, type }) => {
   const filteredRequestList = requests.filter((request) => {
     const topicsString = request.topics.join(' '); // Convert the topics array to a string
     console.log("topicsString", topicsString);
-    return topicsString.toLowerCase().includes(searchV.toLowerCase());
+
+    console.log("stateRequest", stateRequest);
+    return (
+      // topicsString.toLowerCase().includes(searchV.toLowerCase()) &&
+      request.state === stateRequest
+    );
   });
+
+
 
   const clickYes = async (request) => {
     try {
@@ -100,17 +115,17 @@ const SmallSingleRequest = ({ requests, type }) => {
   return (
     <div className="row mt-4">
       {filteredRequestList.map((request) => (
-        <div key={request._id} className="col-md-4 mb-4 m-2 position-relative text-center p-0 btn-tl btn topic-list ">
-          <div className="card d-flex flex-column h-100 "
+        <div key={request._id} className="col-md-4 mb-4 position-relative">
+          <div className="card d-flex flex-column h-100"
            style={
-            request.state === 'open' 
+            request.state === 'open'
               ? open
               : request.state === 'close' || request.state === 'done'
                 ? closeDone
                 : past
           }>
 
-            <div className="card-body p-5 ">
+            <div className="card-body">
               <Link
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
@@ -131,38 +146,41 @@ const SmallSingleRequest = ({ requests, type }) => {
                     </button>
                   )}
 
-                  {(type === "requestListMarkedYes" || type === "requestList") && (
-                    <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>
-                      No
+                    {(type === "requestListMarkedYes" || type === "requestList") && (
+                      <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>
+                        No
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
+                  <div className='position-absolute top-0 end-0 mt-2 me-2'>
+                    <button className=" btn-lightblue" onClick={() => handleRequestClick1(request)}>
+                      {request.matchesList.length}
                     </button>
-                  )}
-                </div>
-              </div>
-              {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
-                <div className='position-absolute top-0 end-0 mt-2 me-2'>
-                  <button className="btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}>
-                    {request.matchesList.length}
-                  </button>
-                </div>
-              )}
-              <div className="mt-auto">
-                <div className="d-flex justify-content-center my-3">
-                  {(type === "myRequests") &&
-                    (request.zoomLink ?
-                      <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
-                        Start meeting
-                      </a> :
-                      (request.state === 'close') ?
-                        <button className='btn btn-danger' onClick={() => clickDelete(request)}>Cancel meeting</button> :
-                        <button className='btn btn-danger' onClick={() => clickDelete(request)}>Delete</button>
-                    )
-                  }
+                  </div>
+                )}
+                <div className="mt-auto">
+                  <div className="d-flex justify-content-center my-3">
+                    {(type === "myRequests") &&
+                      (request.zoomLink ?
+                        <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
+                          Start meeting
+                        </a> :
+                        (request.state === 'close') ?
+                          <button className='btn btn-danger' onClick={() => clickDelete(request)}>Cancel meeting</button> :
+                          <button className='btn btn-danger' onClick={() => clickDelete(request)}>Delete</button>
+                      )
+                    }
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+        // )
+      }
 
       {maor && <FullRequestDetails selectedRequest={selectedRequest} typeList={type} onClose={handleCloseDetails} />}
       {isCardVisible && <UserList selectedRequest={isCardVisible} onClose={handleCloseDetails1} />}

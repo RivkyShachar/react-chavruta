@@ -1,23 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import {
-  API_URL,
-  doApiRequest,
-  TOKEN_NAME,
-} from "../../../services/apiService";
-import { useSelector } from "react-redux";
-import Profile from "./profileInput";
-import Topic from "./topicList";
-import Education from "./educationInput";
-import Location from "./locationInput";
-import RangeQ1 from "./rangeQuestion1";
-import RangeQ2 from "./rangeQuestion2";
-import { verifyToken } from "../../../services/apiService";
-import { handleUserInfo } from "../../../utill/authService";
-import "../../../css/main.css";
-import { FaArrowLeft, FaArrowRight, FaCheck } from "react-icons/fa";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { API_URL, doApiRequest, TOKEN_NAME } from '../../../services/apiService';
+import { verifyToken } from '../../../services/apiService';
+import { handleUserInfo } from '../../../utill/authService';
+import { setLocation } from '../../../redux/featchers/userSlice';
+import Profile from './profileInput';
+import Location from './locationInput';
+import Education from './educationInput';
+import Topic from './topicList';
+import RangeQ1 from './rangeQuestion1';
+import RangeQ2 from './rangeQuestion2';
+import "./register.css";
 
 const AppRegister = () => {
   const dispatch = useDispatch();
@@ -34,7 +29,9 @@ const AppRegister = () => {
     { id: "rangeQ2", component: <RangeQ2 /> },
   ];
 
-  let user = useSelector((myStore) => myStore.userSlice.user);
+  const selectedCountry = useSelector((state) => state.userSlice.location);
+
+  const user = useSelector((myStore) => myStore.userSlice.user);
   const userWithoutVerifyPassword = { ...user };
   delete userWithoutVerifyPassword.verifyPassword;
 
@@ -45,9 +42,9 @@ const AppRegister = () => {
         ? API_URL + `/users/${localStorage.getItem("USER_ID")}`
         : API_URL + "/auth/register";
 
-      const method = token ? "PUT" : "POST";
-      // if there is a token and valid the
+      const method = token ? 'PUT' : 'POST';
       let data;
+
       if (token) {
         delete userWithoutVerifyPassword._id;
         delete userWithoutVerifyPassword.dateCreated;
@@ -66,11 +63,12 @@ const AppRegister = () => {
 
       if (data.data.token) {
         localStorage.setItem(TOKEN_NAME, data.data.token);
-
         const decodedToken = data.data.token;
         verifyToken(decodedToken);
       }
+
       await handleUserInfo(dispatch);
+
       if (localStorage.getItem("ROLE") === "admin") {
         nav("/admin");
       } else if (localStorage.getItem("ROLE") === "user") {
@@ -84,7 +82,14 @@ const AppRegister = () => {
   };
 
   const handleContinueClick = () => {
-    if (currentStep < 6) {
+    if (currentStep === 1) { // Location step
+      if (!selectedCountry) {
+        console.log('Please choose a country before proceeding.');
+        return;
+      }
+    }
+
+    if (currentStep < steps.length - 1) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
       handleSubmit(onSubmit);
@@ -166,12 +171,8 @@ const AppRegister = () => {
                   <FaArrowRight /> {/* Replace with your right arrow icon */}
                 </button>
               ) : (
-                <button
-                  type="button"
-                  className="btn-submit"
-                  onClick={handleSubmitButtonClick}
-                >
-                  <FaCheck /> {/* Replace with your checkmark icon */}
+                <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
+                  Continue
                 </button>
               )}
             </div>
@@ -183,3 +184,7 @@ const AppRegister = () => {
 };
 
 export default AppRegister;
+
+
+
+

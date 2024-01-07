@@ -6,7 +6,6 @@ import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 // Add Font Awesome icons to the library
 library.add(fas);
 
@@ -20,7 +19,9 @@ function App() {
 
   return (
     <Provider store={myStore}>
+
       <AppRoutes />
+
       {/* <button onClick={startMeeting}>Start Meeting</button> */}
     </Provider>
   );
