@@ -13,7 +13,7 @@ import Topic from './topicList';
 import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
 import "../../../css/main.css";
-import { FaArrowLeft, FaArrowRight, } from 'react-icons/fa';
+// import { FaArrowLeft, FaArrowRight, } from 'react-icons/fa';
 
 
 const AppRegister = () => {
@@ -159,7 +159,7 @@ const AppRegister = () => {
                   className=" btn-back"
                   onClick={handleBackClick}
                 >
-                  <FaArrowLeft /> {/* Replace with your left arrow icon */}
+                  {/* <FaArrowLeft /> Replace with your left arrow icon */}
                 </button>
               )}
             </div>
@@ -170,7 +170,7 @@ const AppRegister = () => {
                   className="btn-continue"
                   onClick={handleContinueClick}
                 >
-                  <FaArrowRight /> {/* Replace with your right arrow icon */}
+                  {/* <FaArrowRight /> Replace with your right arrow icon */}
                 </button>
               ) : (
                 <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
