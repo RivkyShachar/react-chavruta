@@ -40,6 +40,7 @@ const RequestList = () => {
                 // Apply filters
                 url += `&minDuration=${filterMinDuration}&maxDuration=${filterMaxDuration}`;
                 url += `&startDate=${new Date(filterStartDate).toISOString()}&endDate=${new Date(filterEndDate).toISOString()}`;
+                filterTopic === "" ? url += `&lang=${filterLang}` :
                 url += `&searchTopic=${filterTopic}&lang=${filterLang}`;
                 const response = await doApiRequest(url, 'GET');
                 setResponse1(response);
