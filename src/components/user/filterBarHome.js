@@ -1,9 +1,13 @@
 import React from 'react';
 
 const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopic, setLang }) => {
+    const backgroundColor = {
+        backgroundColor: '#F6F6F6', // Replace with your actual pink color code
+    };
+   
     return (
-        <div className='bg-secondary'>
-            <div className='container col-8 '>
+        <div style={backgroundColor}>
+            <div className='container col-10 '>
                 <nav className="navbar navbar-expand-lg navbar-light ">
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -12,8 +16,8 @@ const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopi
                         <ul className="navbar-nav">
                             <li className="nav-item m-2 active">
                                 <div className="form-group col-md-auto ">
-                                    <label className="mr-2" htmlFor="searchTopic">Search Topic</label>
-                                    <input type="text" className="form-control" id="searchTopic" placeholder="Search Topic" onChange={(e) => setSearchTopic(e.target.value)} />
+                                    <label htmlFor="searchTopic">Search Topic</label>
+                                    <input type="text" className="form-control " id="searchTopic" placeholder="Search Topic" onChange={(e) => setSearchTopic(e.target.value)} />
                                 </div>
                             </li>
                             <li className="nav-item m-2">
@@ -30,11 +34,11 @@ const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopi
                             </li>
                             <li className="nav-item m-2">
                                 <label className="mr-2" htmlFor="startDate">Start Date:</label>
-                                <input type="datetime-local" className="form-control" id="startDate" onChange={(e) => setStartDate(e.target.value)} />
+                                <input type="datetime-local" className="form-control " id="startDate" onChange={(e) => setStartDate(e.target.value)} />
                             </li>
                             <li className="nav-item m-2 mx-2">
                                 <label className="mr-2" htmlFor="endDate">End Date:</label>
-                                <input type="datetime-local" className="form-control" id="endDate" onChange={(e) => setEndDate(e.target.value)} />
+                                <input type="datetime-local" className="form-control " id="endDate" onChange={(e) => setEndDate(e.target.value)} />
                             </li>
                             <li className="nav-item m-2">
                                 <label className="mr-2" htmlFor="lang">Language:</label>
