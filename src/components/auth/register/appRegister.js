@@ -12,7 +12,9 @@ import Education from './educationInput';
 import Topic from './topicList';
 import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
-import "./register.css";
+import "../../../css/main.css";
+import { FaArrowLeft, FaArrowRight, } from 'react-icons/fa';
+
 
 const AppRegister = () => {
   const dispatch = useDispatch();
