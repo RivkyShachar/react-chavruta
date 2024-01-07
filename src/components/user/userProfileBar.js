@@ -23,6 +23,7 @@ const UserProfileBar = () => {
             <div className='container col-10  ' >
                 <div className='container'>
                     <div className='row'>
+                        
                         <div className="col-3">
                             <img
                                 src={user.profilePic}
@@ -62,6 +63,7 @@ const UserProfileBar = () => {
                                 ))}
                             </ul>
                         </div>
+                        <button className="btn btn-warning col-2 mx-auto" onClick={handleEditProfileClick}>Edit Profile</button>
 
                     </div>
                 </div>
