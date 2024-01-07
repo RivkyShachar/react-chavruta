@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../css/main.css";
 
-//copy of OtherUserRequestList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const OtherUserRequestList1 = ( {userId,state}) => {
     const [requestList, setRequestList] = useState([]);
@@ -45,6 +44,7 @@ const OtherUserRequestList1 = ( {userId,state}) => {
                 <SmallSingleRequest
                   requests={requestList}
                       type={"myRequests"}
+                      stateRequest={state}
                       className= {"border-success p-2"}
                 />
               )}
