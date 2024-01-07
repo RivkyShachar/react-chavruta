@@ -9,7 +9,10 @@ import UserHome from './userHome';
 import SingleUser from './singleUser';
 
 
-const SmallSingleRequest = ({ requests, type }) => {
+const SmallSingleRequest = ({ requests, type, stateRequest }) => {
+  if(!stateRequest){
+    stateRequest="open";
+  }
   const [isCardVisible, setIsCardVisible] = useState(null);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
@@ -37,7 +40,7 @@ const SmallSingleRequest = ({ requests, type }) => {
     setSelectedRequest(null);
   };
 
-  console.log("requests",requests);
+  console.log("requests", requests);
   const handleRequestClickSingleUser = (request) => {
 
     nav(`/user/singleUser/${request.finalChavruta._id}`, { replace: true })
@@ -61,12 +64,21 @@ const SmallSingleRequest = ({ requests, type }) => {
   };
 
 
+  // const filteredRequestList = requests.filter((request) => {
+  //   console.log("searchV", searchV);
+  //   const topicsString = request.topics.join(' '); // Convert the topics array to a string
+  //   console.log("topicsString", topicsString);
+  //   return topicsString.toLowerCase().includes(searchV.toLowerCase());
+  // });
+
+
   const filteredRequestList = requests.filter((request) => {
-    console.log("searchV",searchV);
-    const topicsString = request.topics.join(' '); // Convert the topics array to a string
-    console.log("topicsString", topicsString);
-    return topicsString.toLowerCase().includes(searchV.toLowerCase());
+    console.log("stateRequest",stateRequest);
+    // const topicsString = request.topics.join(' '); // Convert the topics array to a string
+    return request.state === stateRequest
+      // topicsString.toLowerCase().includes(searchV.toLowerCase());
   });
+
 
   const clickYes = async (request) => {
     try {
@@ -106,7 +118,7 @@ const SmallSingleRequest = ({ requests, type }) => {
         <div key={request._id} className="col-md-4 mb-4 position-relative">
 
           <div className="card d-flex flex-column h-100"
-          style={
+            style={
               request.state === 'open'
                 ? open
                 : request.state === 'close' || request.state === 'done'
@@ -119,10 +131,10 @@ const SmallSingleRequest = ({ requests, type }) => {
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
               >
-                 <p className="card-text">Topics: {request.topics.join(', ')}</p> 
-                 <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p> 
-                 <p className="card-text">Level Of Study: {request.preferredLanguages}</p> 
-                 <p className="card-text">State: {request.state}</p> 
+                <p className="card-text">Topics: {request.topics.join(', ')}</p>
+                <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
+                <p className="card-text">Level Of Study: {request.preferredLanguages}</p>
+                <p className="card-text">State: {request.state}</p>
                 <p className="card-text">Start Date: {request.startDateAndTime}</p>
                 <p className="card-text">Study Duration: {request.studyDuration.max - request.studyDuration.min}</p>
                 <p className="card-text">Description: {request.description}</p>

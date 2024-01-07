@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 
 //copy of OtherUserRequestList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-const OtherUserRequestList1 = ( {userId}) => {
+const OtherUserRequestList1 = ( {userId,state}) => {
     const [requestList, setRequestList] = useState([]);
     const [response1, setResponse1] = useState([]);
 
@@ -49,7 +49,7 @@ const OtherUserRequestList1 = ( {userId}) => {
                         {requestList.length === 0 ? (
                             <h2>No requests found</h2>
                         ) : (
-                            <SmallSingleRequest requests={requestList} type={"myRequests"} />
+                            <SmallSingleRequest requests={requestList} type={"myRequests"} stateRequest={state} />
                         )}
                     </div>
         
