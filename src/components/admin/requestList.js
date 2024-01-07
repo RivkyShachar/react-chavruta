@@ -34,7 +34,12 @@ const UsersListAdmin = () => {
             <h2 className='mb-4'>Request List</h2>
             <div className='row'>
                 {requestList.length === 0 ? (
-                    <h2>No requests found</h2>
+                    <div className='container  align-items-center mt-5'>
+                        <div className='text-center'>
+                            <h4 className='display-4'>No requests</h4>
+                        </div>
+                    </div>
+
                 ) : (
                     <SmallSingleRequest requests={requestList} />
                 )}

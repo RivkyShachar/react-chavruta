@@ -5,7 +5,7 @@ import SmallSingleRequest from '../user/smallSingleRequest'
 
 import { useParams } from 'react-router-dom';
 
-const OtherUserRequestList = ( {userId}) => {
+const OtherUserRequestList = ({ userId }) => {
     const [requestList, setRequestList] = useState([]);
     const [response1, setResponse1] = useState([]);
     let { parameter } = useParams();
@@ -14,16 +14,16 @@ const OtherUserRequestList = ( {userId}) => {
         const fetchData = async () => {
 
             try {
-                console.log('parameter',parameter);
+                console.log('parameter', parameter);
 
                 const url = API_URL + `/studyRequests/getUserRequests/${parameter}`;
                 const response = await doApiRequest(url, 'GET');
                 setResponse1(response);
-                console.log("response",response);
+                console.log("response", response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
                 }
-            
+
                 else if (response.status === 404) {
                     setRequestList([]);
                 }
@@ -39,16 +39,19 @@ const OtherUserRequestList = ( {userId}) => {
 
     return (
         <div className='container'>
-        
+
             <div >
-                
-                        {requestList.length === 0 ? (
-                            <h2>No requests found</h2>
-                        ) : (
-                            <SmallSingleRequest requests={requestList} type={"requestList"} />
-                        )}
-                    </div>
-        
+
+                {requestList.length === 0 ? (
+                    <div className='container  align-items-center mt-5'>
+                        <div className='text-center'>
+                            <h4 className='display-4'>No requests</h4>
+                        </div>
+                    </div>) : (
+                    <SmallSingleRequest requests={requestList} type={"requestList"} />
+                )}
+            </div>
+
         </div>
     );
 };
