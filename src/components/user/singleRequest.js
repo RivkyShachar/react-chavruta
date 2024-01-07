@@ -10,7 +10,6 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
   }
   const clickYes = async (_data) => {
     try {
-      alert("clicked yes");
       const url = API_URL + `/event/markYes/${selectedRequest._id}`;
       const data = await doApiRequest(url, "POST");
       if (data.status === 200) {
