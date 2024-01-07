@@ -151,7 +151,7 @@ const AppRegister = () => {
                   className=" btn-back"
                   onClick={handleBackClick}
                 >
-                  {/* <FaArrowLeft /> */}
+                  <FaArrowLeft />
                 </button>
               )}
             </div>
@@ -162,7 +162,7 @@ const AppRegister = () => {
                   className="btn-continue"
                   onClick={handleContinueClick}
                 >
-                  {/* <FaArrowRight /> */}
+                  <FaArrowRight />
                 </button>
               )}
               {currentStep === 5 && (
@@ -172,7 +172,7 @@ const AppRegister = () => {
                     className="btn-continue "
                     onClick={handleSubmitButtonClick}
                   >
-                    {/* <FaArrowRight /> */}
+                    <FaArrowRight />
                   </button>
                 </div>
               )}
