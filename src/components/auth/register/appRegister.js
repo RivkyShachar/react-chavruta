@@ -13,7 +13,7 @@ import Topic from './topicList';
 import RangeQ1 from './rangeQuestion1';
 import RangeQ2 from './rangeQuestion2';
 import "../../../css/main.css";
-import { FaArrowLeft, FaArrowRight, } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight,FaCheck  } from 'react-icons/fa';
 
 
 const AppRegister = () => {
@@ -21,6 +21,7 @@ const AppRegister = () => {
   const nav = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const { handleSubmit } = useForm();
+  
 
   const steps = [
     { id: "profile", component: <Profile /> },
@@ -172,7 +173,7 @@ const AppRegister = () => {
                     className="btn-continue "
                     onClick={handleSubmitButtonClick}
                   >
-                    <FaArrowRight />
+                    <FaCheck /> 
                   </button>
                 </div>
               )}
