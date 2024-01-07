@@ -96,7 +96,7 @@ const Login = () => {
                   <div className="d-flex justify-content-center mt-5">
                     <button
                       type="submit"
-                      className="btn btn-success col-4 mx-2"
+                      className="btn btn-register col-4 mx-2"
                     >
                       Log in
                     </button>

@@ -213,9 +213,9 @@
     padding-top: 100px;
   }
   
-  .p-t-130 {
+   .p-t-130 {
     padding-top: 130px;
-  }
+  } 
   
   .p-t-180 {
     padding-top: 180px;
@@ -243,7 +243,7 @@
   
   .m-r-45 {
     margin-right: 45px;
-  }
+  } 
   
   /* ==========================================================================
      #WRAPPER
@@ -307,6 +307,35 @@
     background: #8eff71;
   }
   
+
+  .btn-back,
+.btn-continue,
+.btn-submit {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  font-size: 1.5em;
+  transition: all 0.3s;
+}
+
+.btn-back {
+  background-color: #8dff717c; /* Change the color as desired */
+ 
+}
+
+.btn-continue {
+  background-color: #8dff717c; /* Change the color as desired */
+
+}
+
+.btn-submit {
+  background-color: rgb(141, 255, 113); /* Change the color as desired */
+ 
+}
   
   /* ==========================================================================
      #FORM
@@ -403,8 +432,13 @@
 
   .btn-register {
     color: #000000;
-    background-color:  #8eff71;
+    background-color:  #b6ffa453;
     border-color: #8eff71;
+  }
+
+  .btn-profile {
+    background-color:  #b6ffa453;
+    border-color: solid 3px #8eff71;
   }
 
   
@@ -772,3 +806,4 @@
 .border{
   border: solid 3px #b6ffa453;
 } 
+

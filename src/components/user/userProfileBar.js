@@ -88,7 +88,7 @@ const UserProfileBar = () => {
                               {user.topics.map((topic, index) => (
                                 <li
                                   key={index}
-                                  className="btn btn-tl topic-list "
+                                  className="btn btn-profile "
                                 >
                                   {topic}
                                 </li>
