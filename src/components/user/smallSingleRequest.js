@@ -20,13 +20,22 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   const [maor, setMaor] = useState(true);
   const nav = useNavigate();
   const closeDone = {
-    backgroundColor: '#ffcccc'
+    // backgroundColor: '#ffcccc'
+    border: '5px solid #ffcccc', // Add a 5px black border
+
   };
   const open = {
-    backgroundColor: '#ccffcc', // Replace with your actual pink color code
+    // backgroundColor: '#ccffcc', // Replace with your actual pink color code
+    border: '5px solid #ccffcc', // Add a 5px black border
   };
+
+  // const open = {
+  //   backgroundColor: '#ccffcc', // Replace with your actual pink color code
+  // };
   const past = {
-    backgroundColor: '#e0e0e0', // Replace with your actual pink color code
+    border: '5px solid #e0e0e0', // Add a 5px black border
+
+    // backgroundColor: '#e0e0e0', // Replace with your actual pink color code
   };
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
