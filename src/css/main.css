@@ -91,9 +91,7 @@
    * A very simple reset that sits on top of Normalize.css.
    */
 
-  body {
-    background-color:  #b6ffa453;
-  }
+  
 
   body,
   h1, h2, h3, h4, h5, h6,
@@ -808,7 +806,7 @@
 } 
 
 .profile-image {
-  width: 200px; /* Adjust this size to your desired width */
-  height: 200px; /* Adjust this size to your desired height */
+  width: 250px; /* Adjust this size to your desired width */
+  height: 250px; /* Adjust this size to your desired height */
   object-fit: cover;
 }
