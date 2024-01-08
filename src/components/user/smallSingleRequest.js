@@ -148,13 +148,14 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
           >
 
             <div className={`card-body ${getRequestClass(request.state)}`}>
+
               <Link
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
               >
+
                 <p className="card-text">Topics: {request.topics.join(', ')}</p>
                 <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
-                {/* <p className="card-text">Level Of Study: {request.preferredLanguages}</p> */}
                 <p className="card-text">State: {request.state}</p>
                 <p className="card-text">Start Date: {formatDate(request.startDateAndTime)}</p>
                 <p className="card-text">Study Duration: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
@@ -174,7 +175,11 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                     </button>
                   )}
                 </div>
+
               </div>
+
+
+
 
               {(type === "myRequests" && (request.state === "open" && request.matchesList.length !== 0) &&
                 <div className='position-absolute top-0 end-0 mt-2 me-2'>

@@ -33,7 +33,7 @@ const UserProfileBar = () => {
                 {user.firstName} {user.lastName}
               </h2>
               <p>{user.email}</p>
-              <strong>Gender:</strong> {user.gender === 0 ? "Female" : "Male"}
+              <strong>Gender:</strong> {user.gender === false ? "Female" : "Male"}
               <br />
               <strong>Phone Number:</strong> {user.phoneNumber}
               <br />
