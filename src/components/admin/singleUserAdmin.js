@@ -41,7 +41,7 @@ const SingleUserAdmin = () => {
           <p className="card-text text-right">
             <strong>role</strong> {singleUser.role}<br />
             <strong>id</strong> {singleUser._id}<br />
-            <strong>Gender:</strong> {singleUser.gender === 0 ? 'Male' : 'Female'}<br />
+            <strong>Gender:</strong> {singleUser.gender === false ? 'Female' : 'Male'}<br />
             <strong>Phone Number:</strong> {singleUser.phoneNumber}<br />
             <strong>Email:</strong> {singleUser.email}<br />
             <strong>Location:</strong> {singleUser.location}<br />

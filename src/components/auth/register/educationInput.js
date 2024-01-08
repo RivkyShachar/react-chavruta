@@ -80,7 +80,6 @@ const EducationInput = () => {
                     >
                       <strong>{edu.name}</strong> - {edu.degree}
                       <br />
-                      Start Date: {edu.startDate} - End Date: {edu.endDate}
                       <button
                         type="button"
                         className="btn btn-outline-danger btn-sm float-end"
