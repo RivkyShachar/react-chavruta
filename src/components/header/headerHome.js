@@ -6,6 +6,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { TOKEN_NAME } from '../../services/apiService';
 import { Outlet } from 'react-router-dom';
 
+const backgroundColor = {
+  backgroundColor: '#FFF6F6', // Replace with your actual pink color code #F6F6F6
+};
+
 const Header = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
