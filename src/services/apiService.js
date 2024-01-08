@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export const API_URL = "http://localhost:3001";
+export const API_URL = "https://chavruta.onrender.com";
 // export const API_URL = "https://monkeys.co.il";
 export const TOKEN_NAME = "ADMIN_TOKEN";
 
