@@ -37,7 +37,7 @@ const SingleUser = () => {
                     <div className='col-4 mx-2 '>
                         <h5 className="card-title">{singleUser.firstName} {singleUser.lastName}</h5>
                         <p className="card-text text-right">
-                            <strong>Gender:</strong> {singleUser.gender === 0 ? 'Male' : 'Female'}<br />
+                            <strong>Gender:</strong> {singleUser.gender === 0 ? 'Female' : 'Male'}<br />
                             <strong>Phone Number:</strong> {singleUser.phoneNumber}<br />
                             <strong>Email:</strong> {singleUser.email}<br />
                             <strong>Location:</strong> {singleUser.location}<br />
