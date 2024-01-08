@@ -33,7 +33,7 @@ const ContactUs = () => {
               className='form-control'
               id='name'
               name='name'
-              value={formData.name}
+              defaultValue={formData.name}
               onChange={handleChange}
               required
             />
@@ -45,7 +45,7 @@ const ContactUs = () => {
               className='form-control'
               id='email'
               name='email'
-              value={formData.email}
+              defaultValue={formData.email}
               onChange={handleChange}
               required
             />
@@ -56,7 +56,7 @@ const ContactUs = () => {
               className='form-control'
               id='message'
               name='message'
-              value={formData.message}
+              defaultValue={formData.message}
               onChange={handleChange}
               rows='4'
               required
