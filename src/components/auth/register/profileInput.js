@@ -219,6 +219,7 @@ const ProfileInput = () => {
                       type="text"
                       name="lastName"
                       id="lastName"
+                      defaultValue={user.lastName}
                     />
                   </div>
                   {validatLastName && (
@@ -237,7 +238,6 @@ const ProfileInput = () => {
                       className="input--style-4 js-datepicker"
                       type="date"
                       id="dateOfBirth"
-                      defaultValue={user.dateOfBirth}
                       onInput={(e) => {
                         handleDateChange(e);
                         handleInputChange(e, "dateOfBirth");
@@ -320,7 +320,6 @@ const ProfileInput = () => {
                       name="password"
                       onInput={(e) => handleInputChange(e, "password")}
                       id="password"
-                      defaultValue={user.password}
                     />
                   </div>
                   {validatPassword && (
@@ -338,7 +337,6 @@ const ProfileInput = () => {
                       name="phoneNumber"
                       onInput={(e) => handleInputChange(e, "verifyPassword")}
                       id="verifyPassword"
-                      defaultValue={user.verifyPassword}
                     />
 
                   </div>
