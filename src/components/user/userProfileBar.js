@@ -58,6 +58,7 @@ const UserProfileBar = () => {
                   <li key={index}>{topic}</li>
                 ))}
               </ul>
+              <button className="btn btn-warning col-4 mx-auto" onClick={handleEditProfileClick}>Edit</button>
             </div>
           </div>
         </div>
