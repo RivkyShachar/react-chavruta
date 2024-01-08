@@ -67,7 +67,7 @@ const RequestList = () => {
 
     console.log("respon", response1);
     return (
-        <div className='container'>
+        <div className='container-fluid'>
             <FilterBarHome
                 setMin={setFilterMinDuration}
                 setMax={setFilterMaxDuration}
@@ -76,7 +76,7 @@ const RequestList = () => {
                 setSearchTopic={setFilterTopic}
                 setLang={setFilterLang}
             />
-            <div>
+            <div className='container'>
                 {parameter === "userProfile" ? (
                     <div>
                         {requestList.length === 0 ? (

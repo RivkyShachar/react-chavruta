@@ -6,6 +6,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { TOKEN_NAME } from '../../services/apiService';
 import { Outlet } from 'react-router-dom';
 
+const backgroundColor = {
+  backgroundColor: '#FFF6F6', // Replace with your actual pink color code #F6F6F6
+};
+
 const Header = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
@@ -31,9 +35,9 @@ const Header = () => {
 
 
   return (
-    <div>
-      <div className="container ">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
+    <div style={backgroundColor}>
+      <div className="container-fluid" style={backgroundColor}>
+        <nav className="navbar navbar-expand-lg navbar-light px-5" style={backgroundColor}>
           <a className="navbar-brand " href="/user">
             Chavruta
           </a>
