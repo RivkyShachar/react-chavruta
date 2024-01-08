@@ -1,13 +1,13 @@
 import React from 'react';
 
 const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopic, setLang }) => {
-    const backgroundColor = {
-        backgroundColor: '#FFF6F6', // Replace with your actual pink color code #F6F6F6
-    };
+    // const backgroundColor = {
+    //     backgroundColor: '#CCE5FF', // Replace with your actual pink color code #F6F6F6
+    // };
 
     return (
-        <div style={backgroundColor}>
-            <div className='container-fluid col-12 '>
+        <div className='bg-info'>
+            <div className=' container  '>
                 <nav className="navbar navbar-expand-lg navbar-light ">
                     <button
                         className="navbar-toggler ms-auto"
