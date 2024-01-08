@@ -153,7 +153,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
               >
-
+                <p className='card-text'><strong>{request.userId.firstName} {request.userId.lastName}</strong></p>
                 <p className="card-text">Topics: {request.topics.join(', ')}</p>
                 <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
                 <p className="card-text">State: {request.state}</p>
