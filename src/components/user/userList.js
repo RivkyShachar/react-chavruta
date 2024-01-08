@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { API_URL, doApiRequest } from '../../services/apiService';
 
 const UserList = ({ selectedRequest, onClose }) => {
-
     const [userList, setUserList] = useState([]);
 
     useEffect(() => {
@@ -34,11 +33,13 @@ const UserList = ({ selectedRequest, onClose }) => {
         return null; 
     }
     const clickYesUser = async (user) => {
+        console.log("yes user",user);
         try {
             const url = API_URL + `/event/finalizeRequest/${user._id}/${selectedRequest._id}/`;
             const data = await doApiRequest(url, "POST");
             if (data.status === 200) {
                 onClose();
+                alert("match created")
             }
         } catch (error) {
             console.error("error", error);
@@ -46,11 +47,10 @@ const UserList = ({ selectedRequest, onClose }) => {
     };
     const clickNo = async (_data) => {
         try {
-            console.log(selectedRequest);
             const url = API_URL + `/event/markNo/${selectedRequest._id}`;
             const data = await doApiRequest(url, "POST");
             if (data.status === 200) {
-                // nav("/")
+                onClose();
                 console.log("no");
             }
         } catch (error) {

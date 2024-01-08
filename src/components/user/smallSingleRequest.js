@@ -62,6 +62,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   };
   const handleCloseDetails1 = () => {
     setIsCardVisible(null);
+    window.location.reload()
   };
   const clickDelete = async (request) => {
     try {
@@ -80,9 +81,6 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
 
   const filteredRequestList = requests.filter((request) => {
     const topicsString = request.topics.join(' '); // Convert the topics array to a string
-    console.log("topicsString", topicsString);
-
-    console.log("stateRequest", stateRequest);
     return (
       // topicsString.toLowerCase().includes(searchV.toLowerCase()) &&
       request.state === stateRequest
