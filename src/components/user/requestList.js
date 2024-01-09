@@ -22,7 +22,7 @@ const RequestList = () => {
     const [filterMaxDuration, setFilterMaxDuration] = useState(40);
     const [filterStartDate, setFilterStartDate] = useState(Date.now());
     const [filterEndDate, setFilterEndDate] = useState(oneYearFromToday);
-    const [filterTopic, setFilterTopic] = useState("");
+    const [searchTopics, setSearchTopics] = useState([]);
     const [filterLang, setFilterLang] = useState("All");
 
     let { parameter } = useParams();
@@ -40,9 +40,16 @@ const RequestList = () => {
                 // Apply filters
                 url += `&minDuration=${filterMinDuration}&maxDuration=${filterMaxDuration}`;
                 url += `&startDate=${new Date(filterStartDate).toISOString()}&endDate=${new Date(filterEndDate).toISOString()}`;
-                filterTopic === "" ? url += `&lang=${filterLang}` :
-                    url += `&searchTopic=${filterTopic}&lang=${filterLang}`;
-                const response = await doApiRequest(url, 'GET');
+                url += `&lang=${filterLang}`;
+                let method;
+                if(parameter==="relevantRequestsList"){
+                    method="POST"
+                }
+                else{
+                    method = "GET"
+                }
+
+                const response = await doApiRequest(url, method, {searchTopics});
                 setResponse1(response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
@@ -62,7 +69,7 @@ const RequestList = () => {
         };
 
         fetchData();
-    }, [parameter, filterMinDuration, filterMaxDuration, filterStartDate, filterEndDate, filterTopic, filterLang]);
+    }, [parameter, filterMinDuration, filterMaxDuration, filterStartDate, filterEndDate, searchTopics, filterLang]);
 
 
     console.log("respon", response1);
@@ -73,7 +80,8 @@ const RequestList = () => {
                 setMax={setFilterMaxDuration}
                 setStartDate={setFilterStartDate}
                 setEndDate={setFilterEndDate}
-                setSearchTopic={setFilterTopic}
+                searchTopics={searchTopics}
+                setSearchTopics={setSearchTopics}
                 setLang={setFilterLang}
             />
             <div className='container'>

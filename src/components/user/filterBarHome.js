@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// import Sefaria1 from '../common/sefaria1';
+import SefariaSearch from '../common/sefariaSarch';
+import SefariaSelectedTopics from '../common/sefariaSelectedTopics';
 
-const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopic, setLang }) => {
-    // const backgroundColor = {
-    //     backgroundColor: '#CCE5FF', // Replace with your actual pink color code #F6F6F6
-    // };
+
+
+const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, searchTopics, setSearchTopics, setLang }) => {
+
+    const backgroundColor = {
+        backgroundColor: '#FFF6F6', // Replace with your actual pink color code #F6F6F6
+    };
 
     return (
-        <div className='bg-info'>
-            <div className=' container  '>
+        <div style={backgroundColor}>
+            <div className='container-fluid col-12 '>
                 <nav className="navbar navbar-expand-lg navbar-light ">
                     <button
                         className="navbar-toggler ms-auto"
@@ -21,11 +27,10 @@ const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopi
                         <i className="bi bi-chevron-double-down"></i>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarFilter">
-                    <ul className="navbar-nav">
+                        <ul className="navbar-nav">
                             <li className="nav-item m-2 active">
                                 <div className="form-group col-md-auto ">
-                                    <label htmlFor="searchTopic">Search Topic</label>
-                                    <input type="text" className="form-control " id="searchTopic" placeholder="Search Topic" onChange={(e) => setSearchTopic(e.target.value)} />
+                                    <SefariaSearch selectedTopics={searchTopics} setSelectedTopics={setSearchTopics} />
                                 </div>
                             </li>
                             <li className="nav-item m-2">
@@ -59,6 +64,9 @@ const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, setSearchTopi
                         </ul>
                     </div>
                 </nav>
+                <div className='row'>
+                    <SefariaSelectedTopics selectedTopics={searchTopics} setSelectedTopics={setSearchTopics} />
+                </div>
             </div>
         </div>
     );
