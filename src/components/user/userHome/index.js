@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import RequestList from './requestList'
+import RequestList from '../requestList'
 import { useDispatch, useSelector } from 'react-redux';
-import UsersList from './usersList';
+import UsersList from '../usersList';
 
 const UserHome = () => {
 

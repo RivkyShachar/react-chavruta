@@ -6,12 +6,12 @@ import { handleUserInfo } from './utill/authService';
 
 const Login = React.lazy(() => import('./components/auth/login'));
 const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
-const AdminHome = React.lazy(() => import('./components/admin/adminHome'));
+const AdminHome = React.lazy(() => import('./components/admin/adminHome/index'));
 const UsersListAdmin = React.lazy(() => import('./components/admin/usersListAdmin'));
 const RequestListAdmin = React.lazy(() => import('./components/admin/requestList'));
 const ProfileListImage = React.lazy(() => import('./components/admin/profileListImage'));
 const SingleUser = React.lazy(() => import('./components/user/singleUser'));
-const UserHome = React.lazy(() => import('./components/user/userHome'));
+const UserHome = React.lazy(() => import('./components/user/userHome/index'));
 const CreateStudyRequest = React.lazy(() => import('./components/user/createRequest'));
 const UsersList = React.lazy(() => import('./components/user/usersList'));
 const RequestList = React.lazy(() => import('./components/user/requestList'));
