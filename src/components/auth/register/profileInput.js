@@ -233,6 +233,7 @@ return (
                     type="text"
                     name="lastName"
                     id="lastName"
+                    defaultValue={user.lastName}
                   />
                 </div>
                 {validatLastName && (
