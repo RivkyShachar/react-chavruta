@@ -7,13 +7,10 @@ import SefariaSelectedTopics from '../common/sefariaSelectedTopics';
 
 const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, searchTopics, setSearchTopics, setLang }) => {
 
-    const backgroundColor = {
-        backgroundColor: '#FFF6F6', // Replace with your actual pink color code #F6F6F6
-    };
 
     return (
-        <div style={backgroundColor}>
-            <div className='container-fluid col-12 '>
+        <div>
+            <div className='container-fluid col-12 bg-light'>
                 <nav className="navbar navbar-expand-lg navbar-light ">
                     <button
                         className="navbar-toggler ms-auto"
