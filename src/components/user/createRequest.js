@@ -142,137 +142,131 @@ const ProfileInput = () => {
             // await handleUserInfo(dispatch);
         } catch (error) {
             setIsSubmitted(false);
-            console.log(error.data ? error.data.data.msg : 'An error occurred' );
+            console.log(error.data ? error.data.data.msg : 'An error occurred');
         }
     };
 
 
     return (
+        <div className='container mt-3'>
+            <div className='text-center'>
+                <div className='container col-lg-5 col-md-9 col-10 bg-light border border-4 border-info px-4' >
+                    <h2 className='mt-3 pt-2'>Create Post</h2>
 
-        <div className='container justify-content-center  col-5  mt-3 ' >
-            < div className=' text-center bg-light'>
-                <div className='container border border-4 border-info'>
-                    <h2 className="mt-3 pt-2">
-                        Create Post
-                    </h2>
-                    <div className='row'>
-                        <div className=' ms-5 mt-4 '>
-                            <div className='row col-10'>
-                                <Sefaria selectedTopics={selectedTopics} setSelectedTopics={setSelectedTopics} />
-                            </div>
-                            <div className=' mb-3 col-10' >
-                                <h2 htmlFor='duration' className='col-3 col-form-label ps-1'>
-                                    Duration:
-                                </h2>
-                                <br></br>
-                                    <div className='col-6'>
-                                        <div className='row align-items-center'>
-                                            <div className='col-3 pe-1 '>
-                                                <label htmlFor="minDuration">Min:</label>
-                                            </div>
-                                            <div className='col-7'>
-                                                <input
-                                                    type="number"
-                                                    className="form-control"
-                                                    id="minDuration"
-                                                    min="5"
-                                                    max={requestStudy.studyDuration.max}
-                                                    defaultValue={requestStudy.studyDuration.min}
-                                                    onChange={(e) => handleInputChange(e, 'minDuration')}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='col-6'>
-                                        <div className='row align-items-center'>
-                                            <div className='col-3 pe-1 '>
-                                                <label htmlFor="maxDuration">Max:</label>
-                                            </div>
-                                            <div className='col-7'>
-                                                <input
-                                                    type="number"
-                                                    className="form-control"
-                                                    id="maxDuration"
-                                                    min={requestStudy.studyDuration.min}
-                                                    max="40"
-                                                    value={requestStudy.studyDuration.max}
-                                                    onChange={(e) => handleInputChange(e, 'maxDuration')}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-
-                            <div className='row mb-3'>
-                                <label htmlFor='startDate' className='col-2 col-form-label'>
-                                    Start Date:
-                                </label>
-                                <div className='col-4'>
-                                    <input
-                                        name='startDate'
-                                        onInput={(e) => handleInputChange(e, 'startDate')}
-                                        className='form-control'
-                                        type='datetime-local'
-                                        id='startDate'
-                                        defaultValue={requestStudy.startDate}
-                                    />
-                                </div>
-                            </div>
-                            <div className='row mb-3'>
-                                <label htmlFor='preferredLanguages' className='col-4 col-form-label '>
-                                    Preferred Languages:
-                                </label>
-                                <div className='col-4'>
-                                    <select
-                                        name='preferredLanguages'
-                                        defaultValue={requestStudy.preferredLanguages}
-                                        className='form-control'
-                                        id='preferredLanguages'
-                                        onChange={(e) => handleInputChange(e, 'preferredLanguages')}
-                                    >
-                                        <option value='' disabled>Select a language</option>
-                                        {commonLanguages.map((preferredLanguages) => (
-                                            <option key={preferredLanguages} value={preferredLanguages}>
-                                                {preferredLanguages}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-                            <div className='row mb-3'>
-                                <label htmlFor='notes' className='col-2 col-form-label '>
-                                    Notes:
-                                </label>
-                                <div className='col-7 me-2'>
-                                    <textarea
-                                        name='notes'
-                                        onInput={(e) => handleInputChange(e, 'notes')}
-                                        className='form-control'
-                                        id='notes'
-                                        defaultValue={requestStudy.notes}
-                                    />
-                                </div>
-                            </div>
-                           
-                           
-                            <br></br>
-                            <button
-                                className="btn btn-success my-2 d-flex justify-content-center mx-auto"
-                                type='button'
-                                onClick={handlePostButtonClick}
-                            >
-                                Post
-                            </button>
-
-
+                    <div className='row '>
+                        <div className='mt-4 col-12'>
+                            <Sefaria selectedTopics={selectedTopics} setSelectedTopics={setSelectedTopics} />
                         </div>
+                        <div className='my-3 col-12'>
+                            <div className='row'>
+                                <div className='col-md-6'>
+                                    <div className='row align-items-center'>
+                                        <div className='col-4'>
+                                            <label htmlFor='minDuration'>Min:</label>
+                                        </div>
+                                        <div className='col-8'>
+                                            <input
+                                                type='number'
+                                                className='form-control'
+                                                id='minDuration'
+                                                min='5'
+                                                max={requestStudy.studyDuration.max}
+                                                defaultValue={requestStudy.studyDuration.min}
+                                                onChange={(e) => handleInputChange(e, 'minDuration')}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col-md-6'>
+                                    <div className='row align-items-center'>
+                                        <div className='col-4'>
+                                            <label htmlFor='maxDuration'>Max:</label>
+                                        </div>
+                                        <div className='col-8'>
+                                            <input
+                                                type='number'
+                                                className='form-control'
+                                                id='maxDuration'
+                                                min={requestStudy.studyDuration.min}
+                                                max='40'
+                                                value={requestStudy.studyDuration.max}
+                                                onChange={(e) => handleInputChange(e, 'maxDuration')}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='row mb-3'>
+                            <label htmlFor='startDate' className='col-3 col-form-label'>
+                                Date:
+                            </label>
+                            <div className='col-9'>
+                                <input
+                                    name='startDate'
+                                    onInput={(e) => handleInputChange(e, 'startDate')}
+                                    className='form-control'
+                                    type='datetime-local'
+                                    id='startDate'
+                                    defaultValue={requestStudy.startDate}
+                                />
+                            </div>
+                        </div>
+                        <div className='row mb-3'>
+                            <label htmlFor='preferredLanguages' className='col-3 col-form-label'>
+                                Language:
+                            </label>
+                            <div className='col-9'>
+                                <select
+                                    name='preferredLanguages'
+                                    defaultValue={requestStudy.preferredLanguages}
+                                    className='form-control'
+                                    id='preferredLanguages'
+                                    onChange={(e) => handleInputChange(e, 'preferredLanguages')}
+                                >
+                                    <option value='' disabled>
+                                        Select a language
+                                    </option>
+                                    {commonLanguages.map((preferredLanguages) => (
+                                        <option key={preferredLanguages} value={preferredLanguages}>
+                                            {preferredLanguages}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                        <div className='row mb-3'>
+                            <label htmlFor='notes' className='col-3 col-form-label'>
+                                Notes:
+                            </label>
+                            <div className='col-9'>
+                                <textarea
+                                    name='notes'
+                                    onInput={(e) => handleInputChange(e, 'notes')}
+                                    className='form-control'
+                                    id='notes'
+                                    defaultValue={requestStudy.notes}
+                                />
+                            </div>
+                        </div>
+
+                        <br />
+                        <button
+                            className='btn btn-success my-2 col-2 d-flex justify-content-center mx-auto'
+                            type='button'
+                            onClick={handlePostButtonClick}
+                        >
+                            Post
+                        </button>
                     </div>
+
+
                 </div>
             </div>
+        </div>
 
 
-
-            </div>
 
 
     );
