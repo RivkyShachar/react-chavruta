@@ -32,7 +32,12 @@ const AppRoutes = () => {
     }, [dispatch]);
 
     return (
-        <Suspense fallback={<div className='w-full flex justify-center h-screen items-center'>Loading...</div>}>
+        <Suspense fallback={
+            <div className="d-flex align-items-center justify-content-center vh-100">
+                <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>}>
             <Router>
                 <Routes>
                     <Route element={<Navbar />}>

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import { setSearchValueName } from '../../redux/featchers/searchSlice';
-import SmallSingleRequest from '../user/smallSingleRequest'
-import SingleRequestMyProfile from '../user/singleRequestMyProfile'
-import FilterBarHome from './filterBarHome'
+import SmallSingleRequest from '../user/smallSingleRequest';
+import SingleRequestMyProfile from '../user/singleRequestMyProfile';
+import FilterBarHome from './filterBarHome';
 import { useParams } from 'react-router-dom';
 
 const oneYearFromToday = () => {
@@ -24,13 +24,15 @@ const RequestList = () => {
     const [filterEndDate, setFilterEndDate] = useState(oneYearFromToday);
     const [searchTopics, setSearchTopics] = useState([]);
     const [filterLang, setFilterLang] = useState("All");
+    const [loading, setLoading] = useState(true);
 
     let { parameter } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
-
             try {
+                setLoading(true);
+
                 if (!parameter) {
                     parameter = "relevantRequestsList";
                 }
@@ -42,37 +44,35 @@ const RequestList = () => {
                 url += `&startDate=${new Date(filterStartDate).toISOString()}&endDate=${new Date(filterEndDate).toISOString()}`;
                 url += `&lang=${filterLang}`;
                 let method;
-                if(parameter==="relevantRequestsList"){
-                    method="POST"
-                }
-                else{
-                    method = "GET"
+                if (parameter === "relevantRequestsList") {
+                    method = "POST";
+                } else {
+                    method = "GET";
                 }
 
-                const response = await doApiRequest(url, method, {searchTopics});
+                const response = await doApiRequest(url, method, { searchTopics });
                 setResponse1(response);
                 if (response.status === 200) {
                     setRequestList([...response.data.data]);
-                }
-                else if (response.status === 201) {
+                } else if (response.status === 201) {
                     if (parameter === "marked") {
                         setRequestListMarkedYes([...response.data.data.markedYes]);
                         setRequestListMarkedNo([...response.data.data.markedNo]);
                     }
-                }
-                else if (response.status === 404) {
+                } else if (response.status === 404) {
                     setRequestList([]);
                 }
+
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setLoading(false);
             }
         };
 
         fetchData();
     }, [parameter, filterMinDuration, filterMaxDuration, filterStartDate, filterEndDate, searchTopics, filterLang]);
 
-
-    console.log("respon", response1);
     return (
         <div className='container-fluid'>
             <FilterBarHome
@@ -85,7 +85,17 @@ const RequestList = () => {
                 setLang={setFilterLang}
             />
             <div className='container'>
-                {parameter === "userProfile" ? (
+                {loading ? (
+                    <div className='container align-items-center mt-5'>
+                        <div className='text-center'>
+                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : parameter === "userProfile" ? (
                     <div>
                         {requestList.length === 0 ? (
                             <div className='container  align-items-center mt-5'>
@@ -96,48 +106,42 @@ const RequestList = () => {
                             <SingleRequestMyProfile requests={requestList} type={"requestList"} />
                         )}
                     </div>
-                ) :
-
-                    response1.status === 201 ? (
-                        <div>
-                            {requestListMarkedYes.length === 0 && requestListMarkedNo.length === 0 && (
-                                <div className='container  align-items-center mt-5'>
-                                    <div className='text-center'>
-                                        <h4 className='display-4'>No request marked</h4>
-                                    </div>
+                ) : response1.status === 201 ? (
+                    <div>
+                        {requestListMarkedYes.length === 0 && requestListMarkedNo.length === 0 && (
+                            <div className='container  align-items-center mt-5'>
+                                <div className='text-center'>
+                                    <h4 className='display-4'>No request marked</h4>
                                 </div>
-                            )}
-                            {requestListMarkedYes.length != 0 &&
+                            </div>
+                        )}
+                        {requestListMarkedYes.length !== 0 && (
+                            <div>
+                                <h2>Marked Yes</h2>
+                                <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
+                            </div>
+                        )}
 
-                                <div>
-                                    <h2>Marked Yes</h2>
-                                    <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
+                        {requestListMarkedNo.length !== 0 ? (
+                            <div>
+                                <h2>Marked No</h2>
+                                <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
+                            </div>
+                        ) : <p></p>}
+                    </div>
+                ) : (
+                    <div>
+                        {requestList.length === 0 ? (
+                            <div className='container  align-items-center mt-5'>
+                                <div className='text-center'>
+                                    <h4 className='display-4'>No requests</h4>
                                 </div>
-                            }
-
-                            {requestListMarkedNo.length != 0 ? (
-
-                                <div>
-                                    <h2>Marked No</h2>
-                                    <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
-                                </div>
-                            ) :
-                                <p></p>}
-                        </div>
-                    ) : (
-                        <div>
-                            {requestList.length === 0 ? (
-                                <div className='container  align-items-center mt-5'>
-                                    <div className='text-center'>
-                                        <h4 className='display-4'>No requests</h4>
-                                    </div>
-                                </div>) : (
-                                <SmallSingleRequest requests={requestList} type={"requestList"} />
-                            )}
-                        </div>
-                    )}
+                            </div>) : (
+                            <SmallSingleRequest requests={requestList} type={"requestList"} />
+                        )}
+                    </div>
+                )}
             </div>
-
         </div>
     );
 };
