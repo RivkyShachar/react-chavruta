@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { API_URL, doApiRequest } from '../../services/apiService';
+import translate from '../../utill/translator';
+import { useSelector } from 'react-redux';
 
 const UserList = ({ selectedRequest, onClose }) => {
     const [userList, setUserList] = useState([]);
+    const language = useSelector((myStore) => myStore.languageSlice.language);
 
     useEffect(() => {
         if (!selectedRequest) {
@@ -73,10 +76,10 @@ const UserList = ({ selectedRequest, onClose }) => {
                                      {user.firstName} {user.lastName} 
                                 </Link>
                                 <button className="btn border-success border-2 ms-5 me-2" onClick={() => clickYesUser(user)}>
-                                    yes
+                                {translate('post.yes', language)}
                                 </button>
                                 <button className="btn btn-danger" onClick={() => clickNo(user)}>
-                                    No
+                                {translate('post.no', language)}
                                 </button>
                               
                             </div>

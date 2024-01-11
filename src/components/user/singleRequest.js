@@ -59,7 +59,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
             <p className="card-text">{translate('post.topics', language)}: {selectedRequest.topics.join(', ')}</p>
             <p className="card-text">{translate('post.preferredLanguages', language)}: {selectedRequest.preferredLanguages.join(', ')}</p>
             <p className="card-text">{translate('post.levelOfStudy', language)}: {selectedRequest.preferredLanguages}</p>
-            <p className="card-text">{translate('post.startDate', language)}: {formatDate(selectedRequest.startDateAndTime)}</p>
+            <p className="card-text">{translate('post.startDate', language)}: {formatDate(selectedRequest.startDateAndTime, language)}</p>
             <p className="card-text">{translate('post.studyDuration', language)}: {selectedRequest.studyDuration.min} - {selectedRequest.studyDuration.max} minutes </p>
             <p className="card-text">{translate('post.description', language)}: {selectedRequest.description}</p>
           
@@ -67,11 +67,11 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
             <div className="d-flex justify-content-center mt-5">
               {localStorage.getItem("USER_ID") != selectedRequest.userId._id && (
                 <button className="btn btn-success mx-3" onClick={() => clickYes(selectedRequest)}>
-                  YES
+                  {translate('post.yes', language)}
                 </button>
               )}
               <button className="btn btn-danger mx-3" onClick={onClose}>
-                Close
+              {translate('post.close', language)}
               </button>
             </div>
           </div>

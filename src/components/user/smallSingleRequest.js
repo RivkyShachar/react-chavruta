@@ -160,7 +160,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                 <p className="card-text">{translate('post.topics', language)}: {request.topics.join(', ')}</p>
                 <p className="card-text">{translate('post.preferredLanguages', language)}: {request.preferredLanguages.join(', ')}</p>
                 <p className="card-text">{translate('post.state', language)}: {request.state}</p>
-                <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime)}</p>
+                <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime, language)}</p>
                 <p className="card-text">{translate('post.studyDuration', language)}: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
                 <p className="card-text">{translate('post.description', language)}: {request.description}</p>
               </Link>
@@ -168,13 +168,13 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                 <div className="d-flex justify-content-center mt-5">
                   {(type === "requestListMarkedNo" || type === "requestList") && (
                     <button className="btn btn-outline-success mx-3" onClick={() => clickYes(request)}>
-                      Yes
+                      {translate('post.yes', language)}
                     </button>
                   )}
 
                   {(type === "requestListMarkedYes" || type === "requestList") && (
                     <button className="btn btn-outline-danger mx-3" onClick={() => clickNo(request)}>
-                      No
+                      {translate('post.no', language)}
                     </button>
                   )}
                 </div>

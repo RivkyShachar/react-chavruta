@@ -29,7 +29,12 @@
         "state": "State",
         "startDate": "Start Date",
         "studyDuration": "Study Duration",
-        "description": "Description"
+        "description": "Description",
+        "yes": "Yes",
+        "no": "No",
+        "close": "Close",
+        "markedYes": "Marked Yes",
+        "markedNo": "Marked No"
     },
     "user": {
         "profileImg":"Profile Picture",
@@ -50,5 +55,8 @@
         "email": "Email",
         "message": "Message",
         "submit": "Submit"
+    },
+    "login": {
+        "login": "Log in"
     }
 }

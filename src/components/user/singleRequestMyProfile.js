@@ -131,7 +131,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                                         <p className="card-text">{translate('post.preferredLanguages', language)}: {request.preferredLanguages.join(', ')}</p>
                                         <p className="card-text">{translate('post.levelOfStudy', language)}: {request.preferredLanguages}</p>
                                         <p className="card-text">{translate('post.state', language)}: {request.state}</p>
-                                        <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime)}</p>
+                                        <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime, language)}</p>
                                         <p className="card-text">{translate('post.studyDuration', language)}: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
                                         <p className="card-text">{translate('post.description', language)}: {request.description}</p>
                                     </Link>

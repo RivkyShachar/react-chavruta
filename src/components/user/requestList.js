@@ -6,6 +6,8 @@ import SmallSingleRequest from '../user/smallSingleRequest';
 import SingleRequestMyProfile from '../user/singleRequestMyProfile';
 import FilterBarHome from './filterBarHome';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import translate from '../../utill/translator';
 
 const oneYearFromToday = () => {
     const today = new Date();
@@ -14,6 +16,7 @@ const oneYearFromToday = () => {
 };
 
 const RequestList = () => {
+    const language = useSelector((myStore) => myStore.languageSlice.language);
     const [requestList, setRequestList] = useState([]);
     const [response1, setResponse1] = useState([]);
     const [requestListMarkedYes, setRequestListMarkedYes] = useState([]);
@@ -58,6 +61,9 @@ const RequestList = () => {
                     if (parameter === "marked") {
                         setRequestListMarkedYes([...response.data.data.markedYes]);
                         setRequestListMarkedNo([...response.data.data.markedNo]);
+                        console.log("marked yes and no");
+                        console.log(response.data.data.markedYes);
+                        console.log(response.data.data.markedNo);
                     }
                 } else if (response.status === 404) {
                     setRequestList([]);
@@ -117,14 +123,14 @@ const RequestList = () => {
                         )}
                         {requestListMarkedYes.length !== 0 && (
                             <div>
-                                <h2>Marked Yes</h2>
+                                <h2>{translate('post.markedYes', language)}</h2>
                                 <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
                             </div>
                         )}
 
                         {requestListMarkedNo.length !== 0 ? (
                             <div>
-                                <h2>Marked No</h2>
+                                <h2>{translate('post.markedNo', language)}</h2>
                                 <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
                             </div>
                         ) : <p></p>}

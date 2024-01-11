@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { API_URL, TOKEN_NAME, doApiRequest } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import { handleUserInfo } from '../../utill/authService';
 import "../../css/main.css";
+import translate from '../../utill/translator';
 
 
 const Login = () => {
@@ -13,6 +14,7 @@ const Login = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const nav = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const language = useSelector((myStore) => myStore.languageSlice.language);
 
   const onSub = (e) => {
     e.preventDefault();
@@ -63,7 +65,7 @@ const Login = () => {
             <div className="row row-space">
               <div className="col-2">
                 <div className="input-group">
-                  <h2 className="title label ">Log in</h2>
+                  <h2 className="title label ">{translate('login.login', language)}</h2>
                 </div>
               </div>
 
@@ -71,7 +73,7 @@ const Login = () => {
                 <div className="row row-space">
                   <div className="col-2">
                     <label className="label" htmlFor="email">
-                      Email
+                    {translate('contact.email', language)}
                     </label>
 
                     <input
@@ -84,7 +86,7 @@ const Login = () => {
                   </div>
                   <div className="col-2">
                     <label className="label" htmlFor="password">
-                      Password
+                    {translate('user.password', language)}
                     </label>
 
                     <input
@@ -100,7 +102,7 @@ const Login = () => {
                       type="submit"
                       className="btn btn-register col-4 mx-2"
                     >
-                      Log in
+                      {translate('login.login', language)}
                     </button>
                   </div>
                 </div>

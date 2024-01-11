@@ -1,18 +1,25 @@
-// const formatDate = (dateString) => {
-//   const options = { month: '2-digit', day: '2-digit', year: 'numeric' };
-//   return new Date(dateString).toLocaleDateString(undefined, options);
-// };
-
-const formatDate = (dateTimeString) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+const formatDate = (dateTimeString, language) => {
   const date = new Date(dateTimeString);
-  const formattedDate = date.toLocaleDateString(undefined, options);
-  const formattedTime = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
 
-  return `${formattedDate} ${formattedTime}`;
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  };
+
+  const timeOptions = {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false, // Set to false for 24-hour format
+  };
+
+  const locale = language === 'he' ? 'he-IL' : undefined;
+
+  const formattedDate = date.toLocaleDateString(locale, options);
+
+  return `${formattedDate}`;
 };
-
-
-
 
 export { formatDate };
