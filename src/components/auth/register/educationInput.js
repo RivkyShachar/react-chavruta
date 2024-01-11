@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setEducationsInput } from "../../../redux/featchers/userSlice";
 import "../../../css/main.css";
+import translate from "../../../utill/translator";
 
 const EducationInput = () => {
   const dispatch = useDispatch();
   const [education, setEducation] = useState({ name: "", degree: "" });
   const [educations, setEducations] = useState([]);
+  const language = useSelector((myStore) => myStore.languageSlice.language);
+  
 
   const handleAddEducation = () => {
     setEducations([...educations, education]);
@@ -32,9 +35,9 @@ const EducationInput = () => {
           <div className="card-body">
             <div className="row row-space">
               <div className="col-5 ">
-                <h2 className="title label ">What is your education</h2>
+                <h2 className="title label ">{translate('register.educationTitle', language)}</h2>
                 <div className="education mt-3 input-group">
-                  <label className="label">Education:</label>
+                  <label className="label">{translate('register.education', language)}:</label>
                   <input
                     placeholder="School"
                     type="text"
@@ -64,14 +67,14 @@ const EducationInput = () => {
                     className=" btn-tl btn topic-list  "
                     onClick={handleAddEducation}
                   >
-                    Add Education
+                    {translate('register.addEducation', language)}
                   </button>
                 </div>
               </div>
 
               {/* Display the list of education on the right side */}
               <div className="col-5 ms-4 input--style-4">
-                <h2 className="list">Education List</h2>
+                <h2 className="list">{translate('register.eduactionList', language)}</h2>
                 <ul className="list-group custom-list">
                   {educations.map((edu, index) => (
                     <li
@@ -85,7 +88,7 @@ const EducationInput = () => {
                         className="btn btn-outline-danger btn-sm float-end"
                         onClick={() => handleDeleteEducation(index)}
                       >
-                        Delete
+                        {translate('register.deleteEducation', language)}
                       </button>
                     </li>
                   ))}

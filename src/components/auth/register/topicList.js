@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { setTopics } from '../../../redux/featchers/userSlice';
+import translate from "../../../utill/translator";
 import "../../../css/main.css";
 
 const Topics = () => {
@@ -70,7 +71,7 @@ const Topics = () => {
                 <div className="col-2">
                   <div className="input-group">
                     <h2 className="title label">
-                      Choose topics that you are interested
+                    {translate('register.topicsTitle', language)}
                     </h2>
                   </div>
                 </div>

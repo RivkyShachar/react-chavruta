@@ -21,7 +21,7 @@
         "marked": "מסומנים",
         "myProfile": "הפרופיל שלי",
         "searchUser": "חיפוש משתמש"
-      },
+    },
     "post": {
         "chooseTopics": "בחר נושאים",
         "selectedTopics": "נושאים שנבחרו",
@@ -51,15 +51,15 @@
         "startMeeting": "התחל פגישה"
     },
     "user": {
-        "profileImg":"תמונת פרופיל",
-        "firstName":"שם פרטי",
-        "lastName":"שם משפחה",
-        "birthDay":"תאריך לידה",
-        "selectGender":"בחר מין",
-        "gender":"מין",
-        "phoneNumber":"מספר טלפון",
-        "password":"סיסמא",
-        "verifyPassword":"אימות סיסמא",
+        "profileImg": "תמונת פרופיל",
+        "firstName": "שם פרטי",
+        "lastName": "שם משפחה",
+        "birthDay": "תאריך לידה",
+        "selectGender": "בחר מין",
+        "gender": "מין",
+        "phoneNumber": "מספר טלפון",
+        "password": "סיסמא",
+        "verifyPassword": "אימות סיסמא",
         "male": "זכר",
         "female": "נקבה",
         "edit": "ערוך פרופיל"
@@ -76,7 +76,18 @@
     },
     "general": {
         "minutes": "דקות"
+    },
+    "register": {
+        "topicsTitle": "בחר/י נושאים שאת/ה מעוניין/ת",
+        "education": "השכלה",
+        "addEducation": "הוסף השכלה",
+        "deleteEducation": "מחק",
+        "eduactionList": "רשימת השכלה",
+        "educationTitle": "מהו ההשכלה שלך",
+        "topicsQuestion": "נרצה לדעת את התחומים שאת/ה מעוניין/ת ללמוד",
+        "educationRangeQuestion": "כמה חשוב לך ללמוד עם מישהו שיש לו חינוך דומה אליך?",
+        "friendListRangeQuestion": "כמה חשוב לך ללמוד רק עם מישהו מרשימת החברים שלך?",
+        "ageRangeQuestion": "כמה חשוב לך ללמוד עם מישהו בטווח הגילאים שלך?",
+        "locationRangeQuestion": "כמה חשוב לך ללמוד עם מישהו מהאזור שלך?"
     }
-
-  }
-  
+}

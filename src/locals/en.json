@@ -76,6 +76,19 @@
     },
     "general": {
         "minutes": "minutes"
+    },
+    "register": {
+        "topicsTitle": "Choose topics that you are interested",
+        "education": "Education",
+        "addEducation": "Add Education",
+        "deleteEducation": "Delete",
+        "eduactionList": "Education List",
+        "educationTitle": "What is your education",
+        "topicsQuestion": "We would like to know the topics that you are interested in",
+        "educationRangeQuestion": "How important is it to you to study with someone who has a similar education to you?",
+        "friendListRangeQuestion": "How important is it to you to study with only someone from your friend list?",
+        "ageRangeQuestion": "How important is it to you to study with someone in your age range?",
+        "locationRangeQuestion": "How important is it to you to study with something from your area?"
     }
 
 }

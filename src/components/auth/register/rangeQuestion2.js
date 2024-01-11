@@ -1,9 +1,12 @@
 import React from 'react';
 import SingleRangeQ from './singleRangeQ';
 import "../../../css/main.css";
+import translate from "../../../utill/translator";
+import { useSelector } from 'react-redux';
 
 const RangeQuestion = () => {
-
+  const language = useSelector((myStore) => myStore.languageSlice.language);
+  
   return (
     <div className="page-wrapper p-t-130 p-b-100 font-poppins container-register">
     <div className="wrapper wrapper--w680">
@@ -11,14 +14,14 @@ const RangeQuestion = () => {
         <div className="card-body">
           <div className="row row-space">
             <div className="col m-2">
-          <h2 className="title label">We would like to know the topics that you are interested in</h2>
+          <h2 className="title label">{translate('register.topicsQuestion', language)}</h2>
           <SingleRangeQ
-            title="How important is it to you to study with someone who has a similar education to you?"
+            title={translate('register.educationRangeQuestion', language)}
             questionNumber="3"
 
           />
            <SingleRangeQ
-            title="How important is it to you to study with only someone from your friend list?"
+            title={translate('register.friendListRangeQuestion', language)}
             questionNumber="4"
 
           />          
