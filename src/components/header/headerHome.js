@@ -18,7 +18,7 @@ const Header = () => {
   const language = useSelector((myStore) => myStore.languageSlice.language);
 
   const nav = useNavigate();
-  
+
   const toggleLanguage = () => {
     dispatch(setLanguage({ language: language === 'en' ? 'he' : 'en' }));
   };
@@ -52,7 +52,7 @@ const Header = () => {
 
 
             <a className="navbar-brand " href="/user">
-            {translate('navbar.brand', language)}
+              {translate('navbar.brand', language)}
             </a>
 
             <button
@@ -70,17 +70,17 @@ const Header = () => {
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
                   <a className="nav-link text-info" href="/user/createPost">
-                  {translate('navbar.createPost', language)}
+                    {translate('navbar.createPost', language)}
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link text-warning" href="/user/requestsList/marked">
-                  {translate('navbar.marked', language)}
+                    {translate('navbar.marked', language)}
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link text-success" href="/user/userProfile">
-                  {translate('navbar.myProfile', language)}
+                    {translate('navbar.myProfile', language)}
                   </a>
                 </li>
               </ul>
@@ -101,7 +101,7 @@ const Header = () => {
               {language === 'en' ? 'עברית' : 'English'}
 
             </button>
-            
+
             {localStorage.getItem(TOKEN_NAME) && (
               <button className="btn btn btn-outline-danger me-5 " onClick={handleLogout}>
                 <span>{translate('navbar.logout', language)} </span>

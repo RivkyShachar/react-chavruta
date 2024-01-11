@@ -43,6 +43,13 @@
         "verifyPassword":"אימות סיסמא",
         "male": "זכר",
         "female": "נקבה"
+    },
+    "contact": {
+        "contactUs": "תקשר איתנו",
+        "name": "שם מלא",
+        "email": "אימייל",
+        "message": "הודעה",
+        "submit": "שלח"
     }
   }
   

@@ -43,5 +43,12 @@
         "verifyPassword":"Verify Password",
         "male": "Male",
         "female": "Female"
+    },
+    "contact": {
+        "contactUs": "Contact us",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Submit"
     }
 }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import translate from '../../utill/translator';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +8,7 @@ const ContactUs = () => {
     email: '',
     message: '',
   });
+  const language = useSelector((myStore) => myStore.languageSlice.language);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,10 +27,10 @@ const ContactUs = () => {
   return (
     <div id="contactUs" className='container col-4 mt-5 mb-5'>
       <div className=' justify-content-center text-center p-4 ' >
-        <h3 className='display-3 mb-3'>Contact us</h3>
+        <h3 className='display-3 mb-3'>{translate('contact.contactUs', language)}</h3>
         <form onSubmit={handleSubmit}>
           <div className='form-group mt-2'>
-            <label htmlFor='name'>Name:</label>
+            <label htmlFor='name'>{translate('contact.name', language)}:</label>
             <input
               type='text'
               className='form-control'
@@ -39,7 +42,7 @@ const ContactUs = () => {
             />
           </div>
           <div className='form-group mt-2'>
-            <label htmlFor='email'>Email:</label>
+            <label htmlFor='email'>{translate('contact.email', language)}:</label>
             <input
               type='email'
               className='form-control'
@@ -51,7 +54,7 @@ const ContactUs = () => {
             />
           </div>
           <div className='form-group mt-2'>
-            <label htmlFor='message'>Message:</label>
+            <label htmlFor='message'>{translate('contact.message', language)}:</label>
             <textarea
               className='form-control'
               id='message'
@@ -63,7 +66,7 @@ const ContactUs = () => {
             ></textarea>
           </div>
           <button type='submit' className='btn btn-outline-success mt-2'>
-            Submit
+            {translate('contact.submit', language)}
           </button>
         </form>
       </div>
