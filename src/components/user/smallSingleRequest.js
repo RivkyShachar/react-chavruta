@@ -5,10 +5,7 @@ import React, { useState } from 'react';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import { useNavigate } from 'react-router-dom';
 import UserList from './userList';
-import UserHome from './userHome';
-import SingleUser from './singleUser';
 import { formatDate } from '../../utill/dateFormat'
-import UsersList from './usersList'
 import translate from '../../utill/translator';
 
 

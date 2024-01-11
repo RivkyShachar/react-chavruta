@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
 import { API_URL, doApiRequest } from '../../services/apiService';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValueName } from '../../redux/featchers/searchSlice';
+import { useDispatch } from 'react-redux';
 import SmallSingleRequest from './smallSingleRequest';
 
 const UsersListAdmin = () => {
     const [requestList, setRequestList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {

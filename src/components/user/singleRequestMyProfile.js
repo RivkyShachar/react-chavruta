@@ -11,7 +11,8 @@ import translate from '../../utill/translator';
 const SingleRequestMyProfile = ({ requests }) => {
     const [isCardVisible, setIsCardVisible] = useState(null);
     const [selectedRequest, setSelectedRequest] = useState(null);
-    const [maor, setMaor] = useState(true);
+    // const [maor, setMaor] = useState(true);
+    let maor = true;
     const searchV = useSelector((myStore) => myStore.searchSlice.searchValue);
     const language = useSelector((myStore) => myStore.languageSlice.language);
 
@@ -136,7 +137,7 @@ const SingleRequestMyProfile = ({ requests }) => {
                                         <p className="card-text">{translate('post.description', language)}: {request.description}</p>
                                     </Link>
                                 </div>
-                                {(request.state === "open" && request.matchesList.length != 0) &&
+                                {(request.state === "open" && request.matchesList.length !== 0) &&
 
                                     <div className='col-3'>
                                         <button className="  btn btn-info rounded-circle request-link" onClick={() => handleRequestClick1(request)}

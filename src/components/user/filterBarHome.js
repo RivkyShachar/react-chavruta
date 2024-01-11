@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 // import Sefaria1 from '../common/sefaria1';
 import SefariaSearch from '../common/sefariaSarch';
 import SefariaSelectedTopics from '../common/sefariaSelectedTopics';

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import requestReducer, { commonLanguages } from '../../redux/featchers/requestSlice';
-import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
-import { verifyToken } from '../../services/apiService';
+import  { commonLanguages } from '../../redux/featchers/requestSlice';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import Sefaria from '../common/sefaria';
 import {
     setTopics,
@@ -25,7 +24,7 @@ const ProfileInput = () => {
     const dispatch = useDispatch();
     const requestStudy = useSelector((myStore) => myStore.requestSlice.request);
     const [selectedTopics, setSelectedTopics] = useState([]);
-    const [showMoreInfo, setShowMoreInfo] = useState(false);
+    // const [showMoreInfo, setShowMoreInfo] = useState(false);
     const [ratings, setRatings] = useState({
         ageRange: '',
         levelOfStufy: '',
@@ -34,7 +33,7 @@ const ProfileInput = () => {
         friendListRange: ''
     });
 
-    const [validationError, setValidationError] = useState('');
+    // const [validationError, setValidationError] = useState('');
 
     let user = useSelector(myStore => myStore.userSlice.user)
     const requestWithoutShowMoreOptions = { ...requestStudy };

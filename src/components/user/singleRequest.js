@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
-import { verifyToken } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import {formatDate} from '../../utill/dateFormat'
 import { useSelector } from 'react-redux';
 import translate from '../../utill/translator';
@@ -31,7 +30,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
       <div className="modal-container">
         <div className="container mt-4">
           <div>
-            {localStorage.getItem("USER_ID") != selectedRequest.userId._id && (
+            {localStorage.getItem("USER_ID") !== selectedRequest.userId._id && (
               <div className='row'>
                 <div className='col-8'>
                 <Link
@@ -65,7 +64,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           
 
             <div className="d-flex justify-content-center mt-5">
-              {localStorage.getItem("USER_ID") != selectedRequest.userId._id && (
+              {localStorage.getItem("USER_ID") !== selectedRequest.userId._id && (
                 <button className="btn btn-success mx-3" onClick={() => clickYes(selectedRequest)}>
                   {translate('post.yes', language)}
                 </button>

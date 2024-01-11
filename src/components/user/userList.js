@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import translate from '../../utill/translator';
 import { useSelector } from 'react-redux';
