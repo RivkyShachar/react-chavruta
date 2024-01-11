@@ -194,14 +194,11 @@ const ProfileInput = () => {
                       type="file"
                       accept="image/*"
                       id="profileImage"
-                      defaultValue={user.profilePic}
                       onInput={(e) => {
                         handleFileChange(e);
                         handleInputChange(e, "profilePic");
                       }}
                     />
-                    {/* <input type="file" onChange={(event)=>{uploadImage(event.target.files)}}/> */}
-
                   </div>
                 </div>
               </div>

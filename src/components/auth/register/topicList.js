@@ -38,7 +38,7 @@ const Topics = () => {
     "בית שני",
     "מילונים וספרי יעץ",
   ];
-  let topicsList = language==="en"? [...topicsListEn] : [...topicsListHe];
+  let topicsList = language === "en" ? [...topicsListEn] : [...topicsListHe];
   const dispatch = useDispatch();
 
 
@@ -54,9 +54,9 @@ const Topics = () => {
 
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(setTopics({ topics: selectedTopics }));
-  },[selectedTopics,dispatch])
+  }, [selectedTopics, dispatch])
 
 
 
@@ -67,25 +67,24 @@ const Topics = () => {
           <div className="col-md-12">
             <div className="card card-4">
               <div className="card-body">
-              <div className="col-2">
-                <div className="input-group">
-                <h2 className="title label">
-                  Choose topics that you are interested
+                <div className="col-2">
+                  <div className="input-group">
+                    <h2 className="title label">
+                      Choose topics that you are interested
                     </h2>
                   </div>
-                  </div>
+                </div>
                 <div class="row">
                   {topicsList.map((topic, index) => (
                     <div className="col-md-4  ">
                       <button
                         type="button"
                         key={index}
-                        className={`btn ${
-                          selectedTopics.includes(topic)
+                        className={`btn ${selectedTopics.includes(topic)
                             ? "btn topic-list-2"
                             : "btn topic-list "
-                        } m-1 btn btn-tl`}
-                        
+                          } m-1 btn btn-tl`}
+
                         onClick={() => handleButtonClick(topic)}
                       >
                         {topic}
