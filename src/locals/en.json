@@ -1,4 +1,25 @@
 {
-    "welcome": "Welcome",
-    "aboutUs": "About Us"
-  }
+    "home": {
+        "welcomeMessage": "WELCOME TO CHAVRUTA",
+        "studyPartnerMessage": "A PLACE WHERE YOU CAN FIND A STUDY PARTNER",
+        "getStarted": "Get Started",
+        "connectingMinds": "Chavruta: Connecting Minds, Igniting Knowledge.",
+        "connectingMindsDescription": "Join Chavruta and connect with like-minded individuals on a journey of shared learning and intellectual growth.",
+        "discoverJoy": "Discover the Joy of Learning Together with Chavruta",
+        "joyousWorld": "Dive into the joyous world of collaborative learning with Chavruta, where every study session is an opportunity to explore, question, and grow.",
+        "empoweringLearning": "Empowering Your Learning Journey: Chavruta, Your Study Partner Hub.",
+        "studyPartnerHub": "Chavruta is not just a platform; it's your dedicated study partner hub, empowering you to excel in your educational pursuits."
+    },
+    "navbar": {
+        "brand": "Chavruta",
+        "about": "About",
+        "contactUs": "Contact Us",
+        "login": "Login",
+        "signUp": "Sign up",
+        "logout": "Logout",
+        "createPost": "Create Post",
+        "marked": "Marked",
+        "myProfile": "My Profile",
+        "searchUser": "Search for user"
+    }
+}

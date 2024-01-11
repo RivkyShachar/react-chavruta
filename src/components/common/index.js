@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Footer from './footer';
 import ContactUs from './contactUs';
+import translate from '../../utill/translator';
 
 const Index = () => {
     const nav = useNavigate();
+    const language = useSelector((myStore) => myStore.languageSlice.language);
 
     useEffect(() => {
         AOS.init({
@@ -39,13 +43,13 @@ const Index = () => {
                             e.target.style.textShadow = 'none';
                         }}
                     >
-                        WELCOME TO CHAVRUTA <br /> A PLACE WHERE YOU CAN FIND A STUDY PARTNER
+                        {translate('home.welcomeMessage', language)} <br /> {translate('home.studyPartnerMessage', language)}
                     </h1>
                 </div>
 
                 <div className='mt-4' data-aos='fade-up'>
                     <button className='btn  btn-outline-success' onClick={signUp}>
-                        Get Started
+                        {translate('home.getStarted', language)}
                     </button>
                 </div>
             </div>
@@ -56,10 +60,10 @@ const Index = () => {
                         <div className='box col-md-5 col-10 p-5 mx-1 mb-4' data-aos='fade-right'>
                             <br />
                             <h3 style={{ lineHeight: '1.2' }}>
-                                <strong>Chavruta: Connecting Minds, Igniting Knowledge.</strong>
+                                <strong>{translate('home.connectingMinds', language)}</strong>
                                 <br />
                                 <br />
-                                Join Chavruta and connect with like-minded individuals on a journey of shared learning and intellectual growth.
+                                {translate('home.connectingMindsDescription', language)}
                             </h3>
                         </div>
 
@@ -73,9 +77,9 @@ const Index = () => {
 
                         <div className='box col-md-5 col-10 p-5 mx-1 mb-4' data-aos='fade-left'>
                             <br />
-                            <h3 style={{ lineHeight: '1.2' }}><strong>Discover the Joy of Learning Together with Chavruta</strong><br />
+                            <h3 style={{ lineHeight: '1.2' }}><strong>{translate('home.connectingMinds', language)}</strong><br />
                                 <br />
-                                Dive into the joyous world of collaborative learning with Chavruta, where every study session is an opportunity to explore, question, and grow.
+                                {translate('home.connectingMindsDescription', language)}
                             </h3>
                         </div>
 
@@ -90,9 +94,9 @@ const Index = () => {
 
                         <div className='box col-md-5 col-10 p-5 mx-1 mb-4' data-aos='fade-right'>
                             <br></br>
-                            <h3 style={{ lineHeight: '1.2' }}><strong>Empowering Your Learning Journey: Chavruta, Your Study Partner Hub.</strong><br></br>
+                            <h3 style={{ lineHeight: '1.2' }}><strong>{translate('home.connectingMinds', language)}</strong><br></br>
                                 <br></br>
-                                Chavruta is not just a platform; it's your dedicated study partner hub, empowering you to excel in your educational pursuits.
+                                {translate('home.connectingMindsDescription', language)}
                             </h3>
                         </div>
 

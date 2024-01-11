@@ -1,13 +1,24 @@
-import hebrewTranslations from '../locals/he.json';
-import englishTranslations from '../locals/en.json';
+// translator.js
+import enTranslations from '../locals/en.json';
+import heTranslations from '../locals/he.json';
 
 const translations = {
-  hebrew: hebrewTranslations,
-  english: englishTranslations,
+  en: enTranslations,
+  he: heTranslations,
 };
 
 const translate = (key, lang) => {
-  return translations[lang][key] || key;
+  const keys = key.split('.');
+  let currentTranslation = translations[lang];
+
+  for (const k of keys) {
+    if (!currentTranslation || !currentTranslation[k]) {
+      return key; // Return the key itself if translation not found
+    }
+    currentTranslation = currentTranslation[k];
+  }
+
+  return currentTranslation;
 };
 
 export default translate;
