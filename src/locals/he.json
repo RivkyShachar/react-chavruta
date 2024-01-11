@@ -34,7 +34,11 @@
         "no": "לא",
         "close": "סגור",
         "markedYes": "סומנו כן",
-        "markedNo": "סומנו לא"
+        "markedNo": "סומנו לא",
+        "open": "פתוח",
+        "close": "סגור",
+        "past": "עבר",
+        "done": "בוצע"
     },
     "user": {
         "profileImg":"תמונת פרופיל",

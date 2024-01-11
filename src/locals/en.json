@@ -34,7 +34,11 @@
         "no": "No",
         "close": "Close",
         "markedYes": "Marked Yes",
-        "markedNo": "Marked No"
+        "markedNo": "Marked No",
+        "open": "Open",
+        "close": "Close",
+        "past": "Past",
+        "done": "Done"
     },
     "user": {
         "profileImg":"Profile Picture",
