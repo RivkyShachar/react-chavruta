@@ -47,7 +47,8 @@
         "selectLanguage": "בחר שפה",
         "language": "שפה",
         "notes": "הערות",
-        "post": "פרסם"
+        "post": "פרסם",
+        "startMeeting": "התחל פגישה"
     },
     "user": {
         "profileImg":"תמונת פרופיל",
@@ -60,7 +61,8 @@
         "password":"סיסמא",
         "verifyPassword":"אימות סיסמא",
         "male": "זכר",
-        "female": "נקבה"
+        "female": "נקבה",
+        "edit": "ערוך פרופיל"
     },
     "contact": {
         "contactUs": "תקשר איתנו",

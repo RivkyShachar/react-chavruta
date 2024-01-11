@@ -193,7 +193,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                   {(type === "myRequests") &&
                     (request.zoomLink ?
                       <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
-                        Start meeting
+                         {translate('post.startMeeting', language)}
                       </a> :
                       (request.state === 'close') ?
                         <button className='btn btn-danger' onClick={() => clickDelete(request)}>Cancel meeting</button> :

@@ -47,7 +47,8 @@
         "selectLanguage": "Select a language",
         "language": "Language",
         "notes": "Notes",
-        "post": "Post"
+        "post": "Post",
+        "startMeeting": "Start meeting"
     },
     "user": {
         "profileImg":"Profile Picture",
@@ -60,7 +61,8 @@
         "password":"Password",
         "verifyPassword":"Verify Password",
         "male": "Male",
-        "female": "Female"
+        "female": "Female",
+        "edit": "Edit"
     },
     "contact": {
         "contactUs": "Contact us",

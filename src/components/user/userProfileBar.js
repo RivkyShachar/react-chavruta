@@ -59,7 +59,7 @@ const UserProfileBar = () => {
                   <li key={index}>{topic}</li>
                 ))}
               </ul>
-              <button className="btn btn-warning col-4 mx-auto" onClick={handleEditProfileClick}>Edit</button>
+              <button className="btn btn-warning col-6 mx-auto" onClick={handleEditProfileClick}>{translate('user.edit', language)}</button>
             </div>
           </div>
         </div>
