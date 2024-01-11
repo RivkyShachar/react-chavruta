@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { ListGroup, InputGroup, FormControl } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import translate from '../../utill/translator';
 
 function Sefaria({selectedTopics, setSelectedTopics}) {
+  const language = useSelector((myStore) => myStore.languageSlice.language);
   const [searchTerm, setSearchTerm] = useState('');
   const [options, setOptions] = useState([]);
   const [isMouseOver, setIsMouseOver] = useState(null);
@@ -47,10 +50,10 @@ function Sefaria({selectedTopics, setSelectedTopics}) {
   return (
     <div className='row'>
       <div className='col-6 text-start'>
-      <h5>Choose Topics</h5>
+      <h5>{translate('post.chooseTopics', language)}</h5>
         <InputGroup className="mb-3">
           <FormControl
-            placeholder="Type to search..."
+            placeholder= {translate('post.typeSearch', language)}
             defaultValue={searchTerm}
             onChange={handleInputChange}
           />
@@ -73,7 +76,7 @@ function Sefaria({selectedTopics, setSelectedTopics}) {
       <div className='col-6'>
         {selectedTopics.length > 0 && (
           <div>
-            <h5>Selected Topics:</h5>
+            <h5>{translate('post.selectedTopics', language)}:</h5>
             <ListGroup>
               {selectedTopics.map((topic, index) => (
                 <ListGroup.Item

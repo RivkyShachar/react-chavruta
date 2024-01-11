@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import  { commonLanguages } from '../../redux/featchers/requestSlice';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import Sefaria from '../common/sefaria';
+import translate from '../../utill/translator'
 import {
     setTopics,
     setStudyDuration,
@@ -20,9 +21,11 @@ import {
 } from '../../redux/featchers/requestSlice';
 
 
+
 const ProfileInput = () => {
     const dispatch = useDispatch();
     const requestStudy = useSelector((myStore) => myStore.requestSlice.request);
+    const language = useSelector((myStore) => myStore.languageSlice.language);
     const [selectedTopics, setSelectedTopics] = useState([]);
     // const [showMoreInfo, setShowMoreInfo] = useState(false);
     const [ratings, setRatings] = useState({
@@ -150,7 +153,7 @@ const ProfileInput = () => {
         <div className='container mt-3'>
             <div className='text-center'>
                 <div className='container col-lg-5 col-md-9 col-10 bg-light border border-4 border-info px-4' >
-                    <h2 className='mt-3 pt-2'>Create Post</h2>
+                    <h2 className='mt-3 pt-2'>{translate('navbar.createPost', language)}</h2>
 
                     <div className='row '>
                         <div className='mt-4 col-12'>
@@ -161,7 +164,7 @@ const ProfileInput = () => {
                                 <div className='col-md-6'>
                                     <div className='row align-items-center'>
                                         <div className='col-4'>
-                                            <label htmlFor='minDuration'>Min:</label>
+                                            <label htmlFor='minDuration'>{translate('post.min', language)}:</label>
                                         </div>
                                         <div className='col-8'>
                                             <input
@@ -179,7 +182,7 @@ const ProfileInput = () => {
                                 <div className='col-md-6'>
                                     <div className='row align-items-center'>
                                         <div className='col-4'>
-                                            <label htmlFor='maxDuration'>Max:</label>
+                                            <label htmlFor='maxDuration'>{translate('post.max', language)}:</label>
                                         </div>
                                         <div className='col-8'>
                                             <input
@@ -199,7 +202,7 @@ const ProfileInput = () => {
 
                         <div className='row mb-3'>
                             <label htmlFor='startDate' className='col-3 col-form-label'>
-                                Date:
+                            {translate('post.dateAndTime', language)}:
                             </label>
                             <div className='col-9'>
                                 <input
@@ -214,7 +217,7 @@ const ProfileInput = () => {
                         </div>
                         <div className='row mb-3'>
                             <label htmlFor='preferredLanguages' className='col-3 col-form-label'>
-                                Language:
+                            {translate('post.language', language)}:
                             </label>
                             <div className='col-9'>
                                 <select
@@ -225,7 +228,7 @@ const ProfileInput = () => {
                                     onChange={(e) => handleInputChange(e, 'preferredLanguages')}
                                 >
                                     <option value='' disabled>
-                                        Select a language
+                                    {translate('post.selectLanguage', language)}
                                     </option>
                                     {commonLanguages.map((preferredLanguages) => (
                                         <option key={preferredLanguages} value={preferredLanguages}>
@@ -237,7 +240,7 @@ const ProfileInput = () => {
                         </div>
                         <div className='row mb-3'>
                             <label htmlFor='notes' className='col-3 col-form-label'>
-                                Notes:
+                            {translate('post.notes', language)}:
                             </label>
                             <div className='col-9'>
                                 <textarea
@@ -256,7 +259,7 @@ const ProfileInput = () => {
                             type='button'
                             onClick={handlePostButtonClick}
                         >
-                            Post
+                            {translate('post.post', language)}
                         </button>
                     </div>
 

@@ -23,6 +23,9 @@
         "searchUser": "Search for user"
     },
     "post": {
+        "chooseTopics": "Choose Topics",
+        "selectedTopics": "Selected Topics",
+        "typeSearch": "Type to search...",
         "topics": "Topics",
         "preferredLanguages": "Preferred Languages",
         "levelOfStudy": "level Of Study",
@@ -36,9 +39,15 @@
         "markedYes": "Marked Yes",
         "markedNo": "Marked No",
         "open": "Open",
-        "close": "Close",
         "past": "Past",
-        "done": "Done"
+        "done": "Done",
+        "min": "Min Duration",
+        "max": "Max Duration",
+        "dateAndTime": "Start Date And Time",
+        "selectLanguage": "Select a language",
+        "language": "Language",
+        "notes": "Notes",
+        "post": "Post"
     },
     "user": {
         "profileImg":"Profile Picture",

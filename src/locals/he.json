@@ -23,6 +23,9 @@
         "searchUser": "חיפוש משתמש"
       },
     "post": {
+        "chooseTopics": "בחר נושאים",
+        "selectedTopics": "נושאים שנבחרו",
+        "typeSearch": "הקלד לחיפוש...",
         "topics": "נושאים",
         "preferredLanguages": "שפה מועדפת",
         "levelOfStudy": "רמת לימוד",
@@ -36,9 +39,15 @@
         "markedYes": "סומנו כן",
         "markedNo": "סומנו לא",
         "open": "פתוח",
-        "close": "סגור",
         "past": "עבר",
-        "done": "בוצע"
+        "done": "בוצע",
+        "min": "זמן מינימאלי",
+        "max": "זמן מקסימאלי",
+        "dateAndTime": "תאריך ושעת התחלה",
+        "selectLanguage": "בחר שפה",
+        "language": "שפה",
+        "notes": "הערות",
+        "post": "פרסם"
     },
     "user": {
         "profileImg":"תמונת פרופיל",
