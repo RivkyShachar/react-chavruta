@@ -1,16 +1,17 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FullRequestDetails from './singleRequest';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { API_URL, doApiRequest } from '../../services/apiService';
-import {formatDate} from '../../utill/dateFormat'
+import { formatDate } from '../../utill/dateFormat'
+import translate from '../../utill/translator';
 
 const SmallSingleRequest = ({ requests }) => {
 
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [maor, setMaor] = useState(true);
   const searchV = useSelector((myStore) => myStore.searchSlice1.searchValue1);
-
+  const language = useSelector((myStore) => myStore.languageSlice.language);
 
   const handleRequestClick = (request) => {
     setSelectedRequest(request);
@@ -62,13 +63,14 @@ const SmallSingleRequest = ({ requests }) => {
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
               >
-                <p className="card-text">Topics: {request.topics.join(', ')}</p>
-                <p className="card-text">Preferred Languages:: {request.preferredLanguages.join(', ')}</p>
-                <p className="card-text">level Of Study: {request.preferredLanguages}</p>
-                <p className="card-text">state: {request.state}</p>
-                <p className="card-text">Start Date: {formatDate(request.startDateAndTime)}</p>
-                <p className="card-text">Study Duration: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
-                <p className="card-text">Description: {request.description}</p>
+                <p className="card-text">{translate('post.topics', language)}: {request.topics.join(', ')}</p>
+                <p className="card-text">{translate('post.preferredLanguages', language)}: {request.preferredLanguages.join(', ')}</p>
+                <p className="card-text">{translate('post.levelOfStudy', language)}: {request.preferredLanguages}</p>
+                <p className="card-text">{translate('post.state', language)}: {request.state}</p>
+                <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime)}</p>
+                <p className="card-text">{translate('post.studyDuration', language)}: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
+                <p className="card-text">{translate('post.description', language)}: {request.description}</p>
+
               </Link>
             </div>
             <div className="d-flex justify-content-between mt-3">

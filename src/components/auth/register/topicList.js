@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { setTopics } from '../../../redux/featchers/userSlice';
 import "../../../css/main.css";
 
 const Topics = () => {
-  const topicsList = [
+  const language = useSelector((myStore) => myStore.languageSlice.language);
+  const topicsListEn = [
     "Tanakh",
     "Mishnha",
     "Talmud",
@@ -36,6 +38,7 @@ const Topics = () => {
     "בית שני",
     "מילונים וספרי יעץ",
   ];
+  let topicsList = language==="en"? [...topicsListEn] : [...topicsListHe];
   const dispatch = useDispatch();
 
 

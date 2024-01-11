@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_URL, doApiRequest,TOKEN_NAME } from '../../services/apiService';
+import translate from '../../utill/translator';
+import { useSelector } from 'react-redux';
 
 import {formatDate} from '../../utill/dateFormat'
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
+  const language = useSelector((myStore) => myStore.languageSlice.language);
+
   console.log("single");
   console.log(selectedRequest);
 
@@ -50,9 +54,9 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
           
           </Link>
           <img src={selectedRequest.profilePic} alt={selectedRequest.profilePic}></img>
-          <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
-          <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
-          <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>
+          <p className="card-text">{translate('post.topics', language)}: {selectedRequest.topics.join(', ')}</p>
+          <p className="card-text">{translate('post.PreferredLanguages', language)}: {selectedRequest.preferredLanguages.join(', ')}</p>
+          <p className="card-text">{translate('post.levelOfStudy', language)}: {selectedRequest.preferredLanguages}</p>
           <p className="card-text">state: {selectedRequest.state}</p>
           <p className="card-text">Start Date: {formatDate(selectedRequest.startDateAndTime)}</p>
           <p className="card-text">Study Duration: {selectedRequest.studyDuration.min} - {selectedRequest.studyDuration.max} minutes </p>

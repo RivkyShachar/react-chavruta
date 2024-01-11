@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import { API_URL, doApiRequest, TOKEN_NAME } from '../../services/apiService';
 import { verifyToken } from '../../services/apiService';
 import {formatDate} from '../../utill/dateFormat'
+import { useSelector } from 'react-redux';
+import translate from '../../utill/translator';
 
 const FullRequestDetails = ({ selectedRequest, onClose }) => {
+
+  const language = useSelector((myStore) => myStore.languageSlice.language);
 
   if (!selectedRequest) {
     return null; // Don't render anything if no request is selected
@@ -52,12 +56,12 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
               </div>
             )}
 
-            <p className="card-text">Topics: {selectedRequest.topics.join(', ')}</p>
-            <p className="card-text">Preferred Languages:: {selectedRequest.preferredLanguages.join(', ')}</p>
-            <p className="card-text">level Of Study: {selectedRequest.preferredLanguages}</p>
-            <p className="card-text">Start Date: {formatDate(selectedRequest.startDateAndTime)}</p>
-            <p className="card-text">Study Duration: {selectedRequest.studyDuration.min} - {selectedRequest.studyDuration.max} minutes </p>
-            <p className="card-text">Description: {selectedRequest.description}</p>
+            <p className="card-text">{translate('post.topics', language)}: {selectedRequest.topics.join(', ')}</p>
+            <p className="card-text">{translate('post.preferredLanguages', language)}: {selectedRequest.preferredLanguages.join(', ')}</p>
+            <p className="card-text">{translate('post.levelOfStudy', language)}: {selectedRequest.preferredLanguages}</p>
+            <p className="card-text">{translate('post.startDate', language)}: {formatDate(selectedRequest.startDateAndTime)}</p>
+            <p className="card-text">{translate('post.studyDuration', language)}: {selectedRequest.studyDuration.min} - {selectedRequest.studyDuration.max} minutes </p>
+            <p className="card-text">{translate('post.description', language)}: {selectedRequest.description}</p>
           
 
             <div className="d-flex justify-content-center mt-5">

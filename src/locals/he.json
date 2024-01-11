@@ -21,6 +21,18 @@
         "marked": "מסומנים",
         "myProfile": "הפרופיל שלי",
         "searchUser": "חיפוש משתמש"
-      }
+      },
+    "post": {
+        "topics": "נושאים",
+        "preferredLanguages": "שפה מועדפת",
+        "levelOfStudy": "רמת לימוד",
+        "state": "מצב בקשה",
+        "startDate": "מועד התחלה",
+        "studyDuration": "משך הלימוד",
+        "description": "הערות"
+    },
+    "user": {
+
+    }
   }
   

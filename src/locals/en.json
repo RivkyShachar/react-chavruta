@@ -21,5 +21,17 @@
         "marked": "Marked",
         "myProfile": "My Profile",
         "searchUser": "Search for user"
+    },
+    "post": {
+        "topics": "Topics",
+        "preferredLanguages": "Preferred Languages",
+        "levelOfStudy": "level Of Study",
+        "state": "State",
+        "startDate": "Start Date",
+        "studyDuration": "Study Duration",
+        "description": "Description"
+    },
+    "user": {
+
     }
 }

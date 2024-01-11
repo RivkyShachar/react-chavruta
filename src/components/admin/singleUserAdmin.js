@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { API_URL, doApiRequest } from '../../services/apiService';
 import { useParams } from 'react-router-dom';
+import translate from '../../utill/translator';
+import { useSelector } from 'react-redux';
 
 const SingleUserAdmin = () => {
 
   const [singleUser, setSingleUser] = useState({});
   const { idSingle1 } = useParams();
+  const language = useSelector((myStore) => myStore.languageSlice.language);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +52,7 @@ const SingleUserAdmin = () => {
             <strong>Date created:</strong> {singleUser.dateCreated}<br />
             <strong>Date of birth:</strong> {singleUser.dateOfBirth}<br />
             <strong>request List</strong> {singleUser.requestList}<br />
-            <strong>topics</strong> {singleUser.topics}<br />
+            <strong>{translate('post.topics', language)}</strong> {singleUser.topics}<br />
             <strong>educations</strong> {singleUser.educations}<br />
             <br></br>
             <strong>followers</strong> {singleUser.followers}<br />

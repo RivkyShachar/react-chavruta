@@ -9,10 +9,13 @@ import UserHome from './userHome';
 import SingleUser from './singleUser';
 import { formatDate } from '../../utill/dateFormat'
 import UsersList from './usersList'
+import translate from '../../utill/translator';
 
 
 
 const SmallSingleRequest = ({ requests, type, stateRequest }) => {
+  const language = useSelector((myStore) => myStore.languageSlice.language);
+
   if (!stateRequest) {
     stateRequest = "open";
   }
@@ -154,12 +157,12 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                 className="request-link"
               >
                 <p className='card-text'><strong>{request.userId.firstName} {request.userId.lastName}</strong></p>
-                <p className="card-text">Topics: {request.topics.join(', ')}</p>
-                <p className="card-text">Preferred Languages: {request.preferredLanguages.join(', ')}</p>
-                <p className="card-text">State: {request.state}</p>
-                <p className="card-text">Start Date: {formatDate(request.startDateAndTime)}</p>
-                <p className="card-text">Study Duration: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
-                <p className="card-text">Description: {request.description}</p>
+                <p className="card-text">{translate('post.topics', language)}: {request.topics.join(', ')}</p>
+                <p className="card-text">{translate('post.preferredLanguages', language)}: {request.preferredLanguages.join(', ')}</p>
+                <p className="card-text">{translate('post.state', language)}: {request.state}</p>
+                <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime)}</p>
+                <p className="card-text">{translate('post.studyDuration', language)}: {request.studyDuration.min} - {request.studyDuration.max} minutes </p>
+                <p className="card-text">{translate('post.description', language)}: {request.description}</p>
               </Link>
               <div className="mt-auto">
                 <div className="d-flex justify-content-center mt-5">
