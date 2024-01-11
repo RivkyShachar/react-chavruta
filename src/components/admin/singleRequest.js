@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { API_URL, doApiRequest,TOKEN_NAME } from '../../services/apiService';
+import { API_URL, doApiRequest } from '../../services/apiService';
 import translate from '../../utill/translator';
 import { useSelector } from 'react-redux';
 

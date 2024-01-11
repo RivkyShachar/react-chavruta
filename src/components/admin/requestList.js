@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { API_URL, doApiRequest } from '../../services/apiService';
-import { useDispatch } from 'react-redux';
 import SmallSingleRequest from './smallSingleRequest';
 
 const UsersListAdmin = () => {

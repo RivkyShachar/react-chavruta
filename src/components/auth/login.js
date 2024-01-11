@@ -13,7 +13,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const nav = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { formState: { errors } } = useForm();
   const language = useSelector((myStore) => myStore.languageSlice.language);
 
   const onSub = (e) => {
