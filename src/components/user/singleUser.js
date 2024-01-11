@@ -1,12 +1,12 @@
-
-
-
 import React, { useEffect, useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import { useParams } from 'react-router-dom';
-import OtherUserRequestList from './otherUserRequestList' 
+import OtherUserRequestList from './otherUserRequestList'
+import translate from '../../utill/translator';
+
 const SingleUser = () => {
+    const language = useSelector((myStore) => myStore.languageSlice.language);
 
     const [singleUser, setSingleUser] = useState({});
     const { idSingle1 } = useParams();
@@ -37,7 +37,7 @@ const SingleUser = () => {
                     <div className='col-4 mx-2 '>
                         <h5 className="card-title">{singleUser.firstName} {singleUser.lastName}</h5>
                         <p className="card-text text-right">
-                            <strong>Gender:</strong> {singleUser.gender === false ? 'Female' : 'Male'}<br />
+                            <strong>Gender:</strong> {singleUser.gender === false ? `${translate('user.female', language)}` : `${translate('user.male', language)}`}<br />
                             <strong>Phone Number:</strong> {singleUser.phoneNumber}<br />
                             <strong>Email:</strong> {singleUser.email}<br />
                             <strong>Location:</strong> {singleUser.location}<br />

@@ -40,7 +40,9 @@
         "gender":"מין",
         "phoneNumber":"מספר טלפון",
         "password":"סיסמא",
-        "verifyPassword":"אימות סיסמא"
+        "verifyPassword":"אימות סיסמא",
+        "male": "זכר",
+        "female": "נקבה"
     }
   }
   

@@ -2,12 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "../../css/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate, Link } from "react-router-dom";
-import { formatDate } from "../../utill/dateFormat";
+import { useNavigate } from "react-router-dom";
+import translate from "../../utill/translator";
 
 const UserProfileBar = () => {
   const nav = useNavigate();
   const user = useSelector((myStore) => myStore.userSlice.user);
+  const language = useSelector((myStore) => myStore.languageSlice.language);
 
   const handleEditProfileClick = () => {
     nav("/user/editProfile");
@@ -33,9 +34,9 @@ const UserProfileBar = () => {
                 {user.firstName} {user.lastName}
               </h2>
               <p>{user.email}</p>
-              <strong>Gender:</strong> {user.gender === false ? "Female" : "Male"}
+              <strong>{translate('user.gender', language)}:</strong> {user.gender === false ? `${translate('user.female', language)}` : `${translate('user.male', language)}`}
               <br />
-              <strong>Phone Number:</strong> {user.phoneNumber}
+              <strong>{translate('user.phoneNumber', language)}:</strong> {user.phoneNumber}
               <br />
               <strong>Location:</strong> {user.location}
               <br />

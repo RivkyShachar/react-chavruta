@@ -40,6 +40,8 @@
         "gender":"Gender",
         "phoneNumber":"Phone Number",
         "password":"Password",
-        "verifyPassword":"Verify Password"
+        "verifyPassword":"Verify Password",
+        "male": "Male",
+        "female": "Female"
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../../redux/featchers/userSlice';
 // import { handleUserInfo } from '../../../utill/authService';
@@ -282,8 +282,8 @@ const ProfileInput = () => {
                         <option defaultValue="true" disabled hidden>
                           {translate('user.selectGender', language)}
                         </option>
-                        <option defaultValue="true">Male</option>
-                        <option defaultValue="false">Female</option>
+                        <option defaultValue="true">{translate('user.male', language)}</option>
+                        <option defaultValue="false">{translate('user.female', language)}</option>
                       </select>
                     </div>
                   </div>
