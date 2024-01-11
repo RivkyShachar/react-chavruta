@@ -58,6 +58,9 @@
     },
     "login": {
         "login": "כניסה"
+    },
+    "general": {
+        "minutes": "דקות"
     }
 
   }

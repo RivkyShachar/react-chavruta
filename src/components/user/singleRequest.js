@@ -60,7 +60,7 @@ const FullRequestDetails = ({ selectedRequest, onClose }) => {
             <p className="card-text">{translate('post.preferredLanguages', language)}: {selectedRequest.preferredLanguages.join(', ')}</p>
             <p className="card-text">{translate('post.levelOfStudy', language)}: {selectedRequest.preferredLanguages}</p>
             <p className="card-text">{translate('post.startDate', language)}: {formatDate(selectedRequest.startDateAndTime, language)}</p>
-            <p className="card-text">{translate('post.studyDuration', language)}: {selectedRequest.studyDuration.min} - {selectedRequest.studyDuration.max} minutes </p>
+            <p className="card-text">{translate('post.studyDuration', language)}: {selectedRequest.studyDuration.min} - {selectedRequest.studyDuration.max} {translate('general.minutes', language)} </p>
             <p className="card-text">{translate('post.description', language)}: {selectedRequest.description}</p>
           
 
