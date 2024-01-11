@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import requestSlice from './featchers/requestSlice'
 import userSlice from './featchers/userSlice'
 import searchSlice from './featchers/searchSlice'
+import languageSlice from './featchers/languageSlice'
 
 
 const myStore = configureStore({
@@ -9,6 +10,7 @@ const myStore = configureStore({
     requestSlice,
     userSlice,
     searchSlice,
+    languageSlice,
   }
 })
 
