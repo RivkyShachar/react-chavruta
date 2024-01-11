@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/581.ad6a218d.chunk.js","mappings":"8JAQA,QANA,WACE,OACEA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,iBAET,C","sources":["components/common/error.js"],"sourcesContent":["import React from 'react'\r\n\r\nfunction Error() {\r\n  return (\r\n    <div>404 not found</div>\r\n  )\r\n}\r\n\r\nexport default Error"],"names":["_jsx","children"],"sourceRoot":""}

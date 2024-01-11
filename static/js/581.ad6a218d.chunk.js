@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkchavruta_app=self.webpackChunkchavruta_app||[]).push([[581],{1581:(a,u,n)=>{n.r(u),n.d(u,{default:()=>c});n(2791);var t=n(184);const c=function(){return(0,t.jsx)("div",{children:"404 not found"})}}}]);
+//# sourceMappingURL=581.ad6a218d.chunk.js.map
