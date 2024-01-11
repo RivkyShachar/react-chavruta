@@ -97,10 +97,10 @@ const Login = () => {
                     />
                   </div>
 
-                  <div className="d-flex justify-content-center mt-5">
+                  <div className="col-12 d-flex justify-content-center mt-5">
                     <button
                       type="submit"
-                      className="btn btn-register col-4 mx-2"
+                      className="btn btn-register col-12 col-md-6 col-lg-4 mx-2"
                     >
                       {translate('login.login', language)}
                     </button>
