@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useDispatch } from 'react-redux';
 import { TOKEN_NAME } from './services/apiService';
 import { handleUserInfo } from './utill/authService';
+import { useSelector } from 'react-redux';
 
 const Login = React.lazy(() => import('./components/auth/login'));
 const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
@@ -24,12 +25,36 @@ const Navbar = React.lazy(() => import("./components/header/navbar"));
 const Index = React.lazy(() => import("./components/common/index"));
 
 const AppRoutes = () => {
+    const language = useSelector((myStore) => myStore.languageSlice.language);
+
     const dispatch = useDispatch();
     useEffect(() => {
         if (localStorage.getItem(TOKEN_NAME)) {
             handleUserInfo(dispatch);
         }
     }, [dispatch]);
+
+    // Load RTL CSS dynamically
+    useEffect(() => {
+        if (language === 'he') {
+            const rtlCssLink = document.createElement('link');
+            rtlCssLink.href = '/path/to/rtl.css';
+            rtlCssLink.rel = 'stylesheet';
+            document.head.appendChild(rtlCssLink);
+
+            // Clean up when the component unmounts or language changes
+            return () => {
+                document.head.removeChild(rtlCssLink);
+            };
+        }
+    }, [language]);
+
+    // Update your HTML tag dynamically
+    useEffect(() => {
+        document.documentElement.lang = language;
+        document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
+    }, [language]);
+
 
     return (
         <Suspense fallback={
