@@ -32,7 +32,15 @@
         "description": "הערות"
     },
     "user": {
-
+        "profileImg":"תמונת פרופיל",
+        "firstName":"שם פרטי",
+        "lastName":"שם משפחה",
+        "birthDay":"תאריך לידה",
+        "selectGender":"בחר מין",
+        "gender":"מין",
+        "phoneNumber":"מספר טלפון",
+        "password":"סיסמא",
+        "verifyPassword":"אימות סיסמא"
     }
   }
   

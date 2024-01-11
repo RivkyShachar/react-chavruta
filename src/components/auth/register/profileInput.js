@@ -4,11 +4,13 @@ import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, se
 // import { handleUserInfo } from '../../../utill/authService';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TOKEN_NAME } from '../../../services/apiService';
-import Axios from 'axios';
-import { formatDate } from '../../../utill/dateFormat';
+import translate from '../../../utill/translator';
+
 const ProfileInput = () => {
   const dispatch = useDispatch();
   const user = useSelector((myStore) => myStore.userSlice.user);
+  const language = useSelector((myStore) => myStore.languageSlice.language);
+
 
   //age over 12
   const [dateOfBirth, setDateOfBirth1] = useState('');
@@ -137,237 +139,237 @@ const ProfileInput = () => {
         break;
     }
   };
-//   const uploadImage = (files) => {
-//     const formData = new FormData();
-//     formData.append("file", files[0])
-//     formData.append("upload_preset", "aizrgxua")
-//     Axios.post("https://api.cloudinary.com/v1_1/dmxzrb6dq/image/upload", formData).then((response) => {
-//       console.log(response);)
-//   }
+  //   const uploadImage = (files) => {
+  //     const formData = new FormData();
+  //     formData.append("file", files[0])
+  //     formData.append("upload_preset", "aizrgxua")
+  //     Axios.post("https://api.cloudinary.com/v1_1/dmxzrb6dq/image/upload", formData).then((response) => {
+  //       console.log(response);)
+  //   }
 
-// }
+  // }
 
 
-return (
-  <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
-    <div className="wrapper wrapper--w680">
-      <div className="card card-4">
-        <div className="card-body">
-          <form method="POST">
-            <div className="row row-space">
-              <div className="col-2">
-                <div className="input-group">
-                  <h2 className="title label ">
-                    {localStorage.getItem(TOKEN_NAME) ? "Edit Profile" : "Sign up"}
-                  </h2>
+  return (
+    <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+      <div className="wrapper wrapper--w680">
+        <div className="card card-4">
+          <div className="card-body">
+            <form method="POST">
+              <div className="row row-space">
+                <div className="col-2">
+                  <div className="input-group">
+                    <h2 className="title label ">
+                      {localStorage.getItem(TOKEN_NAME) ? "Edit Profile" : "Sign up"}
+                    </h2>
+                  </div>
                 </div>
-              </div>
-              <div className="col-2 text-center">
-                <div className="input-group">
-                  <label className="label" htmlFor="profilePic">
-                    Profile Picture
-                  </label>
-                  <div className="profile-pic-container m-1">
-                    {selectedFile ? (
-                      <div>
+                <div className="col-2 text-center">
+                  <div className="input-group">
+                    <label className="label" htmlFor="profilePic">
+                      {translate('user.profileImg', language)}
+                    </label>
+                    <div className="profile-pic-container m-1">
+                      {selectedFile ? (
+                        <div>
+                          <img
+                            src={URL.createObjectURL(selectedFile)}
+                            alt="Profile"
+                            className="profile-pic"
+                          />
+                        </div>
+                      ) : user.profilePic ? (
                         <img
-                          src={URL.createObjectURL(selectedFile)}
+                          src={user.profilePic}
                           alt="Profile"
                           className="profile-pic"
                         />
-                      </div>
-                    ) : user.profilePic ? (
-                      <img
-                        src={user.profilePic}
-                        alt="Profile"
-                        className="profile-pic"
-                      />
-                    ) : (
-                      <div className="default-profile-pic">
-                        <FontAwesomeIcon icon="user-circle" size="3x" />
-                      </div>
-                    )}
-                  </div>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    id="profileImage"
-                    defaultValue={user.profilePic}
-                    onInput={(e) => {
-                      handleFileChange(e);
-                      handleInputChange(e, "profilePic");
-                    }}
-                  />
-                  {/* <input type="file" onChange={(event)=>{uploadImage(event.target.files)}}/> */}
+                      ) : (
+                        <div className="default-profile-pic">
+                          <FontAwesomeIcon icon="user-circle" size="3x" />
+                        </div>
+                      )}
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="profileImage"
+                      defaultValue={user.profilePic}
+                      onInput={(e) => {
+                        handleFileChange(e);
+                        handleInputChange(e, "profilePic");
+                      }}
+                    />
+                    {/* <input type="file" onChange={(event)=>{uploadImage(event.target.files)}}/> */}
 
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="row row-space">
-              <div className="col-2">
-                <div className="input-group">
-                  <label className="label" htmlFor="firstName">
-                    First name
-                  </label>
-                  <input
-                    className="input--style-4"
-                    onInput={(e) => handleInputChange(e, "firstName")}
-                    type="text"
-                    name="firstName"
-                    id="firstName"
-                    defaultValue={user.firstName}
-                  />
+              <div className="row row-space">
+                <div className="col-2">
+                  <div className="input-group">
+                    <label className="label" htmlFor="firstName">
+                      {translate('user.firstName', language)}
+                    </label>
+                    <input
+                      className="input--style-4"
+                      onInput={(e) => handleInputChange(e, "firstName")}
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      defaultValue={user.firstName}
+                    />
+                  </div>
+                  {validatFirstName && (
+                    <div className="text-danger">{validatFirstName}</div>
+                  )}
                 </div>
-                {validatFirstName && (
-                  <div className="text-danger">{validatFirstName}</div>
-                )}
-              </div>
-              <div className="col-2">
-                <div className="input-group">
-                  <label className="label" htmlFor="lastName">
-                    Last name
-                  </label>
-                  <input
-                    className="input--style-4"
-                    onInput={(e) => handleInputChange(e, "lastName")}
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    defaultValue={user.lastName}
-                  />
-                </div>
-                {validatLastName && (
-                  <div className="text-danger">{validatLastName}</div>
-                )}
-              </div>
-            </div>
-            <div className="row row-space">
-              <div className="col-2">
-                <label className="label" htmlFor="dateOfBirth">
-                  Birth day
-                </label>
-                <div className="input-group-icon">
-                  <input
-                    name="dateOfBirth"
-                    className="input--style-4 js-datepicker"
-                    type="date"
-                    id="dateOfBirth"
-                    defaultValue={user.dateOfBirth}
-                    onInput={(e) => {
-                      handleDateChange(e);
-                      handleInputChange(e, "dateOfBirth");
-                    }}
-                  />
-                  {validationError && (
-                    <div className="text-danger">{validationError}</div>
+                <div className="col-2">
+                  <div className="input-group">
+                    <label className="label" htmlFor="lastName">
+                      {translate('user.lastName', language)}
+                    </label>
+                    <input
+                      className="input--style-4"
+                      onInput={(e) => handleInputChange(e, "lastName")}
+                      type="text"
+                      name="lastName"
+                      id="lastName"
+                      defaultValue={user.lastName}
+                    />
+                  </div>
+                  {validatLastName && (
+                    <div className="text-danger">{validatLastName}</div>
                   )}
                 </div>
               </div>
-              <div className="col-2">
-                <div className="input-group">
-                  <label className="label" htmlFor="gender">
-                    Gender
+              <div className="row row-space">
+                <div className="col-2">
+                  <label className="label" htmlFor="dateOfBirth">
+                    {translate('user.birthDay', language)}
                   </label>
-                  <div className="p-t-10">
-                    <select
-                      className="input--style-4 gender-select"
-                      name="gender"
-                      defaultValue={user.gender}
-                      id="gender"
-                      onInput={(e) => handleInputChange(e, "gender")}
-                      required
-                    >
-                      <option defaultValue="true" disabled hidden>
-                        Select Gender
-                      </option>
-                      <option defaultValue="true">Male</option>
-                      <option defaultValue="false">Female</option>
-                    </select>
+                  <div className="input-group-icon">
+                    <input
+                      name="dateOfBirth"
+                      className="input--style-4 js-datepicker"
+                      type="date"
+                      id="dateOfBirth"
+                      defaultValue={user.dateOfBirth}
+                      onInput={(e) => {
+                        handleDateChange(e);
+                        handleInputChange(e, "dateOfBirth");
+                      }}
+                    />
+                    {validationError && (
+                      <div className="text-danger">{validationError}</div>
+                    )}
+                  </div>
+                </div>
+                <div className="col-2">
+                  <div className="input-group">
+                    <label className="label" htmlFor="gender">
+                      {translate('user.gender', language)}
+                    </label>
+                    <div className="p-t-10">
+                      <select
+                        className="input--style-4 gender-select"
+                        name="gender"
+                        defaultValue={user.gender}
+                        id="gender"
+                        onInput={(e) => handleInputChange(e, "gender")}
+                        required
+                      >
+                        <option defaultValue="true" disabled hidden>
+                          {translate('user.selectGender', language)}
+                        </option>
+                        <option defaultValue="true">Male</option>
+                        <option defaultValue="false">Female</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="row row-space">
-              <div className="col-2">
-                <div className="input-group">
-                  <label className="label" htmlFor="email">
-                    Email
-                  </label>
-                  <input
-                    className="input--style-4"
-                    onInput={(e) => handleInputChange(e, "email")}
-                    type="email"
-                    name="email"
-                    id="email"
-                    defaultValue={user.email}
-                  />
+              <div className="row row-space">
+                <div className="col-2">
+                  <div className="input-group">
+                    <label className="label" htmlFor="email">
+                      Email
+                    </label>
+                    <input
+                      className="input--style-4"
+                      onInput={(e) => handleInputChange(e, "email")}
+                      type="email"
+                      name="email"
+                      id="email"
+                      defaultValue={user.email}
+                    />
+                  </div>
+                  {validatEmail && (
+                    <div className="text-danger">{validatEmail}</div>
+                  )}
                 </div>
-                {validatEmail && (
-                  <div className="text-danger">{validatEmail}</div>
-                )}
-              </div>
-              <div className="col-2">
-                <div className="input-group">
-                  <label className="label" htmlFor="phoneNumber">
-                    Phone Number
-                  </label>
-                  <input
-                    className="input--style-4"
-                    type="text"
-                    name="phoneNumber"
-                    onInput={(e) => handleInputChange(e, "phoneNumber")}
-                    id="phoneNumber"
-                    defaultValue={user.phoneNumber}
-                  />
+                <div className="col-2">
+                  <div className="input-group">
+                    <label className="label" htmlFor="phoneNumber">
+                      {translate('user.phoneNumber', language)}
+                    </label>
+                    <input
+                      className="input--style-4"
+                      type="text"
+                      name="phoneNumber"
+                      onInput={(e) => handleInputChange(e, "phoneNumber")}
+                      id="phoneNumber"
+                      defaultValue={user.phoneNumber}
+                    />
+                  </div>
+                  {validatPhoneNumber && (
+                    <div className="text-danger">{validatPhoneNumber}</div>
+                  )}
                 </div>
-                {validatPhoneNumber && (
-                  <div className="text-danger">{validatPhoneNumber}</div>
-                )}
-              </div>
-              <div className="col-2">
-                <div className="input-group">
-                  <label className="label" htmlFor="password">
-                    Password
-                  </label>
-                  <input
-                    className="input--style-4"
-                    type="text"
-                    name="password"
-                    onInput={(e) => handleInputChange(e, "password")}
-                    id="password"
-                    defaultValue={user.password}
-                  />
+                <div className="col-2">
+                  <div className="input-group">
+                    <label className="label" htmlFor="password">
+                      {translate('user.password', language)}
+                    </label>
+                    <input
+                      className="input--style-4"
+                      type="text"
+                      name="password"
+                      onInput={(e) => handleInputChange(e, "password")}
+                      id="password"
+                      defaultValue={user.password}
+                    />
+                  </div>
+                  {validatPassword && (
+                    <div className="text-danger">{validatPassword}</div>
+                  )}
                 </div>
-                {validatPassword && (
-                  <div className="text-danger">{validatPassword}</div>
-                )}
-              </div>
-              <div className="col-2">
-                <div className="input-group">
-                  <label className="label" htmlFor="verifyPassword">
-                    Verify Password
-                  </label>
-                  <input
-                    className="input--style-4"
-                    type="text"
-                    name="phoneNumber"
-                    onInput={(e) => handleInputChange(e, "verifyPassword")}
-                    id="verifyPassword"
-                    defaultValue={user.verifyPassword}
-                  />
+                <div className="col-2">
+                  <div className="input-group">
+                    <label className="label" htmlFor="verifyPassword">
+                      {translate('user.verifyPassword', language)}
+                    </label>
+                    <input
+                      className="input--style-4"
+                      type="text"
+                      name="phoneNumber"
+                      onInput={(e) => handleInputChange(e, "verifyPassword")}
+                      id="verifyPassword"
+                      defaultValue={user.verifyPassword}
+                    />
 
+                  </div>
+                  {validatVerifyPassword && (
+                    <div className="text-danger">{validatVerifyPassword}</div>
+                  )}
                 </div>
-                {validatVerifyPassword && (
-                  <div className="text-danger">{validatVerifyPassword}</div>
-                )}
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 export default ProfileInput
 

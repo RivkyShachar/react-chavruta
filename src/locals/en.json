@@ -32,6 +32,14 @@
         "description": "Description"
     },
     "user": {
-
+        "profileImg":"Profile Picture",
+        "firstName":"First name",
+        "lastName":"Last name",
+        "birthDay":"Birth day",
+        "selectGender":"Select Gender",
+        "gender":"Gender",
+        "phoneNumber":"Phone Number",
+        "password":"Password",
+        "verifyPassword":"Verify Password"
     }
 }
