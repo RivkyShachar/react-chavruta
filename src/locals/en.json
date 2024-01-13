@@ -20,7 +20,8 @@
         "createPost": "Create Post",
         "marked": "Marked",
         "myProfile": "My Profile",
-        "searchUser": "Search for user"
+        "searchUser": "Search for user",
+        "zoomNow": "Start Learning"
     },
     "post": {
         "chooseTopics": "Choose Topics",

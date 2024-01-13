@@ -83,6 +83,11 @@ const Header = () => {
                     {translate('navbar.myProfile', language)}
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link text-success" href='/user/zoom'>
+                    {translate('navbar.zoomNow', language)}
+                  </a>
+                </li>
               </ul>
               {isUserPage && (
                 <form className="form-inline my-2 mx-2 d-flex align-items-center">

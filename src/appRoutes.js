@@ -23,6 +23,7 @@ const UserProfile = React.lazy(() => import("./pages/user/userProfile"));
 const Sefaria = React.lazy(() => import("./components/common/sefaria"));
 const Navbar = React.lazy(() => import("./components/header/navbar"));
 const Index = React.lazy(() => import("./components/common/index"));
+const ZoomMeetingButton = React.lazy(()=> import("./components/user/zoomNow"));
 
 const AppRoutes = () => {
     const language = useSelector((myStore) => myStore.languageSlice.language);
@@ -84,6 +85,7 @@ const AppRoutes = () => {
                                     <Route path='userProfile' element={<UserProfileMy />} />
                                     <Route path='marked' element={<RequestList />} />
                                     <Route path='editProfile' element={<SignUp />} />
+                                    <Route path='zoom' element={<ZoomMeetingButton />} />
                                 </>)
                                 :
                                 <></>

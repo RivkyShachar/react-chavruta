@@ -20,7 +20,8 @@
         "createPost": "צור פוסט",
         "marked": "מסומנים",
         "myProfile": "הפרופיל שלי",
-        "searchUser": "חיפוש משתמש"
+        "searchUser": "חיפוש משתמש",
+        "zoomNow": "!התחל ללמוד"
     },
     "post": {
         "chooseTopics": "בחר נושאים",
