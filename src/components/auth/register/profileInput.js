@@ -1,16 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../../redux/featchers/userSlice';
 // import { handleUserInfo } from '../../../utill/authService';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TOKEN_NAME } from '../../../services/apiService';
 import translate from '../../../utill/translator';
-
+import UploadFile from './uploadFile';
 const ProfileInput = () => {
   const dispatch = useDispatch();
   const user = useSelector((myStore) => myStore.userSlice.user);
   const language = useSelector((myStore) => myStore.languageSlice.language);
 
+  const presetKey = "wiejdrdt";
+  const cloudName = "dmxzrb6dq";
+  const [image, setImage] = useState();
+  useEffect(() => {
+    dispatch(setProfilePic({ profilePic: image }));
+  }, [image])
+  function handleFile(e) {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append("upload_preset", presetKey);
+    axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData)
+      .then(res => setImage(res.data.secure_url))
+      .catch(err => console.log(err));
+
+
+  }
 
   //age over 12
   const [dateOfBirth, setDateOfBirth1] = useState('');
@@ -24,9 +43,6 @@ const ProfileInput = () => {
   const [passwordInput, setPasswordInput] = useState('');
   const [validatPhoneNumber, setValidatPhoneNumber] = useState('');
 
-  // useEffect(() => {
-  //     handleUserInfo(dispatch);
-  // }, [dispatch]);
 
   const handleDateChange = (e) => {
     const currentDate = new Date();
@@ -130,24 +146,13 @@ const ProfileInput = () => {
       case 'dateOfBirth':
         dispatch(setDateOfBirth({ dateOfBirth: inputValue }));
         break;
-      case 'profilePic':
-        dispatch(setProfilePic({ profilePic: inputValue }));
-        break;
+
       // Add more cases for other input names if needed
       default:
         // Handle default case or do nothing
         break;
     }
   };
-  //   const uploadImage = (files) => {
-  //     const formData = new FormData();
-  //     formData.append("file", files[0])
-  //     formData.append("upload_preset", "aizrgxua")
-  //     Axios.post("https://api.cloudinary.com/v1_1/dmxzrb6dq/image/upload", formData).then((response) => {
-  //       console.log(response);)
-  //   }
-
-  // }
 
 
   return (
@@ -166,38 +171,36 @@ const ProfileInput = () => {
                 </div>
                 <div className="col-2 text-center">
                   <div className="input-group">
-                    <label className="label" htmlFor="profilePic">
+                    <label className="label " htmlFor="profilePic">
                       {translate('user.profileImg', language)}
                     </label>
-                    <div className="profile-pic-container m-1">
-                      {selectedFile ? (
-                        <div>
-                          <img
-                            src={URL.createObjectURL(selectedFile)}
-                            alt="Profile"
-                            className="profile-pic"
-                          />
-                        </div>
-                      ) : user.profilePic ? (
+                    <div className="profile-pic-container m-1 ">
+                      
+                      {user.profilePic ? (
                         <img
                           src={user.profilePic}
                           alt="Profile"
                           className="profile-pic"
+                          style={{ height: '80px' , width:"80px"}}
+                        />
+                      ) : image ? (
+                        <img
+                          src={image}
+                          alt="Profile"
+                          className="profile-pic"
+                          style={{ height: '80px', width:"80px" }}
                         />
                       ) : (
                         <div className="default-profile-pic">
                           <FontAwesomeIcon icon="user-circle" size="3x" />
                         </div>
                       )}
+
                     </div>
                     <input
                       type="file"
-                      accept="image/*"
-                      id="profileImage"
-                      onInput={(e) => {
-                        handleFileChange(e);
-                        handleInputChange(e, "profilePic");
-                      }}
+                      name='image'
+                      onChange={handleFile}
                     />
                   </div>
                 </div>
