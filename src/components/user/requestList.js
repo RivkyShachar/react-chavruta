@@ -81,7 +81,7 @@ const RequestList = () => {
     return (
         <div className='container-fluid'>
             <div className='row'>
-                <div className='col-2'>
+                <div className='col-lg-2 col-sm-3'>
 
                     <FilterBarHome
                         setMin={setFilterMinDuration}
@@ -93,7 +93,7 @@ const RequestList = () => {
                         setLang={setFilterLang}
                     />
                 </div>
-                <div className='col-9'>
+                <div className='col-lg-10  col-sm-9'>
                     <div className='container'>
                         {loading ? (
                             <div className='container align-items-center mt-5'>
@@ -155,6 +155,7 @@ const RequestList = () => {
                 </div>
                 </div>
         </div>
+       
     );
 };
 
