@@ -47,8 +47,8 @@ function SefariaSearch({ selectedTopics, setSelectedTopics }) {
 
   return (
     <div >
-      <label>Choose Topics</label>
-      <InputGroup className="mb-3">
+      <label className='my-2' >Choose Topics</label>
+      <InputGroup className="mb-1">
         <FormControl
           placeholder="Type to search..."
           defaultValue={searchTerm}

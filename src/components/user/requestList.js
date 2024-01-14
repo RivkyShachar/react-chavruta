@@ -80,73 +80,80 @@ const RequestList = () => {
 
     return (
         <div className='container-fluid'>
-            <FilterBarHome
-                setMin={setFilterMinDuration}
-                setMax={setFilterMaxDuration}
-                setStartDate={setFilterStartDate}
-                setEndDate={setFilterEndDate}
-                searchTopics={searchTopics}
-                setSearchTopics={setSearchTopics}
-                setLang={setFilterLang}
-            />
-            <div className='container'>
-                {loading ? (
-                    <div className='container align-items-center mt-5'>
-                        <div className='text-center'>
-                            <div className="d-flex align-items-center justify-content-center">
-                                <div className="spinner-border" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ) : parameter === "userProfile" ? (
-                    <div>
-                        {requestList.length === 0 ? (
-                            <div className='container  align-items-center mt-5'>
-                                <div className='text-center'>
-                                    <h4 className='display-4'>No requests</h4>
-                                </div>
-                            </div>) : (
-                            <SingleRequestMyProfile requests={requestList} type={"requestList"} />
-                        )}
-                    </div>
-                ) : response1.status === 201 ? (
-                    <div>
-                        {requestListMarkedYes.length === 0 && requestListMarkedNo.length === 0 && (
-                            <div className='container  align-items-center mt-5'>
-                                <div className='text-center'>
-                                    <h4 className='display-4'>No request marked</h4>
-                                </div>
-                            </div>
-                        )}
-                        {requestListMarkedYes.length !== 0 && (
-                            <div>
-                                <h2>{translate('post.markedYes', language)}</h2>
-                                <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
-                            </div>
-                        )}
+            <div className='row'>
+                <div className='col-2'>
 
-                        {requestListMarkedNo.length !== 0 ? (
-                            <div>
-                                <h2>{translate('post.markedNo', language)}</h2>
-                                <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
-                            </div>
-                        ) : <p></p>}
-                    </div>
-                ) : (
-                    <div>
-                        {requestList.length === 0 ? (
-                            <div className='container  align-items-center mt-5'>
+                    <FilterBarHome
+                        setMin={setFilterMinDuration}
+                        setMax={setFilterMaxDuration}
+                        setStartDate={setFilterStartDate}
+                        setEndDate={setFilterEndDate}
+                        searchTopics={searchTopics}
+                        setSearchTopics={setSearchTopics}
+                        setLang={setFilterLang}
+                    />
+                </div>
+                <div className='col-9'>
+                    <div className='container'>
+                        {loading ? (
+                            <div className='container align-items-center mt-5'>
                                 <div className='text-center'>
-                                    <h4 className='display-4'>No requests</h4>
+                                    <div className="d-flex align-items-center justify-content-center">
+                                        <div className="spinner-border" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>) : (
-                            <SmallSingleRequest requests={requestList} type={"requestList"} />
+                            </div>
+                        ) : parameter === "userProfile" ? (
+                            <div>
+                                {requestList.length === 0 ? (
+                                    <div className='container  align-items-center mt-5'>
+                                        <div className='text-center'>
+                                            <h4 className='display-4'>No requests</h4>
+                                        </div>
+                                    </div>) : (
+                                    <SingleRequestMyProfile requests={requestList} type={"requestList"} />
+                                )}
+                            </div>
+                        ) : response1.status === 201 ? (
+                            <div>
+                                {requestListMarkedYes.length === 0 && requestListMarkedNo.length === 0 && (
+                                    <div className='container  align-items-center mt-5'>
+                                        <div className='text-center'>
+                                            <h4 className='display-4'>No request marked</h4>
+                                        </div>
+                                    </div>
+                                )}
+                                {requestListMarkedYes.length !== 0 && (
+                                    <div>
+                                        <h2>{translate('post.markedYes', language)}</h2>
+                                        <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
+                                    </div>
+                                )}
+
+                                {requestListMarkedNo.length !== 0 ? (
+                                    <div>
+                                        <h2>{translate('post.markedNo', language)}</h2>
+                                        <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
+                                    </div>
+                                ) : <p></p>}
+                            </div>
+                        ) : (
+                            <div>
+                                {requestList.length === 0 ? (
+                                    <div className='container  align-items-center mt-5'>
+                                        <div className='text-center'>
+                                            <h4 className='display-4'>No requests</h4>
+                                        </div>
+                                    </div>) : (
+                                    <SmallSingleRequest requests={requestList} type={"requestList"} />
+                                )}
+                            </div>
                         )}
                     </div>
-                )}
-            </div>
+                </div>
+                </div>
         </div>
     );
 };
