@@ -13,7 +13,7 @@ const FilterBarHome = ({ setMin, setMax, setStartDate, setEndDate, searchTopics,
         <div className="container-fluid">
             <div className="row">
                 {/* Sidebar */}
-                <nav className={`col-md-2 ${!sidebarOpen ? 'd-none' : ''} bg-warning sidebar mt-4`}>
+                <nav className={`col-md-2 ${!sidebarOpen ? 'd-none' : ''} b sidebar mt-4`}>
                     <div className="sidebar-sticky">
                         <ul className="nav flex-column">
                             <li className="nav-item  active">
