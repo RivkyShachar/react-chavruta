@@ -8,7 +8,6 @@ import { handleUserInfo } from '../../utill/authService';
 import "../../css/main.css";
 import translate from '../../utill/translator';
 
-
 const Login = () => {
   const dispatch = useDispatch();
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -52,59 +51,50 @@ const Login = () => {
     catch (err) {
       console.log("err", err.response.data.msg);
       setIsSubmitted(false);
-
     }
   }
 
-
   return (
-    <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+    <div className="page-wrapper bg-gra-02 p-b-100 font-poppins container-register">
       <div className="wrapper wrapper--w680">
         <div className="card card-4">
           <div className="card-body">
+
             <div className="row row-space">
-              <div className="col-2">
-                <div className="input-group">
-                  <h2 className="title label ">{translate('login.login', language)}</h2>
-                </div>
-              </div>
 
               <form onSubmit={(e) => onSub(e)}>
-                <div className="row row-space">
-                  <div className="col-2">
-                    <label className="label" htmlFor="email">
+                <div className="col-12 my-1 text-center ">
+                 <h2 className="title label  font-weight-bold">{translate('login.login', language)}</h2>
+                </div>
+                <div className="col-12 my-1 px-4">
+                  <label className="label" htmlFor="email">
                     {translate('contact.email', language)}
-                    </label>
-
-                    <input
-                      name="email"
-                      className="input--style-4"
-                      type="email"
-                      id="email"
-                    />
-
-                  </div>
-                  <div className="col-2">
-                    <label className="label" htmlFor="password">
+                  </label>
+                  <input
+                    name="email"
+                    className="input--style-4"
+                    type="email"
+                    id="email"
+                  />
+                </div>
+                <div className="col-12 my-1 px-4">
+                  <label className="label" htmlFor="password">
                     {translate('user.password', language)}
-                    </label>
-
-                    <input
-                      name="password"
-                      className="input--style-4"
-                      type="password"
-                      id="password"
-                    />
-                  </div>
-
-                  <div className="col-12 d-flex justify-content-center mt-5">
-                    <button
-                      type="submit"
-                      className="btn btn-register col-12 col-md-6 col-lg-4 mx-2"
-                    >
-                      {translate('login.login', language)}
-                    </button>
-                  </div>
+                  </label>
+                  <input
+                    name="password"
+                    className="input--style-4"
+                    type="password"
+                    id="password"
+                  />
+                </div>
+                <div className="col-12 d-flex justify-content-center mt-5">
+                  <button
+                    type="submit"
+                    className="btn btn-register "
+                  >
+                    {translate('login.login', language)}
+                  </button>
                 </div>
               </form>
             </div>

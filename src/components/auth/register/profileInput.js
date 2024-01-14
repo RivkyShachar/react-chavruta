@@ -156,7 +156,7 @@ const ProfileInput = () => {
 
 
   return (
-    <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+    <div className="page-wrapper bg-gra-02 p-t-100 p-b-100 font-poppins container-register">
       <div className=" vh-100 wrapper wrapper--w680">
         <div className="card card-4">
           <div className="card-body">
@@ -202,8 +202,8 @@ const ProfileInput = () => {
                 </div>
               </div>
 
-              <div className="row row-space">
-                <div className="col-2">
+              <div className="row row-space ">
+                <div className="col-2 ">
                   <div className="input-group">
                     <label className="label" htmlFor="firstName">
                       {translate('user.firstName', language)}
@@ -245,7 +245,7 @@ const ProfileInput = () => {
                   <label className="label" htmlFor="dateOfBirth">
                     {translate('user.birthDay', language)}
                   </label>
-                  <div className="input-group-icon">
+                  <div className="input-group">
                     <input
                       name="dateOfBirth"
                       className="input--style-4 js-datepicker"
@@ -263,12 +263,11 @@ const ProfileInput = () => {
                   </div>
                 </div>
                 <div className="col-2">
+                  <label className="label" htmlFor="gender">
+                  {translate('user.gender', language)}
+                  </label>
                   <div className="input-group">
-                    <label className="label" htmlFor="gender">
-                      {translate('user.gender', language)}
-                    </label>
-                    <div className="p-t-10">
-                      <select
+                  <select
                         className="input--style-4 gender-select"
                         name="gender"
                         defaultValue={user.gender}
@@ -282,11 +281,12 @@ const ProfileInput = () => {
                         <option defaultValue="true">{translate('user.male', language)}</option>
                         <option defaultValue="false">{translate('user.female', language)}</option>
                       </select>
-                    </div>
+                    
                   </div>
                 </div>
+              
               </div>
-              <div className="row row-space">
+              <div className="row row-space ">
                 <div className="col-2">
                   <div className="input-group">
                     <label className="label" htmlFor="email">
