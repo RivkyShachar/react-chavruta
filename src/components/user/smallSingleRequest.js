@@ -137,7 +137,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   return (
     <div className="row mt-4">
       {filteredRequestList.map((request) => (
-        <div key={request._id} className={`col-md-4 mb-4 position-relative }`}>
+        <div key={request._id} className={`col-md-6 col-lg-4 mb-4 position-relative }`}>
           <div className="card d-flex flex-column h-100"
           //  style={
           //   request.state === 'open'
