@@ -157,54 +157,51 @@ const ProfileInput = () => {
 
   return (
     <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
-      <div className="wrapper wrapper--w680">
+      <div className=" vh-100 wrapper wrapper--w680">
         <div className="card card-4">
           <div className="card-body">
             <form method="POST">
               <div className="row row-space">
-                <div className="col-2">
+                <div className="col-2 text-center">
                   <div className="input-group">
-                    <h2 className="title label ">
+                    <div className="title label mb-0 mx-auto  font-weight-bold ">
                       {localStorage.getItem(TOKEN_NAME) ? "Edit Profile" : "Sign up"}
-                    </h2>
+                    </div>
                   </div>
                 </div>
                 <div className="col-2 text-center">
                   <div className="input-group">
-                    <label className="label " htmlFor="profilePic">
-                      {translate('user.profileImg', language)}
-                    </label>
-                    <div className="profile-pic-container m-1 ">
-                      
-                      {user.profilePic ? (
-                        <img
-                          src={user.profilePic}
-                          alt="Profile"
-                          className="profile-pic"
-                          style={{ height: '80px' , width:"80px"}}
-                        />
-                      ) : image ? (
-                        <img
-                          src={image}
-                          alt="Profile"
-                          className="profile-pic"
-                          style={{ height: '80px', width:"80px" }}
-                        />
-                      ) : (
-                        <div className="default-profile-pic">
-                          <FontAwesomeIcon icon="user-circle" size="3x" />
+                    <div className="container">
+                      <div className="picture-container">
+                        <div className="picture">
+                          {user.profilePic ? (
+                            <img
+                              src={user.profilePic}
+                              alt="Profile"
+                              className="picture-src" id="wizardPicturePreview"
+                            />
+                          ) : image ? (
+                            <img
+                              src={image}
+                              alt="Profile"
+                              className="picture-src" id="wizardPicturePreview"
+                            />
+                          ) : (
+                            <div className="default-profile-pic ">
+                              <FontAwesomeIcon icon="user-circle" size="7x" />
+                            </div>
+                          )}
+                          <input type="file" id="wizard-picture" className="" onChange={handleFile} />
                         </div>
-                      )}
-
+                        <label className="label mt-1 mb-0 " htmlFor="profilePic">
+                          {translate('user.profileImg', language)}
+                        </label>
+                      </div>
                     </div>
-                    <input
-                      type="file"
-                      name='image'
-                      onChange={handleFile}
-                    />
                   </div>
                 </div>
               </div>
+
               <div className="row row-space">
                 <div className="col-2">
                   <div className="input-group">

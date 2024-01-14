@@ -135,7 +135,7 @@ const AppRegister = () => {
 
     <div className="container-register">
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-12 ">
           <div className="d-flex justify-content-evenly mt-4 position-relative">
             {steps.map((step, index) => (
               <div
