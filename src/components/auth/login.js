@@ -58,35 +58,37 @@ const Login = () => {
 
 
   return (
-    <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register">
+    <div className="page-wrapper bg-gra-02  p-b-100 font-poppins container-register">
       <div className="wrapper wrapper--w680">
         <div className="card card-4">
           <div className="card-body">
-            <div className="row row-space">
-              <div className="col-2">
-                <div className="input-group">
-                  <h2 className="title label ">{translate('login.login', language)}</h2>
-                </div>
+            <div className="col-2 text-center d-flex align-items-center">
+              <div className="input-group">
+                <h2 className="title label">{translate('login.login', language)}</h2>
               </div>
+            </div>
+            <div className="row row-space">
+
+
 
               <form onSubmit={(e) => onSub(e)}>
                 <div className="row row-space">
-                  <div className="col-2">
+                  <div className="col-2 my-1 px-4">
                     <label className="label" htmlFor="email">
-                    {translate('contact.email', language)}
+                      {translate('contact.email', language)}
                     </label>
 
                     <input
                       name="email"
-                      className="input--style-4"
+                      className="input--style-4 "
                       type="email"
                       id="email"
                     />
 
                   </div>
-                  <div className="col-2">
+                  <div className="col-2  my-1  px-4">
                     <label className="label" htmlFor="password">
-                    {translate('user.password', language)}
+                      {translate('user.password', language)}
                     </label>
 
                     <input
@@ -100,7 +102,7 @@ const Login = () => {
                   <div className="col-12 d-flex justify-content-center mt-5">
                     <button
                       type="submit"
-                      className="btn btn-register col-12 col-md-6 col-lg-4 mx-2"
+                      className="btn btn-register col-6 col-md-6 col-lg-4 mx-2 "
                     >
                       {translate('login.login', language)}
                     </button>

@@ -698,10 +698,11 @@ input {
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
+
 .card-4 .card-body {
-  padding: 57px 65px;
-  padding-bottom: 65px;
+  padding: 30px 65px;
 }
+
 
 @media (max-width: 767px) {
   .card-4 .card-body {
