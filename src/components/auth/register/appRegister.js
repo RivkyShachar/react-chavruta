@@ -103,36 +103,6 @@ const AppRegister = () => {
   };
 
   return (
-    //     <div className='container-register'>
-    //       <div className='row'>
-
-    //         <form>
-    //         <button type='button' className='btn btn-secondary col- mx-2' onClick={handleBackClick}>
-    //                 Back
-    //               </button>
-    //           {steps.map((step, index) => (
-    //             <div key={index} style={{ display: currentStep === index ? 'block' : 'none' }}>
-    //               {step.component}
-    //             </div>
-    //           ))}
-
-    //               {currentStep === 5 ? (
-    //                 <button type='button' className='btn btn-success col-2 mx-2' onClick={handleSubmitButtonClick}>
-    //                   Submit
-    //                 </button>
-    //               ) : (
-    //                 <button type='button' className='btn btn-info col-2 mx-2' onClick={handleContinueClick}>
-    //                   Continue
-    //                 </button>
-    //               )}
-    //         </form>
-    //         </div>
-
-    //      </div >
-
-    //   );
-    // };
-
     <div className="container-register">
       <div className="row">
         <div className="col-md-12 ">
