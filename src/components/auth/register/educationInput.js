@@ -9,7 +9,7 @@ const EducationInput = () => {
   const [education, setEducation] = useState({ name: "", degree: "" });
   const [educations, setEducations] = useState([]);
   const language = useSelector((myStore) => myStore.languageSlice.language);
-  
+
 
   const handleAddEducation = () => {
     setEducations([...educations, education]);
@@ -34,64 +34,69 @@ const EducationInput = () => {
         <div className="card card-4">
           <div className="card-body">
             <div className="row row-space">
-              <div className="col-5 ">
-                <h2 className="title label ">{translate('register.educationTitle', language)}</h2>
-                <div className="education mt-3 input-group">
+                <h2 className="title label mb-0 ">{translate('register.educationTitle', language)}</h2>
+              <div className="col-6">
+                <div className="education mt-3 input-group" >
                   <label className="label">{translate('register.education', language)}:</label>
                   <input
                     placeholder="School"
                     type="text"
-                    className="input--style-4 js-datepicker"
+                    className="input--style-4  col-lg-12 js-datepicker"
                     value={education.name}
-                    onChange={(e) =>
-                      handleEducationChange("name", e.target.value)
-                    }
+                    onChange={(e) => handleEducationChange("name", e.target.value)}
                   />
-                  <select
-                    className="input--style-4 education-select"
-                    defaultValue={education.degree}
-                    onChange={(e) =>
-                      handleEducationChange("degree", e.target.value)
-                    }
-                  >
-                    <option value="">Select Degree</option>
-                    <option value="High School Diploma">
-                      High School Diploma
-                    </option>
-                    <option value="Bachelor's Degree">Bachelor's Degree</option>
-                    <option value="Master's Degree">Master's Degree</option>
-                  </select>
+
+                  <div className=" col-lg-12">
+                    <select
+                      className="input--style-4 form-select mt-2"
+                      aria-label="Default select example"
+                      defaultValue={education.degree}
+                      onChange={(e) => handleEducationChange("degree", e.target.value)}
+                    >
+                      <option selected>Degree</option>
+                      <option value="High School Diploma">High School Diploma</option>
+                      <option value="Bachelor's Degree">Bachelor's Degree</option>
+                      <option value="Master's Degree">Master's Degree</option>
+                    </select>
+                  </div>
 
                   <button
                     type="button"
-                    className=" btn-tl btn topic-list  "
+                    className="btn-tl  btn-sm py-2 mt-2 topic-list col-lg-12"
                     onClick={handleAddEducation}
                   >
                     {translate('register.addEducation', language)}
                   </button>
+
+
                 </div>
+
               </div>
 
               {/* Display the list of education on the right side */}
-              <div className="col-5 ms-4 input--style-4">
-                <h2 className="list">{translate('register.eduactionList', language)}</h2>
+              <div className="col-6 mt-3 bg-light   ">
+                <h3 className="list ">{translate('register.eduactionList', language)}</h3>
                 <ul className="list-group custom-list">
                   {educations.map((edu, index) => (
-                    <li
-                      key={index}
-                      className="list-group-item custom-list-item"
-                    >
-                      <strong>{edu.name}</strong> - {edu.degree}
-                      <br />
-                      <button
-                        type="button"
-                        className="btn btn-outline-danger btn-sm float-end"
-                        onClick={() => handleDeleteEducation(index)}
-                      >
-                        {translate('register.deleteEducation', language)}
-                      </button>
+                    <li key={index} className="list-group-item my-1 ">
+                      <div className="row">
+                        <div className="">
+                          <strong>{edu.name}</strong>
+                          <br /> {edu.degree}
+                        </div>
+                        <div className="col-auto">
+                          <button
+                            type="button"
+                            className="btn-outline-danger btn-sm"
+                            onClick={() => handleDeleteEducation(index)}
+                          >
+                            X
+                          </button>
+                        </div>
+                      </div>
                     </li>
                   ))}
+
                 </ul>
               </div>
             </div>
