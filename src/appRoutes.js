@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { TOKEN_NAME } from './services/apiService';
 import { handleUserInfo } from './utill/authService';
@@ -23,11 +23,10 @@ const UserProfile = React.lazy(() => import("./pages/user/userProfile"));
 const Sefaria = React.lazy(() => import("./components/common/sefaria"));
 const Navbar = React.lazy(() => import("./components/header/navbar"));
 const Index = React.lazy(() => import("./components/common/index"));
-const ZoomMeetingButton = React.lazy(()=> import("./components/user/zoomNow"));
+const ZoomMeetingButton = React.lazy(() => import("./components/user/zoomNow"));
 
 const AppRoutes = () => {
     const language = useSelector((myStore) => myStore.languageSlice.language);
-
     const dispatch = useDispatch();
     useEffect(() => {
         if (localStorage.getItem(TOKEN_NAME)) {
@@ -55,7 +54,6 @@ const AppRoutes = () => {
         document.documentElement.lang = language;
         document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
     }, [language]);
-
 
     return (
         <Suspense fallback={
@@ -88,7 +86,7 @@ const AppRoutes = () => {
                                     <Route path='zoom' element={<ZoomMeetingButton />} />
                                 </>)
                                 :
-                                <></>
+                                <> <Route index element={<Index />} /></>
 
                             }
                         </Route>
@@ -109,7 +107,7 @@ const AppRoutes = () => {
 
                                 </>)
                                 :
-                                <></>
+                                <><Route index element={<Index />} /></>
                             }
                         </Route>
                         <Route path='*' element={<Error />} />
