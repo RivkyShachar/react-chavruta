@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { TOKEN_NAME } from '../../services/apiService';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -18,6 +19,18 @@ const Index = () => {
             once: true, // Only run once
         });
     }, []);
+
+    useEffect(() => {
+        if (localStorage.getItem(TOKEN_NAME)) {
+            const role = localStorage.getItem("ROLE");
+            if (role === 'user') {
+                nav('/user');
+            } else if (role === 'admin') {
+                nav('/admin');
+            }
+        }
+    }, [nav])
+
 
     const signUp = () => {
         nav('/signUp');

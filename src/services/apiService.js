@@ -58,6 +58,7 @@ export const verifyToken = async (token) => {
     });
 
     if (!response.ok) {
+      localStorage.clear();
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
 
@@ -68,8 +69,12 @@ export const verifyToken = async (token) => {
       localStorage.setItem('USER_ID', data.data._id);
       localStorage.setItem('ROLE', data.data.role);
     }
+    else{
+      localStorage.clear();
+    }
     return data.data;
   } catch (error) {
+    localStorage.clear();
     // Handle fetch or other errors
     console.error(error.message);
   }

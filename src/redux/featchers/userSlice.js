@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { API_URL, doApiRequest, TOKEN_NAME } from "../../services/apiService"
+import { API_URL, doApiRequest, TOKEN_NAME, verifyToken } from "../../services/apiService"
 
 
 
 export const getUserInfo = createAsyncThunk(
     "user,getUserInfo", async (dispatch, getState) => {
-        if (localStorage.getItem(TOKEN_NAME)) {
+        if (localStorage.getItem(TOKEN_NAME) && verifyToken(localStorage.getItem(TOKEN_NAME))) {
             let data = await doApiRequest(API_URL + '/users/myInfo')
             if (data.status == 201) {
                 return data.data;
