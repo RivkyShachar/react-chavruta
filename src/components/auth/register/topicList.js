@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { setTopics } from '../../../redux/featchers/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft, FaArrowRight, FaCheck } from 'react-icons/fa';
 import translate from "../../../utill/translator";
 import "../../../css/main.css";
 
 const Topics = () => {
   const language = useSelector((myStore) => myStore.languageSlice.language);
+  const nav = useNavigate();
   const topicsListEn = [
     "Tanakh",
     "Mishnha",
@@ -59,44 +62,72 @@ const Topics = () => {
     dispatch(setTopics({ topics: selectedTopics }));
   }, [selectedTopics, dispatch])
 
+  const handleContinueClick = () => {
+    nav("/signUp/rangeQ1")
+  }
+
+  const handleBackClick = () => {
+    nav("/signUp/educationInput")
+  }
+
 
 
   return (
-    <div className="container-register">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <div className="card card-4">
-              <div className="card-body">
-                <div className="col-2">
-                  <div className="input-group">
-                    <h2 className="title label">
-                    {translate('register.topicsTitle', language)}
-                    </h2>
+    <div className="d-flex justify-content-evenly mt-4 position-relative">
+      <div className="container-register">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="card card-4">
+                <div className="card-body">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <h2 className="title label">
+                        {translate('register.topicsTitle', language)}
+                      </h2>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  {topicsList.map((topic, index) => (
-                    <div className="col-md-4  ">
-                      <button
-                        type="button"
-                        key={index}
-                        className={`btn ${selectedTopics.includes(topic)
+                  <div class="row">
+                    {topicsList.map((topic, index) => (
+                      <div className="col-md-4  ">
+                        <button
+                          type="button"
+                          key={index}
+                          className={`btn ${selectedTopics.includes(topic)
                             ? "btn topic-list-2"
                             : "btn topic-list "
-                          } m-1 btn btn-tl`}
+                            } m-1 btn btn-tl`}
 
-                        onClick={() => handleButtonClick(topic)}
-                      >
-                        {topic}
-                      </button>
-                    </div>
-                  ))}
+                          onClick={() => handleButtonClick(topic)}
+                        >
+                          {topic}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="position-absolute top-50 start-0 translate-middle me-5 z-1">
+        <button
+          type="button"
+          className=" btn-back"
+          onClick={handleBackClick}
+        >
+          <FaArrowLeft />
+        </button>
+      </div>
+      <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
+        <button
+          type="button"
+          className="btn-continue"
+          onClick={handleContinueClick}
+        >
+          <FaArrowRight />
+        </button>
       </div>
     </div>
   );
