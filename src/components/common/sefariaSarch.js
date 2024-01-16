@@ -26,11 +26,15 @@ function Sefaria({selectedTopics, setSelectedTopics}) {
   const handleAddTopic = (topic) => {
     if (!selectedTopics.includes(topic)) {
       setSelectedTopics((prevTopics) => [...prevTopics, topic]);
+      setSearchTerm('');
+
     }
   };
 
   const handleRemoveTopic = (topic) => {
     setSelectedTopics((prevTopics) => prevTopics.filter((t) => t !== topic));
+    setSearchTerm('');
+
   };
 
   const handleClickOutside = (event) => {

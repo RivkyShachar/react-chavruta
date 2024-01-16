@@ -16,7 +16,7 @@ const UserProfileBar = () => {
 
   const backgroundColor = {
     backgroundColor: "#F6F6F6",
-    border: "2px solid #e0e0e0",
+    border: "2px solid #95d6ff",
   };
 
   return (
@@ -59,7 +59,9 @@ const UserProfileBar = () => {
                   <li key={index}>{topic}</li>
                 ))}
               </ul>
-              <button className="btn btn-warning col-6 mx-auto" onClick={handleEditProfileClick}>{translate('user.edit', language)}</button>
+              <button className="btn col-6 mx-auto" onClick={handleEditProfileClick} style={{ backgroundColor: '#fffd94' }}>
+                {translate('user.edit', language)}
+              </button>
             </div>
           </div>
         </div>

@@ -6,7 +6,6 @@ import { setLanguage } from '../../redux/featchers/languageSlice';
 import { TOKEN_NAME } from '../../services/apiService';
 import translate from '../../utill/translator';
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const language = useSelector((myStore) => myStore.languageSlice.language);
@@ -42,8 +41,13 @@ const Home = () => {
       <nav className="navbar navbar-expand-lg bg-light">
         <div className='container'>
           <Link className="navbar-brand" to="/">
-            {translate('navbar.brand', language)}
+            <img
+              src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705404742/chavruta-high-resolution-logo-transparent_x5yqdg.png"
+              alt="Chavruta Logo"
+              style={{ height: '25px' }}
+            />
           </Link>
+
           <button
             className="navbar-toggler"
             type="button"
