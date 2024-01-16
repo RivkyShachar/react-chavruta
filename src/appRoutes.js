@@ -4,6 +4,12 @@ import { useDispatch } from 'react-redux';
 import { TOKEN_NAME } from './services/apiService';
 import { handleUserInfo } from './utill/authService';
 import { useSelector } from 'react-redux';
+import ProfileInput from './components/auth/register/profileInput';
+import LocationInput from './components/auth/register/locationInput';
+import EducationInput from './components/auth/register/educationInput';
+import Topics from './components/auth/register/topicList';
+import RangeQ1 from './components/auth/register/rangeQuestion1';
+import RangeQ2 from './components/auth/register/rangeQuestion2';
 
 const Login = React.lazy(() => import('./components/auth/login'));
 const SignUp = React.lazy(() => import('./components/auth/register/appRegister'));
@@ -68,6 +74,13 @@ const AppRoutes = () => {
                         <Route path='/'>
                             <Route index element={<Index />} />
                             <Route path='signUp' element={<SignUp />} />
+                            <Route path='signUp/profileInput' element={<ProfileInput />} />
+                            <Route path='signUp/loacaionInput' element={<LocationInput />} />
+                            <Route path='signUp/educationInput' element={<EducationInput />} />
+                            <Route path='signUp/educationInput' element={<EducationInput />} />
+                            <Route path='signUp/topics' element={<Topics />} />
+                            <Route path='signUp/rangeQ1' element={<RangeQ1 />} />
+                            <Route path='signUp/rangeQ2' element={<RangeQ2 />} />
                             <Route path='login' element={<Login />} />
                             <Route path='sefaria' element={<Sefaria />} />
                         </Route>

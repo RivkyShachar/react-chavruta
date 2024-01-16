@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../../redux/featchers/userSlice';
@@ -8,11 +9,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TOKEN_NAME } from '../../../services/apiService';
 import translate from '../../../utill/translator';
 import UploadFile from './uploadFile';
+import { FaArrowRight } from 'react-icons/fa';
 const ProfileInput = () => {
   const dispatch = useDispatch();
+  const nav = useNavigate();
   const user = useSelector((myStore) => myStore.userSlice.user);
   const language = useSelector((myStore) => myStore.languageSlice.language);
-
+  const [formValid, setFormValid] = useState(false);
   const presetKey = "wiejdrdt";
   const cloudName = "dmxzrb6dq";
   const [image, setImage] = useState();
@@ -29,6 +32,13 @@ const ProfileInput = () => {
       .catch(err => console.log(err));
 
 
+  }
+
+  const handleContinueClick = () => {
+    //need to check if everything filled correct and if yes navigate to ...
+    if (formValid) {
+      nav("/signUp/loacaionInput")
+    }
   }
 
   //age over 12
@@ -154,120 +164,143 @@ const ProfileInput = () => {
     }
   };
 
+  useEffect(() => {
+    const isValid = validateForm();
+    console.log("isValid:", isValid);
+    setFormValid(isValid);
+  }, [validatFirstName, validatLastName, validatEmail, validatPhoneNumber, validatPassword, validatVerifyPassword, validationError]);
+
+  const validateForm = () => {
+    // Add your form validation logic here
+    // Check if all required fields are filled correctly
+    // Return true if form is valid, false otherwise
+    // Example:
+    return (
+      !validatFirstName &&
+      !validatLastName &&
+      !validatEmail &&
+      !validatPhoneNumber &&
+      !validatPassword &&
+      !validatVerifyPassword &&
+      !validationError
+    );
+  };
+
 
   return (
-    <div className="page-wrapper bg-gra-02 p-t-100 p-b-100 font-poppins container-register">
-      <div className=" vh-100 wrapper wrapper--w680">
-        <div className="card card-4">
-          <div className="card-body">
-            <form method="POST">
-              <div className="row row-space">
-                <div className="col-2 text-center">
-                  <div className="input-group">
-                    <div className="title label mb-0 mx-auto  font-weight-bold ">
-                      {localStorage.getItem(TOKEN_NAME) ? "Edit Profile" : "Sign up"}
+    <div className="d-flex justify-content-evenly mt-4">
+      <div className="page-wrapper bg-gra-02 p-t-100 p-b-100 font-poppins container-register position-relative">
+        <div className=" vh-100 wrapper wrapper--w680">
+          <div className="card card-4">
+            <div className="card-body">
+              <form method="POST">
+                <div className="row row-space">
+                  <div className="col-2 text-center">
+                    <div className="input-group">
+                      <div className="title label mb-0 mx-auto  font-weight-bold ">
+                        {localStorage.getItem(TOKEN_NAME) ? "Edit Profile" : "Sign up"}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-2 text-center">
-                  <div className="input-group">
-                    <div className="container">
-                      <div className="picture-container">
-                        <div className="picture">
-                          {user.profilePic ? (
-                            <img
-                              src={user.profilePic}
-                              alt="Profile"
-                              className="picture-src" id="wizardPicturePreview"
-                            />
-                          ) : image ? (
-                            <img
-                              src={image}
-                              alt="Profile"
-                              className="picture-src" id="wizardPicturePreview"
-                            />
-                          ) : (
-                            <div className="default-profile-pic ">
-                              <FontAwesomeIcon icon="user-circle" size="7x" />
-                            </div>
-                          )}
-                          <input type="file" id="wizard-picture" className="" onChange={handleFile} />
+                  <div className="col-2 text-center">
+                    <div className="input-group">
+                      <div className="container">
+                        <div className="picture-container">
+                          <div className="picture">
+                            {user.profilePic ? (
+                              <img
+                                src={user.profilePic}
+                                alt="Profile"
+                                className="picture-src" id="wizardPicturePreview"
+                              />
+                            ) : image ? (
+                              <img
+                                src={image}
+                                alt="Profile"
+                                className="picture-src" id="wizardPicturePreview"
+                              />
+                            ) : (
+                              <div className="default-profile-pic ">
+                                <FontAwesomeIcon icon="user-circle" size="7x" />
+                              </div>
+                            )}
+                            <input type="file" id="wizard-picture" className="" onChange={handleFile} />
+                          </div>
+                          <label className="label mt-1 mb-0 " htmlFor="profilePic">
+                            {translate('user.profileImg', language)}
+                          </label>
                         </div>
-                        <label className="label mt-1 mb-0 " htmlFor="profilePic">
-                          {translate('user.profileImg', language)}
-                        </label>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="row row-space ">
-                <div className="col-2 ">
-                  <div className="input-group">
-                    <label className="label" htmlFor="firstName">
-                      {translate('user.firstName', language)}
-                    </label>
-                    <input
-                      className="input--style-4"
-                      onInput={(e) => handleInputChange(e, "firstName")}
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      defaultValue={user.firstName}
-                    />
+                <div className="row row-space ">
+                  <div className="col-2 ">
+                    <div className="input-group">
+                      <label className="label" htmlFor="firstName">
+                        {translate('user.firstName', language)}
+                      </label>
+                      <input
+                        className="input--style-4"
+                        onInput={(e) => handleInputChange(e, "firstName")}
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        defaultValue={user.firstName}
+                      />
+                    </div>
+                    {validatFirstName && (
+                      <div className="text-danger">{validatFirstName}</div>
+                    )}
                   </div>
-                  {validatFirstName && (
-                    <div className="text-danger">{validatFirstName}</div>
-                  )}
-                </div>
-                <div className="col-2">
-                  <div className="input-group">
-                    <label className="label" htmlFor="lastName">
-                      {translate('user.lastName', language)}
-                    </label>
-                    <input
-                      className="input--style-4"
-                      onInput={(e) => handleInputChange(e, "lastName")}
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      defaultValue={user.lastName}
-                    />
-                  </div>
-                  {validatLastName && (
-                    <div className="text-danger">{validatLastName}</div>
-                  )}
-                </div>
-              </div>
-              <div className="row row-space">
-                <div className="col-2">
-                  <label className="label" htmlFor="dateOfBirth">
-                    {translate('user.birthDay', language)}
-                  </label>
-                  <div className="input-group">
-                    <input
-                      name="dateOfBirth"
-                      className="input--style-4 js-datepicker"
-                      type="date"
-                      id="dateOfBirth"
-                      defaultValue={user.dateOfBirth}
-                      onInput={(e) => {
-                        handleDateChange(e);
-                        handleInputChange(e, "dateOfBirth");
-                      }}
-                    />
-                    {validationError && (
-                      <div className="text-danger">{validationError}</div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="lastName">
+                        {translate('user.lastName', language)}
+                      </label>
+                      <input
+                        className="input--style-4"
+                        onInput={(e) => handleInputChange(e, "lastName")}
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        defaultValue={user.lastName}
+                      />
+                    </div>
+                    {validatLastName && (
+                      <div className="text-danger">{validatLastName}</div>
                     )}
                   </div>
                 </div>
-                <div className="col-2">
-                  <label className="label" htmlFor="gender">
-                  {translate('user.gender', language)}
-                  </label>
-                  <div className="input-group">
-                  <select
+                <div className="row row-space">
+                  <div className="col-2">
+                    <label className="label" htmlFor="dateOfBirth">
+                      {translate('user.birthDay', language)}
+                    </label>
+                    <div className="input-group">
+                      <input
+                        name="dateOfBirth"
+                        className="input--style-4 js-datepicker"
+                        type="date"
+                        id="dateOfBirth"
+                        defaultValue={user.dateOfBirth}
+                        onInput={(e) => {
+                          handleDateChange(e);
+                          handleInputChange(e, "dateOfBirth");
+                        }}
+                      />
+                      {validationError && (
+                        <div className="text-danger">{validationError}</div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-2">
+                    <label className="label" htmlFor="gender">
+                      {translate('user.gender', language)}
+                    </label>
+                    <div className="input-group">
+                      <select
                         className="input--style-4 gender-select"
                         name="gender"
                         defaultValue={user.gender}
@@ -281,88 +314,100 @@ const ProfileInput = () => {
                         <option defaultValue="true">{translate('user.male', language)}</option>
                         <option defaultValue="false">{translate('user.female', language)}</option>
                       </select>
-                    
-                  </div>
-                </div>
-              
-              </div>
-              <div className="row row-space ">
-                <div className="col-2">
-                  <div className="input-group">
-                    <label className="label" htmlFor="email">
-                      Email
-                    </label>
-                    <input
-                      className="input--style-4"
-                      onInput={(e) => handleInputChange(e, "email")}
-                      type="email"
-                      name="email"
-                      id="email"
-                      defaultValue={user.email}
-                    />
-                  </div>
-                  {validatEmail && (
-                    <div className="text-danger">{validatEmail}</div>
-                  )}
-                </div>
-                <div className="col-2">
-                  <div className="input-group">
-                    <label className="label" htmlFor="phoneNumber">
-                      {translate('user.phoneNumber', language)}
-                    </label>
-                    <input
-                      className="input--style-4"
-                      type="text"
-                      name="phoneNumber"
-                      onInput={(e) => handleInputChange(e, "phoneNumber")}
-                      id="phoneNumber"
-                      defaultValue={user.phoneNumber}
-                    />
-                  </div>
-                  {validatPhoneNumber && (
-                    <div className="text-danger">{validatPhoneNumber}</div>
-                  )}
-                </div>
-                <div className="col-2">
-                  <div className="input-group">
-                    <label className="label" htmlFor="password">
-                      {translate('user.password', language)}
-                    </label>
-                    <input
-                      className="input--style-4"
-                      type="text"
-                      name="password"
-                      onInput={(e) => handleInputChange(e, "password")}
-                      id="password"
-                      defaultValue={user.password}
-                    />
-                  </div>
-                  {validatPassword && (
-                    <div className="text-danger">{validatPassword}</div>
-                  )}
-                </div>
-                <div className="col-2">
-                  <div className="input-group">
-                    <label className="label" htmlFor="verifyPassword">
-                      {translate('user.verifyPassword', language)}
-                    </label>
-                    <input
-                      className="input--style-4"
-                      type="text"
-                      name="phoneNumber"
-                      onInput={(e) => handleInputChange(e, "verifyPassword")}
-                      id="verifyPassword"
-                      defaultValue={user.verifyPassword}
-                    />
 
+                    </div>
                   </div>
-                  {validatVerifyPassword && (
-                    <div className="text-danger">{validatVerifyPassword}</div>
-                  )}
+
                 </div>
-              </div>
-            </form>
+                <div className="row row-space ">
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="email">
+                        Email
+                      </label>
+                      <input
+                        className="input--style-4"
+                        onInput={(e) => handleInputChange(e, "email")}
+                        type="email"
+                        name="email"
+                        id="email"
+                        defaultValue={user.email}
+                      />
+                    </div>
+                    {validatEmail && (
+                      <div className="text-danger">{validatEmail}</div>
+                    )}
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="phoneNumber">
+                        {translate('user.phoneNumber', language)}
+                      </label>
+                      <input
+                        className="input--style-4"
+                        type="text"
+                        name="phoneNumber"
+                        onInput={(e) => handleInputChange(e, "phoneNumber")}
+                        id="phoneNumber"
+                        defaultValue={user.phoneNumber}
+                      />
+                    </div>
+                    {validatPhoneNumber && (
+                      <div className="text-danger">{validatPhoneNumber}</div>
+                    )}
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="password">
+                        {translate('user.password', language)}
+                      </label>
+                      <input
+                        className="input--style-4"
+                        type="text"
+                        name="password"
+                        onInput={(e) => handleInputChange(e, "password")}
+                        id="password"
+                        defaultValue={user.password}
+                      />
+                    </div>
+                    {validatPassword && (
+                      <div className="text-danger">{validatPassword}</div>
+                    )}
+                  </div>
+                  <div className="col-2">
+                    <div className="input-group">
+                      <label className="label" htmlFor="verifyPassword">
+                        {translate('user.verifyPassword', language)}
+                      </label>
+                      <input
+                        className="input--style-4"
+                        type="text"
+                        name="phoneNumber"
+                        onInput={(e) => handleInputChange(e, "verifyPassword")}
+                        id="verifyPassword"
+                        defaultValue={user.verifyPassword}
+                      />
+
+                    </div>
+                    {validatVerifyPassword && (
+                      <div className="text-danger">{validatVerifyPassword}</div>
+                    )}
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
+        </div>
+
+        <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
+          <button
+            type="button"
+            className="btn-continue"
+            onClick={handleContinueClick}
+            disabled={!formValid}
+          >
+            <FaArrowRight />
+          </button>
         </div>
       </div>
     </div>
