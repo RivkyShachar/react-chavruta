@@ -28,6 +28,8 @@ function Sefaria1({selectedTopics, setSelectedTopics}) {
 
   const handleRemoveTopic = (topic) => {
     setSelectedTopics((prevTopics) => prevTopics.filter((t) => t !== topic));
+    setSearchTerm('');
+
   };
 
   const handleClickOutside = (event) => {
