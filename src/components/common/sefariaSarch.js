@@ -1,9 +1,11 @@
-// SefariaSearch.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { ListGroup, InputGroup, FormControl } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import translate from '../../utill/translator';
 
-function SefariaSearch({ selectedTopics, setSelectedTopics }) {
+function Sefaria({selectedTopics, setSelectedTopics}) {
+  const language = useSelector((myStore) => myStore.languageSlice.language);
   const [searchTerm, setSearchTerm] = useState('');
   const [options, setOptions] = useState([]);
   const [isMouseOver, setIsMouseOver] = useState(null);
@@ -46,31 +48,62 @@ function SefariaSearch({ selectedTopics, setSelectedTopics }) {
   }, []);
 
   return (
-    <div >
-      <label className='my-2' >Choose Topics</label>
-      <InputGroup className="mb-1">
-        <FormControl
-          placeholder="Type to search..."
-          defaultValue={searchTerm}
-          onChange={handleInputChange}
-        />
-      </InputGroup>
-      {searchTerm && (
-        <ListGroup ref={dropdownRef}>
-          {options.map((option, index) => (
-            <ListGroup.Item
-              key={index}
-              action
-              onClick={() => handleAddTopic(option)}
-              style={{ cursor: 'pointer' }}
-            >
-              {option}
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      )}
+      <div className=' text-start'>
+         
+      <label>{translate('post.chooseTopics', language)}</label>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder= {translate('post.typeSearch', language)}
+            defaultValue={searchTerm}
+            onChange={handleInputChange}
+          />
+        </InputGroup>
+        {searchTerm && (
+          <ListGroup ref={dropdownRef}>
+            {options.map((option, index) => (
+              <ListGroup.Item
+                key={index}
+                action
+                onClick={() => handleAddTopic(option)}
+                style={{ cursor: 'pointer', fontSize: '12px' }} 
+                >
+                {option}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        )}
+        {selectedTopics.length > 0 && (
+          <div>
+            <ListGroup>
+              {selectedTopics.map((topic, index) => (
+                <ListGroup.Item
+                  key={index}
+                  onMouseEnter={() => setIsMouseOver(topic)}
+                  onMouseLeave={() => setIsMouseOver(null)}
+                  style={{ cursor: 'pointer', fontSize: '12px' }} 
+                  >
+                  {topic}{' '}
+                 
+                  {isMouseOver === topic && (
+                    <button
+                      className='btn btn-danger'
+                      style={{ fontSize: '6px' }}
+                      onMouseEnter={() => console.log('Mouse on remove icon')}
+                      onClick={() => handleRemoveTopic(topic)}
+                    >
+                      X
+                    </button>
+
+                  )}
+                                
+
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </div>
+        )}
     </div>
   );
 }
 
-export default SefariaSearch;
+export default Sefaria;

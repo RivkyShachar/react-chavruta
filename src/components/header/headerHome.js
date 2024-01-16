@@ -99,17 +99,8 @@ const Header = () => {
                 </form>
               )}
             </div>
-
-            <div className='d-lg-none'>
-              {/* Render the language toggle button inside the list for small and medium screens */}
-              <button className="btn btn-secondary mx-1" onClick={toggleLanguage}>
-                {language === 'en' ? 'עברית' : 'English'}
-              </button>
-            </div>
-
             <div className='d-none d-lg-flex align-items-center'>
-              {/* Render the language toggle button separately for large screens */}
-              <button className="btn btn-secondary mx-1" onClick={toggleLanguage}>
+              <button className="btn btn-danger mx-1" onClick={toggleLanguage}>
                 {language === 'en' ? 'עברית' : 'English'}
               </button>
 
@@ -123,6 +114,9 @@ const Header = () => {
                 </button>
               )}
             </div>
+
+          
+
 
           </div>
         </nav>
