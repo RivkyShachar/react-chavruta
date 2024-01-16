@@ -86,6 +86,12 @@ const Header = () => {
                     {translate('navbar.zoomNow', language)}
                   </a>
                 </li>
+                <li className="nav-item d-lg-none">
+                  <button className="btn-sm btn-secondary mx-1" onClick={toggleLanguage}>
+                    {language === 'en' ? 'עברית' : 'English'}
+                  </button>
+                </li>
+
               </ul>
               {isUserPage && (
                 <form className="form-inline my-2 mx-2 d-flex align-items-center">
@@ -100,12 +106,12 @@ const Header = () => {
               )}
             </div>
             <div className='d-none d-lg-flex align-items-center'>
-              <button className="btn btn-danger mx-1" onClick={toggleLanguage}>
+              <button className="btn-sm btn-outline-secondary border border-secondary mx-1 " onClick={toggleLanguage}>
                 {language === 'en' ? 'עברית' : 'English'}
               </button>
 
               {localStorage.getItem(TOKEN_NAME) && (
-                <button className="btn btn btn-outline-danger mx-1  " onClick={handleLogout}>
+                <button className=" btn-sm btn-outline-danger border  border-danger  mx-1   " onClick={handleLogout}>
                   <span>{translate('navbar.logout', language)} </span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
@@ -115,7 +121,7 @@ const Header = () => {
               )}
             </div>
 
-          
+
 
 
           </div>
