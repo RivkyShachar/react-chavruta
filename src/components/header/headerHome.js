@@ -45,8 +45,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className=" ">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light   px-5">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
           <div className='container'>
             <a className="navbar-brand " href="/user">
               {translate('navbar.brand', language)}
@@ -126,7 +125,6 @@ const Header = () => {
 
           </div>
         </nav>
-      </div>
       <Outlet />
     </div>
   );

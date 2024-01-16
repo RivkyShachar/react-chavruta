@@ -81,7 +81,8 @@ const RequestList = () => {
     return (
         <div className='container-fluid'>
             <div className='row'>
-                <div className='col-lg-2 col-md-3 '>
+                <div className='col-lg-2 col-md-3 bg-light  ps-4  '>
+
 
                     <FilterBarHome
                         setMin={setFilterMinDuration}
@@ -92,6 +93,10 @@ const RequestList = () => {
                         setSearchTopics={setSearchTopics}
                         setLang={setFilterLang}
                     />
+
+
+
+
                 </div>
                 <div className='col-lg-10  col-md-9 col-12'>
                     <div className='container'>
@@ -126,15 +131,15 @@ const RequestList = () => {
                                     </div>
                                 )}
                                 {requestListMarkedYes.length !== 0 && (
-                                    <div>
-                                        <h2>{translate('post.markedYes', language)}</h2>
+                                    <div className='m-4'>
+                                        <h2 >{translate('post.markedYes', language)}</h2>
                                         <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
                                     </div>
                                 )}
 
                                 {requestListMarkedNo.length !== 0 ? (
-                                    <div>
-                                        <h2>{translate('post.markedNo', language)}</h2>
+                                    <div className='m-4' >
+                                        <h2 >{translate('post.markedNo', language)}</h2>
                                         <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
                                     </div>
                                 ) : <p></p>}
@@ -153,9 +158,9 @@ const RequestList = () => {
                         )}
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
-       
+
     );
 };
 

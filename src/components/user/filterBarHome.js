@@ -26,11 +26,11 @@ const FilterBarHome = ({
   }, []);
 
   return (
-    <div>
-     <nav className="navbar navbar-light bg-light ">
+    <div className=''>
+     <nav className="navbar navbar-light  ">
       <div className="container d-flex justify-content-center">
         <button
-          className="navbar-toggler btn btn-primary"
+          className="navbar-toggler btn btn-light "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarToggleExternalContent"
@@ -43,7 +43,7 @@ const FilterBarHome = ({
       </div>
     </nav>
       <div className={`collapse ${isLargeScreen ? 'show' : ''}`} id="navbarToggleExternalContent">
-        <div className="container bg-light ">
+        <div className="container ">
           <ul className="navbar-nav">
             <li className="nav-item m-2 active">
               <div className="form-group col-md-auto">

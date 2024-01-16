@@ -12,7 +12,6 @@ library.add(fas);
 function App() {
   return (
     <Provider store={myStore}>
-
       <AppRoutes />
     </Provider>
   );
