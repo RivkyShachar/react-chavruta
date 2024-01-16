@@ -41,7 +41,7 @@ const Index = () => {
             <div className='container d-flex flex-column align-items-center justify-content-center' style={{ height: '70vh' }}>
                 <div className='col-7 mb-4 text-center' data-aos='fade-up'>
                     <h1
-                        className='Display-1'
+                        className='display-5'
                         style={{
                             lineHeight: '1.5',
                             transition: 'transform 0.3s, text-shadow 0.3s',

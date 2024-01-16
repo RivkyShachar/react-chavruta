@@ -142,7 +142,10 @@ body {
   color: #95d6ff;
 
 }
+.lightblue {
+  color: #cbebff;
 
+}
 .border-lightblue {
   border: 4px solid #95d6ff;
   /* Replace 2px with your desired border width */
@@ -179,6 +182,9 @@ body {
 
 .green {
   color: #9aff94;
+}
+.gray {
+  color: #383938;
 }
 
 .text-with-border {
