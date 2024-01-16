@@ -138,14 +138,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
     <div className="row mt-4">
       {filteredRequestList.map((request) => (
         <div key={request._id} className={`col-md-6 col-lg-4  mb-4 position-relative }`}>
-          <div className="card d-flex flex-column h-100"
-          //  style={
-          //   request.state === 'open'
-          //     ? open
-          //     : request.state === 'close' || request.state === 'done'
-          //       ? closeDone
-          //       : past
-          >
+          <div className="card d-flex flex-column h-100">
 
             <div className={`card-body ${getRequestClass(request.state)}`}>
 
@@ -156,7 +149,7 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                 <p className='card-text'><strong>{request.userId.firstName} {request.userId.lastName}</strong></p>
                 <p className="card-text">{translate('post.topics', language)}: {request.topics.join(', ')}</p>
                 <p className="card-text">{translate('post.preferredLanguages', language)}: {request.preferredLanguages.join(', ')}</p>
-                <p className="card-text">{translate('post.state', language)}: {request.state}</p>
+                {/* <p className="card-text">{translate('post.state', language)}: {request.state}</p> */}
                 <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime, language)}</p>
                 <p className="card-text">{translate('post.studyDuration', language)}: {request.studyDuration.min} - {request.studyDuration.max} {translate('general.minutes', language)} </p>
                 <p className="card-text">{translate('post.description', language)}: {request.description}</p>
