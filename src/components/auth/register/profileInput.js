@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TOKEN_NAME } from '../../../services/apiService';
 import translate from '../../../utill/translator';
 import UploadFile from './uploadFile';
-import { FaArrowRight  } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 const ProfileInput = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
@@ -36,7 +36,7 @@ const ProfileInput = () => {
 
   const handleContinueClick = () => {
     //need to check if everything filled correct and if yes navigate to ...
-    if(formValid){
+    if (formValid) {
       nav("/signUp/loacaionInput")
     }
   }
@@ -169,7 +169,7 @@ const ProfileInput = () => {
     console.log("isValid:", isValid);
     setFormValid(isValid);
   }, [validatFirstName, validatLastName, validatEmail, validatPhoneNumber, validatPassword, validatVerifyPassword, validationError]);
-  
+
   const validateForm = () => {
     // Add your form validation logic here
     // Check if all required fields are filled correctly
@@ -188,8 +188,8 @@ const ProfileInput = () => {
 
 
   return (
-    <div className="d-flex justify-content-evenly mt-4 position-relative">
-      <div className="page-wrapper bg-gra-02 p-t-100 p-b-100 font-poppins container-register">
+    <div className="d-flex justify-content-evenly mt-4">
+      <div className="page-wrapper bg-gra-02 p-t-100 p-b-100 font-poppins container-register position-relative">
         <div className=" vh-100 wrapper wrapper--w680">
           <div className="card card-4">
             <div className="card-body">
@@ -398,8 +398,8 @@ const ProfileInput = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">  
+
+        <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
           <button
             type="button"
             className="btn-continue"
@@ -408,6 +408,7 @@ const ProfileInput = () => {
           >
             <FaArrowRight />
           </button>
+        </div>
       </div>
     </div>
   );

@@ -73,8 +73,8 @@ const Topics = () => {
 
 
   return (
-    <div className="d-flex justify-content-evenly mt-4 position-relative">
-      <div className="container-register">
+    <div className="d-flex justify-content-evenly mt-4">
+      <div className="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins container-register position-relative">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -110,24 +110,25 @@ const Topics = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="position-absolute top-50 start-0 translate-middle me-5 z-1">
-        <button
-          type="button"
-          className=" btn-back"
-          onClick={handleBackClick}
-        >
-          <FaArrowLeft />
-        </button>
-      </div>
-      <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
-        <button
-          type="button"
-          className="btn-continue"
-          onClick={handleContinueClick}
-        >
-          <FaArrowRight />
-        </button>
+
+        <div className="position-absolute top-50 start-0 translate-middle me-5 z-1">
+          <button
+            type="button"
+            className=" btn-back"
+            onClick={handleBackClick}
+          >
+            <FaArrowLeft />
+          </button>
+        </div>
+        <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
+          <button
+            type="button"
+            className="btn-continue"
+            onClick={handleContinueClick}
+          >
+            <FaArrowRight />
+          </button>
+        </div>
       </div>
     </div>
   );

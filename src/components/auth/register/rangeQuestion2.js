@@ -71,8 +71,8 @@ const RangeQuestion = () => {
     }
   };
   return (
-    <div className="d-flex justify-content-evenly mt-4 position-relative">
-      <div className="page-wrapper p-t-130 p-b-100 font-poppins container-register">
+    <div className="d-flex justify-content-evenly mt-4">
+      <div className="page-wrapper p-t-130 p-b-100 font-poppins container-register position-relative">
         <div className="wrapper wrapper--w680">
           <div className="card card-4">
             <div className="card-body">
@@ -94,25 +94,26 @@ const RangeQuestion = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="position-absolute top-50 start-0 translate-middle me-5 z-1">
-        <button
-          type="button"
-          className=" btn-back"
-          onClick={handleBackClick}
-        >
-          <FaArrowLeft />
-        </button>
-      </div>
-      <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
-        <div className="d-flex justify-content-center">
+
+        <div className="position-absolute top-50 start-0 translate-middle me-5 z-1">
           <button
             type="button"
-            className="btn-continue "
-            onClick={handleSubmitButtonClick}
+            className=" btn-back"
+            onClick={handleBackClick}
           >
-            <FaCheck />
+            <FaArrowLeft />
           </button>
+        </div>
+        <div className="position-absolute top-50 start-100 translate-middle d-flex justify-content-center me-5">
+          <div className="d-flex justify-content-center">
+            <button
+              type="button"
+              className="btn-continue "
+              onClick={handleSubmitButtonClick}
+            >
+              <FaCheck />
+            </button>
+          </div>
         </div>
       </div>
     </div>
