@@ -26,6 +26,8 @@ function Sefaria({selectedTopics, setSelectedTopics}) {
   const handleAddTopic = (topic) => {
     if (!selectedTopics.includes(topic)) {
       setSelectedTopics((prevTopics) => [...prevTopics, topic]);
+      setSearchTerm(''); // Reset searchTerm after selecting an option
+
     }
   };
 
@@ -88,7 +90,7 @@ function Sefaria({selectedTopics, setSelectedTopics}) {
                   {topic}{' '}
                   {isMouseOver === topic && (
                     <button
-                      className='btn btn-danger'
+                      className='btn-sm btn-danger '
                       style={{ fontSize: '6px' }}
                       onMouseEnter={() => console.log('Mouse on remove icon')}
                       onClick={() => handleRemoveTopic(topic)}

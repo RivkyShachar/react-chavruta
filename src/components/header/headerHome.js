@@ -65,24 +65,24 @@ const Header = () => {
 
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <a className="nav-link text-primary" href='/user/zoom'>
+                    {translate('navbar.zoomNow', language)}
+                  </a>
+                </li>
                 <li className="nav-item active">
-                  <a className="nav-link text-info" href="/user/createPost">
+                  <a className="nav-link text-success" href="/user/createPost">
                     {translate('navbar.createPost', language)}
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-warning" href="/user/requestsList/marked">
+                  <a className="nav-link text-secondary" href="/user/requestsList/marked">
                     {translate('navbar.marked', language)}
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-success" href="/user/userProfile">
+                  <a className="nav-link text-warning" href="/user/userProfile">
                     {translate('navbar.myProfile', language)}
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-success" href='/user/zoom'>
-                    {translate('navbar.zoomNow', language)}
                   </a>
                 </li>
                 <li className="nav-item d-lg-none">

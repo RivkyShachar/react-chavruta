@@ -39,61 +39,66 @@ const ZoomMeetingButton = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Fill in the details for your Zoom meeting</h2>
-      <form>
-        <div className="mb-3">
-          <label htmlFor="duration" className="form-label">
-            Duration (minutes):
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="duration"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-          />
-        </div>
+    <div className='container mt-5'>
+      <div className=''>
+        <div className='container col-lg-5 col-md-9 col-10 bg-light px-5 ' >
+          <h2 className="my-4 display-5 pt-4 text-center text-primary">Zoom now</h2>
+          <form >
+            <div className="mb-3">
+              <label htmlFor="duration" className="form-label">
+                Duration (minutes):
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="duration"
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+              />
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="subject" className="form-label">
-            Subject:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="subject" className="form-label">
+                Subject:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+              />
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="language" className="form-label">
-            Language:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="language"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="language" className="form-label">
+                Language:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="language"
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+              />
+            </div>
+            <div className='mb-3'>
+              <button type="button" className="btn btn-primary d-flex justify-content-center mx-auto" onClick={startZoomMeeting} disabled={loading}>
+                {loading ? 'Loading...' : 'Start Zoom Meeting'}
+              </button>
+            </div>
+          </form>
 
-        <button type="button" className="btn btn-primary" onClick={startZoomMeeting} disabled={loading}>
-          {loading ? 'Loading...' : 'Start Zoom Meeting'}
-        </button>
-      </form>
-
-      {zoomLink && (
-        <div className="mt-4">
-          <p>Zoom Meeting Link:</p>
-          <a href={zoomLink} target="_blank" rel="noopener noreferrer">
-            {zoomLink}
-          </a>
+          {zoomLink && (
+            <div className="mt-4">
+              <p>Zoom Meeting Link:</p>
+              <a href={zoomLink} target="_blank" rel="noopener noreferrer">
+                {zoomLink}
+              </a>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };

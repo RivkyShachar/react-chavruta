@@ -141,7 +141,6 @@ const ProfileInput = () => {
             if (data.status === 201) {
                 nav("/user");
             }
-            // await handleUserInfo(dispatch);
         } catch (error) {
             setIsSubmitted(false);
             console.log(error.data ? error.data.data.msg : 'An error occurred');
@@ -150,23 +149,23 @@ const ProfileInput = () => {
 
 
     return (
-        <div className='container mt-3'>
-            <div className='text-center'>
-                <div className='container col-lg-5 col-md-9 col-10 bg-light border border-4 border-info px-4' >
-                    <h2 className='mt-3 pt-2'>{translate('navbar.createPost', language)}</h2>
+        <div className='container mt-5'>
+            <div className=''>
+                <div className='container col-lg-5 col-md-9 col-10 bg-light px-5 ' >
+                    <h2 className=' pt-4 text-center display-5 text-success'>{translate('navbar.createPost', language)}</h2>
 
                     <div className='row '>
                         <div className='mt-4 col-12'>
                             <Sefaria selectedTopics={selectedTopics} setSelectedTopics={setSelectedTopics} />
                         </div>
                         <div className='my-3 col-12'>
-                            <div className='row'>
-                                <div className='col-md-6'>
-                                    <div className='row align-items-center'>
-                                        <div className='col-4'>
+                            <div className='row  '>
+                                <div className='col-md-6  '>
+                                    <div className='row align-items-center my-1'>
+                                        <div className='col-6'>
                                             <label htmlFor='minDuration'>{translate('post.min', language)}:</label>
                                         </div>
-                                        <div className='col-8'>
+                                        <div className='col-6'>
                                             <input
                                                 type='number'
                                                 className='form-control'
@@ -179,12 +178,12 @@ const ProfileInput = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-md-6'>
-                                    <div className='row align-items-center'>
-                                        <div className='col-4'>
+                                <div className='col-md-6 '>
+                                    <div className='row align-items-center my-1'>
+                                        <div className='col-6'>
                                             <label htmlFor='maxDuration'>{translate('post.max', language)}:</label>
                                         </div>
-                                        <div className='col-8'>
+                                        <div className='col-6'>
                                             <input
                                                 type='number'
                                                 className='form-control'
@@ -201,10 +200,10 @@ const ProfileInput = () => {
                         </div>
 
                         <div className='row mb-3'>
-                            <label htmlFor='startDate' className='col-3 col-form-label'>
+                            <label htmlFor='startDate' className='col-lg-4 col-auto col-form-label'>
                             {translate('post.dateAndTime', language)}:
                             </label>
-                            <div className='col-9'>
+                            <div className='col-8'>
                                 <input
                                     name='startDate'
                                     onInput={(e) => handleInputChange(e, 'startDate')}
@@ -216,10 +215,10 @@ const ProfileInput = () => {
                             </div>
                         </div>
                         <div className='row mb-3'>
-                            <label htmlFor='preferredLanguages' className='col-3 col-form-label'>
+                            <label htmlFor='preferredLanguages' className='col-lg-4 col-sm-5   col-form-label'>
                             {translate('post.language', language)}:
                             </label>
-                            <div className='col-9'>
+                            <div className='col-8'>
                                 <select
                                     name='preferredLanguages'
                                     defaultValue={requestStudy.preferredLanguages}
@@ -239,10 +238,10 @@ const ProfileInput = () => {
                             </div>
                         </div>
                         <div className='row mb-3'>
-                            <label htmlFor='notes' className='col-3 col-form-label'>
+                            <label htmlFor='notes' className='col-lg-4 col-sm-5  col-form-label'>
                             {translate('post.notes', language)}:
                             </label>
-                            <div className='col-9'>
+                            <div className='col-8'>
                                 <textarea
                                     name='notes'
                                     onInput={(e) => handleInputChange(e, 'notes')}
@@ -255,7 +254,7 @@ const ProfileInput = () => {
 
                         <br />
                         <button
-                            className='btn btn-success my-2 col-2 d-flex justify-content-center mx-auto'
+                            className='btn btn-success my-3 col-1 d-flex justify-content-center mx-auto'
                             type='button'
                             onClick={handlePostButtonClick}
                         >
