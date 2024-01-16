@@ -123,13 +123,13 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
   const getRequestClass = (state) => {
     switch (state) {
       case 'open':
-        return 'border border-4 border-info';
+        return 'border-lightblue';
       case 'close':
-        return 'border border-4 border-success ';
+        return 'border-green ';
       case 'done':
-        return 'border border-4 border-secondary ';
+        return 'border-yellow';
       case 'past':
-        return 'bg-secondary ';
+        return 'border-pink ';
       default:
         return '';
     }
@@ -146,13 +146,25 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
                 onClick={() => handleRequestClick(request)}
                 className="request-link"
               >
-                <p className='card-text'><strong>{request.userId.firstName} {request.userId.lastName}</strong></p>
-                <p className="card-text">{translate('post.topics', language)}: {request.topics.join(', ')}</p>
-                <p className="card-text">{translate('post.preferredLanguages', language)}: {request.preferredLanguages.join(', ')}</p>
-                {/* <p className="card-text">{translate('post.state', language)}: {request.state}</p> */}
-                <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime, language)}</p>
-                <p className="card-text">{translate('post.studyDuration', language)}: {request.studyDuration.min} - {request.studyDuration.max} {translate('general.minutes', language)} </p>
-                <p className="card-text">{translate('post.description', language)}: {request.description}</p>
+                <div className='row '>
+                <div className={request.state === 'done' ? 'col-8' : 'col-12'}>
+                    <h4 className='card-text'>{request.userId.firstName} {request.userId.lastName}</h4>
+                    <p className="card-text">{translate('post.topics', language)}: {request.topics.join(', ')}</p>
+                    <p className="card-text">{translate('post.preferredLanguages', language)}: {request.preferredLanguages.join(', ')}</p>
+                    <p className="card-text">{translate('post.startDate', language)}: {formatDate(request.startDateAndTime, language)}</p>
+                    <p className="card-text">{translate('post.studyDuration', language)}: {request.studyDuration.min} - {request.studyDuration.max} {translate('general.minutes', language)} </p>
+                    <p className="card-text">{translate('post.description', language)}: {request.description}</p>
+                  </div>
+                  {
+                    (request.state === "done") &&
+                    (<div className='col-4 text-end'>
+                      <img src={request.finalChavruta.profilePic} style={{ maxWidth: '80px', borderRadius: '50%' }} />
+                      <p className="card-text mt-2"> {request.finalChavruta.firstName} {request.finalChavruta.lastName}</p>
+                    </div>)
+                  }
+                </div>
+
+
               </Link>
               <div className="mt-auto">
                 <div className="d-flex justify-content-center mt-5">
@@ -183,8 +195,8 @@ const SmallSingleRequest = ({ requests, type, stateRequest }) => {
               )}
               <div className="mt-auto">
                 <div className="d-flex justify-content-center my-3">
-                  {(type === "myRequests") &&
-                    (request.zoomLink ?
+                  {(type === "myRequests" && request.state!='done')  && 
+                    (request.zoomLink  ?
                       <a className='btn btn-warning' href={request.zoomLink} target="_blank" rel="noopener noreferrer">
                          {translate('post.startMeeting', language)}
                       </a> :

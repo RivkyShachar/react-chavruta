@@ -48,8 +48,11 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
         <div className='container'>
           <a className="navbar-brand " href="/user">
-            {translate('navbar.brand', language)}
-          </a>
+            <img
+              src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705404742/chavruta-high-resolution-logo-transparent_x5yqdg.png"
+              alt="Chavruta Logo"
+              style={{ height: '30px' }}
+            />          </a>
 
           <button
             className="navbar-toggler"
@@ -66,22 +69,23 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <a className="nav-link text-primary" href='/user/zoom'>
+                <a className="nav-link text-with-border " style={{ color: '#9aff94', fontSize:'17px' }} href='/user/zoom'>
                   {translate('navbar.zoomNow', language)}
                 </a>
               </li>
               <li className="nav-item active">
-                <a className="nav-link text-success" href="/user/createPost">
+                <a className="nav-link text-with-border  text-with-border " style={{ color: '#fffd94',fontSize:'17px' }} href="/user/createPost">
                   {translate('navbar.createPost', language)}
                 </a>
+
               </li>
               <li className="nav-item">
-                <a className="nav-link text-secondary" href="/user/requestsList/marked">
+                <a className="nav-link text-with-border  " style={{ color: '#ffd694',fontSize:'17px' }} href="/user/requestsList/marked">
                   {translate('navbar.marked', language)}
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-warning" href="/user/userProfile">
+                <a className="nav-link text-with-border " style={{color:'#ff9b94',fontSize:'17px'}} href="/user/userProfile">
                   {translate('navbar.myProfile', language)}
                 </a>
               </li>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import  { commonLanguages } from '../../redux/featchers/requestSlice';
+import { commonLanguages } from '../../redux/featchers/requestSlice';
 import { API_URL, doApiRequest } from '../../services/apiService';
 import Sefaria from '../common/sefaria';
 import translate from '../../utill/translator'
@@ -151,8 +151,8 @@ const ProfileInput = () => {
     return (
         <div className='container mt-5'>
             <div className=''>
-                <div className='container col-lg-5 col-md-9 col-10 bg-light px-5 ' >
-                    <h2 className=' pt-4 text-center display-5 text-success'>{translate('navbar.createPost', language)}</h2>
+                <div className='container col-lg-5 col-md-9 col-10 bg-light px-5 border-lightblue ' >
+                    <h2 className=' pt-4 text-center display-5 text-with-border ' style={{ color: '#95d6ff' }}>{translate('navbar.createPost', language)}</h2>
 
                     <div className='row '>
                         <div className='mt-4 col-12'>
@@ -201,7 +201,7 @@ const ProfileInput = () => {
 
                         <div className='row mb-3'>
                             <label htmlFor='startDate' className='col-lg-4 col-auto col-form-label'>
-                            {translate('post.dateAndTime', language)}:
+                                {translate('post.dateAndTime', language)}:
                             </label>
                             <div className='col-8'>
                                 <input
@@ -216,7 +216,7 @@ const ProfileInput = () => {
                         </div>
                         <div className='row mb-3'>
                             <label htmlFor='preferredLanguages' className='col-lg-4 col-sm-5   col-form-label'>
-                            {translate('post.language', language)}:
+                                {translate('post.language', language)}:
                             </label>
                             <div className='col-8'>
                                 <select
@@ -227,7 +227,7 @@ const ProfileInput = () => {
                                     onChange={(e) => handleInputChange(e, 'preferredLanguages')}
                                 >
                                     <option value='' disabled>
-                                    {translate('post.selectLanguage', language)}
+                                        {translate('post.selectLanguage', language)}
                                     </option>
                                     {commonLanguages.map((preferredLanguages) => (
                                         <option key={preferredLanguages} value={preferredLanguages}>
@@ -239,7 +239,7 @@ const ProfileInput = () => {
                         </div>
                         <div className='row mb-3'>
                             <label htmlFor='notes' className='col-lg-4 col-sm-5  col-form-label'>
-                            {translate('post.notes', language)}:
+                                {translate('post.notes', language)}:
                             </label>
                             <div className='col-8'>
                                 <textarea
@@ -254,18 +254,20 @@ const ProfileInput = () => {
 
                         <br />
                         <button
-                            className='btn btn-success my-3 col-1 d-flex justify-content-center mx-auto'
+                            className='btn my-3 col-1 d-flex justify-content-center mx-auto'
                             type='button'
                             onClick={handlePostButtonClick}
+                            style={{ backgroundColor: '#fffd94', color: 'gray' }}
                         >
                             {translate('post.post', language)}
                         </button>
+
                     </div>
 
 
                 </div>
             </div>
-        </div>
+        </div >
 
 
 

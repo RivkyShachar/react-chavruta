@@ -11,7 +11,6 @@ const UserHome = () => {
 
   useEffect(() => {
     console.log("searchV", searchV);
-    // console.log("searchV",searchV1);
   }, [])
 
   return (

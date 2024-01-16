@@ -4,11 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setFirstName, setLastName, setEmail, setPassword, setVerifyPassword, setPhoneNumber, setGender, setDateOfBirth, setProfilePic } from '../../../redux/featchers/userSlice';
-// import { handleUserInfo } from '../../../utill/authService';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TOKEN_NAME } from '../../../services/apiService';
 import translate from '../../../utill/translator';
-import UploadFile from './uploadFile';
 import { FaArrowRight } from 'react-icons/fa';
 const ProfileInput = () => {
   const dispatch = useDispatch();
@@ -16,12 +14,22 @@ const ProfileInput = () => {
   const user = useSelector((myStore) => myStore.userSlice.user);
   const language = useSelector((myStore) => myStore.languageSlice.language);
   const [formValid, setFormValid] = useState(false);
-  const presetKey = "wiejdrdt";
-  const cloudName = "dmxzrb6dq";
+  // const presetKey = process.env.PRESET_KEY;
+  // const cloudName = process.env.CLOUD_NAME; 
+  const presetKey = 'wiejdrdt';
+  const cloudName = 'dmxzrb6dq';
+
   const [image, setImage] = useState();
   useEffect(() => {
     dispatch(setProfilePic({ profilePic: image }));
   }, [image])
+
+
+  useEffect(() => {
+    console.log("presetKey:", presetKey);
+    console.log("cloudName:", cloudName);
+  }, []);
+  
   function handleFile(e) {
     const file = e.target.files[0];
     const formData = new FormData();
