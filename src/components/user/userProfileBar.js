@@ -20,7 +20,7 @@ const UserProfileBar = () => {
   };
 
   return (
-    <div className="container py-3 mb-3  " style={backgroundColor}>
+    <div className="container mt-4 py-3 mb-3  " style={backgroundColor}>
       <div className="container col-10  ">
         <div className="container">
           <div className="row">

@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 const OtherUserProfileBar = ({user}) => {
 
     return (
-        <div className='container bg-info'>
+        <div className='container bg-info '>
             <div className='container col-7 '>
                 <div className='row'>
                     <div className='col-4 mx-2 '>

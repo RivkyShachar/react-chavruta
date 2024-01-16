@@ -36,9 +36,8 @@ const OtherSingleUser = () => {
    
     return (
 
-        <div className='container'>
-
-            <div className='container col-12' style={backgroundColor}>
+        <div >
+            <div className='container col-12 mt-4' style={backgroundColor}>
                 <div className='row d-flex justify-content-center align-items-center'>
                     <div className='text-center col-5 '>
                         <h1>{singleUser.firstName} {singleUser.lastName}</h1>
