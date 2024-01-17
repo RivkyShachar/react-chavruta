@@ -322,11 +322,11 @@ h6 {
 }
 
 .btn--green {
-  background: #8eff71;
+  background: #b7e4ff;
 }
 
 .btn--green:hover {
-  background: #8eff71;
+  background: #b7e4ff;
 }
 
 
@@ -345,18 +345,18 @@ h6 {
 }
 
 .btn-back {
-  background-color: #8dff717c;
+  background-color: #b7e4ff;
 
 }
 
 .btn-continue {
-  background-color: #8dff717c;
+  background-color: #b7e4ff;
   /* Change the color as desired */
 
 }
 
 .btn-submit {
-  background-color: rgb(141, 255, 113);
+  background-color: #95d6ff;
   /* Change the color as desired */
 
 }
@@ -446,23 +446,23 @@ input {
 }
 
 .topic-list-2 {
-  background-color: #8eff71;
+  background-color: #b7e4ff;
 }
 
 .btn-tl {
   color: #000000;
-  border-color: #8eff71;
+  border-color: #b7e4ff;
 }
 
 .btn-register {
   color: #000000;
   background-color: #b6ffa453;
-  border-color: #8eff71;
+  border-color: #b7e4ff;
 }
 
 .btn-profile {
   background-color: #b6ffa453;
-  border-color: solid 3px #8eff71;
+  border-color: solid 3px #b7e4ff;
 }
 
 
