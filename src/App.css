@@ -151,6 +151,11 @@ body {
   /* Replace 2px with your desired border width */
 }
 
+.border-blue {
+  border: 4px solid #007ED2;
+  border-radius: 10px; /* You can adjust the value to control the roundness */
+  box-shadow: 0 0 30px 2px #007ed2da; /* Adjust the values as needed */
+}
 .border-yellow {
   border: 4px solid #fffd94;
   /* Replace 2px with your desired border width */
@@ -193,4 +198,9 @@ body {
     0.1px -0.1px 0 #9c9b9b3b,
     -0.1px 0.1px 0 #9c9b9b3b,
     0.1px 0.1px 0 #9c9b9b3b;
+}
+@media (max-width: 391px) {
+  .small-screen-img {
+    height: 150px;
+  }
 }

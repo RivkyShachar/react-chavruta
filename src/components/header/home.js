@@ -63,23 +63,23 @@ const Home = () => {
             <div className='col-10'>
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <span className="nav-link" style={{ color: '#9aff94', fontSize:'17px' }} onClick={scrollToAbout}>
+                  <span className="nav-link" style={{ color: '#007ED2', fontSize:'17px' }} onClick={scrollToAbout}>
                     {translate('navbar.about', language)}
                   </span>
                 </li>
                 <li>
-                  <span className="nav-link "  style={{ color: '#fffd94',fontSize:'17px' }} onClick={scrollToContactUs}>
+                  <span className="nav-link "  style={{ color: '#0098FD ',fontSize:'17px' }} onClick={scrollToContactUs}>
                     {translate('navbar.contactUs', language)}
                   </span>
 
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link " style={{ color: '#ffd694',fontSize:'17px' }}  to="/login">
+                  <Link className="nav-link " style={{ color: '#5EBFFF ',fontSize:'17px' }}  to="/login">
                     {translate('navbar.login', language)}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link " style={{color:'#ff9b94',fontSize:'17px'}} to="/signUp">
+                  <Link className="nav-link " style={{color:'#95d6ff',fontSize:'17px'}} to="/signUp">
                     {translate('navbar.signUp', language)}
                   </Link>
                 </li>

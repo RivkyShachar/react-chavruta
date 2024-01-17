@@ -95,8 +95,6 @@ const RequestList = () => {
                     />
 
 
-
-
                 </div>
                 <div className='col-lg-10  col-md-9 col-12'>
                     <div className='container'>
@@ -132,14 +130,14 @@ const RequestList = () => {
                                 )}
                                 {requestListMarkedYes.length !== 0 && (
                                     <div className='m-4'>
-                                        <h2 >{translate('post.markedYes', language)}</h2>
+                                        <h2 style={{color:'#007ED2'}}>{translate('post.markedYes', language)}</h2>
                                         <SmallSingleRequest requests={requestListMarkedYes} type={"requestListMarkedYes"} />
                                     </div>
                                 )}
 
                                 {requestListMarkedNo.length !== 0 ? (
                                     <div className='m-4' >
-                                        <h2 >{translate('post.markedNo', language)}</h2>
+                                        <h2 style={{color:'#007ED2'}}>{translate('post.markedNo', language)}</h2>
                                         <SmallSingleRequest requests={requestListMarkedNo} type={"requestListMarkedNo"} />
                                     </div>
                                 ) : <p></p>}

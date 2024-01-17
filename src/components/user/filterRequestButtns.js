@@ -27,7 +27,7 @@ const FilterRequestButtns = () => {
         {translate('post.close', language)}
       </button>
       <button className='btn btn-outline mx-2'
-        style={{ color: '#fffd94', borderColor: '#fffd94' }}
+        style={{ color: '#b594ff', borderColor: '#b594ff' }}
         onClick={() => handleButtonClick("done")}>{translate('post.done', language)}</button>
       <button className='btn btn-outline mx-2'
         style={{ color: '#ff9b94', borderColor: '#ff9b94' }}

@@ -68,24 +68,24 @@ const Header = () => {
 
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <a className="nav-link text-with-border " style={{ color: '#9aff94', fontSize:'17px' }} href='/user/zoom'>
-                  {translate('navbar.zoomNow', language)}
-                </a>
-              </li>
               <li className="nav-item active">
-                <a className="nav-link text-with-border  text-with-border " style={{ color: '#fffd94',fontSize:'17px' }} href="/user/createPost">
+                <a className="nav-link text-with-border  text-with-border " style={{ color: '#007ED2',fontSize:'17px' }} href="/user/createPost">
                   {translate('navbar.createPost', language)}
                 </a>
 
               </li>
               <li className="nav-item">
-                <a className="nav-link text-with-border  " style={{ color: '#ffd694',fontSize:'17px' }} href="/user/requestsList/marked">
+                <a className="nav-link text-with-border " style={{ color: '#0098FD', fontSize:'17px' }} href='/user/zoom'>
+                  {translate('navbar.zoomNow', language)}
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-with-border  " style={{ color: '#5EBFFF',fontSize:'17px' }} href="/user/requestsList/marked">
                   {translate('navbar.marked', language)}
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-with-border " style={{color:'#ff9b94',fontSize:'17px'}} href="/user/userProfile">
+                <a className="nav-link text-with-border " style={{color:'#95d6ff',fontSize:'17px'}} href="/user/userProfile">
                   {translate('navbar.myProfile', language)}
                 </a>
               </li>

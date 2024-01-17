@@ -151,8 +151,8 @@ const ProfileInput = () => {
     return (
         <div className='container mt-5'>
             <div className=''>
-                <div className='container col-lg-5 col-md-9 col-10 bg-light px-5 border-lightblue ' >
-                    <h2 className=' pt-4 text-center display-5 text-with-border ' style={{ color: '#95d6ff' }}>{translate('navbar.createPost', language)}</h2>
+                <div className='container col-lg-5 col-md-9 col-10 bg-light px-5 border-blue ' >
+                    <h2 className=' pt-4 text-center display-5 text-with-border ' style={{ color: '#007ED2' }}>{translate('navbar.createPost', language)}</h2>
 
                     <div className='row '>
                         <div className='mt-4 col-12'>
@@ -257,7 +257,7 @@ const ProfileInput = () => {
                             className='btn my-3 col-1 d-flex justify-content-center mx-auto'
                             type='button'
                             onClick={handlePostButtonClick}
-                            style={{ backgroundColor: '#fffd94', color: 'gray' }}
+                            style={{ backgroundColor: '#fffd94', color: 'black' }}
                         >
                             {translate('post.post', language)}
                         </button>
