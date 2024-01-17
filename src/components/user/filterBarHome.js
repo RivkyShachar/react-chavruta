@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SefariaSearch from '../common/sefariaSarch';
+import { useSelector } from 'react-redux';
+import translate from '../../utill/translator';
 
 const FilterBarHome = ({
   setMin,
@@ -10,8 +12,9 @@ const FilterBarHome = ({
   setSearchTopics,
   setLang,
 }) => {
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 700);
 
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 700);
+  const language = useSelector((myStore) => myStore.languageSlice.language);
   useEffect(() => {
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth > 768);
@@ -27,21 +30,21 @@ const FilterBarHome = ({
 
   return (
     <div className=''>
-     <nav className="navbar navbar-light  ">
-      <div className="container d-flex justify-content-center">
-        <button
-          className="navbar-toggler btn btn-light "
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarToggleExternalContent"
-          aria-controls="navbarToggleExternalContent"
-          aria-expanded={isLargeScreen} 
-          aria-label="Toggle filter"
-        >
-          Filter
-        </button>
-      </div>
-    </nav>
+      <nav className="navbar navbar-light  ">
+        <div className="container d-flex justify-content-center">
+          <button
+            className="navbar-toggler btn btn-light "
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded={isLargeScreen}
+            aria-label="Toggle filter"
+          >
+            {translate('filter.filter', language)}
+          </button>
+        </div>
+      </nav>
       <div className={`collapse ${isLargeScreen ? 'show' : ''}`} id="navbarToggleExternalContent">
         <div className="container ">
           <ul className="navbar-nav">
@@ -54,11 +57,11 @@ const FilterBarHome = ({
               </div>
             </li>
 
-          
+
             <li className="nav-item m-2">
               <div className="form-group col-md-auto">
                 <label className="mr-2" htmlFor="minDuration">
-                  Min Duration
+                  {translate('filter.minDuration', language)}
                 </label>
                 <input
                   type="number"
@@ -72,7 +75,7 @@ const FilterBarHome = ({
             <li className="nav-item m-2">
               <div className="form-group col-md-auto">
                 <label className="mr-2" htmlFor="maxDuration">
-                  Max Duration
+                  {translate('filter.maxDuration', language)}
                 </label>
                 <input
                   type="number"
@@ -86,7 +89,7 @@ const FilterBarHome = ({
             <li className="nav-item m-2">
               <div className="form-group col-md-auto">
                 <label className="mr-2" htmlFor="startDate">
-                  Start Date:
+                  {translate('filter.startDate', language)}:
                 </label>
                 <input
                   type="datetime-local"
@@ -99,7 +102,7 @@ const FilterBarHome = ({
             <li className="nav-item m-2 mx-2">
               <div className="form-group col-md-auto">
                 <label className="mr-2" htmlFor="endDate">
-                  End Date:
+                  {translate('filter.endDate', language)}:
                 </label>
                 <input
                   type="datetime-local"
@@ -112,15 +115,15 @@ const FilterBarHome = ({
             <li className="nav-item m-2">
               <div className="form-group col-md-auto">
                 <label className="mr-2" htmlFor="lang">
-                  Language:
+                {translate('zoomNow.language', language)}:
                 </label>
                 <select
                   className="form-control"
                   id="lang"
                   onChange={(e) => setLang(e.target.value)}
                 >
-                  <option value="All">All</option>
-                  <option value="Hebrew">Hebrew</option>
+                  <option value="All">{translate('filter.all', language)}</option>
+                  <option value="Hebrew">עברית</option>
                   <option value="English">English</option>
                 </select>
               </div>

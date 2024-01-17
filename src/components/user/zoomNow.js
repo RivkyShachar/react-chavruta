@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import translate from '../../utill/translator';
 
 const ZoomMeetingButton = () => {
+  const languageT = useSelector((myStore) => myStore.languageSlice.language);
   const [zoomLink, setZoomLink] = useState(null);
   const [loading, setLoading] = useState(false);
   const [duration, setDuration] = useState(30);
@@ -9,7 +12,7 @@ const ZoomMeetingButton = () => {
   const [language, setLanguage] = useState('');
   const [durationOptions, setDurationOptions] = useState([5, 10, 20, 40]);
   const [selectedDuration, setSelectedDuration] = useState(null);
-  const [languageOptions, setLanguageOptions] = useState(['English', 'Hebrew']);
+  const [languageOptions, setLanguageOptions] = useState(['English', 'עברית']);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [allowMultiplePeople, setAllowMultiplePeople] = useState(false);
   const [subjectOptions, setSubjectOptions] = useState(['תנ"ך', 'הלכה', 'חסידות', 'הכל']);
@@ -48,7 +51,7 @@ const ZoomMeetingButton = () => {
           <form>
             <div className="mb-3">
               <label htmlFor="duration" className="form-label">
-                Duration (minutes):
+              {translate('zoomNow.duration', languageT)}:
               </label>
               <div className="btn-group d-flex">
                 {durationOptions.map((option) => (
@@ -66,7 +69,7 @@ const ZoomMeetingButton = () => {
 
             <div className="mb-3">
               <label htmlFor="subject" className="form-label">
-                Subject:
+              {translate('zoomNow.subject', languageT)}:
               </label>
               <div className="btn-group d-flex">
                 {subjectOptions.map((option) => (
@@ -84,7 +87,7 @@ const ZoomMeetingButton = () => {
 
             <div className="mb-3">
               <label htmlFor="language" className="form-label">
-                Language:
+              {translate('zoomNow.language', languageT)}:
               </label>
               <div className="btn-group d-flex">
                 {languageOptions.map((option) => (
@@ -102,7 +105,7 @@ const ZoomMeetingButton = () => {
 
             <div className="mb-3">
               <label className="form-label">
-                Allow more than 2 people?
+              {translate('zoomNow.Allow2ppl', languageT)}
               </label>
               <div className="btn-group d-flex">
                 {allowOptions.map((option) => (
@@ -125,14 +128,14 @@ const ZoomMeetingButton = () => {
                 onClick={startZoomMeeting}
                 disabled={loading}
               >
-                {loading ? 'Loading...' : 'Start Zoom Meeting'}
+                {loading ? 'Loading...' : translate('zoomNow.startMeeting', languageT)}
               </button>
             </div>
           </form>
 
           {zoomLink && (
             <div className="mt-4">
-              <p>Zoom Meeting Link:</p>
+              <p>{translate('zoomNow.zoomLink', languageT)}:</p>
               <a href={zoomLink} target="_blank" rel="noopener noreferrer">
                 {zoomLink}
               </a>

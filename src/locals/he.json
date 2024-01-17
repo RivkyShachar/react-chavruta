@@ -64,7 +64,11 @@
         "verifyPassword": "אימות סיסמא",
         "male": "זכר",
         "female": "נקבה",
-        "edit": "ערוך פרופיל"
+        "edit": "ערוך פרופיל",
+        "location": "מיקום",
+        "timezone": "אזור זמן",
+        "education": "השכלה",
+        "topics":"נושאים"
     },
     "contact": {
         "contactUs": "תקשר איתנו",
@@ -91,5 +95,21 @@
         "friendListRangeQuestion": "כמה חשוב לך ללמוד רק עם מישהו מרשימת החברים שלך?",
         "ageRangeQuestion": "כמה חשוב לך ללמוד עם מישהו בטווח הגילאים שלך?",
         "locationRangeQuestion": "כמה חשוב לך ללמוד עם מישהו מהאזור שלך?"
+    },
+    "zoomNow": {
+        "duration": "משך זמן (בדקות)",
+        "subject": "נושא",
+        "language": "שפה",
+        "Allow2ppl": "האם לאפשר יותר מ2 אנשים?",
+        "startMeeting": "התחל פגישה",
+        "zoomLink": "קישור לפגישה" 
+    },
+    "filter": {
+        "filter": "מיון",
+        "minDuration": "זמן מינימאלי",
+        "maxDuration": "זמן מקסימאלי",
+        "startDate": "זמן התחלה",
+        "endDate": "זמן סיום",
+        "all": "הכל"
     }
 }
