@@ -25,7 +25,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div id="contactUs" className='container col-4 mt-5 mb-5'>
+    <div id="contactUs" className='container col-4 mt-5 mb-5 blue'>
       <div className=' justify-content-center text-center p-4 ' >
         <h3 className='display-3 mb-3'>{translate('contact.contactUs', language)}</h3>
         <form onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ const ContactUs = () => {
               required
             ></textarea>
           </div>
-          <button type='submit' className='btn btn-outline-success mt-2'>
+          <button type='submit' className='btn btn-outline-primary mt-2'>
             {translate('contact.submit', language)}
           </button>
         </form>

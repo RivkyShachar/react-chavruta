@@ -46,30 +46,33 @@ const ZoomMeetingButton = () => {
   return (
     <div className='container mt-5'>
       <div className='row justify-content-center'>
-        <div className='col-lg-6 col-md-8 col-sm-10 col-12 bg-light p-4'>
+        <div className='col-lg-6 col-md-8 col-9 bg-light p-4 border-blue'>
           <h2 className="my-4 display-5 text-center text-primary">Zoom now</h2>
           <form>
             <div className="mb-3">
               <label htmlFor="duration" className="form-label">
-              {translate('zoomNow.duration', languageT)}:
+                {translate('zoomNow.duration', languageT)}:
               </label>
-              <div className="btn-group d-flex">
+              <br />
+              <div className="btn-group ">
                 {durationOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
-                    className={`btn btn-outline-warning ${selectedDuration === option ? 'active' : ''}`}
+                    className={`btn btn-outline-warning btn-sm ${selectedDuration === option ? 'active' : ''}`}
                     onClick={() => setSelectedDuration(option)}
                   >
                     {option}
                   </button>
                 ))}
               </div>
+
+
             </div>
 
             <div className="mb-3">
               <label htmlFor="subject" className="form-label">
-              {translate('zoomNow.subject', languageT)}:
+                {translate('zoomNow.subject', languageT)}:
               </label>
               <div className="btn-group d-flex">
                 {subjectOptions.map((option) => (
@@ -87,7 +90,7 @@ const ZoomMeetingButton = () => {
 
             <div className="mb-3">
               <label htmlFor="language" className="form-label">
-              {translate('zoomNow.language', languageT)}:
+                {translate('zoomNow.language', languageT)}:
               </label>
               <div className="btn-group d-flex">
                 {languageOptions.map((option) => (
@@ -105,7 +108,7 @@ const ZoomMeetingButton = () => {
 
             <div className="mb-3">
               <label className="form-label">
-              {translate('zoomNow.Allow2ppl', languageT)}
+                {translate('zoomNow.Allow2ppl', languageT)}
               </label>
               <div className="btn-group d-flex">
                 {allowOptions.map((option) => (
