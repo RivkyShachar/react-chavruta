@@ -40,7 +40,7 @@ const Home = () => {
     <div className="navbar-light  ">
       <nav className="navbar navbar-expand-lg bg-light">
         <div className='container'>
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand mx-4" to="/">
             <img
               src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705404742/chavruta-high-resolution-logo-transparent_x5yqdg.png"
               alt="Chavruta Logo"
