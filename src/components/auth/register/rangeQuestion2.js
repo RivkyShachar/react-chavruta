@@ -48,8 +48,8 @@ const RangeQuestion = () => {
       if (data.status === 201) {
         nav("/user");
         window.location.reload();
-      } else if (data.status === 400) {
-        console.log("status 400");
+      } else{
+        alert("Error: try again")
       }
 
       if (data.data.token) {

@@ -64,7 +64,11 @@
         "verifyPassword":"Verify Password",
         "male": "Male",
         "female": "Female",
-        "edit": "Edit"
+        "edit": "Edit",
+        "location": "Location",
+        "timezone": "Timezone",
+        "education": "Educations",
+        "topics":"Topics"
     },
     "contact": {
         "contactUs": "Contact us",
@@ -91,6 +95,22 @@
         "friendListRangeQuestion": "How important is it to you to study with only someone from your friend list?",
         "ageRangeQuestion": "How important is it to you to study with someone in your age range?",
         "locationRangeQuestion": "How important is it to you to study with something from your area?"
+    },
+    "zoomNow": {
+        "duration": "Duration (minutes)",
+        "subject": "Subject",
+        "language": "Language",
+        "Allow2ppl": "Allow more than 2 people?",
+        "startMeeting": "Start Zoom Meeting",
+        "zoomLink": "Zoom Meeting Link"
+    },
+    "filter": {
+        "filter": "Filter",
+        "minDuration": "Min Duration",
+        "maxDuration": "Max Duration",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "all": "All"
     }
 
 }

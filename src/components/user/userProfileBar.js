@@ -38,14 +38,14 @@ const UserProfileBar = () => {
               <br />
               <strong>{translate('user.phoneNumber', language)}:</strong> {user.phoneNumber}
               <br />
-              <strong>Location:</strong> {user.location}
+              <strong>{translate('user.location', language)}:</strong> {user.location}
               <br />
-              <strong>Timezone:</strong> {user.timezone}
+              <strong>{translate('user.timezone', language)}:</strong> {user.timezone}
               <br />
             </div>
 
             <div className="col-3 mt-3">
-              <strong>Educations:</strong>
+              <strong>{translate('user.education', language)}:</strong>
               {user.educations.map((education, index) => (
                 <div key={index}>
                   <strong>{education.name}</strong>
@@ -53,7 +53,7 @@ const UserProfileBar = () => {
                 </div>
               ))}
 
-              <strong>Topics:</strong>
+              <strong>{translate('user.topics', language)}:</strong>
               <ul className="list-unstyled">
                 {user.topics.map((topic, index) => (
                   <li key={index}>{topic}</li>
