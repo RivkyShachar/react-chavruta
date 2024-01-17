@@ -442,7 +442,7 @@ input {
 }
 
 .topic-list {
-  background-color: #b6ffa453;
+  background-color: #b7e4ff;
 }
 
 .topic-list-2 {
@@ -456,12 +456,12 @@ input {
 
 .btn-register {
   color: #000000;
-  background-color: #b6ffa453;
+  background-color: #b7e3ffaa;
   border-color: #b7e4ff;
 }
 
 .btn-profile {
-  background-color: #b6ffa453;
+  background-color: #b7e4ff;
   border-color: solid 3px #b7e4ff;
 }
 
@@ -849,7 +849,7 @@ body {
 }
 
 .border {
-  border: solid 3px #b6ffa453;
+  border: solid 3px #b7e4ff;
 }
 
 .profile-image {

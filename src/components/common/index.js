@@ -79,29 +79,30 @@ const Index = () => {
                 </div>
 
                 <div className='mt-4' data-aos='fade-up'>
-                    <button className='btn  btn-outline-primary' onClick={signUp}>
+                    <button className='btn  btn-outline-primary' onClick={signUp} >
                         {translate('home.getStarted', language)}
                     </button>
                 </div>
             </div>
             <div className='mb-5'>
                 <div className='container'>
-                    <div className='d-flex text-center justify-content-center row col-12 mx-auto'>
-                        <button className='btn  col-9 col-lg-3 col-md-3 border-lightblue-plus  backround-lightblue m-3  p-4' data-aos='zoom-in' onClick={scrollToPost}>
+                    <div className='d-flex text-center justify-content-center row col-12 mx-auto'   >
+                        <button className='col-9 col-lg-3 col-md-3 border-lightblue-plus  backround-lightblue m-3 my-3 p-4 ' data-aos='zoom-in' onClick={scrollToConnect}  
+                                       >
                             <h3 className='mb-3 diaplay-5 blue'>
-                            {translate('home.postStudyRequest', language)}</h3>
-                            <img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705512798/211601_upload_icon_wvexkn.png" style={{ maxHeight: '80px' }} />
-                        </button>
-                        <button className='col-9 col-lg-3 col-md-3 border-lightblue-plus  backround-lightblue m-3 my-3 p-4 ' data-aos='zoom-in' onClick={scrollToConnect}>
-                            <h3 className='mb-3 diaplay-5 blue'>
-                            {translate('home.browseAndConnect', language)}
+                                {translate('home.browseAndConnect', language)}
                             </h3>
                             <img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705512647/4280504_account_group_outlined_family_people_icon_1_zd6alc.png" style={{ maxHeight: '80px' }} />
 
                         </button>
+                        <button className='btn  col-9 col-lg-3 col-md-3 border-lightblue-plus  backround-lightblue m-3  p-4' data-aos='zoom-in' onClick={scrollToPost}>
+                            <h3 className='mb-3 diaplay-5 blue'>
+                                {translate('home.postStudyRequest', language)}</h3>
+                            <img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705512798/211601_upload_icon_wvexkn.png" style={{ maxHeight: '80px' }} />
+                        </button>
                         <button className='col-9 col-lg-3 col-md-3 border-lightblue-plus  backround-lightblue m-3 my-3 p-4' data-aos='zoom-in' onClick={scrollToZoom}>
                             <h3 className='mb-3 diaplay-5 blue'>
-                            {translate('home.startZoomSession', language)}
+                                {translate('home.startZoomSession', language)}
                             </h3>
                             <img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705511890/8197855_zoom_social_network_communication_network_conversation_icon_cmr7ad.png" style={{ maxHeight: '80px' }} />
                         </button>
@@ -141,22 +142,6 @@ const Index = () => {
                 <div id="about" className='row justify-content-center'>
 
 
-                    <div div id="post" className='box col-md-5 col-10 p-5 mx-1 mb-4 blue ' data-aos='fade-down-right'>
-                        <br />
-                        <h2 ><strong>{translate('home.postStudyRequest', language)}</strong></h2>
-                        <h3 style={{ lineHeight: '1.8' }}>
-                            <br />
-                            {translate('home.postStudyRequestDescription', language)}
-                        </h3>
-                    </div>
-
-                    <div className='box col-md-5 col-10 p-5 mx-1 my-4 ' data-aos='fade-down-left'>
-                        <img
-                            src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514564/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.05_c1b7c830_wrzyob.jpg"
-                            alt="Your Alt Text"
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        />
-                    </div>
 
 
                     <div id="connect" className='box col-md-5 col-10 p-5 mx-1 mb-4 blue' data-aos='fade-down-left'>
@@ -176,6 +161,22 @@ const Index = () => {
                         />
                     </div>
 
+                    <div div id="post" className='box col-md-5 col-10 p-5 mx-1 mb-4 blue ' data-aos='fade-down-right'>
+                        <br />
+                        <h2 ><strong>{translate('home.postStudyRequest', language)}</strong></h2>
+                        <h3 style={{ lineHeight: '1.8' }}>
+                            <br />
+                            {translate('home.postStudyRequestDescription', language)}
+                        </h3>
+                    </div>
+
+                    <div className='box col-md-5 col-10 p-5 mx-1 my-4 ' data-aos='fade-down-left'>
+                        <img
+                            src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514564/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.05_c1b7c830_wrzyob.jpg"
+                            alt="Your Alt Text"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                    </div>
 
                     <div id="zoom" className='box col-md-5 col-10 p-5 mx-1 mb-4 blue' data-aos='fade-down-right'>
                         <br></br>
