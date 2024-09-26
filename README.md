@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+![alt text](image.png)
+![alt text](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514565/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.08_48451142_ypnbqq.jpg)
+![alt text](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514564/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.05_c1b7c830_wrzyob.jpg)
+![alt text](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514722/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.04.48_a964f040_xrqvhm.jpg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Chavruta: Your Study Partner Hub
 
-In the project directory, you can run:
+Welcome to **Chavruta**, a platform where you can find a study partner and enjoy collaborative learning. Below you'll find details about our features and how to get started.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. **Post a Study Request**
+Share your study preferences, including the topic, time, and language you prefer. Other users can browse through these requests and express their interest by clicking "Yes." Once you have responses, you have the power to choose the perfect study partner who aligns with your learning goals.
 
-### `npm test`
+![Post Study Request](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705512798/211601_upload_icon_wvexkn.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. **Browse and Connect**
+Visit our home page to discover study requests posted by fellow learners. If you find a request that matches your interests, simply click "Yes" to connect with the requester. It's a seamless way to join study sessions that align with your schedule and subjects of interest.
 
-### `npm run build`
+![Browse and Connect](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705512647/4280504_account_group_outlined_family_people_icon_1_zd6alc.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. **Start a Zoom Session**
+For those ready to dive into immediate learning, use our "Start Zoom Session" feature. Specify the topic, time, language, and the number of participants you'd like in your Zoom session. Our platform will generate a Zoom link for you to share, allowing you to jump into a live study session.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Start Zoom Session](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705511890/8197855_zoom_social_network_communication_network_conversation_icon_cmr7ad.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## How to Get Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Sign Up**: Create an account to start posting or responding to study requests.
+2. **Post Your Preferences**: Share your study preferences, including the topic, time, and language.
+3. **Browse Requests**: Look for study sessions that match your interests and schedule.
+4. **Start a Zoom Session**: Initiate an immediate learning session with fellow students.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Screenshots
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Browse and Connect
+![Browse Requests](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514565/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.08_48451142_ypnbqq.jpg)
 
-## Learn More
+### Post Study Request
+![Post Requests](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514564/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.05_c1b7c830_wrzyob.jpg)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Start Zoom Session
+![Start Zoom Session](https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514722/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.04.48_a964f040_xrqvhm.jpg)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **React**: Frontend framework
+- **Redux**: State management
+- **AOS (Animate on Scroll)**: For scroll animations
+- **Cloudinary**: For image hosting
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+Feel free to contribute to this project by opening an issue or submitting a pull request. Any feedback or suggestions are highly appreciated.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
