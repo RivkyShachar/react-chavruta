@@ -1,70 +1,183 @@
-# Getting Started with Create React App
+<!-- ![alt text](image.png)
+ -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+# Chavruta: Your Study Partner Hub
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Welcome to **Chavruta**, a platform where you can find a study partner and enjoy collaborative learning. Below you'll find details about our features and how to get started.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Features
+<!-- <img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705512798/211601_upload_icon_wvexkn.png" alt="Post Study Request" width="100"/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705512647/4280504_account_group_outlined_family_people_icon_1_zd6alc.png" alt="Browse and Connect" width="100"/>
 
-### `npm run build`
+<img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705511890/8197855_zoom_social_network_communication_network_conversation_icon_cmr7ad.png" alt="Start Zoom Session" width="100"/> -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. **Post a Study Request**
+Share your study preferences, including the topic, time, and language you prefer. Other users can browse through these requests and express their interest by clicking "Yes." Once you have responses, you have the power to choose the perfect study partner who aligns with your learning goals.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514565/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.08_48451142_ypnbqq.jpg" alt="Post Study Request" width="50%"/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### 2. **Browse and Connect**
+Visit our home page to discover study requests posted by fellow learners. If you find a request that matches your interests, simply click "Yes" to connect with the requester. It's a seamless way to join study sessions that align with your schedule and subjects of interest.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514564/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.02.05_c1b7c830_wrzyob.jpg" alt="Browse and Connect" width="50%"/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. **Start a Zoom Session**
+For those ready to dive into immediate learning, use our "Start Zoom Session" feature. Specify the topic, time, language, and the number of participants you'd like in your Zoom session. Our platform will generate a Zoom link for you to share, allowing you to jump into a live study session.
 
-## Learn More
+<img src="https://res.cloudinary.com/dmxzrb6dq/image/upload/v1705514722/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_%D7%A9%D7%9C_WhatsApp_2024-01-17_%D7%91%D7%A9%D7%A2%D7%94_20.04.48_a964f040_xrqvhm.jpg" alt="Start Zoom Session" width="50%"/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## How to Get Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Sign Up**: Create an account to start posting or responding to study requests.
+2. **Post Your Preferences**: Share your study preferences, including the topic, time, and language.
+3. **Browse Requests**: Look for study sessions that match your interests and schedule.
+4. **Start a Zoom Session**: Initiate an immediate learning session with fellow students.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Watch the Demo Video
 
-### Advanced Configuration
+[![Chavruta Demo](https://img.youtube.com/vi/f0ZD-e0e4Lc/0.jpg)](https://youtu.be/f0ZD-e0e4Lc)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Click on the image to play the video.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Getting Started
+
+Follow these steps to run the project locally on your machine.
+
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+
+1. **Visual Studio Code (VS Code)**  
+   Download and install VS Code from [https://code.visualstudio.com/](https://code.visualstudio.com/).
+
+2. **Node.js**  
+   Download and install Node.js from [https://nodejs.org/](https://nodejs.org/).  
+   Verify the installation by running:
+   ```bash
+   node -v
+   npm -v
+   ```
+
+3. **Git**  
+   Download and install Git from [https://git-scm.com/](https://git-scm.com/).  
+   Verify the installation by running:
+   ```bash
+   git --version
+   ```
+
+
+### Cloning the Repository
+
+1. Open your terminal and navigate to the directory where you'd like to clone the repository.
+
+2. Run the following command to clone the project:
+   Verify the installation by running:
+   ```bash
+   git clone <repository-url>
+   ```
+
+3. Navigate into the project directory:
+   ```bash
+   cd <project-directory>
+   ```
+
+
+### Setting Up the Environment
+
+1. Navigate to the `server` folder:
+    ```bash
+   cd server
+   ```
+
+2. Create a `.env` file inside the `server` folder and add the following environment variables:
+   ```bash
+    PORT=<your-port>
+    USER_DB=<your-db-username>
+    PASS_DB=<your-db-password>
+    zoom_grant_type=<your-zoom-grant-type>
+    zoom_account_id=<your-zoom-account-id>
+    zoom_username=<your-zoom-username>
+    zoom_password=<your-zoom-password>
+   ```
+   Replace the placeholders with your actual configuration values.
+
+
+### Running the Project
+## Server
+
+1. Navigate to the `server` folder if you're not already there:
+    ```bash
+    cd server
+    ```
+
+2. Install server dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the server:
+    ```bash
+    npm start
+    ```
+
+## Client
+
+1. Open a new terminal and navigate to the `client` folder:
+    ```bash
+    cd client
+    ```
+
+2. Install client dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the client:
+    ```bash
+    npm start
+    ```
+
+
+
+---
+
+## Technologies Used
+
+- **React**: Frontend framework
+- **Redux**: State management
+- **Cloudinary**: For image hosting
+- **React Router**: A library for routing in React applications.
+- **Bootstrap**: A popular CSS framework for responsive design.
+- **Axios**: Promise-based HTTP client for the browser and Node.js.
+- **Zoom API**: For managing and starting Zoom sessions directly from the app.
+
+---
+
+## Contributing
+
+Feel free to contribute to this project by opening an issue or submitting a pull request. Any feedback or suggestions are highly appreciated.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
